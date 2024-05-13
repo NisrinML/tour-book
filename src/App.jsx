@@ -1,5 +1,6 @@
 
-import { Router } from "./routers/Router"
+
+import Layout from "./features/layout/Layout"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
 
 
@@ -7,11 +8,13 @@ import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPas
 function App() {
 
   return (
-    <>
-   
-    <OrgnizerNewPassword/>
-    <Router/>
-    </>
+  
+ <Layout>
+
+ <OrgnizerNewPassword/>
+ 
+  </Layout>
+
   )
 }
 

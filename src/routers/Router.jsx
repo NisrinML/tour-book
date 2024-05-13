@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import Footer from "../features/user/userView/Footer"
+import Footer from "../features/layout/Footer"
 export const Router=()=>{
 return(
     <Routes>
