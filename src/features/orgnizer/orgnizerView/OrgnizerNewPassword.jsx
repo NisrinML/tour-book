@@ -54,15 +54,15 @@ function OrgnizerNewPassword() {
             <div className="container flex flex-row items-center relative pt-52 ">
 
                 <div className="bg-offerbg-light  drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit w-2/5 xl:mx-64 xl:rounded-3xl lg:mx-64 lg:rounded-3xl md:mx-56 md:rounded-2xl ">
-                    <div className="flex flex-col items-center justify-start mx-auto text-text-light font-['Arial'] gap-1 px-2 xl:text-2xl xl:my-14 lg:text-xl lg:my-20 md:text-lg md:my-20">
+                    <div className="flex flex-col items-center justify-start mx-auto text-text-light font-['Arial'] gap-1 px-2 xl:text-2xl xl:my-12 lg:text-xl lg:my-16 md:text-lg md:my-20">
                         <div className="flex flex-col xl:gap-3 lg:gap-2 md:gap-2">
                             <span>new password :</span>
-                            <input type="text"
+                            <input type="password"
                                 onChange={handelNewPassChange}
                                 value={newPass}
                                 className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light xl:h-10 xl:rounded-xl xl:pl-3 xl:text-xl lg:h-8 lg:rounded-lg lg:pl-2 lg:text-lg md:h-6 md:rounded-md md:pl-1 md:text-base" />
                             <span className="xl:pt-7 lg:pt-5 md:pt-5">confirm password :</span>
-                            <input type="text"
+                            <input type="password"
                                 onChange={handleConfirmChange}
                                 value={confirm}
                                 className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light xl:h-10 xl:rounded-xl xl:pl-3 xl:text-xl lg:h-8 lg:rounded-lg lg:pl-2 lg:text-lg md:h-6 md:rounded-md md:pl-1 md:text-base" />

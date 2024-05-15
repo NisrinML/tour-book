@@ -40,6 +40,9 @@ export default {
     'add-button':{
       light:'#359C88'
     },
+    'change-button':{
+      light:'#EE9C3D'
+    },
     'back-button':{
       light:'#6E8085'
     },
