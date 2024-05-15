@@ -51,7 +51,40 @@ export default {
     },
     'error':{
       light:'#F81010'
-    }
+    },
+    'loginButtonText':{
+      light:'#503900'
+    },
+    'loginBackgroundFrameTo':{
+      light:'#FCFEFE'
+    },
+    'loginBackgroundFrameFrom':{
+    light:'#CFF2EB'
+  },
+  'clientBackgroundTo':{
+    light:'#FFDB80'
+  },
+  'clientBackgroundVia':{
+    light:'#83FFE9'
+  }, 
+  'clientBackgroundFrom':{
+    light:'#2AD6B4'
+  }, 
+  'loginButtonFrom':{
+    light:'#D3A84C'
+  },
+  'loginButtonVia':{
+    light:'#FFDD8E'
+  },
+  'loginButtonTo':{
+    light:'#E1B453'
+  },
+  'inputLabel':{
+    light:'#ECFCFB'
+  },
+  'inputLabelShadow':{
+    light:'#0A2737'
+  },
     },
     fontFamily: {
      // 'footer':['"javanese-Text"'],
