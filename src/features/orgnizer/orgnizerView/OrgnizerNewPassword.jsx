@@ -30,7 +30,7 @@ function OrgnizerNewPassword() {
             setErrorMessage('')
             setNewPass('')
             setConfirm('')
-            navigate('/foot')
+            navigate('/')
         }
         else if (newPass === '') {
             setError(true)
