@@ -14,7 +14,7 @@ function PresenterLogin() {
   function handelUserName(e) {
     setUserName(e.target.value)
 }
-  function handelPassword(e) {
+function handelPassword(e) {
     setPassword(e.target.value)
 }
 function handleUserEnter() { 

@@ -6,7 +6,13 @@ import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPas
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
 
+
 import PresenterLogin from "./features/presenter/presenterView/PresenterLogin"
+
+import PresenterProfile from "./features/presenter/PresenterView/PresenterProfile"
+import PresenterLogin from './features/presenter/PresenterView/PresenterLogin'
+
+
 
 function App() {
 
@@ -18,7 +24,13 @@ function App() {
  {/* <OrgnizerForgetPassword/> */}
  {/* <OrgnizerResetPassword/> */}
  {/* <PresenterLogin /> */}
-<OrgnizerReport/>
+{/* <OrgnizerReport/> */}
+ <OrgnizerResetPassword/>
+
+
+ {/* <PresenterLogin /> */}
+{/* <PresenterProfile /> */}
+
   </Layout>
 
   )

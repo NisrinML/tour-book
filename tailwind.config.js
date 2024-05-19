@@ -88,6 +88,10 @@ export default {
   'inputLabelShadow':{
     light:'#0A2737'
   },
+  'presenterbg':{
+    light:'#FFF5E9'
+  }
+  
     },
     fontFamily: {
      // 'footer':['"javanese-Text"'],
