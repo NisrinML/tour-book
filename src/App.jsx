@@ -5,6 +5,8 @@ import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerFor
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
 
+import PresenterProfile from "./features/presenter/PresenterView/PresenterProfile"
+import PresenterLogin from './features/presenter/PresenterView/PresenterLogin'
 
 
 function App() {
@@ -17,6 +19,9 @@ function App() {
  {/* <OrgnizerForgetPassword/> */}
  <OrgnizerResetPassword/>
 
+
+ {/* <PresenterLogin /> */}
+{/* <PresenterProfile /> */}
   </Layout>
 
   )
