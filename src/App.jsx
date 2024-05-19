@@ -8,9 +8,7 @@ import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerRese
 
 
 import PresenterLogin from "./features/presenter/presenterView/PresenterLogin"
-
-import PresenterProfile from "./features/presenter/PresenterView/PresenterProfile"
-import PresenterLogin from './features/presenter/PresenterView/PresenterLogin'
+import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 
 
 
@@ -24,10 +22,8 @@ function App() {
  {/* <OrgnizerForgetPassword/> */}
  {/* <OrgnizerResetPassword/> */}
  {/* <PresenterLogin /> */}
-{/* <OrgnizerReport/> */}
- <OrgnizerResetPassword/>
-
-
+<OrgnizerReport/>
+ {/* <OrgnizerResetPassword/> */}
  {/* <PresenterLogin /> */}
 {/* <PresenterProfile /> */}
 
