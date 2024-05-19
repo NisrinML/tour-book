@@ -8,6 +8,9 @@ function OrgnizerBigLayout({ children }) {
     // mainColor = 'bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-clientBackgroundVia-light via-40% to-clientBackgroundTo-light to-80%'
     // mainColor = 'bg-presenterbg-light'
   }
+  else if(user === 1){
+    mainColor = 'bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-clientBackgroundVia-light via-40% to-clientBackgroundTo-light to-80%'
+  }
   return (
     <div className={`${mainColor} h-full min-h-screen w-full flex flex-col`}>
       <div className="flex-grow">

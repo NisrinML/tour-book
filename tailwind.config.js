@@ -46,6 +46,9 @@ export default {
     'back-button':{
       light:'#6E8085'
     },
+    'delete-button':{
+      light:'#E44B37'
+    },
     'button-text':{
       light:'#ffffff'
     },
