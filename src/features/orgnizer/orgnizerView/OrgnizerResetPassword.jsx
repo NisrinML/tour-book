@@ -3,10 +3,10 @@ import ResetPassword from "../../../assets/images/resetPassword.png"
 import Header from "../../layout/Header"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setPassword } from "../orgnizerSlice"
+import { setPassword ,setConfirmPassword} from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 function OrgnizerResetPassword() {
-    const state = useSelector(state => state.orgnizer)
+    const state = useSelector(state => state.user)
     const [oldPass,setOldPass]= useState('')
     const [newPass, setNewPass] = useState('');
     const [confirm, setConfirm] = useState('');
@@ -24,7 +24,6 @@ function OrgnizerResetPassword() {
         setConfirm(e.target.value)
     }
     function handelChange() { 
-        console.log(state)
         if(oldPass === '' && newPass === '' && confirm === ''){
             setError(true)
             setErrorMessage('Please enter required field !')
@@ -41,12 +40,13 @@ function OrgnizerResetPassword() {
             setError(true)
             setErrorMessage('Old Password field is required !')
         }
-        else if (oldPass != state.password) {
+        else if (oldPass != state.login.data.password) {
             setError(true)
             setErrorMessage('The Password you entered does not match !')
         }
-        else if (newPass === confirm && oldPass ===state.password) {
+        else if (newPass === confirm && oldPass ===state.login.data.password) {
             dispatch(setPassword(newPass))
+            dispatch(setConfirmPassword(confirm))
             setError(false)
             setErrorMessage('')
             setNewPass('')

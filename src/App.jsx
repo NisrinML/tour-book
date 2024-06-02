@@ -20,11 +20,9 @@ function App() {
 
  {/* <OrgnizerNewPassword/> */}
  {/* <OrgnizerForgetPassword/> */}
- {/* <OrgnizerResetPassword/> */}
  {/* <PresenterLogin /> */}
-<OrgnizerReport/>
+{/* <OrgnizerReport/> */}
  {/* <OrgnizerResetPassword/> */}
- {/* <PresenterLogin /> */}
 {/* <PresenterProfile /> */}
 
   </Layout>

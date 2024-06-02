@@ -3,10 +3,10 @@ import Flower from "../../../assets/images/flower.png"
 import Header from "../../layout/Header"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setPassword } from "../orgnizerSlice"
+import { setPassword,setConfirmPassword } from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 function OrgnizerNewPassword() {
-    const state = useSelector(state => state.orgnizer)
+    const state = useSelector(state => state.user)
     const [newPass, setNewPass] = useState('');
     const [confirm, setConfirm] = useState('');
     const [error, setError] = useState(false)
@@ -26,6 +26,7 @@ function OrgnizerNewPassword() {
         }
         else if (newPass === confirm) {
             dispatch(setPassword(newPass))
+            dispatch(setConfirmPassword(confirm))
             setError(false)
             setErrorMessage('')
             setNewPass('')

@@ -1,12 +1,12 @@
 import Footer from "./Footer";
-
+import {  useSelector } from "react-redux"
 function OrgnizerBigLayout({ children }) {
-  var user = 2;
+  
+  const state = useSelector(state => state.user)
+  var user = state.login.data.roleId;
   var mainColor = '';
   if (user === 2) {
     mainColor = 'bg-orgnizerbg-light';
-    // mainColor = 'bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-clientBackgroundVia-light via-40% to-clientBackgroundTo-light to-80%'
-    // mainColor = 'bg-presenterbg-light'
   }
   else if(user === 1){
     mainColor = 'bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-clientBackgroundVia-light via-40% to-clientBackgroundTo-light to-80%'

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import icon from "../../../assets/images/icon.svg";
 
 function PresenterLogin() {
-  const state = useSelector(state => state.presenter)
+  const state = useSelector(state => state.user)
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false)
@@ -18,15 +18,15 @@ function handelPassword(e) {
     setPassword(e.target.value)
 }
 function handleUserEnter() { 
-  if(userName === '' && password === ''){
+if(userName === '' && password === ''){
       setError(true)
       setErrorMessage('Please enter required field !')
-  }
-  else if (userName === '') {
+}
+else if (userName === '') {
     setError(true)
     setErrorMessage('User Name field is required !')
 }
-  else if (password === '') {
+else if (password === '') {
     setError(true)
     setErrorMessage('Password field is required !')
 }

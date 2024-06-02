@@ -7,10 +7,9 @@ import { useNavigate } from "react-router-dom";
 function SmallHeader() {
   var userName;
   var user = 1;
-  if (user == 1) {
-    const state = useSelector((state) => state.presenter);
-    userName = state.loginInfo.userName;
-  }
+  const state = useSelector((state) => state.user);
+  userName = state.login.data.userName;
+  
   return (
     <div
       className="flex flex-row   
@@ -34,10 +33,10 @@ function SmallHeader() {
                    lg:space-x-2 lg:pl-96 
                    md:space-x-1 md:pl-80 "
       >
-        <div className="flex flex-row xl:space-x-2 lg:space-x-3 md:space-x-3">
-          <div className="absolute">
+        <div className="flex flex-row xl:space-x-20 lg:space-x-3 md:space-x-3">
+          <div className="relative xl:-right-20 lg:-right-4 md:-right-4 ">
             <span className="border px-1 rounded-full xl:text-base lg:text-sm md:text-xs border-error-light text-error-light">
-              2
+              {state.notifications.length}
             </span>
           </div>
           <img

@@ -1,21 +1,47 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
- password:'1234',
- email:'www.***@gmail.com',
+ id:'',
+ name:'',
+ address:'',
+ evaluation:'',
+ status:'',
+ logo:'',
+ joiningDate:'',
+ situation:'',
+ mobile:'',
+ userId:'',
+ tour:{
+  id:'',
+  title:'',
+  startDate:'',
+  endDate:'',
+  extraCost:'',
+  totalCost:'',
+  seatCost:'',
+  transportationCost:'',
+  description:'',
+  numOfSeat:'',
+  note:'',
+  startingPlace:'',
+  XstartingPlace:'',
+  YstartingPlace:'',
+  likeCounter:'',
+  disLikeCounter:'',
+  tourPoints:[{id:'',position:'',description:'',arrivalTime:'',leavingTime:'',axisX:'',axisY:'',
+  offerRequest:{id:'',quantity:'',description:'',offerId:''}}],
+  tourAttachment:[{id:'',attachment:'',type:''}],
+  clientRequest:[{id:'',numOfSeat:'',status:'',clientId:'',client:{name:'',mobile:''}}],
+  comments:{id:'',comment:'',feelings:'',clientId:''}
+ }
 };
 
 const orgnizerSlice = createSlice({
-  name:"orgnizer",
+  name: "orgnizer",
   initialState,
-  reducers: { 
-    setPassword: (state, action) => {
-      state.password = action.payload;
-    },
-    setEmail:(state,action)=>{
-      state.email=action.payload
-    }
+  reducers: {
+  
   },
 });
-export const {setPassword,setEmail}=orgnizerSlice.actions
+
 export default orgnizerSlice.reducer;
