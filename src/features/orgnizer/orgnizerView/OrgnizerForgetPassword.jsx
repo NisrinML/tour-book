@@ -3,10 +3,10 @@ import ForgetPassword from "../../../assets/images/forgetPassword.png"
 import Header from "../../layout/Header"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setEmail } from "../orgnizerSlice"
+import { setEmail } from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 function OrgnizerForgetPassword() {
-    const state = useSelector(state => state.orgnizer)
+    const state = useSelector(state => state.user)
     const [email, setNewEmail] = useState('');
     const [error, setError] = useState(false)
     const dispatch = useDispatch()
@@ -28,7 +28,6 @@ function OrgnizerForgetPassword() {
             setNewEmail('')
             navigate('/')
         }
-        console.log(state)
     }
     return (
         <div className=" w-full h-screen max-h-full">

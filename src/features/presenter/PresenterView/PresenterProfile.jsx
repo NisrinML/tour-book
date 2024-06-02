@@ -8,10 +8,11 @@ import backButton from '../../../assets/images/backButton.svg'
 
 
 function PresenterProfile() {
-const state = useSelector(state => state.presenter);
+const state = useSelector(state=>state.presenter)
+const state1 = useSelector(state => state.user);
 const dispatch = useDispatch();
 const navigate = useNavigate();
-var presenterName = state.loginInfo.userName;
+var presenterName = state1.login.data.userName;
 const [theSize, setTheSize] = useState(state.profileInfo.size);
 const [theWebsite, setTheWebsite] = useState(state.profileInfo.website);
 const [theServices, setTheServices] = useState(state.profileInfo.services);

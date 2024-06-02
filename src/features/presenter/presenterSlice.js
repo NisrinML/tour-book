@@ -3,11 +3,7 @@ import restaurant1 from '../../assets/images/restaurant1.png'
 import restaurant2 from '../../assets/images/restaurant2.png'
 import restaurant3 from '../../assets/images/restaurant3.png'
 const initialState = {
-  loginInfo: 
-  {
-  userName:'Rolana Kamaria',
-  password:'',
-},
+  
   profileInfo:
   {
   size:'100 Persons',

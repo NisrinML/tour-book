@@ -1,33 +1,69 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
 const initialState = {
-loading : false,
-data:[],
-error:""
+  login: {
+    loading: '',
+    data: {
+      id: '',
+      userName: 'User Name',
+      password: '111',
+      confirmPassword: '',
+      Avatar: '',
+      status: '',
+      email: '',
+      roleId: 2,
+    },
+    error: ''
+  },
+  notifications: [],
+  subscriptionDetails: {
+    id: '',
+    startDate: '',
+    endDate: '',
+    payment: ''
+  },
+  reports: { id: '', reason: '', reportType: '', respondentUser: 'Rolana kamarie',respondentEmail:'www.***@gmail.com', complainantUser: '' }
 };
-const fetchUsers = createAsyncThunk("user/fetchUsers",()=>{
-  return axios.get().then((res)=>res.data)
+const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
+  return axios.get().then((res) => res.data)
 })
 const userSlice = createSlice({
-  name:"user",
+  name: "user",
   initialState,
-  reducers: { 
+  reducers: {
+    setPassword: (state, action) => {
+      state.login.data.password = action.payload;
+    },
+    setConfirmPassword:(state, action)=>{
+      state.login.data.confirmPassword = action.payload;
+    },
+    setEmail: (state, action) => {
+      state.login.data.email = action.payload
+    },
+    setRespondentUser: (state, action) => {
+      state.reports.respondentUser = action.payload
+    },
+    setRespondentEmail: (state, action) => {
+      state.reports.respondentEmail = action.payload
+    },
+
   },
-  extraReducers:(builder)=>
-  {
-    builder.addCase(fetchUsers.pending,(state)=>{
-      state.loading=true;
+  extraReducers: (builder) => {
+    builder.addCase(fetchUsers.pending, (state) => {
+      state.login.loading = true;
     })
-    builder.addCase(fetchUsers.fulfilled,(state,action)=>{
-      state.loading=false;
-      state.data=action.payload;
-      state.error=""
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      state.login.loading = false;
+      state.login.data = action.payload;
+      state.login.error = ""
     });
-    builder.addCase(fetchUsers.rejected,(state,action)=>{
-      state.loading=false;
-      state.data=[];
-      state.error=action.error.message;
+    builder.addCase(fetchUsers.rejected, (state, action) => {
+      state.login.loading = false;
+      state.login.data = [];
+      state.login.error = action.error.message;
     })
   }
 });
+
+export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser } = userSlice.actions
 export default userSlice.reducer;
