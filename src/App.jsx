@@ -1,6 +1,7 @@
 
 
 import Layout from "./features/layout/Layout"
+import MakeSpecialTour from "./features/orgnizer/orgnizerView/MakeSpecialTour"
 import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerForgetPassword"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
@@ -24,7 +25,7 @@ function App() {
 {/* <OrgnizerReport/> */}
  {/* <OrgnizerResetPassword/> */}
 {/* <PresenterProfile /> */}
-
+<MakeSpecialTour/>
   </Layout>
 
   )

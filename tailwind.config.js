@@ -47,6 +47,9 @@ export default {
     'change-button':{
       light:'#EE9C3D'
     },
+    'save-button':{
+      light:'#2D9F31'
+    },
     'back-button':{
       light:'#6E8085'
     },
