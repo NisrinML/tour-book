@@ -1,6 +1,6 @@
 import { useMapEvents } from "react-leaflet";
 import { useDispatch, useSelector } from "react-redux";
-import { setPosition } from "../map/coordinateSlice";
+import { setPosition } from "./coordinateSlice";
 var lat,lng,position;
 const MapEvents = () => {
   position = useSelector(state => state.coordinate.position)
