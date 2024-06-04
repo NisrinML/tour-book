@@ -32,6 +32,9 @@ export default {
       'text':{
         light:'#024932',
       },
+      'title':{
+        light:'#09855E'
+      },
       'orgnizerbg':{
         light:'#ECF3FA'
       },
