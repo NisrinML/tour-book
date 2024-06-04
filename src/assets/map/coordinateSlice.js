@@ -1,3 +1,4 @@
+// this slice belong to map configuration -- it is just to update the current location
 import { createSlice } from '@reduxjs/toolkit'
 
 export const coordinateSlice = createSlice({

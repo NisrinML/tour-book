@@ -3,6 +3,7 @@ import {  useSelector } from "react-redux"
 function OrgnizerBigLayout({ children }) {
   
   const state = useSelector(state => state.user)
+  //to change the background color based on the type of user
   var user = state.login.data.roleId;
   var mainColor = '';
   if (user === 2) {

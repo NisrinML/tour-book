@@ -5,12 +5,12 @@ var lat,lng,position;
 const MapEvents = () => {
   position = useSelector(state => state.coordinate.position)
   const dispatch = useDispatch()
+  //to get the select location then add marker there
     useMapEvents({
       dblclick(e) {
         lat=e.latlng.lat;
         lng=e.latlng.lng;
         dispatch(setPosition([...position,[lat,lng]]))
-     console.log(position)
       }
     });
     return false;

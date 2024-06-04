@@ -23,6 +23,7 @@ function MakeSpecialTour() {
   const location = useGeoLocation();
   //to get the position that the orgnizer choose
   var selectedLocatons = locations.filter(location => location.select == true);
+  // Map parameters
   const zoomLevel = 13;
   const customIcon = new Icon({
     iconUrl: placeHolder,
@@ -94,6 +95,7 @@ function MakeSpecialTour() {
     setDuration(D.toFixed())
   }
   }
+  // to wait until the distance calculated
   const memorizedData=useMemo(()=>{calculateDistance()},[])
   return (<div className="flex flex-col">
     <SmallHeader />
