@@ -47,17 +47,38 @@ export default {
     'add-button':{
       light:'#359C88'
     },
+    'add-button-hover':{
+      light:'#0F6051'
+    },
     'change-button':{
       light:'#EE9C3D'
+    },
+    'change-button-hover':{
+      light:'#E58D27'
     },
     'save-button':{
       light:'#2D9F31'
     },
+    'save-button-hover':{
+      light:'#117315'
+    },
     'back-button':{
       light:'#6E8085'
     },
+    'back-button-hover':{
+      light:"#285764"
+    },
     'delete-button':{
       light:'#E44B37'
+    },
+    'delete-button-hover':{
+      light:'#AA2D1C'
+    },
+    'details-button':{
+      light:'#CDC504'
+    },
+    'details-button-hover':{
+      light:'#C5BD06'
     },
     'button-text':{
       light:'#ffffff'
@@ -65,8 +86,14 @@ export default {
     'error':{
       light:'#F81010'
     },
+    'post-bg':{
+      light:'#FEFFFF'
+    },
     'loginButtonText':{
       light:'#503900'
+    },
+    'login-button-hover':{
+      light:'#FFD870'
     },
     'loginBackgroundFrameTo':{
       light:'#FCFEFE'

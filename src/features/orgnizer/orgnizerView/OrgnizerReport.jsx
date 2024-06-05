@@ -8,8 +8,8 @@ import SmallHeader from "../../layout/SmallHeader"
 import { ProblemList } from "../../../assets/data/tempData"
 function OrgnizerReport() {
     const state = useSelector(state => state.user)
-    const [description,setDescription]=useState('')
-    const [reason,setReason]=useState('')
+    const [description, setDescription] = useState('')
+    const [reason, setReason] = useState('')
     const problemList = ProblemList;
     const dispatch = useDispatch()
     const navigate = useNavigate();
@@ -21,11 +21,11 @@ function OrgnizerReport() {
         console.log(reason)
     }
     function handelSend() {
-        
-            dispatch(setRespondentEmail(email))
-        
-            navigate('/')
-        
+
+        dispatch(setRespondentEmail(email))
+
+        navigate('/')
+
     }
     return (
         <div className=" w-full h-screen max-h-full">
@@ -33,7 +33,7 @@ function OrgnizerReport() {
             <img src={reportMan} className="absolute top-1/3 h-3/5 w-1/3  right-0 " />
             <div className="container flex flex-row items-center relative xl:pt-24 lg:pt-32 md:pt-32">
 
-                <div className="bg-offerbg-light  drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit w-/12 
+                <div className="bg-offerbg-light  drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit
                 xl:rounded-3xl 
                 lg:mx-64 lg:rounded-3xl 
                 md:mx-56 md:rounded-2xl ">
@@ -59,12 +59,12 @@ function OrgnizerReport() {
                                 <select className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light text-center
                                 xl:h-10 xl:rounded-xl  xl:ml-6 xl:text-xl xl:w-60
                                 lg:h-8 lg:rounded-lg lg:ml-4 lg:text-lg lg:w-52 
-                                md:h-6 md:rounded-md md:ml-20 md:text-base md:w-40" 
-                                onChange={handelReasonChange}>
+                                md:h-6 md:rounded-md md:ml-20 md:text-base md:w-40"
+                                    onChange={handelReasonChange}>
                                     {
                                         problemList.map((item) => {
-                                          return  <option
-                                           key={item.id} value={item.id}>{item.name}</option>
+                                            return <option
+                                                key={item.id} value={item.id}>{item.name}</option>
                                         })
                                     }
                                 </select>
@@ -85,12 +85,14 @@ function OrgnizerReport() {
                             <button
                                 onClick={handelSend}
                                 className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-delete-button-light text-button-text-light 
+                                hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-delete-button-hover-light
                                 xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 
                                 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1 
                                 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Send</button>
                             <button
                                 onClick={handelSend}
                                 className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light 
+                                hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
                                 xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-6 
                                 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 
                                 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>

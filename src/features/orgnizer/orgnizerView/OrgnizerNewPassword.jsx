@@ -3,7 +3,7 @@ import Flower from "../../../assets/images/flower.png"
 import Header from "../../layout/Header"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setPassword,setConfirmPassword } from "../../user/userSlice"
+import { setPassword, setConfirmPassword } from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 function OrgnizerNewPassword() {
     const state = useSelector(state => state.user)
@@ -19,8 +19,8 @@ function OrgnizerNewPassword() {
     function handleConfirmChange(e) {
         setConfirm(e.target.value)
     }
-    function handelAdd() { 
-        if(newPass === '' && confirm === ''){
+    function handelAdd() {
+        if (newPass === '' && confirm === '') {
             setError(true)
             setErrorMessage('Please enter required field !')
         }
@@ -41,7 +41,7 @@ function OrgnizerNewPassword() {
             setError(true)
             setErrorMessage('Confirm Password field is required !')
         }
-       
+
         else {
             setError(true)
             setErrorMessage('The Password you entered does not match !')
@@ -72,8 +72,16 @@ function OrgnizerNewPassword() {
                         <div className="flex flex-row justify-between items-start pt-10 xl:gap-6 lg:gap-4 md:gap-2">
                             <button
                                 onClick={handelAdd}
-                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Save</button>
-                            <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light xl:pt-1 xl:pl-6 xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>
+                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light 
+                                hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
+                                xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 
+                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1 
+                                md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Save</button>
+                            <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light 
+                            hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
+                            xl:pt-1 xl:pl-6 xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 
+                            lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 
+                            md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>
 
                         </div>
                     </div>

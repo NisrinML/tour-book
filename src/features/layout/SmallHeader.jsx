@@ -8,7 +8,7 @@ function SmallHeader() {
 
   const state = useSelector((state) => state.user);
   var userName = state.login.data.userName;
-  
+
   return (
     <div
       className="flex flex-row   

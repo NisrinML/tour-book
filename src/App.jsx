@@ -1,6 +1,7 @@
 
 
 import Layout from "./features/layout/Layout"
+import AddNewPlace from "./features/orgnizer/orgnizerView/AddNewPlace"
 import MakeSpecialTour from "./features/orgnizer/orgnizerView/MakeSpecialTour"
 import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerForgetPassword"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
@@ -16,17 +17,18 @@ import PresenterProfile from "./features/presenter/presenterView/PresenterProfil
 function App() {
 
   return (
-  
- <Layout>
 
- {/* <OrgnizerNewPassword/> */}
- {/* <OrgnizerForgetPassword/> */}
- {/* <PresenterLogin /> */}
-{/* <OrgnizerReport/> */}
- {/* <OrgnizerResetPassword/> */}
-{/* <PresenterProfile /> */}
-<MakeSpecialTour/>
-  </Layout>
+    <Layout>
+
+      {/* <OrgnizerNewPassword/> */}
+      {/* <OrgnizerForgetPassword/> */}
+      {/* <PresenterLogin /> */}
+      {/* <OrgnizerReport/> */}
+      {/* <OrgnizerResetPassword/> */}
+      {/* <PresenterProfile /> */}
+      {/* <MakeSpecialTour/> */}
+      <AddNewPlace />
+    </Layout>
 
   )
 }
