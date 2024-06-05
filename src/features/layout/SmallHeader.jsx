@@ -5,11 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function SmallHeader() {
-  var userName;
-  var user = 1;
+
   const state = useSelector((state) => state.user);
-  userName = state.login.data.userName;
-  
+  var userName = state.login.data.userName;
+
   return (
     <div
       className="flex flex-row   

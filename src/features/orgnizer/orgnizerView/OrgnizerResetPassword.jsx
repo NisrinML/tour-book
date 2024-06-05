@@ -3,11 +3,11 @@ import ResetPassword from "../../../assets/images/resetPassword.png"
 import Header from "../../layout/Header"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setPassword ,setConfirmPassword} from "../../user/userSlice"
+import { setPassword, setConfirmPassword } from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 function OrgnizerResetPassword() {
     const state = useSelector(state => state.user)
-    const [oldPass,setOldPass]= useState('')
+    const [oldPass, setOldPass] = useState('')
     const [newPass, setNewPass] = useState('');
     const [confirm, setConfirm] = useState('');
     const [error, setError] = useState(false)
@@ -23,11 +23,11 @@ function OrgnizerResetPassword() {
     function handleConfirmChange(e) {
         setConfirm(e.target.value)
     }
-    function handelChange() { 
-        if(oldPass === '' && newPass === '' && confirm === ''){
+    function handelChange() {
+        if (oldPass === '' && newPass === '' && confirm === '') {
             setError(true)
             setErrorMessage('Please enter required field !')
-        } 
+        }
         else if (newPass === '') {
             setError(true)
             setErrorMessage('Password field is required !')
@@ -44,7 +44,7 @@ function OrgnizerResetPassword() {
             setError(true)
             setErrorMessage('The Password you entered does not match !')
         }
-        else if (newPass === confirm && oldPass ===state.login.data.password) {
+        else if (newPass === confirm && oldPass === state.login.data.password) {
             dispatch(setPassword(newPass))
             dispatch(setConfirmPassword(confirm))
             setError(false)
@@ -54,7 +54,7 @@ function OrgnizerResetPassword() {
             setOldPass('')
             navigate('/')
         }
-       
+
         else {
             setError(true)
             setErrorMessage('The Password and COnfirm does not match !')
@@ -80,18 +80,26 @@ function OrgnizerResetPassword() {
                                 onChange={handelNewPassChange}
                                 value={newPass}
                                 className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light xl:h-10 xl:rounded-xl xl:pl-3 xl:text-xl lg:h-8 lg:rounded-lg lg:pl-2 lg:text-lg md:h-6 md:rounded-md md:pl-1 md:text-base" />
-                             <span>confirm password :</span>
+                            <span>confirm password :</span>
                             <input type="password"
                                 onChange={handleConfirmChange}
                                 value={confirm}
                                 className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light xl:h-10 xl:rounded-xl xl:pl-3 xl:text-xl lg:h-8 lg:rounded-lg lg:pl-2 lg:text-lg md:h-6 md:rounded-md md:pl-1 md:text-base" />
-                       </div>
+                        </div>
                         {error && <div className="flex flex-row justify-center  text-error-light font-['Open_Sans'] xl:text-lg lg:text-base md:text-sm">{errorMessage}</div>}
                         <div className="flex flex-row justify-between items-start pt-10 xl:gap-6 lg:gap-4 md:gap-3">
                             <button
                                 onClick={handelChange}
-                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-change-button-light text-button-text-light xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-5 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-4 lg:pt-1 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-3 md:pt-0">Change</button>
-                            <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light xl:pt-1 xl:pl-5 xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>
+                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-change-button-light text-button-text-light 
+                                hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-change-button-hover-light
+                                xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-5 
+                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-4 lg:pt-1 
+                                md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-3 md:pt-0">Change</button>
+                            <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light 
+                            hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
+                            xl:pt-1 xl:pl-5 xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 
+                            lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 
+                            md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>
 
                         </div>
                     </div>

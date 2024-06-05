@@ -616,6 +616,10 @@ video {
   top: 14rem;
 }
 
+.float-start {
+  float: inline-start;
+}
+
 .m-1 {
   margin: 0.25rem;
 }
@@ -785,6 +789,10 @@ video {
   justify-content: flex-start;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -799,6 +807,12 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
+}
+
+.space-x-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-12 > :not([hidden]) ~ :not([hidden]) {
@@ -875,8 +889,16 @@ video {
   border-width: 1px;
 }
 
+.border-2 {
+  border-width: 2px;
+}
+
 .border-t {
   border-top-width: 1px;
+}
+
+.border-solid {
+  border-style: solid;
 }
 
 .border-error-light {
@@ -937,6 +959,11 @@ video {
 .bg-orgnizerbg-light {
   --tw-bg-opacity: 1;
   background-color: rgb(236 243 250 / var(--tw-bg-opacity));
+}
+
+.bg-post-bg-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-save-button-light {
@@ -1023,6 +1050,11 @@ video {
   padding-right: 0.5rem;
 }
 
+.px-28 {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -1069,6 +1101,10 @@ video {
   padding-top: 15rem;
 }
 
+.pt-8 {
+  padding-top: 2rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1102,12 +1138,12 @@ video {
   line-height: 1.5rem;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-normal {
   font-weight: 400;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .text-button-text-light {
@@ -1156,6 +1192,11 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.drop-shadow-\[2px_2px_rgba\(125\2c 143\2c 154\2c 0\.5\)\] {
+  --tw-drop-shadow: drop-shadow(2px 2px rgba(125,143,154,0.5));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .drop-shadow-\[2px_2px_rgba\(230\2c 190\2c 105\2c 0\.6\)\] {
   --tw-drop-shadow: drop-shadow(2px 2px rgba(230,190,105,0.6));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1192,6 +1233,41 @@ video {
 
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+
+.hover\:bg-add-button-hover-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(15 96 81 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-back-button-hover-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(40 87 100 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-change-button-hover-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 141 39 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-delete-button-hover-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(170 45 28 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-save-button-hover-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 115 21 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-login-button-hover-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 216 112 / var(--tw-bg-opacity));
+}
+
+.hover\:drop-shadow-\[0px\]:hover {
+  --tw-drop-shadow: drop-shadow(0px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 @media (min-width: 768px) {

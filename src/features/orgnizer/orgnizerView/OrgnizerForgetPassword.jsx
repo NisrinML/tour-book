@@ -15,9 +15,9 @@ function OrgnizerForgetPassword() {
     function handelEmailChange(e) {
         setNewEmail(e.target.value)
     }
- 
-    function handelSend() { 
-        if(email === '' ){
+
+    function handelSend() {
+        if (email === '') {
             setError(true)
             setErrorMessage('Please enter your email !')
         }
@@ -43,7 +43,7 @@ function OrgnizerForgetPassword() {
                                 onChange={handelEmailChange}
                                 value={email}
                                 className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light xl:h-10 xl:rounded-xl xl:pl-3 xl:text-xl lg:h-8 lg:rounded-lg lg:pl-2 lg:text-lg md:h-6 md:rounded-md md:pl-1 md:text-base" />
-                       </div>
+                        </div>
                         {error && <div className="flex flex-row justify-center  text-error-light font-['Open_Sans'] xl:text-lg lg:text-base md:text-sm">{errorMessage}</div>}
                         <div className="flex flex-rowjustify-center text-text-light font-['Arial'] mt-16 xl:text-lg lg:text-base  md:text-sm ">
                             <a href="/foot">resend link again ?</a>
@@ -51,8 +51,12 @@ function OrgnizerForgetPassword() {
                         <div className="flex flex-row justify-between items-start pt-10 xl:gap-6 lg:gap-4 md:gap-2">
                             <button
                                 onClick={handelSend}
-                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1 md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Send</button>
-                           
+                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light 
+                                hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
+                                xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 
+                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1 
+                                md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Send</button>
+
                         </div>
                     </div>
                 </div>

@@ -23,6 +23,7 @@ function MakeSpecialTour() {
   const location = useGeoLocation();
   //to get the position that the orgnizer choose
   var selectedLocatons = locations.filter(location => location.select == true);
+  // Map parameters
   const zoomLevel = 13;
   const customIcon = new Icon({
     iconUrl: placeHolder,
@@ -49,17 +50,17 @@ function MakeSpecialTour() {
   const handelTitleChange = (e) => {
     setTitle(e.target.value)
   }
-  const handelConfirm=()=>{
+  const handelConfirm = () => {
 
-    
+
   }
-  const handelAddNewPlace=()=>{
+  const handelAddNewPlace = () => {
     navigate('/')
   }
   //to draw polyline between to podition on the map
-  const drawLine= () => {
+  const drawLine = () => {
     var data = [];
-  
+
     if (selectedLocatons.length > 1) {
       for (let i = 1; i < selectedLocatons.length; i++) {
         data.push({
@@ -71,30 +72,31 @@ function MakeSpecialTour() {
         })
       }
     }
-    
+
     return data
   }
   const data = drawLine();
   //to calculate distance between selected position
-  const calculateDistance=()=>{
-    var distance =0;
+  const calculateDistance = () => {
+    var distance = 0;
     if (selectedLocatons.length > 1) {
-    for(let i=1;i<selectedLocatons.length;i++){
-      distance += L.latLng(selectedLocatons[i - 1]).distanceTo(L.latLng(selectedLocatons[i]));
+      for (let i = 1; i < selectedLocatons.length; i++) {
+        distance += L.latLng(selectedLocatons[i - 1]).distanceTo(L.latLng(selectedLocatons[i]));
+      }
+      const distanceInKilometers = distance / 1000;
+      const KM = distanceInKilometers.toFixed(2)
+      const averageSpeed = 60;
+      const travelTimeInHours = distanceInKilometers / averageSpeed;
+      const travelTimeInMinutes = travelTimeInHours * 60;
+      const H = travelTimeInHours.toFixed(1)
+      const D = H / 24
+      setKMdistance(KM)
+      setHMdistance(H)
+      setDuration(D.toFixed())
     }
-    const distanceInKilometers = distance / 1000;
-    const KM=distanceInKilometers.toFixed(2)
-    const averageSpeed = 60; 
-    const travelTimeInHours = distanceInKilometers / averageSpeed;
-    const travelTimeInMinutes = travelTimeInHours * 60;
-    const H=travelTimeInHours.toFixed(1)
-    const D=H/24
-    setKMdistance(KM)
-    setHMdistance(H)
-    setDuration(D.toFixed())
   }
-  }
-  const memorizedData=useMemo(()=>{calculateDistance()},[])
+  // to wait until the distance calculated
+  const memorizedData = useMemo(() => { calculateDistance() }, [])
   return (<div className="flex flex-col">
     <SmallHeader />
     <div className="flex flex-row justify-between  mx-20 mt-10">
@@ -127,15 +129,17 @@ function MakeSpecialTour() {
       </div>
       <div className="flex flex-col justify-start space-y-5 ">
         <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light pt-1
+           hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
             xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md xl:pl-3
             lg:w-36  lg:h-10 lg:text-xl lg:rounded-md lg:pl-2
             md:w-32 md:h-8 md:text-lg md:rounded-md  md:pl-2"
-            onClick={handelAddNewPlace}>Add New Place</button>
+          onClick={handelAddNewPlace}>Add New Place</button>
         <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-save-button-light text-button-text-light pt-1
+            hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-save-button-hover-light
             xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md xl:pl-11
             lg:w-36 lg:h-10 lg:text-xl lg:rounded-md  lg:pl-9
             md:w-32 md:h-8 md:text-lg md:rounded-md  md:pl-9"
-            onClick={handelConfirm}>Confirm</button>
+          onClick={handelConfirm}>Confirm</button>
       </div>
     </div>
     <div className="flex-row text-text-light xl:text-3xl lg:text-2xl md:text-xl font-['serif'] mx-32 mt-10">Select Iternary :</div>
@@ -158,14 +162,14 @@ function MakeSpecialTour() {
                   {/* configure the popup that showen when hover the position marker */}
                   <Popup>
                     <div className="flex flex-col justify-center items-center">
-                    <span className="flex-row text-base font-semibold text-text-light">{location.name}</span>
-                    <span className="flex-row text-base font-semibold text-text-light"><span className="text-title-light font-normal">size :</span> {location.size}</span>
-                    <a href={location.url}><img src={moreIcon} className="flex flex-row w-5 h-5 my-1 cursor-pointer"/></a>
-                    </div> 
+                      <span className="flex-row text-base font-semibold text-text-light">{location.name}</span>
+                      <span className="flex-row text-base font-semibold text-text-light"><span className="text-title-light font-normal">size :</span> {location.size}</span>
+                      <a href={location.url}><img src={moreIcon} className="flex flex-row w-5 h-5 my-1 cursor-pointer" /></a>
+                    </div>
                   </Popup>
                 </Marker>)
             })}
-           
+
             {data.map(({ id, from_lat, from_long, to_lat, to_long }) => {
               return <Polyline key={id} positions={[
                 [from_lat, from_long], [to_lat, to_long],

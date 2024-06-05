@@ -21,6 +21,7 @@ const onError=(error)=>{
         error
     })
 }
+//to get current location from browser configuration
     useEffect(()=>{
         if(!("geolocation" in navigator)){
             onError({

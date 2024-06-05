@@ -124,7 +124,8 @@ const handleServices=(e)=> {
       </div>
       <button onClick={handleSaveInfo} className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)]
        bg-add-button-light text-button-text-light mt-20
-       xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8
+       hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light 
+        xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8
         lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1
         md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Save</button></div>
       </div>
