@@ -40,8 +40,10 @@ const orgnizerSlice = createSlice({
   name: "orgnizer",
   initialState,
   reducers: {
-  
+    addPoint: (state, action) => {
+      state.tour.tourPoints =[...state.tour.tourPoints,action.payload] ;
+    },
   },
 });
-
+export const { addPoint } = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

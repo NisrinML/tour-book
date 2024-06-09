@@ -10,7 +10,7 @@ const MapEvents = () => {
       dblclick(e) {
         lat=e.latlng.lat;
         lng=e.latlng.lng;
-        dispatch(setPosition([...position,[lat,lng]]))
+        dispatch(setPosition([lat,lng]))
       }
     });
     return false;
