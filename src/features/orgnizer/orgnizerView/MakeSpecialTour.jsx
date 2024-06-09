@@ -10,8 +10,8 @@ import { MapContainer, Marker, Popup, TileLayer, Polyline } from 'react-leaflet'
 import { Icon, divIcon, point } from 'leaflet';
 import useGeoLocation from "../../../assets/map/useGeoLocation"
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import MapEvents from "../../../assets/map/mapEvents"
 import 'leaflet/dist/leaflet.css';
+import "../../../tailwind/largeMap.css"
 import { locations } from "../../../assets/data/mapLocation";
 
 function MakeSpecialTour() {
@@ -33,7 +33,7 @@ function MakeSpecialTour() {
     iconUrl: placeHolderSelect,
     iconSize: [38, 38],
   });
-  //to customize the placeholder Icon that apper on the map
+  //to customize the placeholder Icon that apper on the map when more than one place child allocate in the same region
   const createCustomClusterIcon = (cluster) => {
     return new divIcon({
       html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`
@@ -176,7 +176,8 @@ function MakeSpecialTour() {
               ]} color={'red'} />
             })}
           </MarkerClusterGroup>
-          <MapEvents />
+  
+          {/* <MapEvents /> */}
         </MapContainer>}
     </div>
   </div>)
