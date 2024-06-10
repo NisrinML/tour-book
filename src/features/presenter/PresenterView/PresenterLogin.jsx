@@ -9,7 +9,6 @@ function PresenterLogin() {
   const state = useSelector(state => state.user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState('')
   //define login schema with required condition
   const loginSchema = Yup.object().shape({
     username: Yup.string().required("Required"),
@@ -68,7 +67,7 @@ function PresenterLogin() {
               <span className="xl:pt-7 lg:pt-5 md:pt-5 ">Password:</span>
               <input
                 {...register('password')}
-                name="password"
+                name="password" type="password"
                 className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light bg-inputLabel-light
                    xl:h-12 xl:w-72 xl:rounded-xl xl:pl-3 xl:text-xl 
                    lg:h-10 lg:w-60 lg:rounded-lg lg:pl-2 lg:text-lg 

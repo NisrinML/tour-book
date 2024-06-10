@@ -16,16 +16,16 @@ function AddNewPlace() {
     const location = useGeoLocation();
     const zoomLevel = 13;
     const coordinate = useSelector(state => state.coordinate);
-    const [title,setTitle]=useState('')
-    const [price,setPrice]=useState(0)
-    const [fromDate,setFromDate]=useState(Date.now())
-    const [toDate,setToDate]=useState()
-    const [fromTime,setFromTime]=useState()
-    const [toTime,setToTime]= useState()
-    const [requirments,setRequirments]=useState();
-    const [error,setError]=useState()
-    const navigate=useNavigate()
-    const dispatch=useDispatch()
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState(0)
+    const [fromDate, setFromDate] = useState(Date.now())
+    const [toDate, setToDate] = useState()
+    const [fromTime, setFromTime] = useState()
+    const [toTime, setToTime] = useState()
+    const [requirments, setRequirments] = useState();
+    const [error, setError] = useState()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const customIcon = new Icon({
         iconUrl: placeHolder,
         iconSize: [38, 38],
@@ -34,38 +34,38 @@ function AddNewPlace() {
         navigate('');
     }
     const handelAdd = () => {
-        if(title==null||price == null || fromDate == null || toDate ==null || fromTime == null || toTime == null||coordinate==null){
+        if (title == null || price == null || fromDate == null || toDate == null || fromTime == null || toTime == null || coordinate == null) {
             setError(true)
         }
-        else{
-            var point={
-                id:null,position:title,description:requirments,arrivalTime:fromDate,leavingTime:toDate,axisX:coordinate.position[0],axisY:coordinate.position[1]
+        else {
+            var point = {
+                id: null, position: title, description: requirments, arrivalTime: fromDate, leavingTime: toDate, axisX: coordinate.position[0], axisY: coordinate.position[1]
             }
             dispatch(addPoint(point))
             setError(false)
             navigate('')
         }
-            
+
     }
-    const titleChange=(e)=>{
-            setTitle(e.target.value)
+    const titleChange = (e) => {
+        setTitle(e.target.value)
     }
-    const priceChange=(e)=>{
+    const priceChange = (e) => {
         setPrice(e.target.value)
     }
-    const fromDateChange=(e)=>{
+    const fromDateChange = (e) => {
         setFromDate(e.target.value)
     }
-    const toDateChange=(e)=>{
+    const toDateChange = (e) => {
         setToDate(e.target.value)
     }
-    const fromTimeChange=(e)=>{
+    const fromTimeChange = (e) => {
         setFromTime(e.target.value)
     }
-    const toTimeChange=(e)=>{
+    const toTimeChange = (e) => {
         setToTime(e.target.value)
     }
-    const requirmentChange=(e)=>{
+    const requirmentChange = (e) => {
         setRequirments(e.target.value)
     }
 
@@ -92,23 +92,23 @@ function AddNewPlace() {
                             lg:text-2xl lg:pt-32
                             md:text-xl md:pt-28
                             ">Loading</div> :
-                            <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel} >
-                                <TileLayer
-                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                />
+                                <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel} >
+                                    <TileLayer
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    />
 
-                                <Marker id={1} position={[coordinate.position[0], coordinate.position[1]]} icon={customIcon} >
-                                    {/* configure the popup that showen when hover the position marker */}
-                                    <Popup>
-                                        <div className="flex flex-col justify-center items-center">
-                                            <span className="flex-row text-base font-semibold text-text-light">here</span>
-                                        </div>
-                                    </Popup>
-                                </Marker>
-                                {/* Configure the actions related to map - here we need when click on map add marker in the place where clicked */}
-                                <MapEvents />
-                            </MapContainer>
+                                    <Marker id={1} position={[coordinate.position[0], coordinate.position[1]]} icon={customIcon} >
+                                        {/* configure the popup that showen when hover the position marker */}
+                                        <Popup>
+                                            <div className="flex flex-col justify-center items-center">
+                                                <span className="flex-row text-base font-semibold text-text-light">here</span>
+                                            </div>
+                                        </Popup>
+                                    </Marker>
+                                    {/* Configure the actions related to map - here we need when click on map add marker in the place where clicked */}
+                                    <MapEvents />
+                                </MapContainer>
                         }
                     </div>
                     <div className="flex flex-row justify-end">
@@ -196,9 +196,9 @@ function AddNewPlace() {
                                     lg:h-20 lg:rounded-lg lg:text-lg lg:w-56 lg:mb-6
                                     md:h-16 md:rounded-md md:ml-2 md:text-base md:mb-4" />
                         </div>
-                        {error&&<div className="flex flex-row justify-center space-x-2">
+                        {error && <div className="flex flex-row justify-center space-x-2">
                             <label className=" text-error-light font-['Open_Sans'] pb-10 xl:text-lg lg:text-base md:text-sm ">you must enter required fields !</label>
-                            </div>}
+                        </div>}
                     </div>
                 </div>
             </div>

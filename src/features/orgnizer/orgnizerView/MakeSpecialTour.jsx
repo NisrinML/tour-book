@@ -118,8 +118,8 @@ function MakeSpecialTour() {
       <div className="flex flex-row justify-start space-x-5  text-text-light">
         <div className="flex-col space-y-3">
           <div >Distance (KM) : </div>
-          <div >Distance (h) :</div>
-          <div >Duration (days) :</div>
+          <div >Distance (H) :</div>
+          <div >Duration (Days) :</div>
         </div>
         <div className="flex-col space-y-3">
           <div >{KMdistance}</div>
@@ -176,7 +176,7 @@ function MakeSpecialTour() {
               ]} color={'red'} />
             })}
           </MarkerClusterGroup>
-  
+
           {/* <MapEvents /> */}
         </MapContainer>}
     </div>
