@@ -22,14 +22,14 @@ function App() {
     <Layout>
 
       {/* <OrgnizerNewPassword/> */}
-      <OrgnizerForgetPassword/>
+      {/* <OrgnizerForgetPassword/> */}
       {/* <PresenterLogin /> */}
       {/* <OrgnizerReport/> */}
       {/* <OrgnizerResetPassword/> */}
       {/* <PresenterProfile /> */}
       {/* <MakeSpecialTour/> */}
       {/* <AddNewPlace /> */}
-      {/* <TourConfirm/> */}
+      <TourConfirm/>
     </Layout>
 
   )
