@@ -113,11 +113,11 @@ function AddNewPlace() {
                     </div>
                     <div className="flex flex-row justify-end">
                         <button onClick={handelAdd}
-                            className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light 
+                            className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light justify-center items-center
                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
-                            xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 
-                            lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1
-                            md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Add</button></div>
+                            xl:text-2xl xl:rounded-md  xl:w-28 xl:h-10
+                            lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
+                            md:text-lg md:rounded-md  md:w-20 md:h-8 ">Add</button></div>
                 </div>
                 <div className="flex flex-col">
                     <div className="container flex flex-col items-center drop-shadow-[2px_2px_rgba(125,143,154,0.5)] h-fit w-fit bg-post-bg-light border-solid border-2 border-text-light space-y-5
