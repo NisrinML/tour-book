@@ -15,6 +15,7 @@ const initialState = {
   id:'',
   title:'',
   startDate:'',
+  startTime:'',
   endDate:'',
   extraCost:'',
   totalCost:'',
@@ -32,7 +33,9 @@ const initialState = {
   offerRequest:{id:'',quantity:'',description:'',offerId:''}}],
   tourAttachment:[{id:'',attachment:'',type:''}],
   clientRequest:[{id:'',numOfSeat:'',status:'',clientId:'',client:{name:'',mobile:''}}],
-  comments:{id:'',comment:'',feelings:'',clientId:''}
+  comments:{id:'',comment:'',feelings:'',clientId:''},
+  HMdistance:0,
+  KMdistance:0
  }
 };
 
@@ -43,7 +46,22 @@ const orgnizerSlice = createSlice({
     addPoint: (state, action) => {
       state.tour.tourPoints =[...state.tour.tourPoints,action.payload] ;
     },
+    setFinalTourDetails:(state,action)=>{
+      state.tour.startDate=action.payload.startDate
+      state.tour.extraCost=action.payload.externalCost
+      state.tour.totalCost=action.payload.totalCost
+      state.tour.seatCost=action.payload.seatPrice
+      state.tour.transportationCost=action.payload.transportCost
+      state.tour.numOfSeat=action.payload.numOfSeat
+      state.tour.note=action.payload.notes
+      state.tour.startTime=action.payload.startTime
+    },
+    setFirstTourDetails:(state,action)=>{
+      state.tour.title=action.payload.title
+      state.tour.KMdistance=action.payload.KMdistance
+      state.tour.HMdistance=action.payload.HMdistance
+    }
   },
 });
-export const { addPoint } = orgnizerSlice.actions
+export const { addPoint ,setFinalTourDetails,setFirstTourDetails} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

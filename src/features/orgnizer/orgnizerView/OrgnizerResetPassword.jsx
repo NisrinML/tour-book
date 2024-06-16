@@ -66,16 +66,16 @@ function OrgnizerResetPassword() {
                                 xl:text-lg lg:text-base md:text-sm">{errors.confirm.message}</div>} <div className="flex flex-row justify-between items-start pt-10 xl:gap-6 lg:gap-4 md:gap-3">
                             <button
                                 type="submit"
-                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-change-button-light text-button-text-light 
+                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-change-button-light text-button-text-light justify-center items-center
                                 hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-change-button-hover-light
-                                xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-5 
-                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-4 lg:pt-1 
-                                md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-3 md:pt-0">Change</button>
-                            <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light 
+                                xl:text-2xl  xl:rounded-md  xl:w-28 xl:h-10 
+                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
+                                md:text-lg md:rounded-md  md:w-20 md:h-8 ">Change</button>
+                            <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
-                            xl:pt-1 xl:pl-5 xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 
-                            lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 
-                            md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>
+                             xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 
+                            lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
+                            md:text-lg md:rounded-md  md:w-20 md:h-8 ">Cancel</button>
 
                         </div>
                     </div>

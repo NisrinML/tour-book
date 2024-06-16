@@ -8,10 +8,9 @@ import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPas
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
 import TourConfirm from "./features/orgnizer/orgnizerView/TourConfirm"
-
-
 import PresenterLogin from "./features/presenter/presenterView/PresenterLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
+import { Router } from "./routers/Router"
 
 
 
@@ -20,7 +19,7 @@ function App() {
   return (
 
     <Layout>
-
+<Router />
       {/* <OrgnizerNewPassword/> */}
       {/* <OrgnizerForgetPassword/> */}
       {/* <PresenterLogin /> */}
@@ -29,7 +28,7 @@ function App() {
       {/* <PresenterProfile /> */}
       {/* <MakeSpecialTour/> */}
       {/* <AddNewPlace /> */}
-      <TourConfirm/>
+      {/* <TourConfirm/> */}
     </Layout>
 
   )
