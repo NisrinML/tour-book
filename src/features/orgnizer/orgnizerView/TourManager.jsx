@@ -12,9 +12,13 @@ function TourManager() {
     const navigate=useNavigate()
     const tour=state.tour
     const [orders,setOrders]=useState(Orders)
+    // Get accepted order
     const acceptedOrders = orders.filter(order=>order.status=='accept')
+    // Get waited order
     const waitingOrders = orders.filter(order=>order.status=='wait')
+    // Get refused order
     const refusedOrders =orders.filter(order=>order.status=='refuse')
+    // Calculate number of reserved seats 
     const numberReserved = acceptedOrders.reduce((sum, order) => sum + order.numOfSeat, 0);
     const acceptOrder =(id)=>{
         setOrders(
