@@ -3,6 +3,7 @@
 import Layout from "./features/layout/Layout"
 import AddNewPlace from "./features/orgnizer/orgnizerView/AddNewPlace"
 import MakeSpecialTour from "./features/orgnizer/orgnizerView/MakeSpecialTour"
+import MyTour from "./features/orgnizer/orgnizerView/MyTour"
 import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerForgetPassword"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
@@ -30,7 +31,8 @@ function App() {
       {/* <MakeSpecialTour/> */}
       {/* <AddNewPlace /> */}
       {/* <TourConfirm/> */}
-      <TourManager/>
+      {/* <TourManager/> */}
+      <MyTour/>
     </Layout>
 
   )
