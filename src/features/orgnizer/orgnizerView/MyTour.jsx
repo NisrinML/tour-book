@@ -48,7 +48,7 @@ function MyTour() {
             </div>
             <div className="flex flex-row  items-center justify-center h-screen ">
                 <div className="flex flex-col w-3/4 h-3/4  border-solid border-2  border-text-light overflow-hidden hover:overflow-y-auto ">
-
+                {/* Add box content depend on tour status & tour posted propereties */}
                     {
                     Tours.map((tour)=>{
                         const acceptedOrders = tour.clientRequest.filter(order=>order.status=='accept')
