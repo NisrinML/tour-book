@@ -6,6 +6,7 @@ import MakeSpecialTour from "./features/orgnizer/orgnizerView/MakeSpecialTour"
 import MyTour from "./features/orgnizer/orgnizerView/MyTour"
 import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerForgetPassword"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
+import OrgnizerNotifications from "./features/orgnizer/orgnizerView/OrgnizerNotifications"
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
 import OrgnizerSettings from "./features/orgnizer/orgnizerView/OrgnizerSettings"
@@ -37,6 +38,7 @@ function App() {
       {/* <MyTour/> */}
       {/* <OrgnizerSettings/> */}
       {/* <PresenterPage/> */}
+      <OrgnizerNotifications/>
     </Layout>
 
   )
