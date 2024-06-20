@@ -4,26 +4,34 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Person from "../../../assets/images/person.png"
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import {  useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import useGeoLocation from "../../../assets/map/useGeoLocation";
 import placeHolder from "../../../assets/images/placeholderselect.png"
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import MapEvents from "../../../assets/map/mapEvents"
 import 'leaflet/dist/leaflet.css';
+import { useNavigate } from "react-router-dom";
+import { updateOrgnizerData } from "../orgnizerSlice";
 function OrgnizerSettings() {
     const location = useGeoLocation();
     const zoomLevel = 13;
     const coordinate = useSelector(state => state.coordinate);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const orgnizer=useSelector(state=>state.orgnizer)
+    const user= useSelector(state=>state.user)
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
     const handelBack = () => {
         navigate('');
     }
-    const [selectedFile, setSelectedFile] = useState(null);
+
     const customIcon = new Icon({
         iconUrl: placeHolder,
         iconSize: [38, 38],
     });
+  
     //to update the value of select button image
     const handleFileChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -34,15 +42,15 @@ function OrgnizerSettings() {
      //define required schema with required condition
      const requiredSchema = Yup.object().shape({
         userName: Yup.string()
-            .required("Required"),
+            .required("Required").default(orgnizer.name),
         phoneNumber: Yup.number()
-            .required("Required"),
+            .required("Required").default(orgnizer.mobile),
         email: Yup.string()
         .required("Required")
         .matches(
             "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
             'Invalid email address'
-        ),
+        ).default(user.login.data.email),
         image: Yup.string().required("Required"),
         axisX: Yup.number(),
         axisY: Yup.number()
@@ -56,12 +64,20 @@ function OrgnizerSettings() {
     });
     // handle form submission
     const onSubmit = (data) => {
-        console.log(data.image)
+        
+        //to convert image object to base64
+        const fileReader = new FileReader();
+        const blob = new Blob([data.image], { type: data.image.type });
+        fileReader.readAsDataURL(blob);
+   
         var user=data
-        user.axisX=coordinate.position[0]
-        user.axisY=coordinate.position[1]
-        // user.image=
+        //if we want in next level to configure orgnizer location
+        //user.axisX=coordinate.position[0]
+        //user.axisY=coordinate.position[1]
+        user.image=fileReader
+        dispatch(updateOrgnizerData(user))
     };
+
     return (
         <div className="flex flex-col">
             <SmallHeader />
@@ -88,7 +104,7 @@ function OrgnizerSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">User Name :</span>
-                                <input type="text"    {...register('userName')}
+                                <input type="text"    {...register('userName')} 
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -102,7 +118,7 @@ function OrgnizerSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Phone Number :</span>
-                                <input type="text"    {...register('phoneNumber')}
+                                <input type="text"    {...register('phoneNumber')} 
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -136,7 +152,9 @@ function OrgnizerSettings() {
                             lg:rounded-full lg:h-9 lg:w-56
                             md:rounded-full md:h-8 md:w-48" />
                              <label htmlFor="custom-file-input">
-                                <img src={selectedFile?URL.createObjectURL(selectedFile):Person} alt="Choose Image Button" 
+                                <img src={selectedFile?URL.createObjectURL(selectedFile):
+                                //user.login.data.avatar? user.login.data.avatar: 
+                                Person} alt="Choose Image Button" 
                                 className="rounded-full drop-shadow-[1px_1px_rgba(117,135,142)] hover:cursor-pointer
                                 xl:w-32 xl:h-32
                                 lg:w-28 lg:h-28
@@ -160,7 +178,7 @@ function OrgnizerSettings() {
                             lg:text-2xl lg:pt-6
                             md:text-xl md:pt-4
                             ">Loading</div> :
-                                <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel} >
+                                <MapContainer center={[location.cordinates.lat,location.cordinates.lng]} zoom={zoomLevel} >
                                     <TileLayer
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
