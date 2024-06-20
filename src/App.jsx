@@ -36,7 +36,7 @@ function App() {
       {/* <TourManager/> */}
       {/* <MyTour/> */}
       {/* <OrgnizerSettings/> */}
-      <PresenterPage/>
+      {/* <PresenterPage/> */}
     </Layout>
 
   )

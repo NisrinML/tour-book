@@ -64,19 +64,33 @@ function OrgnizerSettings() {
     } = useForm({
         resolver: yupResolver(requiredSchema),
     });
+
+    //convert image object to Base64 object
+    const convertToBase64=(data)=>{
+              //convert the input string to a Uint8Array
+              const encoder = new TextEncoder();
+              const uint8Array = encoder.encode(data);
+        
+              //create a canvas and draw the Uint8Array as an image
+              const canvas = document.createElement('canvas');
+              const ctx = canvas.getContext('2d');
+              const imageData = ctx.createImageData(1, uint8Array.length);
+              imageData.data.set(uint8Array);
+              ctx.putImageData(imageData, 0, 0);
+          
+              //convert the canvas to a base64 JPEG data URL
+              const base64Jpeg = canvas.toDataURL('image/jpeg');
+              return base64Jpeg
+    }
+
     // handle form submission
     const onSubmit = (data) => {
-        
-        //to convert image object to base64
-        const fileReader = new FileReader();
-        const blob = new Blob([data.image], { type: data.image.type });
-        fileReader.readAsDataURL(blob);
-   
+
         var user=data
         // if we want in next level to configure orgnizer location
         // user.axisX=coordinate.position[0]
         // user.axisY=coordinate.position[1]
-        user.image=fileReader
+        user.image=convertToBase64(data.image)
         dispatch(updateOrgnizerData(user))
     };
 
