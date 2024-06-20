@@ -16,7 +16,9 @@ const initialState = {
     },
     error: ''
   },
-  notifications: [],
+  notifications: ['Rolana Kamaria ask for 5 seats for Black Friday tour','Wajeeh Rabahie ask for 3 seats for Spring is Comming tour','Nisreen Melhem liked Winter Better tour','Milad Melhem liked Black Friday tour',
+    'Takla Zidan ask for 4 seats for Black Friday tour','Abboud Assaf ask for 9 seats for Spring is Comming tour','Maen Melhem disliked Winter Better tour','Nagham Melhem comment on Black Friday tour'
+  ,],
   subscriptionDetails: {
     id: '',
     startDate: '',
