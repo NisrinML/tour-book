@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
+import { updateOrgnizerData } from "../orgnizer/orgnizerSlice";
 const initialState = {
   login: {
     loading: '',
@@ -8,9 +9,9 @@ const initialState = {
       userName: 'User Name',
       password: '111',
       confirmPassword: '',
-      Avatar: '',
+      avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
-      email: '',
+      email: 'dsfsg',
       roleId: 2,
     },
     error: ''
@@ -62,6 +63,12 @@ const userSlice = createSlice({
       state.login.data = [];
       state.login.error = action.error.message;
     })
+    
+    builder.addCase(updateOrgnizerData, (state, action) => {
+      state.login.data.email=action.payload.email
+      state.login.data.avatar=action.payload.image
+    });
+   
   }
 });
 

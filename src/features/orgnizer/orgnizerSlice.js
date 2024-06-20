@@ -3,14 +3,14 @@ import { act } from "react";
 
 const initialState = {
  id:'',
- name:'',
+ name:'asfas',
  address:'',
  evaluation:'',
  status:'',
  logo:'',
  joiningDate:'',
  situation:'',
- mobile:'',
+ mobile:'23464366',
  userId:'',
  tour:{
   id:'',
@@ -107,8 +107,13 @@ const orgnizerSlice = createSlice({
     deleteTour:(state,action)=>{
       state.tours=state.tours.filter(tour=> tour.id!=action.payload)
       //delete api
+    },
+    updateOrgnizerData:(state,action)=>{
+      state.name=action.payload.userName
+      state.mobile=action.payload.phoneNumber
+      
     }
   },
 });
-export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,updateTour,deleteTour} = orgnizerSlice.actions
+export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,updateTour,deleteTour,updateOrgnizerData} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;
