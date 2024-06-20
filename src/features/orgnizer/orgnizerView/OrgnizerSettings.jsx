@@ -23,15 +23,17 @@ function OrgnizerSettings() {
     const user= useSelector(state=>state.user)
     const dispatch=useDispatch()
     const navigate=useNavigate()
-    const handelBack = () => {
-        navigate('');
-    }
-
+    
     const customIcon = new Icon({
         iconUrl: placeHolder,
         iconSize: [38, 38],
     });
-  
+    const handelBack = () => {
+        navigate('');
+    }
+    const handelChangePassword= ()=>{
+        navigate('/orgnizer/new-password')
+    }
     //to update the value of select button image
     const handleFileChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -71,9 +73,9 @@ function OrgnizerSettings() {
         fileReader.readAsDataURL(blob);
    
         var user=data
-        //if we want in next level to configure orgnizer location
-        //user.axisX=coordinate.position[0]
-        //user.axisY=coordinate.position[1]
+        // if we want in next level to configure orgnizer location
+        // user.axisX=coordinate.position[0]
+        // user.axisY=coordinate.position[1]
         user.image=fileReader
         dispatch(updateOrgnizerData(user))
     };
@@ -207,7 +209,7 @@ function OrgnizerSettings() {
                                 xl:text-2xl xl:rounded-md  xl:w-48 xl:h-10 
                                 lg:text-xl lg:rounded-md  lg:w-44 lg:h-10  
                                 md:text-lg md:rounded-md  md:w-40 md:h-8">Save</button>
-                <button
+                <button onClick={handelChangePassword}
                     className="flex flex-col justify-center items-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-change-button-light text-button-text-light 
                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-change-button-hover-light
                              xl:w-48 xl:h-10  xl:text-2xl xl:rounded-md 

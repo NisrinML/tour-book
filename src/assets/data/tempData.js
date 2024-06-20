@@ -51,3 +51,10 @@ export const Tours = [{
     clientRequest: []
 },
 ]
+
+export const PresenterAttachments =[
+   {id:1,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'},
+   {id:2,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'},
+   {id:3,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'},
+   {id:4,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'},
+]

@@ -73,7 +73,19 @@ const initialState = {
   posted:false,
   status:false,
   clientRequest: []
-},]
+},],
+presrnterData:{
+  name:'Chill & Grill',
+  id:1,
+  axisX:34.71017331715748,
+  axisY:36.639553309802125,
+  size:500,
+  email:'www.Chill&Grill@gmail.com',
+  website:'Chill&Grill',
+  phone:'0992448443',
+  attachments:['E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png','E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png','E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'],
+  services:['Resturant','Pool','Hotel']
+}
 };
 
 const orgnizerSlice = createSlice({
