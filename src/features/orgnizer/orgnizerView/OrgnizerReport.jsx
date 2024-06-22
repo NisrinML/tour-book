@@ -84,18 +84,18 @@ function OrgnizerReport() {
                         xl:gap-6 lg:gap-4 md:gap-2">
                             <button
                                 onClick={handelSend}
-                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-delete-button-light text-button-text-light 
+                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-delete-button-light text-button-text-light justify-center items-center 
                                 hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-delete-button-hover-light
-                                xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-8 
-                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1 
-                                md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-6 md:pt-0">Send</button>
+                                xl:text-2xl xl:rounded-md  xl:w-28 xl:h-10
+                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
+                                md:text-lg md:rounded-md  md:w-20 md:h-8 ">Send</button>
                             <button
                                 onClick={handelSend}
-                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light 
+                                className="flex flex-col text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
                                 hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
-                                xl:text-2xl xl:pt-1  xl:rounded-md  xl:w-28 xl:h-10 xl:pl-6 
-                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 lg:pl-5 lg:pt-1 
-                                md:text-lg md:rounded-md  md:w-20 md:h-8 md:pl-4 md:pt-0">Cancel</button>
+                                xl:text-2xl xl:rounded-md  xl:w-28 xl:h-10
+                                lg:text-xl lg:rounded-md  lg:w-24 lg:h-10
+                                md:text-lg md:rounded-md  md:w-20 md:h-8 ">Cancel</button>
 
                         </div>
                     </div>

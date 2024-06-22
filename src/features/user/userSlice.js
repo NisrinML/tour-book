@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
+import { updateOrgnizerData } from "../orgnizer/orgnizerSlice";
 const initialState = {
   login: {
     loading: '',
@@ -8,14 +9,16 @@ const initialState = {
       userName: 'User Name',
       password: '111',
       confirmPassword: '',
-      Avatar: '',
+      avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
-      email: '',
+      email: 'dsfsg',
       roleId: 2,
     },
     error: ''
   },
-  notifications: [],
+  notifications: ['Rolana Kamaria ask for 5 seats for Black Friday tour','Wajeeh Rabahie ask for 3 seats for Spring is Comming tour','Nisreen Melhem liked Winter Better tour','Milad Melhem liked Black Friday tour',
+    'Takla Zidan ask for 4 seats for Black Friday tour','Abboud Assaf ask for 9 seats for Spring is Comming tour','Maen Melhem disliked Winter Better tour','Nagham Melhem comment on Black Friday tour'
+  ,],
   subscriptionDetails: {
     id: '',
     startDate: '',
@@ -62,6 +65,12 @@ const userSlice = createSlice({
       state.login.data = [];
       state.login.error = action.error.message;
     })
+    
+    builder.addCase(updateOrgnizerData, (state, action) => {
+      state.login.data.email=action.payload.email
+      state.login.data.avatar=action.payload.image
+    });
+   
   }
 });
 

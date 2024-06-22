@@ -10,9 +10,11 @@ import { MapContainer, Marker, Popup, TileLayer, Polyline } from 'react-leaflet'
 import { Icon, divIcon, point } from 'leaflet';
 import useGeoLocation from "../../../assets/map/useGeoLocation"
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import MapEvents from "../../../assets/map/mapEvents"
 import 'leaflet/dist/leaflet.css';
+import "../../../tailwind/largeMap.css"
 import { locations } from "../../../assets/data/mapLocation";
+import { setFirstTourDetails } from "../orgnizerSlice"
+import { useDispatch } from "react-redux"
 
 function MakeSpecialTour() {
   const [KMdistance, setKMdistance] = useState(0);
@@ -20,6 +22,7 @@ function MakeSpecialTour() {
   const [duration, setDuration] = useState(0);
   const [title, setTitle] = useState('')
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const location = useGeoLocation();
   //to get the position that the orgnizer choose
   var selectedLocatons = locations.filter(location => location.select == true);
@@ -33,7 +36,7 @@ function MakeSpecialTour() {
     iconUrl: placeHolderSelect,
     iconSize: [38, 38],
   });
-  //to customize the placeholder Icon that apper on the map
+  //to customize the placeholder Icon that apper on the map when more than one place child allocate in the same region
   const createCustomClusterIcon = (cluster) => {
     return new divIcon({
       html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`
@@ -44,6 +47,8 @@ function MakeSpecialTour() {
   }
 
   const handelBack = () => {
+    var tour={}
+    dispatch(setFirstTourDetails(tour))
     navigate('');
   }
 
@@ -51,11 +56,16 @@ function MakeSpecialTour() {
     setTitle(e.target.value)
   }
   const handelConfirm = () => {
-
+    var tour={}
+    tour.title=title
+    tour.KMdistance=KMdistance
+    tour.HMdistance=HMdistance
+    dispatch(setFirstTourDetails(tour))
+    navigate('/make-special-tour/confirm-tour')
 
   }
   const handelAddNewPlace = () => {
-    navigate('/')
+    navigate('/make-special-tour/add-new-place')
   }
   //to draw polyline between to podition on the map
   const drawLine = () => {
@@ -118,8 +128,8 @@ function MakeSpecialTour() {
       <div className="flex flex-row justify-start space-x-5  text-text-light">
         <div className="flex-col space-y-3">
           <div >Distance (KM) : </div>
-          <div >Distance (h) :</div>
-          <div >Duration (days) :</div>
+          <div >Distance (H) :</div>
+          <div >Duration (Days) :</div>
         </div>
         <div className="flex-col space-y-3">
           <div >{KMdistance}</div>
@@ -128,17 +138,17 @@ function MakeSpecialTour() {
         </div>
       </div>
       <div className="flex flex-col justify-start space-y-5 ">
-        <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light pt-1
+        <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light justify-center items-center
            hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
-            xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md xl:pl-3
-            lg:w-36  lg:h-10 lg:text-xl lg:rounded-md lg:pl-2
-            md:w-32 md:h-8 md:text-lg md:rounded-md  md:pl-2"
+            xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md 
+            lg:w-36  lg:h-10 lg:text-xl lg:rounded-md 
+            md:w-32 md:h-8 md:text-lg md:rounded-md  "
           onClick={handelAddNewPlace}>Add New Place</button>
-        <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-save-button-light text-button-text-light pt-1
+        <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-save-button-light text-button-text-light justify-center items-center
             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-save-button-hover-light
-            xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md xl:pl-11
-            lg:w-36 lg:h-10 lg:text-xl lg:rounded-md  lg:pl-9
-            md:w-32 md:h-8 md:text-lg md:rounded-md  md:pl-9"
+            xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md 
+            lg:w-36 lg:h-10 lg:text-xl lg:rounded-md 
+            md:w-32 md:h-8 md:text-lg md:rounded-md  "
           onClick={handelConfirm}>Confirm</button>
       </div>
     </div>
@@ -176,7 +186,8 @@ function MakeSpecialTour() {
               ]} color={'red'} />
             })}
           </MarkerClusterGroup>
-          <MapEvents />
+
+          {/* <MapEvents /> */}
         </MapContainer>}
     </div>
   </div>)
