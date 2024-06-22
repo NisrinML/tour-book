@@ -89,6 +89,9 @@ export default {
     'post-bg':{
       light:'#FEFFFF'
     },
+    'selected-bg':{
+      light:'#B7CDC6'
+    },
     'loginButtonText':{
       light:'#503900'
     },
@@ -134,6 +137,9 @@ export default {
      // 'footer':['"javanese-Text"'],
   }
   },
-  plugins: [],
+  plugins: [
+    //to clamp long text
+    require('@tailwindcss/line-clamp'),
+  ],
 }
 
