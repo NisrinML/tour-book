@@ -127,7 +127,16 @@ export default {
   },
   'presenterbg':{
     light:'#FFF5E9'
-  }
+  },
+  'navItem':{
+    light:'#F5DFAC'
+  },
+  'presenterPostDetails':{
+   light:"#FFE0BA"
+  },
+  'offerTitle':{
+  light:'#F0911D'
+  },
   
     },
     fontFamily: {
