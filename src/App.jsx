@@ -38,7 +38,8 @@ function App() {
       {/* <MyTour/> */}
       {/* <OrgnizerSettings/> */}
       {/* <PresenterPage/> */}
-      <OrgnizerNotifications/>
+      {/* <OrgnizerNotifications/> */}
+      
     </Layout>
 
   )
