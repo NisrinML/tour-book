@@ -9,6 +9,13 @@ import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPas
 import OrgnizerNotifications from "./features/orgnizer/orgnizerView/OrgnizerNotifications"
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
+
+
+
+import PresenterLogin from './features/presenter/PresenterView/PresenterLogin'
+import PresenterProfile from './features/presenter/PresenterView/PresenterProfile'
+import PresenterHome from "./features/presenter/PresenterView/PresenterHome"
+
 import OrgnizerSettings from "./features/orgnizer/orgnizerView/OrgnizerSettings"
 import PresenterPage from "./features/orgnizer/orgnizerView/PresenterPage"
 import TourConfirm from "./features/orgnizer/orgnizerView/TourConfirm"
@@ -19,12 +26,17 @@ import { Router } from "./routers/Router"
 import OrgnizerHomePage from "./features/orgnizer/orgnizerView/OrgnizerHomePage"
 
 
+
 function App() {
 
   return (
 
     <Layout>
+
+
+     {/* <PresenterHome /> */}
 <Router />
+
       {/* <OrgnizerNewPassword/> */}
       {/* <OrgnizerForgetPassword/> */}
       {/* <PresenterLogin /> */}
@@ -32,14 +44,23 @@ function App() {
       {/* <OrgnizerResetPassword/> */}
       {/* <PresenterProfile /> */}
       {/* <MakeSpecialTour/> */}
+
+      <AddNewPlace />
+
+
       {/* <AddNewPlace /> */}
       {/* <TourConfirm/> */}
       {/* <TourManager/> */}
       {/* <MyTour/> */}
       {/* <OrgnizerSettings/> */}
       {/* <PresenterPage/> */}
+
       {/* <OrgnizerNotifications/> */}
       {/* <OrgnizerHomePage/> */}
+
+      <OrgnizerNotifications/>
+
+
     </Layout>
 
   )
