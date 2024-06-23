@@ -36,7 +36,7 @@ const initialState = {
   offerRequest:{id:'',quantity:'',description:'',offerId:''}}],
   tourAttachment:[{id:'',attachment:'',type:''}],
   clientRequest:[{id:'',numOfSeat:'',status:'',clientId:'',client:{name:'',lastName:'',mobile:''}}],
-  comments:{id:'',comment:'',feelings:'',clientId:''},
+  comments:[{id:'',comment:'',feelings:'',clientId:''}],
   HMdistance:0,
   KMdistance:0
  },
@@ -49,7 +49,13 @@ const initialState = {
   numOfSeat: 150,
   posted:false,
   status:true,
-  clientRequest: []
+  clientRequest: [],
+  likeCounter:400,
+  disLikeCounter:200,
+  comments:[{id:1,comment:'Great post!',feelings:'',clientId:''},{id:2,comment:'I really enjoyed this.',feelings:'',clientId:''},{id:3,comment:'Interesting perspective.',feelings:'',clientId:''}],
+  description:`Join us on an immersive dining experience as we take you on a tour of some of the best restaurants in the city. Over the course of 3-4 hours, you'll visit 4-5 carefully curated establishments, sampling signature dishes and learning about the unique culinary concepts and histories behind each one.The tour begins at a classic bistro known for its fresh, locally-sourced ingredients and French-inspired fare. You'll start with a tasting of the restaurant's renowned house-made charcuterie and a glass of crisp white wine.
+  Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side street. Here you'll savor a regional pasta dish and a seasonal salad while the chef shares insights into their time-honored recipes and techniques.
+   `
 },
 {
   sn:2,
@@ -62,6 +68,11 @@ const initialState = {
   posted:true,
   status:true,
   clientRequest: [{ numOfSeat: 3, status: 'accept' }, { numOfSeat: 5, status: 'accept' }, { numOfSeat: 5, status: 'wait' }, { numOfSeat: 2, status: 'refuse' },]
+  ,
+  likeCounter:450,
+  disLikeCounter:50, 
+  comments:[],
+  description:'Spring is Comming'
 },
 {sn:3,
   id: 23,
@@ -72,7 +83,11 @@ const initialState = {
   numOfSeat: 100,
   posted:false,
   status:false,
-  clientRequest: []
+  clientRequest: [],
+  likeCounter:300,
+  disLikeCounter:100,
+  comments:[],
+   description:"Spring is Comming"
 },],
 presrnterData:{
   name:'Chill & Grill',
@@ -118,7 +133,13 @@ const orgnizerSlice = createSlice({
     },
     deleteTour:(state,action)=>{
       state.tours=state.tours.filter(tour=> tour.id!=action.payload)
-      //delete api
+      //delete tour api
+    },
+    deleteComment:(state,action)=>{
+        var tour=state.tours.filter(tour=> tour.id==action.payload.tourId)
+        console.log(action.payload)
+        tour[0].comments =tour[0].comments.filter(comment=>comment.id!=action.payload.id)
+      //delete comment api
     },
     updateOrgnizerData:(state,action)=>{
       state.name=action.payload.userName
@@ -127,5 +148,5 @@ const orgnizerSlice = createSlice({
     }
   },
 });
-export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,updateTour,deleteTour,updateOrgnizerData} = orgnizerSlice.actions
+export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,updateTour,deleteTour,updateOrgnizerData,deleteComment} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

@@ -23,7 +23,7 @@ import TourManager from "./features/orgnizer/orgnizerView/TourManager"
 import PresenterLogin from "./features/presenter/presenterView/PresenterLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 import { Router } from "./routers/Router"
-
+import OrgnizerHomePage from "./features/orgnizer/orgnizerView/OrgnizerHomePage"
 
 
 
@@ -54,7 +54,12 @@ function App() {
       {/* <MyTour/> */}
       {/* <OrgnizerSettings/> */}
       {/* <PresenterPage/> */}
+
+      {/* <OrgnizerNotifications/> */}
+      {/* <OrgnizerHomePage/> */}
+
       <OrgnizerNotifications/>
+
 
     </Layout>
 
