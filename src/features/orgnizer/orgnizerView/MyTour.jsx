@@ -10,7 +10,7 @@ function MyTour() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const handelBack = () => {
-        navigate('');
+        navigate('/');
     }
     const handelPost = (id) => {
         dispatch(updateTour(id))
