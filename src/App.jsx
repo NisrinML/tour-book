@@ -39,7 +39,7 @@ function App() {
       {/* <OrgnizerSettings/> */}
       {/* <PresenterPage/> */}
       {/* <OrgnizerNotifications/> */}
-      <OrgnizerHomePage/>
+      {/* <OrgnizerHomePage/> */}
     </Layout>
 
   )
