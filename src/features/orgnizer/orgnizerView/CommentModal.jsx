@@ -27,10 +27,10 @@ function CommentModal(props) {
               className="flex justify-between items-center py-2 border-b border-title-light"
             >
               <span className="xl:text-xl lg:text-lg md:text-base text-text-light font-['sans-serif'] ">{item.comment}</span>
-              <img src={TrashIcon}
+              {!props.preventDelete && <img src={TrashIcon}
                 className="xl:w-8 xl:h-8 lg:w-7 lg:h-7 md:w-6 md:h-6 hover:cursor-pointer hover:drop-shadow-[1px_1px_rgba(117,135,142)]"
                 onClick={() => handleDeleteComment(item.id)}
-              />
+              />}
 
             </li>
           ))}

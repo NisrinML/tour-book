@@ -49,7 +49,7 @@ function MakeSpecialTour() {
   const handelBack = () => {
     var tour={}
     dispatch(setFirstTourDetails(tour))
-    navigate('');
+    navigate('/');
   }
 
   const handelTitleChange = (e) => {
