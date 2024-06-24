@@ -947,6 +947,22 @@ video {
   gap: 1.25rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.gap-20 {
+  gap: 5rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-32 {
+  gap: 8rem;
+}
+
 .space-x-10 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(2.5rem * var(--tw-space-x-reverse));
@@ -1065,6 +1081,18 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.75rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.75rem * var(--tw-space-y-reverse));
+}
+
+.space-x-40 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(10rem * var(--tw-space-x-reverse));
+  margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-32 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(8rem * var(--tw-space-x-reverse));
+  margin-left: calc(8rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .overflow-hidden {
@@ -2055,6 +2083,10 @@ video {
     gap: 0.75rem;
   }
 
+  .md\:gap-16 {
+    gap: 4rem;
+  }
+
   .md\:gap-x-10 {
     -moz-column-gap: 2.5rem;
          column-gap: 2.5rem;
@@ -2068,6 +2100,10 @@ video {
   .md\:gap-x-8 {
     -moz-column-gap: 2rem;
          column-gap: 2rem;
+  }
+
+  .md\:gap-y-6 {
+    row-gap: 1.5rem;
   }
 
   .md\:space-x-0 > :not([hidden]) ~ :not([hidden]) {
@@ -2098,6 +2134,12 @@ video {
     --tw-space-x-reverse: 0;
     margin-right: calc(0.75rem * var(--tw-space-x-reverse));
     margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:space-x-36 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(9rem * var(--tw-space-x-reverse));
+    margin-left: calc(9rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -2154,10 +2196,28 @@ video {
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
 
-  .md\:space-x-36 > :not([hidden]) ~ :not([hidden]) {
+  .md\:space-x-48 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
-    margin-right: calc(9rem * var(--tw-space-x-reverse));
-    margin-left: calc(9rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(12rem * var(--tw-space-x-reverse));
+    margin-left: calc(12rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:space-x-64 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(16rem * var(--tw-space-x-reverse));
+    margin-left: calc(16rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:space-x-60 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(15rem * var(--tw-space-x-reverse));
+    margin-left: calc(15rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:space-x-56 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(14rem * var(--tw-space-x-reverse));
+    margin-left: calc(14rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .md\:rounded {
@@ -2684,6 +2744,10 @@ video {
     width: 2.25rem;
   }
 
+  .lg\:w-40 {
+    width: 10rem;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2712,6 +2776,10 @@ video {
     gap: 1rem;
   }
 
+  .lg\:gap-24 {
+    gap: 6rem;
+  }
+
   .lg\:gap-x-16 {
     -moz-column-gap: 4rem;
          column-gap: 4rem;
@@ -2725,6 +2793,10 @@ video {
   .lg\:gap-x-40 {
     -moz-column-gap: 10rem;
          column-gap: 10rem;
+  }
+
+  .lg\:gap-y-8 {
+    row-gap: 2rem;
   }
 
   .lg\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
@@ -2755,6 +2827,12 @@ video {
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-x-52 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(13rem * var(--tw-space-x-reverse));
+    margin-left: calc(13rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:space-x-56 > :not([hidden]) ~ :not([hidden]) {
@@ -2799,10 +2877,34 @@ video {
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
 
-  .lg\:space-x-52 > :not([hidden]) ~ :not([hidden]) {
+  .lg\:space-x-60 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
-    margin-right: calc(13rem * var(--tw-space-x-reverse));
-    margin-left: calc(13rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(15rem * var(--tw-space-x-reverse));
+    margin-left: calc(15rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-x-80 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(20rem * var(--tw-space-x-reverse));
+    margin-left: calc(20rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-x-72 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(18rem * var(--tw-space-x-reverse));
+    margin-left: calc(18rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-x-16 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(4rem * var(--tw-space-x-reverse));
+    margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-x-64 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(16rem * var(--tw-space-x-reverse));
+    margin-left: calc(16rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:rounded {
@@ -2985,6 +3087,14 @@ video {
 
   .lg\:pt-7 {
     padding-top: 1.75rem;
+  }
+
+  .lg\:pl-32 {
+    padding-left: 8rem;
+  }
+
+  .lg\:pl-24 {
+    padding-left: 6rem;
   }
 
   .lg\:text-2xl {
@@ -3391,6 +3501,19 @@ video {
          column-gap: 12rem;
   }
 
+  .xl\:gap-x-32 {
+    -moz-column-gap: 8rem;
+         column-gap: 8rem;
+  }
+
+  .xl\:gap-y-20 {
+    row-gap: 5rem;
+  }
+
+  .xl\:gap-y-12 {
+    row-gap: 3rem;
+  }
+
   .xl\:space-x-10 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(2.5rem * var(--tw-space-x-reverse));
@@ -3415,6 +3538,12 @@ video {
     margin-left: calc(5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
+  .xl\:space-x-40 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(10rem * var(--tw-space-x-reverse));
+    margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
   .xl\:space-x-5 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.25rem * var(--tw-space-x-reverse));
@@ -3431,6 +3560,12 @@ video {
     --tw-space-x-reverse: 0;
     margin-right: calc(1.5rem * var(--tw-space-x-reverse));
     margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .xl\:space-x-64 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(16rem * var(--tw-space-x-reverse));
+    margin-left: calc(16rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .xl\:space-x-72 > :not([hidden]) ~ :not([hidden]) {
@@ -3469,10 +3604,28 @@ video {
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
 
-  .xl\:space-x-64 > :not([hidden]) ~ :not([hidden]) {
+  .xl\:space-x-52 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
-    margin-right: calc(16rem * var(--tw-space-x-reverse));
-    margin-left: calc(16rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-right: calc(13rem * var(--tw-space-x-reverse));
+    margin-left: calc(13rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .xl\:space-x-60 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(15rem * var(--tw-space-x-reverse));
+    margin-left: calc(15rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .xl\:space-x-96 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(24rem * var(--tw-space-x-reverse));
+    margin-left: calc(24rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .xl\:space-x-24 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(6rem * var(--tw-space-x-reverse));
+    margin-left: calc(6rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .xl\:rounded {
@@ -3650,6 +3803,14 @@ video {
 
   .xl\:pt-8 {
     padding-top: 2rem;
+  }
+
+  .xl\:pl-40 {
+    padding-left: 10rem;
+  }
+
+  .xl\:pl-32 {
+    padding-left: 8rem;
   }
 
   .xl\:text-2xl {

@@ -25,7 +25,7 @@ function MakeSpecialTour() {
   const dispatch=useDispatch();
   const location = useGeoLocation();
   //to get the position that the orgnizer choose
-  var selectedLocatons = locations.filter(location => location.select == true);
+  var selectedLocations = locations.filter(location => location.select == true);
   // Map parameters
   const zoomLevel = 13;
   const customIcon = new Icon({
@@ -71,14 +71,14 @@ function MakeSpecialTour() {
   const drawLine = () => {
     var data = [];
 
-    if (selectedLocatons.length > 1) {
-      for (let i = 1; i < selectedLocatons.length; i++) {
+    if (selectedLocations.length > 1) {
+      for (let i = 1; i < selectedLocations.length; i++) {
         data.push({
-          from_lat: selectedLocatons[i - 1].lat,
-          from_long: selectedLocatons[i - 1].lng,
+          from_lat: selectedLocations[i - 1].lat,
+          from_long: selectedLocations[i - 1].lng,
           id: "132512",
-          to_lat: selectedLocatons[i].lat,
-          to_long: selectedLocatons[i].lng
+          to_lat: selectedLocations[i].lat,
+          to_long: selectedLocations[i].lng
         })
       }
     }
@@ -89,9 +89,9 @@ function MakeSpecialTour() {
   //to calculate distance between selected position
   const calculateDistance = () => {
     var distance = 0;
-    if (selectedLocatons.length > 1) {
-      for (let i = 1; i < selectedLocatons.length; i++) {
-        distance += L.latLng(selectedLocatons[i - 1]).distanceTo(L.latLng(selectedLocatons[i]));
+    if (selectedLocations.length > 1) {
+      for (let i = 1; i < selectedLocations.length; i++) {
+        distance += L.latLng(selectedLocations[i - 1]).distanceTo(L.latLng(selectedLocations[i]));
       }
       const distanceInKilometers = distance / 1000;
       const KM = distanceInKilometers.toFixed(2)
