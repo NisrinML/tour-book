@@ -33,9 +33,9 @@ const initialState = {
   posted:false,
   postedAt:false,
   tourPoints:[    
-    {order:1,id:1,name:"مطعم ماء زهر",lat:34.7207443, lng:36.7173883,url:'',size:120,select:true,position:'',description:'you need to bring your jacket',arrivalTime:'2:00 PM',leavingTime:'4:00 PM',  offerRequest:{id:'',quantity:'',description:'',offerId:''}},
-    {order:2,id:2,name:"فندق السفير",lat:34.776043258519174, lng:36.6026282253172,url:'',size:60,select:true,position:'',description:'you need sport shoze',arrivalTime:'6:00 PM',leavingTime:'8:00 PM',  offerRequest:{id:'',quantity:'',description:'',offerId:''}},
-    {order:3,id:3,name:"نادي الأطباء والمهندسين",lat:34.71017331715748, lng:36.639553309802125,url:'',size:20,select:true,position:'',description:'10:00 AM',arrivalTime:'1:00 PM',leavingTime:'',  offerRequest:{id:'',quantity:'',description:'',offerId:''}}
+    {id:1,name:"مطعم ماء زهر",lat:34.7207443, lng:36.7173883,url:'',size:120,select:true,position:'',description:'you need to bring your jacket',arrivalTime:'2:00 PM',leavingTime:'4:00 PM',  offerRequest:{id:'',quantity:'',description:'',offerId:''}},
+    {id:2,name:"فندق السفير",lat:34.776043258519174, lng:36.6026282253172,url:'',size:60,select:true,position:'',description:'you need sport shoze',arrivalTime:'6:00 PM',leavingTime:'8:00 PM',  offerRequest:{id:'',quantity:'',description:'',offerId:''}},
+    {id:3,name:"نادي الأطباء والمهندسين",lat:34.71017331715748, lng:36.639553309802125,url:'',size:20,select:true,position:'',description:'10:00 AM',arrivalTime:'1:00 PM',leavingTime:'',  offerRequest:{id:'',quantity:'',description:'',offerId:''}}
 ],
   tourAttachment:[{id:'',attachment:'',type:''}],
   clientRequest:[{id:'',numOfSeat:'',status:'',clientId:'',client:{name:'',lastName:'',mobile:''}}],
@@ -197,8 +197,12 @@ const orgnizerSlice = createSlice({
       state.name=action.payload.userName
       state.mobile=action.payload.phoneNumber
       
+    },
+    setTourPoint:(state,action)=>{
+      state.tour.tourPoints=action.payload
     }
   },
 });
-export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,updateTour,deleteTour,updateOrgnizerData,deleteComment} = orgnizerSlice.actions
+export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
+  updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

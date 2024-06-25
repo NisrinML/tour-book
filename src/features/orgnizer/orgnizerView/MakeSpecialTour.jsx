@@ -61,9 +61,10 @@ function MakeSpecialTour() {
     tour.KMdistance=KMdistance
     tour.HMdistance=HMdistance
     dispatch(setFirstTourDetails(tour))
-    navigate('/make-special-tour/confirm-tour')
+    navigate('/make-special-tour/edit-itenrary')
 
   }
+
   const handelAddNewPlace = () => {
     navigate('/make-special-tour/add-new-place')
   }
@@ -105,6 +106,7 @@ function MakeSpecialTour() {
       setDuration(D.toFixed())
     }
   }
+
   // to wait until the distance calculated
   const memorizedData = useMemo(() => { calculateDistance() }, [])
   return (<div className="flex flex-col">
