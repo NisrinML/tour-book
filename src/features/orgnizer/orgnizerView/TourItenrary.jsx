@@ -39,13 +39,12 @@ function TourItenrary() {
     //to draw polyline between to podition on the map
     const drawLine = () => {
         var data = [];
-
         if (arrangedLocations.length > 1) {
             for (let i = 1; i < arrangedLocations.length; i++) {
                 data.push({
                     from_lat: arrangedLocations[i - 1].lat,
                     from_long: arrangedLocations[i - 1].lng,
-                    id: "132512",
+                    id: Math.random().toString(36).substring(2, 10),
                     to_lat: arrangedLocations[i].lat,
                     to_long: arrangedLocations[i].lng
                 })
@@ -54,7 +53,8 @@ function TourItenrary() {
 
         return data
     }
-    const data = drawLine();
+    const initialLine=drawLine()
+    const [line,setLine] =useState(initialLine );
     //to calculate distance between selected position
     const calculateDistance = () => {
         var distance = 0;
@@ -84,26 +84,47 @@ function TourItenrary() {
         )
     }
     }
+
     const handleCompute=()=>{
         calculateDistance()
     }
+
     const handleClearAll=()=>{
         setArrangedLocations(selectedLocations)
         calculateDistance()
     }
-    const handelOrderChange=(value,id)=>{
-        const existingOrder = arrangedLocations.find((location) => location.order === value);
+
+    const handelOrderChange=(id,value)=>{
+        const existingOrder = arrangedLocations.find((location) => location.order == value);
         if (existingOrder) {
-            alert(`the order ${val} is already in use.`);
+            alert(`the order ${value} is already in use.`);
             return;
-        }
-        const updatedData = data.map((location) =>
+        }else{
+        const updatedData = arrangedLocations.map((location) =>
             location.id === id
-              ? { ...location, order: value }
+              ? { ...location, order: Number( value )}
+              : location
+          ); 
+        console.log("baefore data",updatedData)
+        updatedData.sort((a, b) => a.order - b.order)
+        console.log("after data",updatedData)
+        setArrangedLocations(updatedData)
+
+        const newLine =drawLine()
+        setLine(newLine)
+     
+        }
+    }
+
+    const handelRequirmentChange=(id,value)=>{
+        const updatedData = arrangedLocations.map((location) =>
+            location.id === id
+              ? { ...location, description: value }
               : location
           );
         setArrangedLocations(updatedData)
     }
+
     const handelBack = () => {
         navigate('/make-special-tour');
     }
@@ -193,6 +214,10 @@ function TourItenrary() {
                                         {/* configure the popup that showen when hover the position marker */}
                                         <Popup>
                                             <div className="flex flex-col justify-start items-start space-y-2">
+                                            <div className="flex-row space-x-3 text-base font-semibold text-text-light">
+                                                    <span className="text-title-light font-normal">Name :</span>
+                                                    <span>{location.name}</span>
+                                                </div>
                                                 <div className="flex-row space-x-3 text-base font-semibold text-text-light">
                                                     <span className="text-title-light font-normal">arrive :</span>
                                                     <span>{location.arrivalTime}</span>
@@ -210,7 +235,7 @@ function TourItenrary() {
                                     </Marker>)
                             })}
 
-                            {data.map(({ id, from_lat, from_long, to_lat, to_long }) => {
+                            {line.map(({ id, from_lat, from_long, to_lat, to_long }) => {
                                 return <Polyline key={id} positions={[
                                     [from_lat, from_long], [to_lat, to_long],
                                 ]} color={'red'} />
@@ -235,7 +260,7 @@ function TourItenrary() {
                             <div className="flex flex-row space-x-10">
                                 <div className="flex flex-col space-y-5">
                                     <div className="flex flex-row justify-between ">
-                                        <input value={index + 1} onChange={(e)=>{handelOrderChange(e.target.value,location.id)}}
+                                        <input value={location.order} onChange={(e)=>{handelOrderChange(location.id,e.target.value)}}
                                             className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-light border-solid border-2 border-text-light text-center rounded-full
                             xl:text-xl xl:h-10 xl:w-10
                             lg:text-lg lg:h-9 lg:w-9
@@ -250,10 +275,11 @@ function TourItenrary() {
                             xl:text-2xl xl:w-44
                             lg:text-xl lg:w-36
                             md:text-lg md:w-28">Requirments :</span>
-                                        <input className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-light border-solid border-2 border-text-light text-center p-2
+                                        <input  defaultValue={location.description} onChange={(e)=>{handelRequirmentChange(location.id,e.target.value)}}
+                                        className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-light border-solid border-2 border-text-light text-center p-2
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg lg:h-9 lg:w-56
-                            md:rounded-md md:text-base md:h-8 md:w-48" value={location.description}></input>
+                            md:rounded-md md:text-base md:h-8 md:w-48"></input>
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
