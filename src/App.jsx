@@ -2,6 +2,8 @@
 
 import Layout from "./features/layout/Layout"
 import AddNewPlace from "./features/orgnizer/orgnizerView/AddNewPlace"
+import ChooseOffer from "./features/orgnizer/orgnizerView/ChooseOffer"
+import EditTour from "./features/orgnizer/orgnizerView/EditTour"
 import MakeSpecialTour from "./features/orgnizer/orgnizerView/MakeSpecialTour"
 import MyTour from "./features/orgnizer/orgnizerView/MyTour"
 import News from "./features/orgnizer/orgnizerView/News"
@@ -46,7 +48,9 @@ function App() {
       {/* <OrgnizerNotifications/> */}
       {/* <OrgnizerHomePage/> */}
       {/* <News/> */}
-      <TourItenrary/>
+      {/* <TourItenrary/> */}
+      {/* <ChooseOffer/> */}
+      <EditTour/>
     </Layout>
 
   )

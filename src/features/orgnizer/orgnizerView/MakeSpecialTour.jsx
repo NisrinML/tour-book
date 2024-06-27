@@ -12,9 +12,9 @@ import useGeoLocation from "../../../assets/map/useGeoLocation"
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import 'leaflet/dist/leaflet.css';
 import "../../../tailwind/largeMap.css"
-import { locations } from "../../../assets/data/mapLocation";
-import { setFirstTourDetails } from "../orgnizerSlice"
+import { addPoint, selecteItem, setFirstTourDetails } from "../orgnizerSlice"
 import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 function MakeSpecialTour() {
   const [KMdistance, setKMdistance] = useState(0);
@@ -24,6 +24,7 @@ function MakeSpecialTour() {
   const navigate = useNavigate();
   const dispatch=useDispatch();
   const location = useGeoLocation();
+  var locations = useSelector(state=>state.orgnizer.tour.tourPoints)
   //to get the position that the orgnizer choose
   var selectedLocations = locations.filter(location => location.select == true);
   // Map parameters
@@ -61,12 +62,24 @@ function MakeSpecialTour() {
     tour.KMdistance=KMdistance
     tour.HMdistance=HMdistance
     dispatch(setFirstTourDetails(tour))
+    dispatch(addPoint(selectedLocations))
     navigate('/make-special-tour/edit-itenrary')
 
   }
 
   const handelAddNewPlace = () => {
     navigate('/make-special-tour/add-new-place')
+  }
+
+  const handelChoosePosition=(presenterId)=>{
+    dispatch(selecteItem({presenterId}))
+    var tour={}
+    tour.title=title
+    tour.KMdistance=KMdistance
+    tour.HMdistance=HMdistance
+    dispatch(setFirstTourDetails(tour))
+    dispatch(addPoint(selectedLocations))
+    navigate('/make-special-tour/presenter-offers')
   }
   //to draw polyline between to podition on the map
   const drawLine = () => {
@@ -176,7 +189,7 @@ function MakeSpecialTour() {
                     <div className="flex flex-col justify-center items-center">
                       <span className="flex-row text-base font-semibold text-text-light">{location.name}</span>
                       <span className="flex-row text-base font-semibold text-text-light"><span className="text-title-light font-normal">size :</span> {location.size}</span>
-                      <a href={location.url}><img src={moreIcon} className="flex flex-row w-5 h-5 my-1 cursor-pointer" /></a>
+                      <a onClick={()=>handelChoosePosition(location.id)}><img src={moreIcon} className="flex flex-row w-5 h-5 my-1 cursor-pointer" /></a>
                     </div>
                   </Popup>
                 </Marker>)

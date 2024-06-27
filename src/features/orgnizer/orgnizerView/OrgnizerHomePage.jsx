@@ -133,7 +133,7 @@ function OrgnizerHomePage() {
                     <div className="flex flex-row justify-center items-center 
                     xl:space-x-8 xl:pr-32
                     lg:space-x-6 lg:pr-24
-                    md:space-x-4 md:pr:16">
+                    md:space-x-4 md:pr-16">
                         <span className="flex flex-col  text-text-light xl:text-2xl lg:text-xl md:text-base font-['Georgia']">User Name</span>
                         <img src={Person} className="flex flex-col drop-shadow-[2px_4px_rgba(125,143,154,0.5)] rounded-full
                             xl:w-32 xl:h-32
