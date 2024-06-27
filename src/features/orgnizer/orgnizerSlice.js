@@ -33,9 +33,84 @@ const initialState = {
   posted:false,
   postedAt:false,
   tourPoints:[    
-    {id:1,name:"مطعم ماء زهر",lat:34.7207443, lng:36.7173883,url:'',size:120,select:true,position:'',description:'you need to bring your jacket',arrivalTime:'2:00 PM',leavingTime:'4:00 PM',  offerRequest:{id:'',quantity:'',description:'',offerId:''}},
-    {id:2,name:"فندق السفير",lat:34.776043258519174, lng:36.6026282253172,url:'',size:60,select:true,position:'',description:'you need sport shoze',arrivalTime:'6:00 PM',leavingTime:'8:00 PM',  offerRequest:{id:'',quantity:'',description:'',offerId:''}},
-    {id:3,name:"نادي الأطباء والمهندسين",lat:34.71017331715748, lng:36.639553309802125,url:'',size:20,select:true,position:'',description:'10:00 AM',arrivalTime:'1:00 PM',leavingTime:'',  offerRequest:{id:'',quantity:'',description:'',offerId:''}}
+    {id:1,name:"مطعم ماء زهر",lat:34.7207443, lng:36.7173883,url:'/make-special-tour/presenter-offers',size:120,select:true,status:'',position:'',description:'you need to bring your jacket',arrivalTime:'2:00 PM',leavingTime:'4:00 PM',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
+    offers: [
+      {
+        id: 1,
+        title: "Friday Lunch",
+        startDate: "5/5/2024",
+        endDate: "15/5/2024",
+        startTime: "2:00 P.M",
+        endTime: "6:00 P.M",
+        pricePerOne: "15",
+        description: "burger - pepsi",
+        address: "",
+        offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      },{
+        id: 2,
+        title: "Sunday Lunch",
+        startDate: "5/5/2024",
+        endDate: "15/5/2024",
+        startTime: "2:00 P.M",
+        endTime: "6:00 P.M",
+        pricePerOne: "15",
+        description: "burger - pepsi",
+        address: "",
+        offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      },
+    ]},
+    {id:2,name:"فندق السفير",lat:34.776043258519174, lng:36.6026282253172,url:'/make-special-tour/presenter-offers',size:60,select:true,status:'',position:'',description:'you need sport shoze',arrivalTime:'6:00 PM',leavingTime:'8:00 PM',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
+    offers: [
+      {
+        id: 1,
+        title: "Friday Lunch",
+        startDate: "5/5/2024",
+        endDate: "15/5/2024",
+        startTime: "2:00 P.M",
+        endTime: "6:00 P.M",
+        pricePerOne: "15",
+        description: "burger - pepsi",
+        address: "",
+        offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      },{
+        id: 2,
+        title: "Sunday Lunch",
+        startDate: "5/5/2024",
+        endDate: "15/5/2024",
+        startTime: "2:00 P.M",
+        endTime: "6:00 P.M",
+        pricePerOne: "15",
+        description: "burger - pepsi",
+        address: "",
+        offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      },
+    ]},
+    {id:3,name:"نادي الأطباء والمهندسين",lat:34.71017331715748, lng:36.639553309802125,url:'/make-special-tour/presenter-offers',size:20,status:'',select:false,position:'',description:'10:00 AM',arrivalTime:'1:00 PM',leavingTime:'',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
+    offers: [
+      {
+        id: 1,
+        title: "Friday Lunch",
+        startDate: "5/5/2024",
+        endDate: "15/5/2024",
+        startTime: "2:00 P.M",
+        endTime: "6:00 P.M",
+        pricePerOne: "15",
+        description: "burger - pepsi",
+        address: "",
+        offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      },{
+        id: 2,
+        title: "Sunday Lunch",
+        startDate: "5/5/2024",
+        endDate: "15/5/2024",
+        startTime: "2:00 P.M",
+        endTime: "6:00 P.M",
+        pricePerOne: "15",
+        description: "burger - pepsi",
+        address: "",
+        offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      },
+    ]}
 ],
   tourAttachment:[{id:'',attachment:'',type:''}],
   clientRequest:[{id:'',numOfSeat:'',status:'',clientId:'',client:{name:'',lastName:'',mobile:''}}],
@@ -153,6 +228,11 @@ allTours:[ {   sn:1,
   comments:[],
    description:"Spring is Comming"
 },],
+
+selected:{
+  presenterId:1,
+  offerId:''
+}
 };
 
 const orgnizerSlice = createSlice({
@@ -200,9 +280,18 @@ const orgnizerSlice = createSlice({
     },
     setTourPoint:(state,action)=>{
       state.tour.tourPoints=action.payload
+    },
+    selecteItem:(state,action)=>{
+      state.selected.presenterId=action.payload.presenterId;
+    },
+    selectOffer:(state,action)=>{
+      //api to create offer
+      state.tour.tourPoints.filter(tourPoint=>tourPoint.id==action.payload.tourPoint)[0].offerRequest=action.payload.offer
+      state.tour.tourPoints.filter(tourPoint=>tourPoint.id==action.payload.tourPoint)[0].select=true
+      
     }
   },
 });
 export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
-  updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint} = orgnizerSlice.actions
+  updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,selectOffer} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

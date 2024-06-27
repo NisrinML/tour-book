@@ -39,7 +39,7 @@ function AddNewPlace() {
         }
         else {
             var point = {
-                id: null, position: title, description: requirments, arrivalTime: fromDate, leavingTime: toDate, axisX: coordinate.position[0], axisY: coordinate.position[1]
+                id: null, position: title, description: requirments, arrivalTime: fromDate, leavingTime: toDate, axisX: coordinate.position[0], axisY: coordinate.position[1],select:true
             }
             dispatch(addPoint(point))
             setError(false)
