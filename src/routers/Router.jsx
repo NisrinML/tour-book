@@ -38,7 +38,7 @@ return(
         <Route path="/news" element={<News/>}/>
         <Route path="/make-special-tour/edit-itenrary" element={<TourItenrary/>}/>
         <Route path="/make-special-tour/presenter-offers" element={<ChooseOffer/>}/>
-        <Route path="/my-tour/details/edit" element={<EditTour/>}/> 
+        <Route path="/my-tour/edit" element={<EditTour/>}/> 
         <Route path="/my-tour/details" element={<TourDetails/>}/>
     </Routes>
    
