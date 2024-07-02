@@ -14,17 +14,18 @@ const initialState = {
  userId:'',
  tour:{
   id:'',
-  title:'',
-  startDate:'',
-  startTime:'',
-  endDate:'',
+  title:'Summer WeekEnd',
+  startDate:'2024-07-07',
+  startTime:'06:00',
+  endTime:'12:30',
+  endDate:'2024-07-08',
   extraCost:'',
   totalCost:'500',
-  seatCost:'',
+  seatCost:'15',
   transportationCost:'',
-  description:'',
+  description:'Fruit Zone until 5/4/2024',
   numOfSeat:150,
-  note:'',
+  note:'you need jacket',
   startingPlace:'',
   XstartingPlace:'',
   YstartingPlace:'',
@@ -289,9 +290,24 @@ const orgnizerSlice = createSlice({
       state.tour.tourPoints.filter(tourPoint=>tourPoint.id==action.payload.tourPoint)[0].offerRequest=action.payload.offer
       state.tour.tourPoints.filter(tourPoint=>tourPoint.id==action.payload.tourPoint)[0].select=true
       
+    },
+    editTour:(state,action)=>{
+       //api for edit
+       console.log(action.payload)
+      state.tour.title=action.payload.tour.title
+      state.tour.totalCost=action.payload.tour.cost
+      state.tour.seatCost=action.payload.tour.seatPrice
+      state.tour.startDate=action.payload.tour.startDate
+      state.tour.endDate=action.payload.tour.endDate
+      state.tour.startTime=action.payload.tour.startTime
+      state.tour.endTime=action.payload.tour.endTime
+      state.tour.description=action.payload.tour.reservation
+      state.tour.note=action.payload.tour.note
+      state.tour.tourAttachment=action.payload.tour.images
     }
   },
 });
 export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
-  updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,selectOffer} = orgnizerSlice.actions
+  updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,
+  editTour,selectOffer} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;
