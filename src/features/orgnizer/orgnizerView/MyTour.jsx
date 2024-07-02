@@ -17,21 +17,22 @@ function MyTour() {
         navigate('');
     }
     const handelEdit = (id) => {
+
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/edit');
     }
     const handelDelete = (id) => {
         alert(id)
         dispatch(deleteTour(id))
-        navigate('');
+        navigate('/my-tour');
     }
     const handelDetails = (id) => {
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/details');
     }
     const handelRequests  = (id) => {
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/requests');
     }
     return (
         <div className="flex flex-col">
