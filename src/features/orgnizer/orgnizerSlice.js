@@ -293,7 +293,6 @@ const orgnizerSlice = createSlice({
     },
     editTour:(state,action)=>{
        //api for edit
-       console.log(action.payload)
       state.tour.title=action.payload.tour.title
       state.tour.totalCost=action.payload.tour.cost
       state.tour.seatCost=action.payload.tour.seatPrice
@@ -304,10 +303,17 @@ const orgnizerSlice = createSlice({
       state.tour.description=action.payload.tour.reservation
       state.tour.note=action.payload.tour.note
       state.tour.tourAttachment=action.payload.tour.images
+    },
+    editPost:(state,action)=>{
+      //api for edit
+      state.tour.title=action.payload.tour.title
+      state.tour.description=action.payload.tour.reservation
+      state.tour.note=action.payload.tour.note
+      state.tour.tourAttachment=action.payload.tour.images
     }
   },
 });
 export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
   updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,
-  editTour,selectOffer} = orgnizerSlice.actions
+  editTour,selectOffer,editPost} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

@@ -18,6 +18,7 @@ import TourItenrary from "../features/orgnizer/orgnizerView/TourItenrary"
 import ChooseOffer from "../features/orgnizer/orgnizerView/ChooseOffer"
 import EditTour from "../features/orgnizer/orgnizerView/EditTour"
 import TourDetails from "../features/orgnizer/orgnizerView/TourDetails"
+import TourPost from "../features/orgnizer/orgnizerView/TourPost"
 export const Router=()=>{
 return(
     <Routes>
@@ -40,6 +41,7 @@ return(
         <Route path="/make-special-tour/presenter-offers" element={<ChooseOffer/>}/>
         <Route path="/my-tour/edit" element={<EditTour/>}/> 
         <Route path="/my-tour/details" element={<TourDetails/>}/>
+        <Route path="/my-tour/post" element={<TourPost/>}/>
     </Routes>
    
 )
