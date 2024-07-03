@@ -14,7 +14,7 @@ function MyTour() {
     }
     const handelPost = (id) => {
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/post');
     }
     const handelEdit = (id) => {
 
