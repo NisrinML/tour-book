@@ -34,7 +34,7 @@ const initialState = {
   posted:false,
   postedAt:false,
   tourPoints:[    
-    {id:1,name:"مطعم ماء زهر",lat:34.7207443, lng:36.7173883,url:'/make-special-tour/presenter-offers',size:120,select:true,status:'',position:'',description:'you need to bring your jacket',arrivalTime:'2:00 PM',leavingTime:'4:00 PM',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
+    {id:1,name:"مطعم ماء زهر",lat:34.7207443, lng:36.7173883,url:'/make-special-tour/presenter-offers',size:120,select:true,status:'accept',position:'',description:'you need to bring your jacket',arrivalTime:'2:00 PM',leavingTime:'4:00 PM',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
     offers: [
       {
         id: 1,
@@ -60,7 +60,7 @@ const initialState = {
         offerAttatchment: [{ id: '', attachment:'', type: '' }],
       },
     ]},
-    {id:2,name:"فندق السفير",lat:34.776043258519174, lng:36.6026282253172,url:'/make-special-tour/presenter-offers',size:60,select:true,status:'',position:'',description:'you need sport shoze',arrivalTime:'6:00 PM',leavingTime:'8:00 PM',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
+    {id:2,name:"فندق السفير",lat:34.776043258519174, lng:36.6026282253172,url:'/make-special-tour/presenter-offers',size:60,select:true,status:'wait',position:'',description:'you need sport shoze',arrivalTime:'6:00 PM',leavingTime:'8:00 PM',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
     offers: [
       {
         id: 1,
@@ -86,7 +86,7 @@ const initialState = {
         offerAttatchment: [{ id: '', attachment:'', type: '' }],
       },
     ]},
-    {id:3,name:"نادي الأطباء والمهندسين",lat:34.71017331715748, lng:36.639553309802125,url:'/make-special-tour/presenter-offers',size:20,status:'',select:false,position:'',description:'10:00 AM',arrivalTime:'1:00 PM',leavingTime:'',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
+    {id:3,name:"نادي الأطباء والمهندسين",lat:34.71017331715748, lng:36.639553309802125,url:'/make-special-tour/presenter-offers',size:20,status:'refuse',select:false,position:'',description:'10:00 AM',arrivalTime:'1:00 PM',leavingTime:'',  offerRequest:{id:'',arriveTime:'',leaveTime:'',quantity:'',description:'',offerId:''},
     offers: [
       {
         id: 1,
@@ -114,7 +114,7 @@ const initialState = {
     ]}
 ],
   tourAttachment:[{id:'',attachment:'',type:''}],
-  clientRequest:[{id:'',numOfSeat:'',status:'',clientId:'',client:{name:'',lastName:'',mobile:''}}],
+  clientRequest:[{id:'',numOfSeat:'5',status:'accept',clientId:'',client:{name:'',lastName:'',mobile:''}}],
   comments:[{id:'',comment:'',feelings:'',clientId:''}],
   HMdistance:0,
   KMdistance:0
@@ -310,10 +310,15 @@ const orgnizerSlice = createSlice({
       state.tour.description=action.payload.tour.reservation
       state.tour.note=action.payload.tour.note
       state.tour.tourAttachment=action.payload.tour.images
-    }
+    },
+    editTourPointRequirment:(state,action)=>{
+      //api for edit requirments
+      
+        state.tour.tourPoints.filter(point=>point.id==action.payload.point.id)[0]=action.payload.point
+      }
   },
 });
 export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
   updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,
-  editTour,selectOffer,editPost} = orgnizerSlice.actions
+  editTour,selectOffer,editPost,editTourPointRequirment} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;
