@@ -903,6 +903,10 @@ video {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -953,6 +957,15 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
+}
+
+.gap-x-10 {
+  -moz-column-gap: 2.5rem;
+       column-gap: 2.5rem;
+}
+
+.gap-y-5 {
+  row-gap: 1.25rem;
 }
 
 .space-x-10 > :not([hidden]) ~ :not([hidden]) {
@@ -1336,6 +1349,10 @@ video {
   padding: 2rem;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1394,6 +1411,11 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.px-20 {
+  padding-left: 5rem;
+  padding-right: 5rem;
 }
 
 .pb-10 {
@@ -2327,6 +2349,11 @@ video {
     padding-bottom: 2rem;
   }
 
+  .md\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
   .md\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3019,6 +3046,11 @@ video {
     padding-bottom: 2rem;
   }
 
+  .lg\:px-32 {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
   .lg\:pb-0 {
     padding-bottom: 0px;
   }
@@ -3243,6 +3275,11 @@ video {
     margin-bottom: 4rem;
   }
 
+  .xl\:mx-8 {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
   .xl\:mb-8 {
     margin-bottom: 2rem;
   }
@@ -3453,6 +3490,10 @@ video {
 
   .xl\:w-96 {
     width: 24rem;
+  }
+
+  .xl\:w-52 {
+    width: 13rem;
   }
 
   .xl\:grid-cols-4 {
@@ -3707,6 +3748,11 @@ video {
   .xl\:py-7 {
     padding-top: 1.75rem;
     padding-bottom: 1.75rem;
+  }
+
+  .xl\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 
   .xl\:pb-10 {

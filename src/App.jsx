@@ -55,7 +55,7 @@ function App() {
       {/* <ChooseOffer/> */}
       {/* <EditTour/> */}
       {/* <TourDetails/> */}
-      <TourPost/>
+      {/* <TourPost/> */}
     </Layout>
 
   )
