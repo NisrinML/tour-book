@@ -12,9 +12,9 @@ import useGeoLocation from "../../../assets/map/useGeoLocation"
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import 'leaflet/dist/leaflet.css';
 import "../../../tailwind/largeMap.css"
-import { locations } from "../../../assets/data/mapLocation";
-import { setFirstTourDetails } from "../orgnizerSlice"
+import { addPoint, selecteItem, setFirstTourDetails } from "../orgnizerSlice"
 import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 function MakeSpecialTour() {
   const [KMdistance, setKMdistance] = useState(0);
@@ -24,8 +24,9 @@ function MakeSpecialTour() {
   const navigate = useNavigate();
   const dispatch=useDispatch();
   const location = useGeoLocation();
+  var locations = useSelector(state=>state.orgnizer.tour.tourPoints)
   //to get the position that the orgnizer choose
-  var selectedLocatons = locations.filter(location => location.select == true);
+  var selectedLocations = locations.filter(location => location.select == true);
   // Map parameters
   const zoomLevel = 13;
   const customIcon = new Icon({
@@ -49,7 +50,7 @@ function MakeSpecialTour() {
   const handelBack = () => {
     var tour={}
     dispatch(setFirstTourDetails(tour))
-    navigate('');
+    navigate('/');
   }
 
   const handelTitleChange = (e) => {
@@ -61,24 +62,37 @@ function MakeSpecialTour() {
     tour.KMdistance=KMdistance
     tour.HMdistance=HMdistance
     dispatch(setFirstTourDetails(tour))
-    navigate('/make-special-tour/confirm-tour')
+    dispatch(addPoint(selectedLocations))
+    navigate('/make-special-tour/edit-itenrary')
 
   }
+
   const handelAddNewPlace = () => {
     navigate('/make-special-tour/add-new-place')
+  }
+
+  const handelChoosePosition=(presenterId)=>{
+    dispatch(selecteItem({presenterId}))
+    var tour={}
+    tour.title=title
+    tour.KMdistance=KMdistance
+    tour.HMdistance=HMdistance
+    dispatch(setFirstTourDetails(tour))
+    dispatch(addPoint(selectedLocations))
+    navigate('/make-special-tour/presenter-offers')
   }
   //to draw polyline between to podition on the map
   const drawLine = () => {
     var data = [];
 
-    if (selectedLocatons.length > 1) {
-      for (let i = 1; i < selectedLocatons.length; i++) {
+    if (selectedLocations.length > 1) {
+      for (let i = 1; i < selectedLocations.length; i++) {
         data.push({
-          from_lat: selectedLocatons[i - 1].lat,
-          from_long: selectedLocatons[i - 1].lng,
+          from_lat: selectedLocations[i - 1].lat,
+          from_long: selectedLocations[i - 1].lng,
           id: "132512",
-          to_lat: selectedLocatons[i].lat,
-          to_long: selectedLocatons[i].lng
+          to_lat: selectedLocations[i].lat,
+          to_long: selectedLocations[i].lng
         })
       }
     }
@@ -89,9 +103,9 @@ function MakeSpecialTour() {
   //to calculate distance between selected position
   const calculateDistance = () => {
     var distance = 0;
-    if (selectedLocatons.length > 1) {
-      for (let i = 1; i < selectedLocatons.length; i++) {
-        distance += L.latLng(selectedLocatons[i - 1]).distanceTo(L.latLng(selectedLocatons[i]));
+    if (selectedLocations.length > 1) {
+      for (let i = 1; i < selectedLocations.length; i++) {
+        distance += L.latLng(selectedLocations[i - 1]).distanceTo(L.latLng(selectedLocations[i]));
       }
       const distanceInKilometers = distance / 1000;
       const KM = distanceInKilometers.toFixed(2)
@@ -105,6 +119,7 @@ function MakeSpecialTour() {
       setDuration(D.toFixed())
     }
   }
+
   // to wait until the distance calculated
   const memorizedData = useMemo(() => { calculateDistance() }, [])
   return (<div className="flex flex-col">
@@ -174,7 +189,7 @@ function MakeSpecialTour() {
                     <div className="flex flex-col justify-center items-center">
                       <span className="flex-row text-base font-semibold text-text-light">{location.name}</span>
                       <span className="flex-row text-base font-semibold text-text-light"><span className="text-title-light font-normal">size :</span> {location.size}</span>
-                      <a href={location.url}><img src={moreIcon} className="flex flex-row w-5 h-5 my-1 cursor-pointer" /></a>
+                      <a onClick={()=>handelChoosePosition(location.id)}><img src={moreIcon} className="flex flex-row w-5 h-5 my-1 cursor-pointer" /></a>
                     </div>
                   </Popup>
                 </Marker>)

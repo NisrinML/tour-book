@@ -3,7 +3,7 @@ import CopyWriteIcon from "../../assets/images/copyWriteIcon.svg";
 function Footer() {
   return (
     <div>
-      <footer className="w-full">
+      <footer className="w-full pb-5">
         <div className="w-10/12 mx-auto font-['Open_Sans'] xl:px-8">
           <div className="flex flex-col items-center justify-center w-full border-t border-text-light gap-1 xl:py-2 lg:py-1  md:py-1">
             <div className="flex flex-row items-start justify-center w-4/6 font-sans text-center text-text-light xl:text-sm xl:gap-4 lg:text-xs lg:gap-3 md:text-xs md:gap-2">

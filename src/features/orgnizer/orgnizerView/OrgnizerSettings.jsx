@@ -29,7 +29,7 @@ function OrgnizerSettings() {
         iconSize: [38, 38],
     });
     const handelBack = () => {
-        navigate('');
+        navigate('/');
     }
     const handelChangePassword= ()=>{
         navigate('/orgnizer/new-password')

@@ -18,9 +18,11 @@ function TourConfirm() {
     const [numOfSeats, setNumOfSeats] = useState(0)
     const [notes, setNotes] = useState('')
     const dispatch = useDispatch()
+
     const handelBack = () => {
         navigate('');
     }
+    
     const handelCancel = () => {
         navigate('')
     }
@@ -35,6 +37,7 @@ function TourConfirm() {
         numOfSeats: Yup.number().required("Required")
 
     });
+
     const {
         register,
         handleSubmit,
@@ -42,6 +45,7 @@ function TourConfirm() {
     } = useForm({
         resolver: yupResolver(requiredSchema),
     });
+
     // handle form submission
     const onSubmit = (data) => {
         var tour = {}

@@ -10,28 +10,29 @@ function MyTour() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const handelBack = () => {
-        navigate('');
+        navigate('/');
     }
     const handelPost = (id) => {
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/post');
     }
     const handelEdit = (id) => {
+
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/edit');
     }
     const handelDelete = (id) => {
         alert(id)
         dispatch(deleteTour(id))
-        navigate('');
+        navigate('/my-tour');
     }
     const handelDetails = (id) => {
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/details');
     }
     const handelRequests  = (id) => {
         dispatch(updateTour(id))
-        navigate('');
+        navigate('/my-tour/requests');
     }
     return (
         <div className="flex flex-col">
@@ -54,7 +55,7 @@ function MyTour() {
                         const acceptedOrders = tour.clientRequest.filter(order=>order.status=='accept')
                         var reservedSeats =acceptedOrders.reduce((sum, order) => sum + order.numOfSeat, 0)
                                 return (
-                                    <div className="flex flex-row justify-center items-center 
+                                    <div  key={tour.id} className="flex flex-row justify-center items-center 
                                     xl:p-10 lg:p-7 md:p-5">
                                     <div key={tour.id} className="flex flex-col bg-post-bg-light w-11/12 border-solid border-2 border-text-light drop-shadow-[2px_4px_rgba(125,143,154,0.5)]
                                     xl:h-96 xl:rounded-xl 

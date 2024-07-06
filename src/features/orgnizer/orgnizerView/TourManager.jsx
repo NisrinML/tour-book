@@ -35,7 +35,7 @@ function TourManager() {
           );
     }
     const handelBack = () => {
-        navigate('');
+        navigate('/my-tour');
     }
     return (
         <div className="flex flex-col">
