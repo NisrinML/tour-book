@@ -80,7 +80,7 @@ const handleWarning = () =>{
         md:w-24 md:h-12 md:right-14 md:-top-8">
                 <span className="text-text-light xl:text-2xl lg:text-xl md:text-md">My Offers</span>
               </div>
-              {offers.map((offer) => (
+              {offers.length === 0 ? (<div className="text-text-light"> No Offers Available Yet </div>) : (offers.map((offer) => (
               <div key={offer.id} className="flex flex-col bg-button-text-light/75 rounded-lg border border-inputLabelShadow-light/40 
                       space-y-10 xl:px-12 xl:py-10 lg:px-6 lg:py-8 md:px-8 md:py-6">
                 <span className="text-title-light">{getCurrentDateTime()}</span>
@@ -115,6 +115,13 @@ const handleWarning = () =>{
                     <span>Include:</span>
                     <span>Address:</span>
                   </div>
+                  <div className="bg-presenterbg-light  text-text-light absolute text-center content-center
+                drop-shadow-[2px_2px_rgba(211,168,76,0.6)] 
+                xl:rounded    xl:w-24 xl:h-8 xl:-mt-11 xl:left-5
+                lg:rounded-md lg:w-24 lg:h-8 lg:-mt-11 lg:left-5
+                md:rounded-sm md:w-20 md:h-8 md:-mt-12 md:left-5">
+                    <span className="font-['serif'] xl:text-xl lg:text-lg md:text-md">Details</span>
+                </div>
                   <div className="flex flex-col space-y-4">
                     <span>{offer.startDate} - {offer.endDate}</span>
                     <span>{offer.startTime} - {offer.endTime}</span>
@@ -150,7 +157,7 @@ const handleWarning = () =>{
                            md:text-lg md:rounded-md  md:w-20 md:h-8">Delete</button>
                 </div>
               </div>
-                     ))}
+                     )))}
             </div>
         </div>
       </div>
