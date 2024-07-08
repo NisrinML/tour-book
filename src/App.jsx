@@ -21,6 +21,7 @@ import TourDetails from "./features/orgnizer/orgnizerView/TourDetails"
 import TourItenrary from "./features/orgnizer/orgnizerView/TourItenrary"
 import TourManager from "./features/orgnizer/orgnizerView/TourManager"
 import TourPost from "./features/orgnizer/orgnizerView/TourPost"
+import Weather from "./features/orgnizer/orgnizerView/Weather"
 import PresenterLogin from "./features/presenter/presenterView/PresenterLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 import { Router } from "./routers/Router"
@@ -58,6 +59,7 @@ function App() {
       {/* <TourDetails/> */}
       {/* <TourPost/> */}
       {/* <Offers/> */}
+      <Weather/>
     </Layout>
 
   )
