@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  id: "11",
+  id: "",
   name: "",
   status: "",
   size: "",
@@ -18,11 +18,12 @@ const initialState = {
     { id: '2', service: 'restaurant' },
     { id: '3', service: 'wifi' }
   ],
-
-  offers: [
+  offers: [],
+  offer: 
     {
       id: "",
       title: "",
+      offerSize:"",
       startDate: "",
       endDate: "",
       startTime: "",
@@ -31,9 +32,8 @@ const initialState = {
       description: "",
       address: "",
       offerAttatchment: [{ id: '', attachment:'', type: '' }],
-      offerRequest: [{ id: '', quantity: '', description: '', offerId: '', offerState: '' }],
     },
-  ],
+    offerRequest: [{ id: '', quantity: '', description: '', offerId: '', offerState: '' }],
 };
 
 const presenterSlice = createSlice({
@@ -63,10 +63,46 @@ const presenterSlice = createSlice({
     addService: (state, action) => {
       state.services.push(action.payload);
     },
+    setTitle: (state, action) => {
+      state.offer.title = action.payload;
+    },
+    setSizeOfOffer: (state, action) => {
+      state.offer.title = action.payload;
+    },
+    setOfferDescription: (state, action) => {
+      state.offer.description = action.payload;
+    },
+    setPricePerOne: (state, action) => {
+      state.offer.pricePerOne = action.payload;
+    },
+    setOfferStartDate: (state, action) => {
+      state.offers.startDate = action.payload;
+    },
+    setOfferEndDate: (state, action) => {
+      state.offer.endDate = action.payload;
+    },
+    setOfferStartTime: (state, action) => {
+      state.offer.startTime = action.payload;
+    },
+    setOfferEndTime: (state, action) => {
+      state.offer.endTime = action.payload;
+    },
+    addOfferAttachment: (state, action) => {
+      state.offer.offerAttatchment.push(action.payload);
+    },
   }
 });
 
 export const {
+  addOfferAttachment,
+  setSizeOfOffer,
+  setOfferDescription,
+  setPricePerOne,
+  setOfferStartDate,
+  setOfferEndDate,
+  setOfferStartTime,
+  setOfferEndTime,
+  setTitle,
   setSize,
   setWebsite,
   setServices,
