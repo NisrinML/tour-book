@@ -229,10 +229,47 @@ allTours:[ {   sn:1,
   comments:[],
    description:"Spring is Comming"
 },],
-
+offers: [
+  {
+    id: 1,
+    title: "Friday Lunch",
+    serviceId:1,
+    startDate: "2024-04-05",
+    endDate: "2024-05-15",
+    startTime: "2:00 P.M",
+    endTime: "6:00 P.M",
+    pricePerOne: "15",
+    description: "burger - pepsi",
+    address: "",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  },{
+    id: 2,
+    title: "Sunday Lunch",
+    serviceId:2,
+    startDate: "2024-03-05",
+    endDate: "2024-05-15",
+    startTime: "2:00 P.M",
+    endTime: "6:00 P.M",
+    pricePerOne: "15",
+    description: "burger - pepsi",
+    address: "",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  },{
+    id: 3,
+    title: "Monday Lunch",
+    serviceId:3,
+    startDate: "2024-05-11",
+    endDate: "2024-05-15",
+    startTime: "2:00 P.M",
+    endTime: "6:00 P.M",
+    pricePerOne: "15",
+    description: "burger - pepsi",
+    address: "",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  }],
 selected:{
   presenterId:1,
-  offerId:''
+  offerId:0,
 }
 };
 
@@ -313,12 +350,14 @@ const orgnizerSlice = createSlice({
     },
     editTourPointRequirment:(state,action)=>{
       //api for edit requirments
-      
         state.tour.tourPoints.filter(point=>point.id==action.payload.point.id)[0]=action.payload.point
-      }
+    },
+    selecteOffer:(state,action)=>{
+        state.selected.offerId=action.payload;
+    },
   },
 });
 export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
   updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,
-  editTour,selectOffer,editPost,editTourPointRequirment} = orgnizerSlice.actions
+  editTour,selectOffer,editPost,editTourPointRequirment,selecteOffer} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

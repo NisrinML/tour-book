@@ -7,6 +7,7 @@ import EditTour from "./features/orgnizer/orgnizerView/EditTour"
 import MakeSpecialTour from "./features/orgnizer/orgnizerView/MakeSpecialTour"
 import MyTour from "./features/orgnizer/orgnizerView/MyTour"
 import News from "./features/orgnizer/orgnizerView/News"
+import Offers from "./features/orgnizer/orgnizerView/Offers"
 import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerForgetPassword"
 import OrgnizerHomePage from "./features/orgnizer/orgnizerView/OrgnizerHomePage"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
@@ -56,6 +57,7 @@ function App() {
       {/* <EditTour/> */}
       {/* <TourDetails/> */}
       {/* <TourPost/> */}
+      {/* <Offers/> */}
     </Layout>
 
   )
