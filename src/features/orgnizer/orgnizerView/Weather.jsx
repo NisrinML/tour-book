@@ -46,7 +46,7 @@ function Weather(){
       }, []);
     
       if (!weatherData) {
-        return <div className=" text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia'] text-center align-middle">Loading...</div>;
+        return <div className=" text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia'] text-center py-40">Loading...</div>;
       }
     
     return(
@@ -62,12 +62,11 @@ function Weather(){
                             md:w-8 md:h-8" />
                 <div className=" text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia']">Weather</div>
             </div>
-            <div className="flex flex-row justify-center xl:px-28 lg:px-24 md:px-20 py-10 ">
+            <div className="flex flex-row justify-center xl:px-28 lg:px-24 md:px-20 pt-10 ">
             <div className="flex flex-col justify-center rounded-lg w-2/3 drop-shadow-[1px_1px_rgba(117,135,142)]  border-solid border-2 border-text-light
-            bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-orgnizerbg-light via-40% to-clientBackgroundTo-light to-80% opacity-50">
-                      <div className="opacity-100">
+            bg-gradient-to-br from-backOpacityBgFrom-light from-3% via-post-bg-light via-40% to-backOpacityBgTo-light to-80% ">
+                      
                   <WeatherBarChart weatherData={weatherData.list}/>
-                  </div>
 
             </div>
             <div className="flex flex-col justify-center items-end w-1/3">

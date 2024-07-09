@@ -44,6 +44,12 @@ export default {
       'input-text':{
       light:'#000000'
       },
+      'backOpacityBgFrom':{
+        light:'#AFF1E5'
+      },
+      'backOpacityBgTo':{
+        light:'#FFE6A6'
+      },
     'add-button':{
       light:'#359C88'
     },
