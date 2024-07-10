@@ -5,8 +5,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
-import { Square3Stack3DIcon } from "@heroicons/react/24/outline";
- 
+
 
 function WeatherBarChart(props){
 

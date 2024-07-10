@@ -731,6 +731,10 @@ video {
   margin-top: 1rem;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -796,6 +800,10 @@ video {
 
 .h-screen {
   height: 100vh;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .max-h-32 {
@@ -873,6 +881,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-20 {
+  width: 5rem;
 }
 
 .max-w-96 {
@@ -1323,11 +1335,6 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), #FFDD8E var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
-.via-orgnizerbg-light {
-  --tw-gradient-to: rgb(236 243 250 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #ECF3FA var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
 .via-post-bg-light {
   --tw-gradient-to: rgb(254 255 255 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #FEFFFF var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1335,14 +1342,6 @@ video {
 
 .via-40\% {
   --tw-gradient-via-position: 40%;
-}
-
-.via-30\% {
-  --tw-gradient-via-position: 30%;
-}
-
-.via-50\% {
-  --tw-gradient-via-position: 50%;
 }
 
 .to-backOpacityBgTo-light {
@@ -2087,6 +2086,10 @@ video {
     height: 24rem;
   }
 
+  .md\:h-14 {
+    height: 3.5rem;
+  }
+
   .md\:w-10 {
     width: 2.5rem;
   }
@@ -2350,6 +2353,18 @@ video {
     --tw-space-y-reverse: 0;
     margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+  }
+
+  .md\:space-x-16 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(4rem * var(--tw-space-x-reverse));
+    margin-left: calc(4rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:space-x-60 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(15rem * var(--tw-space-x-reverse));
+    margin-left: calc(15rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .md\:rounded {
@@ -3102,6 +3117,18 @@ video {
     --tw-space-y-reverse: 0;
     margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+  }
+
+  .lg\:space-x-20 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(5rem * var(--tw-space-x-reverse));
+    margin-left: calc(5rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .lg\:space-x-60 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(15rem * var(--tw-space-x-reverse));
+    margin-left: calc(15rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
   .lg\:rounded {
@@ -3870,6 +3897,12 @@ video {
     margin-bottom: calc(2rem * var(--tw-space-y-reverse));
   }
 
+  .xl\:space-x-40 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(10rem * var(--tw-space-x-reverse));
+    margin-left: calc(10rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
   .xl\:rounded {
     border-radius: 0.25rem;
   }
@@ -3924,6 +3957,11 @@ video {
   .xl\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
+  }
+
+  .xl\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 
   .xl\:px-28 {

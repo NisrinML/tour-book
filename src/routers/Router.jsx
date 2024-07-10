@@ -21,6 +21,7 @@ import TourDetails from "../features/orgnizer/orgnizerView/TourDetails"
 import TourPost from "../features/orgnizer/orgnizerView/TourPost"
 import Offers from "../features/orgnizer/orgnizerView/Offers"
 import Weather from "../features/orgnizer/orgnizerView/Weather"
+import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOfferDetails"
 export const Router=()=>{
 return(
     <Routes>
@@ -46,6 +47,7 @@ return(
         <Route path="/my-tour/post" element={<TourPost/>}/>
         <Route path="/orgnizer-offers" element={<Offers/>}/>
         <Route path="/orgnizer-weather" element={<Weather/>}/>
+        <Route path="/orgnizer-offers/details" element={<OrgnizerOfferDetails/>}/>
     </Routes>
    
 )

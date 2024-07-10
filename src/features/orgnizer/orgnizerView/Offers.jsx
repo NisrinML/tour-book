@@ -27,7 +27,7 @@ function Offers(){
 
     const handelSelectOffer=(id)=>{
             dispatch(selectOffer(id))
-            navigate('/offer/offer-details')
+            navigate('/orgnizer-offers/details')
     }
 
     const handelBack = () => {

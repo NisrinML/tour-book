@@ -12,6 +12,7 @@ import OrgnizerForgetPassword from "./features/orgnizer/orgnizerView/OrgnizerFor
 import OrgnizerHomePage from "./features/orgnizer/orgnizerView/OrgnizerHomePage"
 import OrgnizerNewPassword from "./features/orgnizer/orgnizerView/OrgnizerNewPassword"
 import OrgnizerNotifications from "./features/orgnizer/orgnizerView/OrgnizerNotifications"
+import OrgnizerOfferDetails from "./features/orgnizer/orgnizerView/OrgnizerOfferDetails"
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
 import OrgnizerSettings from "./features/orgnizer/orgnizerView/OrgnizerSettings"
@@ -25,7 +26,6 @@ import Weather from "./features/orgnizer/orgnizerView/Weather"
 import PresenterLogin from "./features/presenter/presenterView/PresenterLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 import { Router } from "./routers/Router"
-
 
 
 function App() {
@@ -59,7 +59,8 @@ function App() {
       {/* <TourDetails/> */}
       {/* <TourPost/> */}
       {/* <Offers/> */}
-      <Weather/>
+      {/* <Weather/> */}
+      <OrgnizerOfferDetails/>
     </Layout>
 
   )
