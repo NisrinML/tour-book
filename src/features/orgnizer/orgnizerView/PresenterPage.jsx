@@ -15,7 +15,8 @@ function PresenterPage() {
     const location = useGeoLocation();
     const zoomLevel = 13;
     const coordinate = useSelector(state => state.coordinate);
-    const presenter=useSelector(state=>state.orgnizer.presrnterData)
+    const allPresenter=useSelector(state=>state.orgnizer.presrnterData)
+    const presenter=allPresenter[0]
     const [place,setPlace]=useState(coordinate.position)
     const navigate = useNavigate()
     //to make sure the location is loaded before the page 
