@@ -16,6 +16,7 @@ import OrgnizerOfferDetails from "./features/orgnizer/orgnizerView/OrgnizerOffer
 import OrgnizerReport from "./features/orgnizer/orgnizerView/OrgnizerReport"
 import OrgnizerResetPassword from "./features/orgnizer/orgnizerView/OrgnizerResetPassword"
 import OrgnizerSettings from "./features/orgnizer/orgnizerView/OrgnizerSettings"
+import OrgnizerStatus from "./features/orgnizer/orgnizerView/OrgnizerStatus"
 import PresenterPage from "./features/orgnizer/orgnizerView/PresenterPage"
 import TourConfirm from "./features/orgnizer/orgnizerView/TourConfirm"
 import TourDetails from "./features/orgnizer/orgnizerView/TourDetails"
@@ -60,7 +61,8 @@ function App() {
       {/* <TourPost/> */}
       {/* <Offers/> */}
       {/* <Weather/> */}
-      <OrgnizerOfferDetails/>
+      {/* <OrgnizerOfferDetails/> */}
+      <OrgnizerStatus/>
     </Layout>
 
   )
