@@ -12,7 +12,7 @@ const initialState = {
       avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
       email: '',
-      roleId: 2,
+      roleId: 1,
     },
     error: ''
   },

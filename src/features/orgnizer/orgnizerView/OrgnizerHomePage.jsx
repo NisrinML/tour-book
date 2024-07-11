@@ -118,7 +118,8 @@ function OrgnizerHomePage() {
                             ))}
                         </select>
 
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"><span>Status</span></div>
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"
+                        onClick={()=>{navigate('/orgnizer-status')}}><span>Status</span></div>
                         <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light" 
                          onClick={()=>{navigate('/orgnizer-offers')}}><span>Offers</span></div>
                         <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"

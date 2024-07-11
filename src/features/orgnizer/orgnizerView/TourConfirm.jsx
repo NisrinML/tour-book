@@ -20,11 +20,11 @@ function TourConfirm() {
     const dispatch = useDispatch()
 
     const handelBack = () => {
-        navigate('');
+        navigate('/make-special-tour/edit-itenrary');
     }
     
     const handelCancel = () => {
-        navigate('')
+        navigate('/orgnizer-home')
     }
 
     //define required schema with required condition
@@ -58,7 +58,7 @@ function TourConfirm() {
             tour.startTime = startTime,
             tour.notes = notes
         dispatch(setFinalTourDetails(tour))
-        navigate('/')
+        navigate('/orgnizer-home')
     };
     return (
         <div className="flex flex-col">

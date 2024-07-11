@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function OrgnizerNotifications(){
     const notifications=useSelector(state=>state.user.notifications)
     const handelBack = () => {
-        navigate('');
+        navigate('/orgnizer-home');
     }
     return(
         <div className="flex flex-col">

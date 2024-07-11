@@ -36,7 +36,7 @@ function OrgnizerForgetPassword() {
     // handle form submission
     const onSubmit = (data) => {
         dispatch(setEmail(data.email))
-        navigate('/')
+        navigate('/orgnizer-home')
     };
     return (
         <div className=" w-full h-full max-h-full">

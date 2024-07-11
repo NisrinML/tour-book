@@ -168,7 +168,7 @@ const initialState = {
   comments:[],
    description:"Spring is Comming"
 },],
-presrnterData:{
+presrnterData:[{
   name:'Chill & Grill',
   id:1,
   axisX:34.71017331715748,
@@ -179,7 +179,7 @@ presrnterData:{
   phone:'0992448443',
   attachments:['E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png','E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png','E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'],
   services:['Resturant','Pool','Hotel']
-},
+}],
 allTours:[ {   sn:1,
   id: 11,
   title: 'Black Friday',
@@ -269,7 +269,7 @@ offers: [
   }],
 selected:{
   presenterId:1,
-  offerId:0,
+  offerId:2,
 }
 };
 
