@@ -35,7 +35,7 @@ function OrgnizerNewPassword() {
     const onSubmit = (data) => {
         dispatch(setPassword(data.password))
         dispatch(setConfirmPassword(data.confirm))
-        navigate('/')
+        navigate('/orgnizer-home')
         console.log(data);
     };
     return (
@@ -70,7 +70,8 @@ function OrgnizerNewPassword() {
                                 xl:text-2xlxl:rounded-md  xl:w-28 xl:h-10 
                                 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10  
                                 md:text-lg md:rounded-md  md:w-20 md:h-8 ">Save</button>
-                                <button className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
+                                <button onClick={()=>{navigate('/orgnizer-home')}}
+                                className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
                             xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 
                             lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 

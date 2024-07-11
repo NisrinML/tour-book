@@ -2,7 +2,7 @@ import SmallHeader from "../../layout/SmallHeader"
 import backButton from "../../../assets/images/backButton.svg"
 function OrgnizerStatus (){
     const handelBack = () => {
-        navigate('/');
+        navigate('/orgnizer-home');
     }
     return(
         <div className="flex flex-col">

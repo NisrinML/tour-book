@@ -22,7 +22,7 @@ function Weather() {
     fetchWeatherData()
   }
   const handelBack = () => {
-    navigate('/');
+    navigate('/orgnizer-home');
   }
   //get weather prediction using openweathermap forcast api
   const fetchWeatherData = async () => {

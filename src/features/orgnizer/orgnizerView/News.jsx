@@ -47,7 +47,7 @@ function News(){
         }))
     }
     const handelBack = () => {
-        navigate('/');
+        navigate('/orgnizer-home');
     }
     return(
         <div className="flex flex-col">

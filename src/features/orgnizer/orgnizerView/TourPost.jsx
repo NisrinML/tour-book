@@ -38,7 +38,7 @@ function TourPost() {
     const handelPost =()=>{
         var tour={title,reservation,note,images}
         dispatch(editPost({tour}))
-        navigate("/")
+        navigate("/orgnizer-home")
 
     }
 

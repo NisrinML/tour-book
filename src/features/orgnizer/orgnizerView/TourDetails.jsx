@@ -18,7 +18,7 @@ function TourDetails() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handelSave = ()=>{
-        navigate('/')
+        navigate('/my-tour')
     }
 
     const handelEdit = ()=>{

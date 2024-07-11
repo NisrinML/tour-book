@@ -50,7 +50,7 @@ function MakeSpecialTour() {
   const handelBack = () => {
     var tour={}
     dispatch(setFirstTourDetails(tour))
-    navigate('/');
+    navigate('/orgnizer-home');
   }
 
   const handelTitleChange = (e) => {

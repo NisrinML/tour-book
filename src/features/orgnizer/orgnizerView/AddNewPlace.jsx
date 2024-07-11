@@ -31,7 +31,7 @@ function AddNewPlace() {
         iconSize: [38, 38],
     });
     const handelBack = () => {
-        navigate('');
+        navigate('/make-special-tour');
     }
     const handelAdd = () => {
         if (title == null || price == null || fromDate == null || toDate == null || fromTime == null || toTime == null || coordinate == null) {
@@ -43,7 +43,7 @@ function AddNewPlace() {
             }
             dispatch(addPoint(point))
             setError(false)
-            navigate('')
+            navigate('/make-special-tour')
         }
 
     }

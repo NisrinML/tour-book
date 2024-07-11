@@ -30,7 +30,7 @@ function PresenterPage() {
     });
     const images = [image1,image2,image3,image1]
     const handelBack = () => {
-        navigate('');
+        navigate('/orgnizer-home');
     }
    
     return (
