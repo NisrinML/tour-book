@@ -168,7 +168,7 @@ const initialState = {
   comments:[],
    description:"Spring is Comming"
 },],
-presrnterData:{
+presrnterData:[{
   name:'Chill & Grill',
   id:1,
   axisX:34.71017331715748,
@@ -179,7 +179,7 @@ presrnterData:{
   phone:'0992448443',
   attachments:['E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png','E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png','E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'],
   services:['Resturant','Pool','Hotel']
-},
+}],
 allTours:[ {   sn:1,
   id: 11,
   title: 'Black Friday',
@@ -229,10 +229,47 @@ allTours:[ {   sn:1,
   comments:[],
    description:"Spring is Comming"
 },],
-
+offers: [
+  {
+    id: 1,
+    title: "Friday Lunch",
+    serviceId:1,
+    startDate: "2024-04-05",
+    endDate: "2024-05-15",
+    startTime: "2:00 P.M",
+    endTime: "6:00 P.M",
+    pricePerOne: "15",
+    description: "burger - pepsi",
+    address: "",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  },{
+    id: 2,
+    title: "Sunday Lunch",
+    serviceId:2,
+    startDate: "2024-03-05",
+    endDate: "2024-05-15",
+    startTime: "2:00 P.M",
+    endTime: "6:00 P.M",
+    pricePerOne: "15",
+    description: "burger - pepsi",
+    address: "",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  },{
+    id: 3,
+    title: "Monday Lunch",
+    serviceId:3,
+    startDate: "2024-05-11",
+    endDate: "2024-05-15",
+    startTime: "2:00 P.M",
+    endTime: "6:00 P.M",
+    pricePerOne: "15",
+    description: "burger - pepsi",
+    address: "",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  }],
 selected:{
   presenterId:1,
-  offerId:''
+  offerId:2,
 }
 };
 
@@ -313,12 +350,14 @@ const orgnizerSlice = createSlice({
     },
     editTourPointRequirment:(state,action)=>{
       //api for edit requirments
-      
         state.tour.tourPoints.filter(point=>point.id==action.payload.point.id)[0]=action.payload.point
-      }
+    },
+    selecteOffer:(state,action)=>{
+        state.selected.offerId=action.payload;
+    },
   },
 });
 export const { addPoint ,setFinalTourDetails,setFirstTourDetails,changeOrderStatus,
   updateTour,deleteTour,updateOrgnizerData,deleteComment,setTourPoint,selecteItem,
-  editTour,selectOffer,editPost,editTourPointRequirment} = orgnizerSlice.actions
+  editTour,selectOffer,editPost,editTourPointRequirment,selecteOffer} = orgnizerSlice.actions
 export default orgnizerSlice.reducer;

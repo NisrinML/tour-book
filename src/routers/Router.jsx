@@ -30,6 +30,13 @@ import PresenterReport from "../features/presenter/PresenterView/PresenterReport
 import PresenterNewPassword from "../features/presenter/PresenterView/PresenterNewPassword"
 import PresenterResetPassword from "../features/presenter/PresenterView/PresenterResetPassword"
 import PresenterForgetPassword from "../features/presenter/PresenterView/PresenterForgetPassword"
+import Offers from "../features/orgnizer/orgnizerView/Offers"
+import Weather from "../features/orgnizer/orgnizerView/Weather"
+import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOfferDetails"
+import OrgnizerStatus from "../features/orgnizer/orgnizerView/OrgnizerStatus"
+import UserLogin from "../features/user/userView/UserLogin"
+import MainPage from "../features/user/userView/MainPage"
+
 export const Router=()=>{
 return(
     <Routes>
@@ -37,7 +44,7 @@ return(
         <Route  path="/make-special-tour" element={<MakeSpecialTour/>}/>
         <Route path="/my-tour" element={<MyTour/>}/>
         <Route path="/orgnizer/forget-password" element={<OrgnizerForgetPassword/>}/>
-        <Route path="/" element={<OrgnizerHomePage/>}/>
+        <Route path="/orgnizer-home" element={<OrgnizerHomePage/>}/>
         <Route path="/orgnizer/new-password" element={<OrgnizerNewPassword/>}/>
         <Route path="/orgnizer-notification" element={<OrgnizerNotifications/>}/>
         <Route path="/orgnizer/report" element={<OrgnizerReport/>}/>
@@ -64,6 +71,13 @@ return(
         <Route path="/presenter/presenter-forget-password" element={<PresenterForgetPassword/>}/>
         <Route path="/presenter/presenter-reset-password" element={<PresenterResetPassword/>}/>
         <Route path="/presenter/presenter-new-password" element={<PresenterNewPassword/>}/>
+        <Route path="/orgnizer-offers" element={<Offers/>}/>
+        <Route path="/orgnizer-weather" element={<Weather/>}/>
+        <Route path="/orgnizer-offers/details" element={<OrgnizerOfferDetails/>}/>
+        <Route path="/orgnizer-status" element={<OrgnizerStatus/>}/>
+        <Route path="/login" element={<UserLogin/>}/>
+        <Route path="/" element={<MainPage/>}/>
+
     </Routes>
    
 )

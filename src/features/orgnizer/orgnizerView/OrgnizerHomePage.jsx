@@ -118,9 +118,12 @@ function OrgnizerHomePage() {
                             ))}
                         </select>
 
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"><span>Status</span></div>
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"><span>Offers</span></div>
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"><span>Weather</span></div>
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"
+                        onClick={()=>{navigate('/orgnizer-status')}}><span>Status</span></div>
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light" 
+                         onClick={()=>{navigate('/orgnizer-offers')}}><span>Offers</span></div>
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"
+                        onClick={()=>{navigate('/orgnizer-weather')}}><span>Weather</span></div>
                         <div className="flex flex-col w-fit justify-center items-center px-3 rounded hover:bg-selected-bg-light">
                             <div className="flex flex-row space-x-2" onClick={()=>{navigate('/orgnizer-settings')}}>
                                 <span>Settings</span>

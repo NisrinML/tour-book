@@ -31,7 +31,7 @@ function EditTour() {
             title,cost,seatPrice,startDate,endDate,startTime,endTime,reservation,note,images
         }
         dispatch(editTour({tour})) 
-        navigate("/")
+        navigate("/orgnizer-home")
     }
 
     const handelDeleteImage = (id) => {
@@ -54,7 +54,7 @@ function EditTour() {
     }
 
     const handelLeave = () =>{
-        navigate("/")
+        navigate("/orgnizer-home")
     }
 
 

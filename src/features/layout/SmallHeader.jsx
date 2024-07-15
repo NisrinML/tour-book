@@ -9,6 +9,7 @@ function SmallHeader() {
   const state = useSelector((state) => state.user);
   var userID = state.login.data.roleId;
   var userName = state.login.data.userName;
+
   const navigate = useNavigate();
 
  const handleNotification = () =>{
@@ -23,6 +24,11 @@ function SmallHeader() {
     navigate("/presenter-home-page/presenter-orders");  }
  }
  
+
+  const handelLogOut=()=>{
+    
+  }
+
   return (
     <div
       className="flex flex-row   
@@ -69,7 +75,7 @@ function SmallHeader() {
         >
           <span>{userName}</span>
           <span> | </span>
-          <span className="cursor-pointer">Log out</span>
+          <span className="cursor-pointer" onClick={handelLogOut}>Log out</span>
         </div>
       </div>
     </div>

@@ -147,3 +147,7 @@ export const PresenterAttachments =[
    {id:3,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'},
    {id:4,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'},
 ]
+
+export const Services =[
+    {id:1,type:'resturant'},{id:2,type:'hotel'},{id:3,type:'swimming pool'}
+]

@@ -11,8 +11,13 @@ const initialState = {
       confirmPassword: '',
       avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
+
       email: 'user@gmail.com',
       roleId: 2,
+
+      email: '',
+      roleId: 1,
+
     },
     error: ''
   },
