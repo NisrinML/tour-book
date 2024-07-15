@@ -1,45 +1,80 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 const initialState = {
-  id: "",
-  name: "",
-  status: "",
-  size: "",
-  placeName: "",
-  website: "",
+  id: "9",
+  name: "Rolana Kamaria",
+  mobile:'0988',
+  status: "Active",
+  size: "200",
+  placeName: "Magic",
+  website: "www.magic.com",
   axisX: "",
   axisY: "",
-  rate: "",
-  userId: "",
-  PresenterAttatchment: [{ id: '', attachment: '' , type: '' }], 
+  rate: "4",
+  userId: "222",
+  offerRequest: [{ id: '1', quantity: '5', description: 'Rolana Kamaria ask for 5 seats for Black Friday tour', offerId: '2', offerState: '',date:'05/10/2024', },
+  { id: '2', quantity: '5', description: 'Wajeeh Rabahie ask for 3 seats for Spring is Comming tour', offerId: '24', offerState: '',date:'06/14/2024', },
+  { id: '3', quantity: '5', description: 'Nisreen Melhem ask for 4 seats for Winter Better tour', offerId: '25', offerState: '',date:'08/18/2024', },
+  { id: '4', quantity: '5', description: 'Milad Melhem ask for 2 seats for Black Friday tour', offerId: '25', offerState: '' ,date:'05/19/2024',},
+  { id: '5', quantity: '5', description: 'Takla Zidan ask for 4 seats for Black Friday tour', offerId: '25', offerState: '' ,date:'05/11/2024',},
+  { id: '6', quantity: '5', description: 'Abboud Assaf ask for 9 seats for Spring is Comming tour', offerId: '25', offerState: '' ,date:'08/10/2024',},
+  { id: '7', quantity: '5', description: 'Maen Melhem  ask for 18 seats for Spring is Comming tour', offerId: '25', offerState: '' ,date:'08/10/2024',},
+  { id: '8', quantity: '5', description: 'Rita Kamaria ask for 15 seats for Black Friday tour', offerId: '25', offerState: '',date:'05/12/2024', },
+  { id: '9', quantity: '5', description: 'Issa Kamaria ask for 8 seats for Black Friday tour', offerId: '25', offerState: '' ,date:'05/14/2024',},
+  
+  ],
+  PresenterAttatchment: [{ id: '', attachment:'', type: '' }], 
   PresenterServices: [{presenterId:'',serviceId:''}],
   services: [
-    { id: '1', service: 'pool' },
-    { id: '2', service: 'restaurant' },
-    { id: '3', service: 'wifi' }
+    { id: '1', service: 'Pool' },
+    { id: '2', service: 'Restaurant' },
+    { id: '3', service: 'Wifi' },
+    { id: '4', service: 'Hotel' }
   ],
-  offers: [],
+  offers: [    {
+    id: "1",
+    title: "Fridy Lunch",
+    offerSize:"100",
+    startDate: "05/10/2024",
+    endDate: "06/20/2024",
+    startTime: "10:00 AM",
+    endTime: "7:00 PM",
+    pricePerOne: "20$",
+    description: "Burger - Potato - One Drink",
+    address: "syria-homs",
+    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  },
+{ id: 2,
+  title: "Sunday Lunch",
+  startDate: "5/5/2024",
+  endDate: "15/5/2024",
+  startTime: "2:00 P.M",
+  endTime: "6:00 P.M",
+  pricePerOne: "15",
+  description: "burger - pepsi",
+  address: "syria-homs",
+  offerAttatchment: [{ id: '', attachment:'', type: '' }],
+},],
   offer: 
     {
-      id: "",
-      title: "",
-      offerSize:"",
-      startDate: "",
-      endDate: "",
-      startTime: "",
-      endTime: "",
-      pricePerOne: "",
-      description: "",
-      address: "",
+      id: "1",
+      title: "Fridy Lunch",
+      offerSize:"100",
+      startDate: "05/10/2024",
+      endDate: "06/20/2024",
+      startTime: "10:00 AM",
+      endTime: "7:00 PM",
+      pricePerOne: "20$",
+      description: "Burger - Potato - One Drink",
+      address: "syria-homs",
       offerAttatchment: [{ id: '', attachment:'', type: '' }],
     },
-    offerRequest: [{ id: '', quantity: '', description: '', offerId: '', offerState: '' }],
-};
+  };
 
 const presenterSlice = createSlice({
   name: "presenter",
   initialState,
   reducers: {
+
     setSize: (state, action) => {
       state.size = action.payload;
     },
@@ -52,11 +87,7 @@ const presenterSlice = createSlice({
     addImage: (state, action) => {
       state.PresenterAttatchment.push(action.payload);
     },
-    removeImage: (state, action) => {
-      state.PresenterAttatchment = state.PresenterAttatchment.filter(
-        (image) => image.id !== action.payload.id
-      );
-    },
+
     removeOffer: (state, action) => {
       state.offers = state.offers.filter(offer => offer.id !== action.payload.id);
     },
@@ -90,10 +121,39 @@ const presenterSlice = createSlice({
     addOfferAttachment: (state, action) => {
       state.offer.offerAttatchment.push(action.payload);
     },
-  }
+    updatePresenterData:(state,action)=>{
+      state.name=action.payload.userName
+      state.mobile=action.payload.phoneNumber
+      
+    },
+    acceptOrder: (state, action) => {
+      const { orderId } = action.payload;
+      const updatedOrders = state.offerRequest.map(order =>
+        order.id === orderId ? { ...order, offerState: 'Accepted' } : order
+      );
+      return {
+        ...state,
+        offerRequest: updatedOrders
+      };
+    },
+    refuseOrder: (state, action) => {
+      const { orderId } = action.payload;
+      const updatedOrders = state.offerRequest.map(order =>
+        order.id === orderId ? { ...order, offerState: 'Refused' } : order
+      );
+      return {
+        ...state,
+        offerRequest: updatedOrders
+      };
+    },
+   }
 });
 
 export const {
+  acceptOrder, 
+  refuseOrder, 
+  updatePresenterData,
+  deleteOfferAttatchment,
   addOfferAttachment,
   setSizeOfOffer,
   setOfferDescription,
@@ -107,12 +167,11 @@ export const {
   setWebsite,
   setServices,
   addImage,
-  removeImage,
   removeOffer,
   addService
 } = presenterSlice.actions;
 
+
 export const getServices = (state) => state.presenter.services;
 export const getOffers = (state) => state.presenter.offers;
-export const getPresenterAttachments = (state) => state.presenter.PresenterAttatchment;
 export default presenterSlice.reducer;

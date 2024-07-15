@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setSize, setWebsite, setServices, addImage, removeImage, getPresenterAttachments, addService } from '../presenterSlice';
+import { setSize, setWebsite, setServices, addImage, addService } from '../presenterSlice';
 import SmallHeader from '../../layout/SmallHeader';
 import backButton from '../../../assets/images/backButton.svg';
 
@@ -16,7 +16,7 @@ function PresenterProfile() {
   const [allServices, setAllServices] = useState(state.services);
   const [selectedServiceIds, setSelectedServiceIds] = useState(state.PresenterServices.map(s => s.serviceId));
   const [newService, setNewService] = useState("");
-  const uploadedImages = useSelector(getPresenterAttachments).filter(image => image.id);   // Filter out the initial empty attachment
+  const [uploadedImages, setUploadedImages] = useState(state.PresenterAttatchment);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -25,15 +25,15 @@ function PresenterProfile() {
       const newImage = {
         id: new Date().toISOString(), // Generate a unique ID
         attachment: e.target.result,
-        type: 'Profile'
+        type: file.type,
       };
-      dispatch(addImage(newImage));
+      setUploadedImages([...uploadedImages, newImage]);
     };
     reader.readAsDataURL(file);
   };
 
   const handleDeleteImage = (image) => {
-    dispatch(removeImage(image));
+    setUploadedImages(uploadedImages.filter(img => img.id !== image.id));
   };
 
   const handleSizeChange = (e) => {
@@ -72,14 +72,15 @@ function PresenterProfile() {
       presenterId: state.id,
       serviceId
     }));
+    dispatch(addImage(uploadedImages));
     dispatch(setServices(servicesToSave));
     dispatch(setSize(theSize));
     dispatch(setWebsite(theWebsite));
-    navigate("#");
+    navigate("/presenter-home-page");
   };
 
   const handleBack = () => {
-    navigate("#");
+    navigate("/presenter-home-page");
   };
 
   const handleImageClick = (image) => {
@@ -98,7 +99,7 @@ function PresenterProfile() {
             alt="Back"
             className="cursor-pointer xl:w-11 xl:h-10 lg:w-9 lg:h-8 md:w-7 md:h-6"
           />
-          <span className="text-text-light font-['sans-serif'] xl:pt-1 xl:text-3xl lg:pt-1 lg:text-2xl md:pt-0 md:text-xl">
+          <span className="text-title-light font-['sans-serif'] xl:pt-1 xl:text-3xl lg:pt-1 lg:text-2xl md:pt-0 md:text-xl">
             {presenterName}
           </span>
         </div>

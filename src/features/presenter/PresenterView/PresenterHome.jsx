@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeOffer, getOffers } from "../presenterSlice";
@@ -7,27 +7,30 @@ import warning from "../../../assets/images/warning.svg";
 import person from '../../../assets/images/person.png';
 
 function PresenterHome() {
-  const state = useSelector(state=>state.presenter)
+  const state = useSelector(state=>state.presenter);
   const state1 = useSelector(state => state.user);
   const presenterName = state1.login.data.userName;
-  const completedForm = false;
+  const [completedForm, setCompletedForm] = useState(false)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const offers = useSelector(getOffers);
 
-const handleCompletedInfo = () =>{
+   useEffect (() => {
+    if (state.name !== '' || state.mobile !== '' || user.login.data.email !== '')
+      setCompletedForm(true)
+  }, []);
 
-}
+
 const handleWarning = () =>{
-  navigate("#");
+  navigate("/presenter-home-page/presenter-settings");
 }
-  const handleEditOffer = (id) => {s
+  const handleEditOffer = (id) => {
     // Navigate to edit offer page with offer id
-    navigate("#");
+    navigate("/presenter-home-page/presenter-edit-offer");
   };
   const handleDetailsOffer = (id) => {
     // Navigate to offer details page with offer id
-    navigate("#");
+    navigate("/presenter-home-page/presenter-offer-details");
   };
   const handleDeleteOffer = (id) => {
     dispatch(removeOffer({ id }));
@@ -39,8 +42,8 @@ const handleWarning = () =>{
     const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     return `${date} ${time}`;
   };
-  return (
-    <div className="w-full max-h-full">
+  return ( 
+    <div className="w-full max-h-full" >
       <SmallHeader />
       <div className="flex flex-col">
         <div className="flex flex-row absolute 
@@ -61,12 +64,12 @@ const handleWarning = () =>{
           <nav className="text-text-light font-['sans-serif']
                       xl:text-2xl lg:text-xl md:text-md">
             <ul className="flex flex-row space-x-7">
-              <li><a href="#" className="bg-navItem-light">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">New Offer</a></li>
-              <li><a href="#">Orders</a></li>
-              <li><a href="#" className="flex flex-row">Settings {!completedForm && <img src={warning} alt="Warning" onClick={handleWarning}/>}</a></li>
-              <li><a href="#">Make Report</a></li>
+              <li><a className="bg-navItem-light">Home</a></li>
+              <li><a href="/presenter-home-page/presenter-profile" className="hover:bg-presenterPostDetails-light">Profile</a></li>
+              <li><a href="/presenter-home-page/presenter-new-offer" className="hover:bg-presenterPostDetails-light">New Offer</a></li>
+              <li><a href="/presenter-home-page/presenter-orders" className="hover:bg-presenterPostDetails-light">Orders</a></li>
+              <li><a href="/presenter-home-page/presenter-settings" className="flex flex-row hover:bg-presenterPostDetails-light">Settings {!completedForm && <img src={warning} alt="Warning" onClick={handleWarning}/>}</a></li>
+              <li><a href="/presenter/presenter-report" className="hover:bg-presenterPostDetails-light">Make Report</a></li>
             </ul>
           </nav>
         </div>
@@ -127,7 +130,7 @@ const handleWarning = () =>{
                     <span>{offer.startTime} - {offer.endTime}</span>
                     <span>{offer.pricePerOne}</span>
                     <span>{offer.description}</span>
-                    <address>{offer.address}</address>
+                    <span>{offer.address}</span>
                   </div>
                 </div>
                 <div className="flex flex-row justify-center space-x-20">
