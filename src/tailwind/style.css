@@ -843,6 +843,10 @@ video {
   height: 33.333333%;
 }
 
+.h-1\/4 {
+  height: 25%;
+}
+
 .max-h-32 {
   max-height: 8rem;
 }
@@ -930,6 +934,10 @@ video {
 
 .w-1\/4 {
   width: 25%;
+}
+
+.w-9\/12 {
+  width: 75%;
 }
 
 .max-w-96 {
@@ -1178,6 +1186,10 @@ video {
 
 .overflow-y-auto {
   overflow-y: auto;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .rounded {
@@ -1555,6 +1567,11 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 .pb-0 {

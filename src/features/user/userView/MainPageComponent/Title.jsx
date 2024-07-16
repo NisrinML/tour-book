@@ -1,4 +1,4 @@
-import TitleStar from "../../../assets/images/titleStar.png"
+import TitleStar from "../../../../assets/images/titleStar.png"
 function Title(props){
     return(
         <div className="flex flex-row  items-center justify-center bg-image bg-cover bg-center bg-no-repeat p-5 m-5

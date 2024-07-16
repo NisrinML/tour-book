@@ -1,9 +1,9 @@
-import MainBackgrounGirl from "../../../assets/images/mainBackgrounGirl.png"
+import MainBackgrounGirl from "../../../../assets/images/mainBackgrounGirl.png"
 import Title from "./Title"
-import Direction from "../../../assets/images/Direction.svg"
-import MakeTour from "../../../assets/data/a.pdf"
-import PublishOffer from "../../../assets/data/a.pdf"
-import Register from "../../../assets/data/a.pdf"
+import Direction from "../../../../assets/images/Direction.svg"
+import MakeTour from "../../../../assets/data/a.pdf"
+import PublishOffer from "../../../../assets/data/a.pdf"
+import Register from "../../../../assets/data/a.pdf"
 function HelpCenter() {
   
   return (
@@ -81,7 +81,7 @@ function HelpCenter() {
 
             </div>
           </div>
-          <div className="flex flex-row items-end justify-end w-screen pt-5 pr-10">
+          <div className="flex flex-row items-end justify-end w-screen pt-5">
 
             <img src={Direction} className="lg:h-96 lg:w-72 md:h-72 md:w-52" />
           </div>
