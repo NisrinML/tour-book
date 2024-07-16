@@ -4,7 +4,7 @@ import WeatherPhoto from "../../../assets/images/weather.svg"
 import SearchIcon from "../../../assets/images/weatherIcon.png"
 import { useEffect, useState } from "react";
 import axios from "axios";
-import WeatherBarChart from "./WeatherBarChart";
+import WeatherLineChart from "./WeatherLineChart";
 
 function Weather() {
   const [city, setCity] = useState('حمص');
@@ -88,7 +88,7 @@ function Weather() {
         <div className="flex flex-col justify-center rounded-lg w-2/3 drop-shadow-[1px_1px_rgba(117,135,142)]  border-solid border-2 border-text-light mb-10
             bg-gradient-to-br from-backOpacityBgFrom-light from-3% via-post-bg-light via-40% to-backOpacityBgTo-light to-80% ">
 
-          <WeatherBarChart weatherData={weatherData.list} />
+          <WeatherLineChart weatherData={weatherData.list} />
 
         </div>
         <div className="flex flex-col justify-center items-end w-1/3">
