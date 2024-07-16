@@ -19,12 +19,24 @@ import ChooseOffer from "../features/orgnizer/orgnizerView/ChooseOffer"
 import EditTour from "../features/orgnizer/orgnizerView/EditTour"
 import TourDetails from "../features/orgnizer/orgnizerView/TourDetails"
 import TourPost from "../features/orgnizer/orgnizerView/TourPost"
+import PresenterHome from "../features/presenter/PresenterView/PresenterHome"
+import PresenterProfile from "../features/presenter/PresenterView/PresenterProfile"
+import PresenterEditOffer from "../features/presenter/PresenterView/PresenterEditOffer"
+import PresenterOrders from "../features/presenter/PresenterView/PresenterOrders"
+import PresenterSettings from "../features/presenter/PresenterView/PresenterSettings"
+import OfferDetails from "../features/presenter/PresenterView/OfferDetails"
+import PresenterNewOffer from "../features/presenter/PresenterView/PresenterNewOffer"
+import PresenterReport from "../features/presenter/PresenterView/PresenterReport"
+import PresenterNewPassword from "../features/presenter/PresenterView/PresenterNewPassword"
+import PresenterResetPassword from "../features/presenter/PresenterView/PresenterResetPassword"
+import PresenterForgetPassword from "../features/presenter/PresenterView/PresenterForgetPassword"
 import Offers from "../features/orgnizer/orgnizerView/Offers"
 import Weather from "../features/orgnizer/orgnizerView/Weather"
 import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOfferDetails"
 import OrgnizerStatus from "../features/orgnizer/orgnizerView/OrgnizerStatus"
 import UserLogin from "../features/user/userView/UserLogin"
 import MainPage from "../features/user/userView/MainPage"
+
 export const Router=()=>{
 return(
     <Routes>
@@ -48,12 +60,24 @@ return(
         <Route path="/my-tour/edit" element={<EditTour/>}/> 
         <Route path="/my-tour/details" element={<TourDetails/>}/>
         <Route path="/my-tour/post" element={<TourPost/>}/>
+        <Route path="/presenter-home-page" element={<PresenterHome/>}/>
+        <Route path="/presenter-home-page/presenter-profile" element={<PresenterProfile/>}/>
+        <Route path="/presenter-home-page/presenter-new-offer" element={<PresenterNewOffer/>}/>
+        <Route path="/presenter-home-page/presenter-edit-offer" element={<PresenterEditOffer/>}/>
+        <Route path="/presenter-home-page/presenter-settings" element={<PresenterSettings/>}/>
+        <Route path="/presenter-home-page/presenter-orders" element={<PresenterOrders/>}/>
+        <Route path="/presenter-home-page/presenter-offer-details" element={<OfferDetails/>}/>
+        <Route path="/presenter/presenter-report" element={<PresenterReport/>}/>
+        <Route path="/presenter/presenter-forget-password" element={<PresenterForgetPassword/>}/>
+        <Route path="/presenter/presenter-reset-password" element={<PresenterResetPassword/>}/>
+        <Route path="/presenter/presenter-new-password" element={<PresenterNewPassword/>}/>
         <Route path="/orgnizer-offers" element={<Offers/>}/>
         <Route path="/orgnizer-weather" element={<Weather/>}/>
         <Route path="/orgnizer-offers/details" element={<OrgnizerOfferDetails/>}/>
         <Route path="/orgnizer-status" element={<OrgnizerStatus/>}/>
         <Route path="/login" element={<UserLogin/>}/>
         <Route path="/" element={<MainPage/>}/>
+
     </Routes>
    
 )
