@@ -1,7 +1,9 @@
+import HelpCenter from "./HelpCenter"
+
 function MainPage (){
     return(
-        <div>
-
+        <div className="flex flex-col">
+<HelpCenter/>
         </div>
     )
 }

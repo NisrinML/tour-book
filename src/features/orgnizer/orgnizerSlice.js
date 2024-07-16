@@ -270,6 +270,12 @@ offers: [
 selected:{
   presenterId:1,
   offerId:2,
+},
+status:{
+  toursPerMonth:[
+    {month:'Jun',count:0},{month:'Feb',count:2},{month:'Mars',count:4},{month:'Apr',count:2},{month:'May',count:4},{month:'Aug',count:5},{month:'Sept',count:6}],
+  orgnizerTourRating:78.5,
+  porfitPerMonth:[{month:'Jun',porfit:0},{month:'Feb',porfit:0.25},{month:'Mars',porfit:0.44},{month:'Apr',porfit:0.22},{month:'May',porfit:0.44},{month:'Aug',porfit:0.5},{month:'Sept',porfit:0.6}],
 }
 };
 

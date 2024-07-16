@@ -7,7 +7,7 @@ import {
 import Chart from "react-apexcharts";
 
 
-function WeatherBarChart(props){
+function WeatherLineChart(props){
 
     const date=props.weatherData.map(data=>data.dt_txt.slice(0,10)).filter((_, index) => index % 4 === 0);
     const labels = props.weatherData.map(data=>data.weather[0].description).filter((_, index) => index % 4 === 0);
@@ -123,4 +123,4 @@ function WeatherBarChart(props){
     )
 }
 
-export default WeatherBarChart
+export default WeatherLineChart
