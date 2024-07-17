@@ -8,7 +8,7 @@ function HelpCenter() {
   
   return (
     <div className="flex flex-col justify-center items-center">
-      <Title text="Help Center" />
+      <Title text="Help Center" style=" xl:px-48 xl:py-10 lg:px-40 lg:py-7 md:px-32 md:py-5 "/>
       <div className="flex flex-row bg-image bg-cover h-fit w-screen bg-center bg-no-repeat "
         style={{
           backgroundImage: `url(${MainBackgrounGirl})`,

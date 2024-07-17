@@ -3,7 +3,7 @@ import Flower from "../../../../assets/images/flowerBackground.svg"
 function OurPrivacy(){
     return(
         <div className="flex flex-col justify-center items-center">
-    <Title text="Our Privacy" />
+    <Title text="Our Privacy" style=" xl:px-64 xl:py-14 lg:px-44 lg:py-8 md:px-40 md:py-7 "/>
     <div className="flex flex-row justify-center items-start  text-text-light font-['sans-serif']  w-9/12 
              xl:text-2xl 
              lg:text-xl 
