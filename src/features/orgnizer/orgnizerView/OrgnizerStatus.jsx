@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 function OrgnizerStatus() {
     const status = useSelector(state => state.orgnizer.status)
     const tourPerMonth = status.toursPerMonth.map(tour => (tour.count))
-    const porfitPerMonth = status.porfitPerMonth.map(tour => (tour.porfit * 10))
+    const porfitPerMonth = status.toursPerMonth.map(tour => (tour.porfit * 10))
     const orgnizerTourRating = status.orgnizerTourRating
     
     //to configure line chart details
