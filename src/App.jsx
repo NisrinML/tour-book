@@ -28,6 +28,7 @@ import UserLogin from "./features/user/userView/UserLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 import { Router } from "./routers/Router"
 import MainPage from "./features/user/userView/MainPage"
+import PresenterSettings from "./features/presenter/presenterView/PresenterSettings"
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
     <Layout>
 
 
-{/* <Router /> */}
+<Router />
 
       {/* <OrgnizerNewPassword/> */}
       {/* <OrgnizerForgetPassword/> */}
@@ -64,7 +65,8 @@ function App() {
       {/* <Weather/> */}
       {/* <OrgnizerOfferDetails/> */}
       {/* <OrgnizerStatus/> */}
-      <MainPage/>
+      {/* <MainPage/> */}
+      {/* <PresenterSettings/> */}
     </Layout>
 
   )

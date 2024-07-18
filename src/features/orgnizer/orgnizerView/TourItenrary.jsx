@@ -127,7 +127,7 @@ function TourItenrary() {
 
     const handelSave=()=>{
         dispatch(setTourPoint(arrangedLocations))
-        navigate('make-special-tour/confirm')
+        navigate('/make-special-tour/edit-itenrary/confirm')
     }
 
     const handelBack = () => {

@@ -30,6 +30,40 @@ const initialState = {
     endDate: '',
     payment: ''
   },
+  tours:[ {   sn:1,
+    id: 11,
+    title: 'Black Friday',
+    startDate: '5/5/2024', startTime: '2:20 A.M',
+    totalCost: 500,
+    seatCost: 15,
+    numOfSeat: 150,
+    posted:false,
+    status:true,
+    clientRequest: [],
+    likeCounter:400,
+    disLikeCounter:200,
+    comments:[{id:1,comment:'Great post!',feelings:'',clientId:''},{id:2,comment:'I really enjoyed this.',feelings:'',clientId:''},{id:3,comment:'Interesting perspective.',feelings:'',clientId:''}],
+    description:`Join us on an immersive dining experience as we take you on a tour of some of the best restaurants in the city. Over the course of 3-4 hours, you'll visit 4-5 carefully curated establishments, sampling signature dishes and learning about the unique culinary concepts and histories behind each one.The tour begins at a classic bistro known for its fresh, locally-sourced ingredients and French-inspired fare. You'll start with a tasting of the restaurant's renowned house-made charcuterie and a glass of crisp white wine.
+    Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side street. Here you'll savor a regional pasta dish and a seasonal salad while the chef shares insights into their time-honored recipes and techniques.
+     `
+  },
+  {
+    sn:2,
+    id: 22,
+    title: 'Summer Weekend',
+    startDate: '1/6/2024', startTime: '6:00 A.M',
+    totalCost: 400,
+    seatCost: 10,
+    numOfSeat: 200,
+    posted:true,
+    status:true,
+    clientRequest: [{ numOfSeat: 3, status: 'accept' }, { numOfSeat: 5, status: 'accept' }, { numOfSeat: 5, status: 'wait' }, { numOfSeat: 2, status: 'refuse' },]
+    ,
+    likeCounter:450,
+    disLikeCounter:50, 
+    comments:[],
+    description:'Spring is Comming'
+  },],
   reports: { id: '', reason: '', reportType: '', respondentUser: 'Rolana kamarie',respondentEmail:'www.***@gmail.com', complainantUser: '' }
 };
 const fetchUsers = createAsyncThunk("user/fetchUsers", () => {

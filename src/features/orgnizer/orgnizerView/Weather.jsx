@@ -5,12 +5,13 @@ import SearchIcon from "../../../assets/images/weatherIcon.png"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import WeatherLineChart from "./WeatherLineChart";
+import { useNavigate } from "react-router-dom";
 
 function Weather() {
   const [city, setCity] = useState('حمص');
   const [weatherData, setWeatherData] = useState(null);
   const API_KEY = "7611591014c19ce10b7025aee7e85779";
-
+  const navigate = useNavigate()
   useEffect(() => {
     if (city) {
       fetchWeatherData();

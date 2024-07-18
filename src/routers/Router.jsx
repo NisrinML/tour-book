@@ -19,17 +19,17 @@ import ChooseOffer from "../features/orgnizer/orgnizerView/ChooseOffer"
 import EditTour from "../features/orgnizer/orgnizerView/EditTour"
 import TourDetails from "../features/orgnizer/orgnizerView/TourDetails"
 import TourPost from "../features/orgnizer/orgnizerView/TourPost"
-import PresenterHome from "../features/presenter/PresenterView/PresenterHome"
-import PresenterProfile from "../features/presenter/PresenterView/PresenterProfile"
-import PresenterEditOffer from "../features/presenter/PresenterView/PresenterEditOffer"
-import PresenterOrders from "../features/presenter/PresenterView/PresenterOrders"
-import PresenterSettings from "../features/presenter/PresenterView/PresenterSettings"
-import OfferDetails from "../features/presenter/PresenterView/OfferDetails"
-import PresenterNewOffer from "../features/presenter/PresenterView/PresenterNewOffer"
-import PresenterReport from "../features/presenter/PresenterView/PresenterReport"
-import PresenterNewPassword from "../features/presenter/PresenterView/PresenterNewPassword"
-import PresenterResetPassword from "../features/presenter/PresenterView/PresenterResetPassword"
-import PresenterForgetPassword from "../features/presenter/PresenterView/PresenterForgetPassword"
+import PresenterHome from "../features/presenter/presenterView/PresenterHome"
+import PresenterProfile from "../features/presenter/presenterView/PresenterProfile"
+import PresenterEditOffer from "../features/presenter/presenterView/PresenterEditOffer"
+import PresenterOrders from "../features/presenter/presenterView/PresenterOrders"
+import PresenterSettings from "../features/presenter/presenterView/PresenterSettings"
+import OfferDetails from "../features/presenter/presenterView/OfferDetails"
+import PresenterNewOffer from "../features/presenter/presenterView/PresenterNewOffer"
+import PresenterReport from "../features/presenter/presenterView/PresenterReport"
+import PresenterNewPassword from "../features/presenter/presenterView/PresenterNewPassword"
+import PresenterResetPassword from "../features/presenter/presenterView/PresenterResetPassword"
+import PresenterForgetPassword from "../features/presenter/presenterView/PresenterForgetPassword"
 import Offers from "../features/orgnizer/orgnizerView/Offers"
 import Weather from "../features/orgnizer/orgnizerView/Weather"
 import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOfferDetails"
@@ -40,6 +40,7 @@ import MainPage from "../features/user/userView/MainPage"
 export const Router=()=>{
 return(
     <Routes>
+        <Route path="/" element={<MainPage/>}/>
         <Route path="/make-special-tour/add-new-place" element={<AddNewPlace/>}/>
         <Route  path="/make-special-tour" element={<MakeSpecialTour/>}/>
         <Route path="/my-tour" element={<MyTour/>}/>
@@ -52,7 +53,7 @@ return(
         <Route path="/orgnizer/reset-password" element={<OrgnizerResetPassword/>}/>
         <Route path="/orgnizer-settings" element={<OrgnizerSettings/>}/>
         <Route path="/make-special-tour/choose-position/presenter-page" element={<PresenterPage/>}/>
-        <Route path="/make-special-tour/confirm" element={<TourConfirm/>}/>
+        <Route path="/make-special-tour/edit-itenrary/confirm" element={<TourConfirm/>}/>
         <Route path="/my-tour/requests" element={<TourManager/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path="/make-special-tour/edit-itenrary" element={<TourItenrary/>}/>
@@ -76,8 +77,7 @@ return(
         <Route path="/orgnizer-offers/details" element={<OrgnizerOfferDetails/>}/>
         <Route path="/orgnizer-status" element={<OrgnizerStatus/>}/>
         <Route path="/login" element={<UserLogin/>}/>
-        <Route path="/" element={<MainPage/>}/>
-
+        
     </Routes>
    
 )
