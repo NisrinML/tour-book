@@ -35,7 +35,7 @@ function ContactUs() {
             setEnable(false)
     };
     return (
-        <div className="flex flex-row justify-center items-center ">
+        <div className="flex flex-row justify-center items-center " id="contact">
             <div className="flex flex-col justify-center items-center space-y-10">
                 <Title text="Contact Us" style=" xl:px-52 xl:py-10 lg:px-44 lg:py-7 md:px-36 md:py-5 " />
                 <div className="flex flex-row justify-center items-center w-full ">

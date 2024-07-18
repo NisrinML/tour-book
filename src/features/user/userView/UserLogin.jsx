@@ -13,12 +13,7 @@ function PresenterLogin() {
   const loginSchema = Yup.object().shape({
     username: Yup.string().required("Required"),
     password: Yup.string()
-      .required("Required")
-      .matches(
-        "^.*((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$",
-        "your password not strong!!"
-      )
-      .min(8, "Too Short, a password with at least 8 letters is required!"),
+      .required("Required"),
   });
   const {
     register,
@@ -31,6 +26,17 @@ function PresenterLogin() {
   const onSubmit = (data) => {
 
     console.log(data);
+    //Authenticate user and get the user id 
+    //var id=dispatch()
+    var id=2
+    if(id==1){
+      navigate('/presenter-home-page')
+    }
+    else if(id==2){
+      navigate('/orgnizer-home')
+    }else{
+
+    }
   };
   return (
     <div className=" w-full h-screen max-h-full">
@@ -85,7 +91,7 @@ function PresenterLogin() {
               className="text-center  font-['sans-serif'] text-loginButtonText-light flex
           bg-gradient-to-br from-loginButtonFrom-light via-loginButtonVia-light to-loginButtonTo-light 
           drop-shadow-[3px_6px_rgba(117,135,142,0.5)] rounded-md 
-          hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-login-button-hover-light
+          hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-gradient-to-br hover:from-loginButtonVia-light hover:via-loginButtonVia-light hover:to-loginButtonVia-light
           xl:text-2xl xl:w-28 xl:h-10 xl:pl-7 xl:pt-1 
           lg:text-xl  lg:w-24 lg:h-10 lg:pl-7 lg:pt-1
           md:text-lg  md:w-20 md:h-8  md:pl-5 md:pt-0 "

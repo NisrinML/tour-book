@@ -8,11 +8,13 @@ import {
 } from "@material-tailwind/react";
 import Chart from "react-apexcharts";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function OrgnizerStatus() {
     const status = useSelector(state => state.orgnizer.status)
     const tourPerMonth = status.toursPerMonth.map(tour => (tour.count))
     const porfitPerMonth = status.toursPerMonth.map(tour => (tour.porfit * 10))
     const orgnizerTourRating = status.orgnizerTourRating
+    const navigate = useNavigate()
     
     //to configure line chart details
     const chartConfig = {

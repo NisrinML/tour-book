@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { setFinalTourDetails } from "../orgnizerSlice";
+import { useNavigate } from "react-router-dom";
 function TourConfirm() {
     const state = useSelector(state => state.orgnizer)
     const [seatPrice, setSeatPrice] = useState(0)
@@ -18,7 +19,8 @@ function TourConfirm() {
     const [numOfSeats, setNumOfSeats] = useState(0)
     const [notes, setNotes] = useState('')
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
+    
     const handelBack = () => {
         navigate('/make-special-tour/edit-itenrary');
     }

@@ -7,7 +7,7 @@ import Register from "../../../../assets/data/a.pdf"
 function HelpCenter() {
 
   return (
-    <div className="flex flex-row justify-center items center">
+    <div className="flex flex-row justify-center items center" id="help">
       <div className="flex flex-col justify-center items-center space-y-10">
         <Title text="Help Center" style=" xl:px-48 xl:py-10 lg:px-40 lg:py-7 md:px-32 md:py-5 " />
         <div className="flex flex-row bg-image bg-cover h-fit w-screen bg-center bg-no-repeat "

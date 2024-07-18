@@ -10,7 +10,7 @@ function OrgnizerBigLayout({ children }) {
     mainColor = 'bg-orgnizerbg-light';
   }
   else if (user === 1) {
-    mainColor = 'bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-clientBackgroundVia-light via-40% to-clientBackgroundTo-light to-80%'
+    mainColor = 'bg-gradient-to-br from-clientBackgroundFrom-light from-3% via-clientBackgroundVia-light via-10% to-clientBackgroundTo-light to-80%'
   }
   else if (user === 3) {
     mainColor = 'bg-presenterbg-light'

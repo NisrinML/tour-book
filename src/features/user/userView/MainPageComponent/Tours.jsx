@@ -41,9 +41,9 @@ function Tours(){
             }))
         }
     return(
-        <div className="flex flex-row justify-center items-center ">
+        <div className="flex flex-row justify-center items-center " id="tours">
             <div className="flex flex-col justify-center items-center ">
-            <div className="flex flex-row justify-center items-center pb-10 xl:p-10 lg:pt-20 md:pt-32">
+            <div className="flex flex-row justify-center items-center ">
 
                 <div className="flex flex-col items-center justify-start w-1/2 space-y-10 ">
                  {tours.map(tour=>{

@@ -38,7 +38,7 @@ function App() {
     <Layout>
 
 
-{/* <Router /> */}
+<Router />
 
       {/* <OrgnizerNewPassword/> */}
       {/* <OrgnizerForgetPassword/> */}
@@ -65,7 +65,7 @@ function App() {
       {/* <Weather/> */}
       {/* <OrgnizerOfferDetails/> */}
       {/* <OrgnizerStatus/> */}
-      <MainPage/>
+      {/* <MainPage/> */}
       {/* <PresenterSettings/> */}
     </Layout>
 

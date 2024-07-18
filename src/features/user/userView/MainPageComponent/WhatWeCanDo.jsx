@@ -4,7 +4,7 @@ import RightKit from "../../../../assets/images/rightKitIcon.svg"
 import Camera from "../../../../assets/images/mainCameraIcon.svg"
 function WhatWeCanDo() {
     return (
-        <div className="flex flex-row justify-center items center">
+        <div className="flex flex-row justify-center items center" id="services">
             <div className="flex flex-col justify-center items-center space-y-10">
                 <Title text="ًWhat We Can Do ?" style=" xl:px-36 xl:py-10 lg:px-32 lg:py-8 md:px-28 md:py-6 " />
                 <div className="flex flex-row justify-between items-center">

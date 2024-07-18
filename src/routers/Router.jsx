@@ -40,6 +40,7 @@ import MainPage from "../features/user/userView/MainPage"
 export const Router=()=>{
 return(
     <Routes>
+        <Route path="/" element={<MainPage/>}/>
         <Route path="/make-special-tour/add-new-place" element={<AddNewPlace/>}/>
         <Route  path="/make-special-tour" element={<MakeSpecialTour/>}/>
         <Route path="/my-tour" element={<MyTour/>}/>
@@ -52,7 +53,7 @@ return(
         <Route path="/orgnizer/reset-password" element={<OrgnizerResetPassword/>}/>
         <Route path="/orgnizer-settings" element={<OrgnizerSettings/>}/>
         <Route path="/make-special-tour/choose-position/presenter-page" element={<PresenterPage/>}/>
-        <Route path="/make-special-tour/confirm" element={<TourConfirm/>}/>
+        <Route path="/make-special-tour/edit-itenrary/confirm" element={<TourConfirm/>}/>
         <Route path="/my-tour/requests" element={<TourManager/>}/>
         <Route path="/news" element={<News/>}/>
         <Route path="/make-special-tour/edit-itenrary" element={<TourItenrary/>}/>
@@ -76,8 +77,7 @@ return(
         <Route path="/orgnizer-offers/details" element={<OrgnizerOfferDetails/>}/>
         <Route path="/orgnizer-status" element={<OrgnizerStatus/>}/>
         <Route path="/login" element={<UserLogin/>}/>
-        <Route path="/" element={<MainPage/>}/>
-
+        
     </Routes>
    
 )

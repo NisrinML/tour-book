@@ -4,7 +4,7 @@ import Motor from "../../../../assets/images/motor.png"
 import Cloud from "../../../../assets/images/Cloud.png"
 function AboutUs() {
     return (
-        <div className="flex flex-row justify-center items center">
+        <div className="flex flex-row justify-center items center" id="about">
             <div className="flex flex-col justify-center items-center space-y-20 px-10">
                 <Title text=" About Us" style=" xl:px-72 xl:py-14 lg:px-44 lg:py-7 md:px-40 md:py-6 " />
                 <div className="flex flex-row items-center justify-between bg-image bg-cover bg-center bg-no-repeat px-5 py-10 m-5 mt-20 relative w-11/12 h-1/3"
