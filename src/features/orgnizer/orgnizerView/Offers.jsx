@@ -7,7 +7,7 @@ import { Services } from "../../../assets/data/tempData";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
-import { selectOffer } from "../orgnizerSlice"
+import { selecteOfferId } from "../orgnizerSlice"
 function Offers(){
     const allOffers = useSelector(state=>state.orgnizer.offers)
     const [text,setText]=useState('')
@@ -26,7 +26,8 @@ function Offers(){
     }
 
     const handelSelectOffer=(id)=>{
-            dispatch(selectOffer(id))
+     
+            dispatch(selecteOfferId(id))
             navigate('/orgnizer-offers/details')
     }
 
@@ -97,6 +98,7 @@ function Offers(){
                               </div>
                                       </div> 
                                 )
+                            
                             })}
                      
                          </div>

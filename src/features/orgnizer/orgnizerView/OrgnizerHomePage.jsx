@@ -95,7 +95,7 @@ function OrgnizerHomePage() {
             lg:py-10 lg:px-8 lg:space-x-4
             md:py-8 md:px-12 md:space-x-3">
                 <div className="flex flex-col">
-                    <div className="flex flex-row w-3/4  text-text-light hover:text-title-light font-['sans-serif']  hover:cursor-pointer 
+                    <div className="flex flex-row w-3/4  text-text-light  font-['sans-serif']  hover:cursor-pointer 
                             xl:text-xl  xl:space-x-6
                             lg:text-lg  lg:space-x-4 lg:pl-5
                             md:text-base ">
@@ -118,13 +118,13 @@ function OrgnizerHomePage() {
                             ))}
                         </select>
 
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light"
                         onClick={()=>{navigate('/orgnizer-status')}}><span>Status</span></div>
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light" 
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light" 
                          onClick={()=>{navigate('/orgnizer-offers')}}><span>Offers</span></div>
-                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light"
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light"
                         onClick={()=>{navigate('/orgnizer-weather')}}><span>Weather</span></div>
-                        <div className="flex flex-col w-fit justify-center items-center px-3 rounded hover:bg-selected-bg-light">
+                        <div className="flex flex-col w-fit justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light">
                             <div className="flex flex-row space-x-2" onClick={()=>{navigate('/orgnizer-settings')}}>
                                 <span>Settings</span>
                                 {complete && <img src={WarningIcon} className="xl:w-7 xl:h-7 lg:w-6 lg:h-6 md:w-5 md:h-5" />}

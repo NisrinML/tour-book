@@ -35,7 +35,7 @@ function PresenterLogin() {
     else if(id==2){
       navigate('/orgnizer-home')
     }else{
-
+      navigate('/user-home-page')
     }
   };
   return (
