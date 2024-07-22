@@ -2,6 +2,7 @@ import SmallHeader from "../../layout/SmallHeader"
 import backButton from "../../../assets/images/backButton.svg"
 import acceptIcon from "../../../assets/images/acceptIcon.svg"
 import waitingIcon from "../../../assets/images/waitingIcon.svg"
+import MoreIcon from "../../../assets/images/moreIcon.png"
 import { Tours } from "../../../assets/data/tempData"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
@@ -22,17 +23,20 @@ function MyTour() {
         navigate('/my-tour/edit');
     }
     const handelDelete = (id) => {
-        alert(id)
+
         dispatch(deleteTour(id))
         navigate('/my-tour');
     }
     const handelDetails = (id) => {
+
         dispatch(updateTour(id))
         navigate('/my-tour/details');
     }
     const handelRequests  = (id) => {
-        dispatch(updateTour(id))
         navigate('/my-tour/requests');
+       dispatch(updateTour(id))
+       
+     
     }
     return (
         <div className="flex flex-col">
@@ -109,18 +113,24 @@ function MyTour() {
                                                     <span className="text-title-light font-['Open_Sans'] xl:text-2xl lg:text-xl md:text-base">Number of reserved seats :</span>
                                                     <span className="text-text-light font-['Open_Sans'] xl:text-2xl lg:text-xl md:text-base">{reservedSeats}</span>
                                                 </div>
+                                                {tour.status&&tour.posted?<div className="flex flex-row space-x-8">
+                                                    <span className="text-title-light font-['Open_Sans'] xl:text-2xl lg:text-xl md:text-base">Orders :</span>
+                                                    <span className="text-text-light font-['Open_Sans'] xl:text-2xl lg:text-xl md:text-base">{tour.clientRequest.length}</span>
+                                                    <img src={MoreIcon}  onClick={()=>handelRequests(tour.id)}
+                                                     className="hover:cursor-pointer xl:w-9 xl:h-9 lg:w-8 lg:h-8 md:w-7 md:h-7  hover: hover:drop-shadow-[1px_1px_rgba(117,135,142)]"/>
+                                                </div>:null}
                                             </div>
                                         </div>
                                         {tour.status&&tour.posted? <div className="flex flex-row justify-between items-center 
                                         xl:p-5 xl:px-40
                                         lg:p-3 lg:px-20
                                         md:p-2 md:px-16 ">
-                                        <button    onClick={()=>handelRequests(tour.id)}
+                                        {/* <button    onClick={()=>handelRequests(tour.id)}
                                             className="flex flex-col justify-center items-center text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-save-button-light text-button-text-light 
                                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-save-button-hover-light
                                             xl:text-2xl xl:rounded-md  xl:w-28 xl:h-10  
                                             lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
-                                            md:text-lg md:rounded-md  md:w-20 md:h-8 ">ٌRequest</button>
+                                            md:text-lg md:rounded-md  md:w-20 md:h-8 ">Orders {tour.clientRequest.length}  &gt; </button> */}
                                             <button onClick={()=>handelEdit(tour.id)}
                                             className="flex flex-col justify-center items-center text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-change-button-light text-button-text-light 
                                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-change-button-hover-light

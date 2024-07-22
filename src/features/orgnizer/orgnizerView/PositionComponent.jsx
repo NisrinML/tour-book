@@ -38,7 +38,7 @@ function PositionComponent(props){
                             <img src={props.point.status=='accept'?AcceptIcon:props.point.status=='wait'?WaitingIcon:RefuseIcon} 
                             className="flex flex-col xl:w-10 xl:h-10 lg:w-8 lg:h-8 md:w-6 md:h-6"/>
                 </div>
-                <div className="flex flex-row justify-center items-center space-x-5">
+               {props.point.status=='accept'?<> <div className="flex flex-row justify-center items-center space-x-5">
                 <img src={SaveIcon}  onClick={handelSave}
                  className="flex flex-col hover:cursor-pointer hover:drop-shadow-[1px_1px_rgba(117,135,142)]
                 xl:w-8 xl:h-8 lg:w-6 lg:h-6 md:w-5 md:h-5"/>
@@ -56,6 +56,8 @@ function PositionComponent(props){
                      className="flex flex-col  hover:cursor-pointer hover:drop-shadow-[1px_1px_rgba(117,135,142)]
                     xl:w-10 xl:h-10 lg:w-8 lg:h-8 md:w-6 md:h-6"/>
                     </div>}
+                    </>
+                    :null}
             </div>
         </div>
     )
