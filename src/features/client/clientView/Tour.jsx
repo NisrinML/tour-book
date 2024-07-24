@@ -8,18 +8,20 @@ import PlusIcon from "../../../assets/images/PlusIcon.png"
 import MinusIcon from "../../../assets/images/minus.png"
 import Person from "../../../assets/images/person.png"
 import FilledLikeIcon from "../../../assets/images/filledLikeIcon.svg"
-import FilledDisLikeIcon from "../../../assets/images/filledDislikeIcon.svg"
+import FilledDisLikeIcon from "../../../assets/images/filledDislikeIcon1.svg"
 import image1 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'
 import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'
 import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'
 import Comments from "./Comments"
-import { useCallback, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
-import { selecteOrgnizerId, selecteTourId } from "../clientSlice"
+import { disLikeTour, likeTour, selecteOrgnizerId, selecteTourId, undisLikeTour, unlikeTour } from "../clientSlice"
+import { useSelector } from "react-redux"
 
 function Tour(props) {
     const tour = props.tour
+    const user = useSelector(state => state.client)
     const [complete, setComplete] = useState(false)
     const images = [image1, image2, image3, image1, image2, image3]
     const [showFullGallery, setShowFullGallery] = useState({ id: null, value: false });
@@ -28,14 +30,30 @@ function Tour(props) {
     const [showCommentsModal, setShowCommentsModal] = useState({ id: null, value: false });
     const [like, setLike] = useState(false)
     const [disLike, setDisLike] = useState(false)
-    const [likeCounter,setLikeCounter]=useState(tour.likeCounter)
-    const [disLikeCounter,setDisLikeCounter]=useState(tour.disLikeCounter)
+    const [likeCounter, setLikeCounter] = useState(tour.likeCounter)
+    const [disLikeCounter, setDisLikeCounter] = useState(tour.disLikeCounter)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [likeIcon, setLikeIcon] = useState(LikeIcon)
+    const [disLikeIcon, setDisLikeIcon] = useState(DisLikeIcon)
 
+    //to initial like & disLike with right value & icon
+    useEffect(() => {
+        var like = tour.usersLike.filter(likeId => likeId == user.id)
+        var dislike = tour.usersDislike.filter(dislikeId => dislikeId == user.id)
+        if (like[0]) {
+            setLikeIcon(FilledLikeIcon)
+            setLike(true)
+        }
+        else if (dislike[0]) {
+            setDisLikeIcon(FilledDisLikeIcon)
+            setDisLike(true)
+
+        }
+    }, [])
 
     //to handle report event
-    const handleReport = () => { 
+    const handleReport = () => {
         if (tour.id != null) {
             dispatch(selecteOrgnizerId(tour.orgnizerId))
             //navigate to rerport page
@@ -44,16 +62,62 @@ function Tour(props) {
     }
 
     //to handel like action 
-    const handelLike = (id) => {
-        // setLike(!like)
-        // setDisLike(false)
+    const handelLike = () => {
+        //api for like
+        if (like) {
+            setLike(false)
+            setLikeIcon(LikeIcon)
+            setLikeCounter(likeCounter - 1)
+            //call unlike api
+            var info = { tourId: tour.id, clientId: user.id }
+            dispatch(unlikeTour({ info }))
+        } else {
+            setLike(true)
+            setLikeIcon(FilledLikeIcon)
+            setLikeCounter(likeCounter + 1)
+            //call like api
+            var info = { tourId: tour.id, clientId: user.id }
+            dispatch(likeTour({ info }))
+            if (disLike) {
+                setDisLike(false)
+                setDisLikeIcon(DisLikeIcon)
+                setDisLikeCounter(disLikeCounter - 1)
+                //call undislike api
+                var info = { tourId: tour.id, clientId: user.id }
+                dispatch(undisLikeTour({ info }))
+            }
+        }
 
     }
 
     //to handel dislike action 
-    const handelDislike = (id) => {
-        // setDisLike(!disLike)
-        // setLike(false)
+    const handelDislike = () => {
+        //api for dislike
+
+        if (disLike) {
+            setDisLike(false)
+            setDisLikeIcon(DisLikeIcon)
+            setDisLikeCounter(disLikeCounter - 1)
+            //call undislike api
+            var info = { tourId: tour.id, clientId: user.id }
+            dispatch(undisLikeTour({ info }))
+        } else {
+            setDisLike(true)
+            setDisLikeIcon(FilledDisLikeIcon)
+            setDisLikeCounter(disLikeCounter + 1)
+            //call dislike api
+            var info = { tourId: tour.id, clientId: user.id }
+            dispatch(disLikeTour({ info }))
+            if (like) {
+                setLike(false)
+                setLikeIcon(LikeIcon)
+                setLikeCounter(likeCounter - 1)
+                //call unlike api
+                var info = { tourId: tour.id, clientId: user.id }
+                dispatch(unlikeTour({ info }))
+            }
+        }
+
     }
 
     //to show box image if number of image less than 4 else will show them as Gallery
@@ -86,7 +150,7 @@ function Tour(props) {
 
     //to handel register on tour
     const handelRegister = () => {
-        if(tour.id!=null){
+        if (tour.id != null) {
             dispatch(selecteTourId(tour.id))
             //navigate to register
             navigate('/')
@@ -95,8 +159,8 @@ function Tour(props) {
 
     //to handel invite friends on tour
     const handelInvite = () => {
-     
-        if(tour.id!=null){
+
+        if (tour.id != null) {
             dispatch(selecteTourId(tour.id))
             //navigate to invite page
             navigate('/')
@@ -105,7 +169,7 @@ function Tour(props) {
 
     //to navigate to orgnizer page when click image
     const handelGoToOrgnizer = (id) => {
-      
+
         if (tour.id != null) {
             dispatch(selecteOrgnizerId(tour.orgnizerId))
             //navigate to orgnizer page
@@ -188,14 +252,14 @@ function Tour(props) {
                             xl:text-lg lg:text-base md:text-sm">
                     <div className="flex flex-col justify-center items-center">
                         <div className="flex flex-row items-center justify-center hover:cursor-pointer space-x-4"
-                            onClick={() => { handelLike() }}><span>{likeCounter} likes</span>
-                            <img src={like?FilledLikeIcon:LikeIcon} className="
-                                xl:w-8 xl:h-8 lg:w-7 lg:h-7 md:w-6 md:h-6"/></div>
+                            onClick={handelLike}><span>{likeCounter} likes</span>
+                            <img src={likeIcon}
+                                className="xl:w-8 xl:h-8 lg:w-7 lg:h-7 md:w-6 md:h-6" /></div>
                     </div>
                     <div className="flex flex-col justify-center items-center">
                         <div className="flex flex-row items-center justify-center hover:cursor-pointer space-x-4"
-                            onClick={handelDislike()}><span>{disLikeCounter} dislikes</span>
-                            <img src={disLike?FilledDisLikeIcon:DisLikeIcon} className="
+                            onClick={handelDislike}><span>{disLikeCounter} dislikes</span>
+                            <img src={disLikeIcon} className="
                                 xl:w-8 xl:h-8 lg:w-7 lg:h-7 md:w-6 md:h-6"/></div>
                     </div>
                     <div className="flex flex-col justify-center items-center">
