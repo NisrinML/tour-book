@@ -99,6 +99,9 @@ export default {
       'selected-bg': {
         light: '#B7CDC6'
       },
+      'clientbg':{
+        light: '#EBF6DA'
+      },
       'loginButtonText': {
         light: '#503900'
       },

@@ -29,7 +29,7 @@ import PresenterProfile from "./features/presenter/presenterView/PresenterProfil
 import { Router } from "./routers/Router"
 import MainPage from "./features/user/userView/MainPage"
 import PresenterSettings from "./features/presenter/presenterView/PresenterSettings"
-import UserHomePage from "./features/user/userView/UserHomePage"
+import ClientHomePage from "./features/client/clientView/ClientHomePage"
 import OfferDetails from "./features/presenter/presenterView/OfferDetails"
 import PresenterNewOffer from "./features/presenter/presenterView/PresenterNewOffer"
 
@@ -70,7 +70,7 @@ function App() {
       {/* <OrgnizerStatus/> */}
       {/* <MainPage/> */}
       {/* <PresenterSettings/> */}
-      {/* <UserHomePage/> */}
+      <ClientHomePage/>
       {/* <OfferDetails/> */}
       {/* <PresenterNewOffer/> */}
     </Layout>
