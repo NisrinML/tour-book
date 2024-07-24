@@ -13,9 +13,7 @@ const initialState = {
       status: '',
 
       email: 'user@gmail.com',
-      roleId: 2,
-
-      email: '',
+      roleId: 1,
 
     },
     error: ''

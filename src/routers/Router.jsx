@@ -36,7 +36,7 @@ import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOffe
 import OrgnizerStatus from "../features/orgnizer/orgnizerView/OrgnizerStatus"
 import UserLogin from "../features/user/userView/UserLogin"
 import MainPage from "../features/user/userView/MainPage"
-import UserHomePage from "../features/user/userView/UserHomePage"
+import UserHomePage from "../features/client/clientView/ClientHomePage"
 
 export const Router=()=>{
 return(

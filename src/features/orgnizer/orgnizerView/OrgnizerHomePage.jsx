@@ -29,12 +29,14 @@ function OrgnizerHomePage() {
     const [showDeleteOption, setShowDeleteOption] = useState({ id: null, value: false })
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    
     //intialize options with select list options and its navigation links
     const options = [
         { label: 'My Tours', value: '/my-tour' },
         { label: 'Make Special Tour', value: '/make-special-tour' },
         { label: 'News', value: '/news' },
     ];
+
     //to show box image if number of image less than 4 else will show them as Gallery
     const handlePhotoClick = (id) => {
         setShowFullGallery((prevStates) => ({
@@ -46,6 +48,7 @@ function OrgnizerHomePage() {
             [id]: !prevStates[id]
         }))
     };
+
     //to clamp text depending on what client choose
     const handleShowAllTextClick = (id) => {
         setShowAllText((prevStates) => ({
@@ -53,6 +56,7 @@ function OrgnizerHomePage() {
             [id]: !prevStates[id]
         }))
     }
+
     //to show tour's comment modal when click on it
     const handleShowCommentModal = (id) => {
         setShowCommentsModal((prevStates) => ({
@@ -60,18 +64,20 @@ function OrgnizerHomePage() {
             [id]: !prevStates[id]
         }))
     }
+
     //to handle navigate to the selected option
     const handleOptionChange = (event) => {
         //setSelectedOption(event.target.value)
         navigate(event.target.value)
-
     }
+
     //to test if there is missing data in orgnizer informations
     const missingOrgnizerData = () => {
         console.log(user.login.data.email)
         if (orgnizer.name == '' || orgnizer.mobile == '' || user.login.data.email == '')
             setComplete(true)
     }
+    
     //to show delete tour option
     const handleShowDeleteOption = (id) => {
         setShowDeleteOption((prevStates) => ({
