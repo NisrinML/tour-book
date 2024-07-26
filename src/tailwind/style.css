@@ -604,6 +604,10 @@ video {
   inset: 0px;
 }
 
+.bottom-4 {
+  bottom: 1rem;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -618,6 +622,10 @@ video {
 
 .right-1\/3 {
   right: 33.333333%;
+}
+
+.right-4 {
+  right: 1rem;
 }
 
 .top-0 {
@@ -640,12 +648,20 @@ video {
   top: 14rem;
 }
 
-.bottom-4 {
-  bottom: 1rem;
+.right-10 {
+  right: 2.5rem;
 }
 
-.right-4 {
-  right: 1rem;
+.right-20 {
+  right: 5rem;
+}
+
+.bottom-16 {
+  bottom: 4rem;
+}
+
+.bottom-0 {
+  bottom: 0px;
 }
 
 .z-50 {
@@ -826,6 +842,10 @@ video {
   height: 1.25rem;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
 .h-9 {
   height: 2.25rem;
 }
@@ -849,10 +869,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-6 {
-  height: 1.5rem;
 }
 
 .max-h-32 {
@@ -923,6 +939,10 @@ video {
   width: 13rem;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
 .w-8\/12 {
   width: 66.666667%;
 }
@@ -946,10 +966,6 @@ video {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-6 {
-  width: 1.5rem;
 }
 
 .max-w-96 {
@@ -1345,6 +1361,11 @@ video {
   background-color: rgb(207 242 235 / var(--tw-bg-opacity));
 }
 
+.bg-loginButtonVia-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 221 142 / var(--tw-bg-opacity));
+}
+
 .bg-navItem-light {
   --tw-bg-opacity: 1;
   background-color: rgb(245 223 172 / var(--tw-bg-opacity));
@@ -1383,6 +1404,32 @@ video {
 .bg-selected-bg-light {
   --tw-bg-opacity: 1;
   background-color: rgb(183 205 198 / var(--tw-bg-opacity));
+}
+
+.bg-clientbg-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 246 218 / var(--tw-bg-opacity));
+}
+
+.bg-clientBackgroundVia-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(131 255 233 / var(--tw-bg-opacity));
+}
+
+.bg-opacity-70 {
+  --tw-bg-opacity: 0.7;
+}
+
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
+}
+
+.bg-opacity-10 {
+  --tw-bg-opacity: 0.1;
+}
+
+.bg-opacity-15 {
+  --tw-bg-opacity: 0.15;
 }
 
 .bg-gradient-to-b {
@@ -1431,10 +1478,6 @@ video {
   --tw-gradient-from-position: 20%;
 }
 
-.from-30\% {
-  --tw-gradient-from-position: 30%;
-}
-
 .via-clientBackgroundVia-light {
   --tw-gradient-to: rgb(131 255 233 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #83FFE9 var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1450,20 +1493,16 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), #FEFFFF var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 
+.via-10\% {
+  --tw-gradient-via-position: 10%;
+}
+
 .via-40\% {
   --tw-gradient-via-position: 40%;
 }
 
 .via-50\% {
   --tw-gradient-via-position: 50%;
-}
-
-.via-20\% {
-  --tw-gradient-via-position: 20%;
-}
-
-.via-10\% {
-  --tw-gradient-via-position: 10%;
 }
 
 .to-backOpacityBgFrom-light {
@@ -1610,11 +1649,6 @@ video {
   padding-bottom: 1.25rem;
 }
 
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
 .pb-0 {
   padding-bottom: 0px;
 }
@@ -1647,6 +1681,10 @@ video {
   padding-top: 0.625rem;
 }
 
+.pt-20 {
+  padding-top: 5rem;
+}
+
 .pt-48 {
   padding-top: 12rem;
 }
@@ -1665,14 +1703,6 @@ video {
 
 .pt-8 {
   padding-top: 2rem;
-}
-
-.pr-20 {
-  padding-right: 5rem;
-}
-
-.pt-20 {
-  padding-top: 5rem;
 }
 
 .text-center {
@@ -1945,9 +1975,9 @@ video {
   background-color: rgb(197 189 6 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-login-button-hover-light:hover {
+.hover\:bg-loginButtonVia-light:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 216 112 / var(--tw-bg-opacity));
+  background-color: rgb(255 221 142 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-presenterPostDetails-light:hover {
@@ -1965,34 +1995,8 @@ video {
   background-color: rgb(183 205 198 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-backOpacityBgTo-light:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 230 166 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-loginBackgroundFrameTo-light:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 254 254 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-clientBackgroundTo-light:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 219 128 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-loginButtonVia-light:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 221 142 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gradient-to-br:hover {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-}
-
-.hover\:from-login-button-hover-light:hover {
-  --tw-gradient-from: #FFD870 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgb(255 216 112 / 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .hover\:from-loginButtonVia-light:hover {
@@ -2001,18 +2005,9 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
-.hover\:via-login-button-hover-light:hover {
-  --tw-gradient-to: rgb(255 216 112 / 0)  var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), #FFD870 var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
 .hover\:via-loginButtonVia-light:hover {
   --tw-gradient-to: rgb(255 221 142 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #FFDD8E var(--tw-gradient-via-position), var(--tw-gradient-to);
-}
-
-.hover\:to-login-button-hover-light:hover {
-  --tw-gradient-to: #FFD870 var(--tw-gradient-to-position);
 }
 
 .hover\:to-loginButtonVia-light:hover {
@@ -2032,21 +2027,6 @@ video {
 .hover\:text-title-light:hover {
   --tw-text-opacity: 1;
   color: rgb(9 133 94 / var(--tw-text-opacity));
-}
-
-.hover\:text-button-text-light:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.hover\:text-orgnizerbg-light:hover {
-  --tw-text-opacity: 1;
-  color: rgb(236 243 250 / var(--tw-text-opacity));
-}
-
-.hover\:text-offerbg-light:hover {
-  --tw-text-opacity: 1;
-  color: rgb(224 232 229 / var(--tw-text-opacity));
 }
 
 .hover\:drop-shadow-\[0px\]:hover {
@@ -2163,6 +2143,10 @@ video {
     top: 16rem;
   }
 
+  .md\:right-12 {
+    right: 3rem;
+  }
+
   .md\:mx-10 {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
@@ -2176,6 +2160,11 @@ video {
   .md\:mx-20 {
     margin-left: 5rem;
     margin-right: 5rem;
+  }
+
+  .md\:mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .md\:mx-52 {
@@ -2380,14 +2369,6 @@ video {
     height: 24rem;
   }
 
-  .md\:h-3\/4 {
-    height: 75%;
-  }
-
-  .md\:h-1\/2 {
-    height: 50%;
-  }
-
   .md\:w-10 {
     width: 2.5rem;
   }
@@ -2483,14 +2464,6 @@ video {
   .md\:w-fit {
     width: -moz-fit-content;
     width: fit-content;
-  }
-
-  .md\:w-3\/4 {
-    width: 75%;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:grid-cols-2 {
@@ -2928,10 +2901,6 @@ video {
     padding-top: 1.25rem;
   }
 
-  .md\:pl-32 {
-    padding-left: 8rem;
-  }
-
   .md\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -3044,9 +3013,18 @@ video {
     top: 18rem;
   }
 
+  .lg\:right-16 {
+    right: 4rem;
+  }
+
   .lg\:mx-10 {
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+  }
+
+  .lg\:mx-12 {
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
 
   .lg\:mx-16 {
@@ -3269,14 +3247,6 @@ video {
     height: auto;
   }
 
-  .lg\:h-3\/4 {
-    height: 75%;
-  }
-
-  .lg\:h-56 {
-    height: 14rem;
-  }
-
   .lg\:w-10 {
     width: 2.5rem;
   }
@@ -3368,10 +3338,6 @@ video {
   .lg\:w-fit {
     width: -moz-fit-content;
     width: fit-content;
-  }
-
-  .lg\:w-3\/4 {
-    width: 75%;
   }
 
   .lg\:grid-cols-3 {
@@ -3840,10 +3806,6 @@ video {
     padding-top: 2rem;
   }
 
-  .lg\:pl-44 {
-    padding-left: 11rem;
-  }
-
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -3974,6 +3936,11 @@ video {
   .xl\:mx-24 {
     margin-left: 6rem;
     margin-right: 6rem;
+  }
+
+  .xl\:mx-28 {
+    margin-left: 7rem;
+    margin-right: 7rem;
   }
 
   .xl\:mx-32 {
@@ -4650,6 +4617,10 @@ video {
     padding-left: 0.75rem;
   }
 
+  .xl\:pl-32 {
+    padding-left: 8rem;
+  }
+
   .xl\:pl-40 {
     padding-left: 10rem;
   }
@@ -4720,18 +4691,6 @@ video {
 
   .xl\:pt-8 {
     padding-top: 2rem;
-  }
-
-  .xl\:pl-52 {
-    padding-left: 13rem;
-  }
-
-  .xl\:pl-44 {
-    padding-left: 11rem;
-  }
-
-  .xl\:pl-32 {
-    padding-left: 8rem;
   }
 
   .xl\:text-2xl {

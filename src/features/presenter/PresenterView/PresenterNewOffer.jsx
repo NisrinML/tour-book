@@ -215,8 +215,8 @@ function PresenterNewOffer() {
         <div className="flex flex-row items-center xl:space-x-10 lg:space-x-10 md:space-x-5 xl:ml-24 lg:ml-10 md:ml-10">
           <div className="bg-post-bg-light shadow-inputLabelShadow-light/40 drop-shadow-sm shadow-md
             flex flex-col text-text-light rounded-lg space-y-5 
-            xl:px-8 xl:py-10 xl:pr-0
-            lg:px-8 lg:py-8 lg:pr-0
+            xl:px-8 xl:py-10 
+            lg:px-8 lg:py-8 
             md:px-4 md:py-10 md:pr-10 md:pl-5">
             <div className="bg-post-bg-light  text-text-light absolute text-center content-center
                 drop-shadow-[2px_2px_rgba(211,168,76,0.6)] 

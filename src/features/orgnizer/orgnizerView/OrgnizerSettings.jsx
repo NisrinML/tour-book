@@ -21,6 +21,7 @@ function OrgnizerSettings() {
     const [selectedFile, setSelectedFile] = useState(null);
     const orgnizer=useSelector(state=>state.orgnizer)
     const user= useSelector(state=>state.user)
+
     const dispatch=useDispatch()
     const navigate=useNavigate()
     
@@ -44,6 +45,8 @@ function OrgnizerSettings() {
      //define required schema with required condition
      const requiredSchema = Yup.object().shape({
         userName: Yup.string()
+            .required("Required").default(orgnizer.name),
+        name: Yup.string()
             .required("Required").default(orgnizer.name),
         phoneNumber: Yup.number()
             .required("Required").default(orgnizer.mobile),
@@ -115,26 +118,38 @@ function OrgnizerSettings() {
                     xl:p-14 xl:pl-48
                     lg:p-10 lg:pl-36
                     md:p-6 md:pl-24">
-                        <div className="flex flex-row justify-between xl:space-x-8 lg:space-x-6 md:space-x-4">
+                         <div className="flex flex-row justify-between xl:space-x-8 lg:space-x-6 md:space-x-4">
                                 <span className="flex flex-col  text-text-light font-['sans-serif']  
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
-                            md:text-lg md:w-24">User Name :</span>
-                                <input type="text"    {...register('userName')} 
+                            md:text-lg md:w-24">Username :</span>
+                                <input type="text"    {...register('userName')} defaultValue={user.login.data.userName}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
                             md:rounded-md md:text-base md:h-8 md:w-48" />
 
                         </div>
-                        {errors.userName && <div className="flex flex-row justify-center  text-error-light font-['Open_Sans'] max-w-96
-                                xl:text-lg lg:text-base md:text-sm">{errors.userName.message}</div>}
+                        <div className="flex flex-row justify-between xl:space-x-8 lg:space-x-6 md:space-x-4">
+                                <span className="flex flex-col  text-text-light font-['sans-serif']  
+                            xl:text-2xl xl:w-40
+                            lg:text-xl lg:w-36
+                            md:text-lg md:w-24">Orgnizer Name:</span>
+                                <input type="text"    {...register('name')} defaultValue={orgnizer.name}
+                                    className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
+                            xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
+                            lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
+                            md:rounded-md md:text-base md:h-8 md:w-48" />
+
+                        </div>
+                        {errors.name && <div className="flex flex-row justify-center  text-error-light font-['Open_Sans'] max-w-96
+                                xl:text-lg lg:text-base md:text-sm">{errors.name.message}</div>}
                         <div className="flex flex-row justify-between xl:space-x-8 lg:space-x-6 md:space-x-4 ">
                                 <span className="flex flex-col  text-text-light font-['sans-serif']  
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Phone Number :</span>
-                                <input type="text"    {...register('phoneNumber')} 
+                                <input type="text"    {...register('phoneNumber')} defaultValue={orgnizer.mobile}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -148,7 +163,7 @@ function OrgnizerSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Email :</span>
-                                <input type="text"    {...register('email')}
+                                <input type="text"    {...register('email')} defaultValue={user.login.data.email}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56

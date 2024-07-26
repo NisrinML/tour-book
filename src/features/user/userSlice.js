@@ -13,9 +13,6 @@ const initialState = {
       status: '',
 
       email: 'user@gmail.com',
-      roleId: 2,
-
-      email: '',
       roleId: 1,
 
     },
@@ -108,6 +105,7 @@ const userSlice = createSlice({
     builder.addCase(updateOrgnizerData, (state, action) => {
       state.login.data.email=action.payload.email
       state.login.data.avatar=action.payload.image
+      state.login.data.userName=action.payload.userName
     });
    
   }

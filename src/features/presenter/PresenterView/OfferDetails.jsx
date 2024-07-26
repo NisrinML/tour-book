@@ -68,7 +68,8 @@ const acceptedOrders = orders.filter(order=>order.status=='accept');
             {offer.title}
             </span>
           </div>
-          <div className="flex flex-row xl:space-x-10 lg:space-x-10 md:space-x-2">
+          <div className="flex flex-row xl:space-x-10 lg:space-x-10 md:space-x-2
+          xl:mx-28 lg:mx-12 md:mx-4">
           <div className="flex flex-col space-y-10
            shadow-inputLabelShadow-light/50 drop-shadow-sm shadow-sm border border-inputLabelShadow-light/40
           bg-button-text-light/75 rounded-lg 
