@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from 'axios';
 
 const initialState = {
   id: 1,
@@ -97,7 +98,25 @@ const clientSlice = createSlice({
       tour[0].comments = comments
       //call api for comments we have in action tour id and comment and we use from here client id
     },
-    register: (state, action) => {
+    registerUser: (state, action) => {
+      (async () => {
+        const response = await axios.post('https://tourbook-q8wk.onrender.com/auth/register/', {
+          email: "user@example.com",
+          username:  action.payload.user.username,
+          phone: action.payload.user.mobile,
+          password: action.payload.user.password,
+          role: "c",
+          re_password: action.payload.user.confirm
+        
+        }).then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      })();
+      console.log(action.payload.user)
+
       state.name = action.payload.user.name;
       state.middleName = action.payload.user.middleName;
       state.lastName = action.payload.user.lastName;
@@ -119,5 +138,5 @@ const clientSlice = createSlice({
     }
   },
 });
-export const { selecteOrgnizerId, selecteTourId, addComment, register, likeTour,unlikeTour,disLikeTour,undisLikeTour } = clientSlice.actions
+export const { selecteOrgnizerId, selecteTourId, addComment, registerUser, likeTour,unlikeTour,disLikeTour,undisLikeTour } = clientSlice.actions
 export default clientSlice.reducer;
