@@ -40,6 +40,7 @@ import CreateAccount from "../features/client/clientView/CreateAccount"
 import UserHomePage from "../features/client/clientView/ClientHomePage"
 import SuccessfulRegister from "../features/user/userView/SuccessfulRegister"
 import Activate from "../features/user/userView/Activate"
+import OrgnizerTours from "../features/client/clientView/OrgnizerTours"
 
 export const Router=()=>{
 return(
@@ -85,6 +86,7 @@ return(
         <Route path="/register/done" element={<SuccessfulRegister/>}/>
         <Route path="/user-home-page" element={<UserHomePage/>}/>
         <Route path="/activate" element={<Activate/>}/>
+        <Route path="/user-home/orgnizer-tours" element={<OrgnizerTours/>}/>
         
     </Routes>
    
