@@ -44,6 +44,7 @@ import OrgnizerTours from "../features/client/clientView/OrgnizerTours"
 import ClientNewPassword from "../features/client/clientView/ClientNewPassword"
 import ClientForgetPassword from "../features/client/clientView/ClientForgetPassword"
 import ClientResetPassword from "../features/client/clientView/ClientResetPassword"
+import ClientReport from "../features/client/clientView/ClientReport"
 
 export const Router=()=>{
 return(
@@ -93,6 +94,7 @@ return(
         <Route path="/client/client-new-password" element={<ClientNewPassword/>}/>
         <Route path="/client/client-forget-password" element={<ClientForgetPassword/>}/>
         <Route path="/client/client-reset-password" element={<ClientResetPassword/>}/>
+        <Route path="/client/client-report" element={<ClientReport/>}/>
     </Routes>
    
 )

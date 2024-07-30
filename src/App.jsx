@@ -37,6 +37,7 @@ import OrgnizerTours from "./features/client/clientView/OrgnizerTours"
 import ClientNewPassword from "./features/client/clientView/ClientNewPassword"
 import ClientForgetPassword from "./features/client/clientView/ClientForgetPassword"
 import ClientResetPassword from "./features/client/clientView/ClientResetPassword"
+import ClientReport from "./features/client/clientView/ClientReport"
 
 
 
@@ -85,7 +86,8 @@ function App() {
       {/* <OrgnizerTours/> */}
       {/* <ClientNewPassword/> */}
       {/* <ClientForgetPassword/> */}
-      <ClientResetPassword/>
+      {/* <ClientResetPassword/> */}
+      <ClientReport/>
     </Layout>
 
   )
