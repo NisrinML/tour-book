@@ -1,21 +1,17 @@
-import React ,  { useState } from 'react'
-import ResetPassword from "../../../assets/images/resetPassword.png"
+
+import Evel from "../../../assets/images/Evel.svg"
 import Header from "../../layout/Header"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setPassword, setConfirmPassword } from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-function PresenterResetPassword() {
+function ClientResetPassword() {
     const state = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate();
-
-    const handleCancel = () =>{
-        navigate('/presenter-home-page/presenter-settings');
-    }
-    
     //define setPassword schema with required condition
     const setPasswordSchema = Yup.object().shape({
         oldPassword: Yup.string().required("Required").oneOf([state.login.data.password], 'Old Password must match'),
@@ -38,15 +34,15 @@ function PresenterResetPassword() {
     const onSubmit = (data) => {
         dispatch(setPassword(data.newPassword))
         dispatch(setConfirmPassword(data.confirm))
-        navigate('/presenter-home-page');
     };
     return (
         <div className=" w-full h-full max-h-full">
             <Header />
-            <img src={ResetPassword} className="absolute h-screen w-8/12  right-0 " />
-            <form onSubmit={handleSubmit(onSubmit)}>     <div className="container flex flex-row items-center relative pt-48 p-5">
+            <img src={Evel} className="absolute h-screen w-5/12  right-10" />
+            <form onSubmit={handleSubmit(onSubmit)}>     
+                <div className="container flex flex-row items-center relative pt-48 p-5">
 
-                <div className="bg-presenterPostDetails-light drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit w-2/5 xl:mx-60 xl:rounded-3xl lg:mx-60 lg:rounded-3xl md:mx-52 md:rounded-2xl ">
+                <div className="bg-presenterPostDetails-light bg-opacity-40   drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit w-2/5 xl:mx-40 xl:rounded-3xl lg:mx-32 lg:rounded-3xl md:mx-24 md:rounded-2xl mb-10">
                     <div className="flex flex-col items-center justify-start mx-auto text-text-light font-['Arial'] gap-1 px-2  xl:text-2xl xl:my-12 lg:text-xl lg:my-14 md:text-lg md:my-16">
                         <div className="flex flex-col xl:gap-4 lg:gap-3 md:gap-3">
                             <span>old password :</span>
@@ -75,8 +71,9 @@ function PresenterResetPassword() {
                                 xl:text-2xl  xl:rounded-md  xl:w-28 xl:h-10 
                                 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
                                 md:text-lg md:rounded-md  md:w-20 md:h-8 ">Change</button>
-                            <button  type="button"
-                            onClick={handleCancel} className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
+                            <button type="button"
+                            onClick={()=>{navigate('/orgnizer-home')}}
+                            className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
                              xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 
                             lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
@@ -86,12 +83,11 @@ function PresenterResetPassword() {
                     </div>
                 </div>
 
-                <div className="bg-presenterbg-light  text-center text-text-light absolute   drop-shadow-[2px_2px_rgba(211,168,76,0.6)] xl:rounded xl:left-80 xl:top-44 xl:w-56 xl:h-10 lg:rounded-md lg:left-80 lg:top-44 lg:w-48 lg:h-8 md:rounded-sm md:left-64 md:top-44 md:w-44 md:h-8 ">
+                <div className="bg-presenterPostDetails-light bg-opacity-40   text-center text-text-light absolute   drop-shadow-[2px_2px_rgba(9,133,94,0.6)] xl:rounded xl:left-64 xl:top-44 xl:w-56 xl:h-10 lg:rounded-md lg:left-52 lg:top-44 lg:w-48 lg:h-8 md:rounded-sm md:left-36 md:top-44 md:w-44 md:h-8 ">
                     <span className="xl:text-3xl lg:text-2xl md:text-xl font-['serif']">Reset Password</span>
                 </div>
 
             </div></form>
         </div>)
 }
-
-export default PresenterResetPassword
+export default ClientResetPassword

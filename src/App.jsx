@@ -35,6 +35,8 @@ import SuccessfulRegister from "./features/user/userView/SuccessfulRegister"
 import Activate from "./features/user/userView/Activate"
 import OrgnizerTours from "./features/client/clientView/OrgnizerTours"
 import ClientNewPassword from "./features/client/clientView/ClientNewPassword"
+import ClientForgetPassword from "./features/client/clientView/ClientForgetPassword"
+import ClientResetPassword from "./features/client/clientView/ClientResetPassword"
 
 
 
@@ -81,7 +83,9 @@ function App() {
       {/* <SuccessfulRegister/> */}
       {/* <Activate/> */}
       {/* <OrgnizerTours/> */}
-      <ClientNewPassword/>
+      {/* <ClientNewPassword/> */}
+      {/* <ClientForgetPassword/> */}
+      <ClientResetPassword/>
     </Layout>
 
   )

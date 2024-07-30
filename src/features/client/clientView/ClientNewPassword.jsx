@@ -44,7 +44,7 @@ function ClientNewPassword() {
             <img src={Travel} className="absolute h-full w-5/12  right-0 " />
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="container flex flex-row items-center relative pt-52 ">
-                    <div className="bg-presenterPostDetails-light bg-opacity-40  drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit w-2/5 xl:mx-64 xl:rounded-3xl lg:mx-64 lg:rounded-3xl md:mx-56 md:rounded-2xl ">
+                    <div className="bg-presenterPostDetails-light bg-opacity-40  drop-shadow-[2px_4px_rgba(125,143,154,0.5)] h-fit w-2/5 xl:mx-64 xl:rounded-3xl lg:mx-64 lg:rounded-3xl md:mx-56 md:rounded-2xl mb-10">
                         <div className="flex flex-col items-center justify-start mx-auto text-text-light font-['Arial'] gap-1 px-2 xl:text-2xl xl:my-12 lg:text-xl lg:my-16 md:text-lg md:my-20">
                             <div className="flex flex-col xl:gap-3 lg:gap-2 md:gap-2">
                                 <span>new password :</span>
