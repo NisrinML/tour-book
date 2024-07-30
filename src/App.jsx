@@ -31,6 +31,8 @@ import MainPage from "./features/user/userView/MainPage"
 
 import ClientHomePage from "./features/client/clientView/ClientHomePage"
 import CreateAccount from "./features/client/clientView/CreateAccount"
+import SuccessfulRegister from "./features/user/userView/SuccessfulRegister"
+import Activate from "./features/user/userView/Activate"
 
 
 
@@ -73,7 +75,9 @@ function App() {
       {/* <ClientHomePage/> */}
       {/* <OfferDetails/> */}
       {/* <PresenterNewOffer/> */}
-      <CreateAccount/>
+      {/* <CreateAccount/> */}
+      {/* <SuccessfulRegister/> */}
+      {/* <Activate/> */}
     </Layout>
 
   )

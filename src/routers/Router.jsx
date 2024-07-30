@@ -38,6 +38,8 @@ import UserLogin from "../features/user/userView/UserLogin"
 import MainPage from "../features/user/userView/MainPage"
 import CreateAccount from "../features/client/clientView/CreateAccount"
 import UserHomePage from "../features/client/clientView/ClientHomePage"
+import SuccessfulRegister from "../features/user/userView/SuccessfulRegister"
+import Activate from "../features/user/userView/Activate"
 
 export const Router=()=>{
 return(
@@ -80,9 +82,9 @@ return(
         <Route path="/orgnizer-status" element={<OrgnizerStatus/>}/>
         <Route path="/login" element={<UserLogin/>}/>
         <Route path="/create-account" element={<CreateAccount/>}/>
-
+        <Route path="/register/done" element={<SuccessfulRegister/>}/>
         <Route path="/user-home-page" element={<UserHomePage/>}/>
-
+        <Route path="/activate" element={<Activate/>}/>
         
     </Routes>
    

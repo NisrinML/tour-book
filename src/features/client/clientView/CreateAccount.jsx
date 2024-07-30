@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {registerUser} from "../clientSlice"
+import axios from "axios";
 function CreateAccount() {
 
 
@@ -18,8 +19,12 @@ function CreateAccount() {
   const [birthday, setBirthday] = useState('');
   const [gender, setGender] = useState('');
   const [error, setError] = useState('');
+  const [checkError,setCheckError]=useState(false)
+  const [msg,setMsg]=useState('')
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+ const check=false
 
   const handleAccountType = (e) => {
 
@@ -44,7 +49,7 @@ function CreateAccount() {
         "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
         'Invalid email address'
       ),
-    mobile: Yup.number().required("Required").typeError('Value must be a number'),
+    mobile: Yup.string().required("Required"),
     password: Yup.string().required("Required")
       .matches(
         "^.*((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$",
@@ -62,7 +67,7 @@ function CreateAccount() {
   });
 
 
-  const onSubmit = (data) => {
+  const  onSubmit = async(data) => {
     if (accountType == '') {
       setError(true)
       return
@@ -71,12 +76,35 @@ function CreateAccount() {
     var user = {
       ...data, accountType, birthday, gender
     }
-    dispatch(registerUser({ user }));
+   
+      const response = await axios.post('https://tourbook-q8wk.onrender.com/auth/register/', {
+        email:user.email,
+        username:  user.username,
+        phone:user.mobile,
+        password:user.password,
+        role: "C",
+        re_password: user.confirm,
+        avatar:null
+      
+      }).then((response) => {
+        console.log(response.data);
+        dispatch(registerUser({ user }));
+        navigate('/register/done')
+      })
+      .catch((error) => {
+       setCheckError(true)
+       setMsg(error.code)
+        console.error('Error:', error);
+      });
+    
+
+   
     //dispatch(setEmail(data.email));
     //dispatch(setPassword(data.password));
     //dispatch(setConfirmPassword(data.confirm));
     //dispatch(setUserName(data.username));
-    navigate('/user-home-page')
+
+     
   };
 
   const handleBack = () => {
@@ -85,6 +113,7 @@ function CreateAccount() {
   return (
     <div className="w-full max-h-full">
       <SmallHeader />
+     
       <div className="flex flex-col space-y-10 pb-10">
         <div className="flex flex-row space-x-6 
         xl:ml-20 xl:mt-10 lg:ml-16 lg:mt-10 md:ml-14 md:mt-9">
@@ -100,6 +129,9 @@ function CreateAccount() {
             Create Account
           </span>
         </div>
+        {checkError&& <div className="flex flex-row justify-start  text-error-light font-['Open_Sans'] 
+                              xl:ml-32 xl:text-lg lg:ml-28 lg:text-base  md:ml-24 md:text-sm">{msg}
+                                  </div>}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col space-y-10">
 

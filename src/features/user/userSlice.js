@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
 import { updateOrgnizerData } from "../orgnizer/orgnizerSlice";
 const initialState = {
+  id:null,
+  token:null,
   login: {
     loading: '',
     data: {
@@ -88,6 +90,10 @@ const userSlice = createSlice({
     setRespondentEmail: (state, action) => {
       state.reports.respondentEmail = action.payload
     },
+    setToken:(state,action)=>{
+      state.id=action.payload.uid
+      state.token=action.payload.token
+    }
 
   },
   extraReducers: (builder) => {
@@ -114,5 +120,5 @@ const userSlice = createSlice({
   }
 });
 
-export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName } = userSlice.actions
+export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken } = userSlice.actions
 export default userSlice.reducer;
