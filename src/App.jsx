@@ -28,10 +28,12 @@ import UserLogin from "./features/user/userView/UserLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 import { Router } from "./routers/Router"
 import MainPage from "./features/user/userView/MainPage"
-import PresenterSettings from "./features/presenter/presenterView/PresenterSettings"
+
 import ClientHomePage from "./features/client/clientView/ClientHomePage"
-import OfferDetails from "./features/presenter/presenterView/OfferDetails"
-import PresenterNewOffer from "./features/presenter/presenterView/PresenterNewOffer"
+import CreateAccount from "./features/client/clientView/CreateAccount"
+import SuccessfulRegister from "./features/user/userView/SuccessfulRegister"
+import Activate from "./features/user/userView/Activate"
+
 
 
 function App() {
@@ -70,9 +72,12 @@ function App() {
       {/* <OrgnizerStatus/> */}
       {/* <MainPage/> */}
       {/* <PresenterSettings/> */}
-      <ClientHomePage/>
+      {/* <ClientHomePage/> */}
       {/* <OfferDetails/> */}
       {/* <PresenterNewOffer/> */}
+      {/* <CreateAccount/> */}
+      {/* <SuccessfulRegister/> */}
+      {/* <Activate/> */}
     </Layout>
 
   )

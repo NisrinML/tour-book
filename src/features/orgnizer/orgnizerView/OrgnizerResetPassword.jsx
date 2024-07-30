@@ -34,7 +34,6 @@ function OrgnizerResetPassword() {
     const onSubmit = (data) => {
         dispatch(setPassword(data.newPassword))
         dispatch(setConfirmPassword(data.confirm))
-        console.log(data);
     };
     return (
         <div className=" w-full h-full max-h-full">
