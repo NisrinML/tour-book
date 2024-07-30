@@ -57,7 +57,7 @@ Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side
   {
     sn: 3,
     id: 23,
-    orgnizerId: 8,
+    orgnizerId: 2,
     title: 'Spring is Comming',
     startDate: '1/3/2024', startTime: '8:30 A.M',
     totalCost: 350,
@@ -76,7 +76,7 @@ Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side
     usersDislike: [2, 3, 4, 5, 1]
   },],
   selected: {
-    orgnizerId: 0,
+    orgnizerId: 2,
     tourId: 0
   },
 

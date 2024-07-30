@@ -2,10 +2,12 @@ import { useDispatch } from "react-redux";
 import { setToken } from "../userSlice";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Activate(){
     var uid,token
     const dispatch=useDispatch()
+    const navigate=useNavigate()
     const [checkError,setCheckError]=useState(false)
     const [msg,setMsg]=useState('')
     const handelActivate=async()=>{

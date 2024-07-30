@@ -33,6 +33,11 @@ import ClientHomePage from "./features/client/clientView/ClientHomePage"
 import CreateAccount from "./features/client/clientView/CreateAccount"
 import SuccessfulRegister from "./features/user/userView/SuccessfulRegister"
 import Activate from "./features/user/userView/Activate"
+import OrgnizerTours from "./features/client/clientView/OrgnizerTours"
+import ClientNewPassword from "./features/client/clientView/ClientNewPassword"
+import ClientForgetPassword from "./features/client/clientView/ClientForgetPassword"
+import ClientResetPassword from "./features/client/clientView/ClientResetPassword"
+import ClientReport from "./features/client/clientView/ClientReport"
 
 
 
@@ -78,6 +83,11 @@ function App() {
       {/* <CreateAccount/> */}
       {/* <SuccessfulRegister/> */}
       {/* <Activate/> */}
+      {/* <OrgnizerTours/> */}
+      {/* <ClientNewPassword/> */}
+      {/* <ClientForgetPassword/> */}
+      {/* <ClientResetPassword/> */}
+      <ClientReport/>
     </Layout>
 
   )
