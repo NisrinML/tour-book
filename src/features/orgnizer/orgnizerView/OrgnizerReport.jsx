@@ -18,12 +18,11 @@ function OrgnizerReport() {
     }
     function handelReasonChange(e) {
         setReason(e.target.value)
-        console.log(reason)
     }
+
     function handelSend() {
-
-        dispatch(setRespondentEmail(email))
-
+       // dispatch(setRespondentEmail(email))
+        //call api for reports
         navigate('/orgnizer-home')
 
     }

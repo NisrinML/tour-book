@@ -26,7 +26,6 @@ function OrgnizerTours() {
                         lg:w-10 lg:h-10
                         md:w-8 md:h-8" />
                         <img src={Camera} className="flex flex-col xl:w-28 xl:h-28 lg:h-24 lg:w-24 md:h-20 md:w-20"/>
-                {/* <div className=" text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia']">My Tour</div> */}
             </div>
              <div className="flex flex-row items-end justify-end  mr-72">
              <div className="justify-center items-center text-center text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia'] h-16 pt-3
