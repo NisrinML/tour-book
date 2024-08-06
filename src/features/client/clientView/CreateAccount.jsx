@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {registerUser} from "../clientSlice"
 import axios from "axios";
+import { API_URL, CONFIG } from "../../../app/config";
 function CreateAccount() {
 
 
@@ -24,7 +25,8 @@ function CreateAccount() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
- const check=false
+
+ 
 
   const handleAccountType = (e) => {
 
@@ -77,23 +79,25 @@ function CreateAccount() {
       ...data, accountType, birthday, gender
     }
    
-      const response = await axios.post('https://tourbook-q8wk.onrender.com/auth/register/', {
+      const response = await axios.post(`${API_URL}/auth/register/`, {
         email:user.email,
         username:  user.username,
         phone:user.mobile,
         password:user.password,
         role: "C",
-        re_password: user.confirm,
-        avatar:null
+        re_password: user.confirm
       
-      }).then((response) => {
+      },CONFIG).then((response) => {
         console.log(response.data);
         dispatch(registerUser({ user }));
         navigate('/register/done')
       })
       .catch((error) => {
        setCheckError(true)
-       setMsg(error.code)
+       if(Array.isArray(error.response.data))
+        setMsg(error.response.data[0])
+       else
+        setMsg(error.response.data)
         console.error('Error:', error);
       });
     

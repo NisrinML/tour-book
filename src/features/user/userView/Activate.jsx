@@ -1,27 +1,52 @@
 import { useDispatch } from "react-redux";
 import { setToken } from "../userSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { API_URL, CONFIG } from "../../../app/config";
 
 function Activate(){
-    var uid,token
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const [checkError,setCheckError]=useState(false)
     const [msg,setMsg]=useState('')
+    const location = useLocation();
+  const [uid, setUid] = useState('');
+  const [token, setToken] = useState('');
+
+      useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const uidParam = params.get('uid');
+        const tokenParam = params.get('token');
+        setUid(uidParam);
+        setToken(tokenParam);
+      }, [location]);
+
     const handelActivate=async()=>{
-        const response = await axios.post('https://tourbook-q8wk.onrender.com/auth/users/activation/', {
+        const response = await axios.post(`${API_URL}/auth/users/activation/`, {
             uid:uid,
             token:token
-          }).then((response) => {
+          },CONFIG).then((response) => {
             console.log(response.data);
             dispatch(setToken({uid,token}));
             navigate('/login')
           })
           .catch((error) => {
            setCheckError(true)
-           setMsg(error.code)
+           
+           if (error.response && error.response.data) {
+            const errorData = error.response.data;
+            
+            if (typeof errorData === 'string') {
+              // إذا كانت استجابة الخطأ نصًا
+              setMsg(errorData);
+            }else {
+              // لأي أخطاء أخرى
+              setMsg(JSON.stringify(errorData));
+            }
+          } else {
+            setMsg('An unknown error occurred');
+          }
             console.error('Error:', error);
           });
     }
