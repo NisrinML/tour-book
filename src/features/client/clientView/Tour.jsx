@@ -173,7 +173,7 @@ function Tour(props) {
         if (tour.id != null) {
             dispatch(selecteOrgnizerId(tour.orgnizerId))
             //navigate to orgnizer page
-            navigate('/')
+            navigate('/user-home/orgnizer-tours')
         }
     }
 

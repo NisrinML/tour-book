@@ -136,5 +136,7 @@ const clientSlice = createSlice({
     
   },
 });
+
 export const { selecteOrgnizerId, selecteTourId, addComment, registerUser, likeTour,unlikeTour,disLikeTour,undisLikeTour,editRegisterInfo } = clientSlice.actions
+
 export default clientSlice.reducer;

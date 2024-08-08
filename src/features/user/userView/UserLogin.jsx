@@ -5,10 +5,15 @@ import icon from "../../../assets/images/icon.svg";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { fetchUsers } from "../userSlice";
+
 function PresenterLogin() {
   const state = useSelector(state => state.user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  const error=state.login.rejected
+  const msg=state.login.error
   //define login schema with required condition
   const loginSchema = Yup.object().shape({
     username: Yup.string().required("Required"),
@@ -24,9 +29,11 @@ function PresenterLogin() {
   });
   // handle form submission
   const onSubmit = (data) => {
-
-    console.log(data);
     //Authenticate user and get the user id 
+    var username=data.username
+    var password=data.password
+    dispatch(fetchUsers({username,password}))
+   
     //var id=dispatch()
     var id=2
     if(id==1){
@@ -55,6 +62,9 @@ function PresenterLogin() {
                         lg:text-xl  lg:space-y-8 lg:mt-1 lg:ml-16
                         md:text-lg  md:space-y-8 md:mt-1 md:ml-8"
           >
+                  {error&& <div className="flex flex-row justify-start  text-error-light font-['Open_Sans'] 
+                              xl:ml-32 xl:text-lg lg:ml-28 lg:text-base  md:ml-24 md:text-sm">{msg}
+                                  </div>}
             <div className="flex flex-col xl:space-y-3 lg:space-y-2 md:space-y-1">
               <span className="xl:pt-7 lg:pt-5 md:pt-5">User Name:</span>
               <input

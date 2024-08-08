@@ -28,10 +28,17 @@ import UserLogin from "./features/user/userView/UserLogin"
 import PresenterProfile from "./features/presenter/presenterView/PresenterProfile"
 import { Router } from "./routers/Router"
 import MainPage from "./features/user/userView/MainPage"
-import PresenterSettings from "./features/presenter/presenterView/PresenterSettings"
+
 import ClientHomePage from "./features/client/clientView/ClientHomePage"
-import OfferDetails from "./features/presenter/presenterView/OfferDetails"
-import PresenterNewOffer from "./features/presenter/presenterView/PresenterNewOffer"
+import CreateAccount from "./features/client/clientView/CreateAccount"
+import SuccessfulRegister from "./features/user/userView/SuccessfulRegister"
+import Activate from "./features/user/userView/Activate"
+import OrgnizerTours from "./features/client/clientView/OrgnizerTours"
+import ClientNewPassword from "./features/client/clientView/ClientNewPassword"
+import ClientForgetPassword from "./features/client/clientView/ClientForgetPassword"
+import ClientResetPassword from "./features/client/clientView/ClientResetPassword"
+import ClientReport from "./features/client/clientView/ClientReport"
+
 
 
 function App() {
@@ -70,9 +77,17 @@ function App() {
       {/* <OrgnizerStatus/> */}
       {/* <MainPage/> */}
       {/* <PresenterSettings/> */}
-      <ClientHomePage/>
+      {/* <ClientHomePage/> */}
       {/* <OfferDetails/> */}
       {/* <PresenterNewOffer/> */}
+      {/* <CreateAccount/> */}
+      {/* <SuccessfulRegister/> */}
+      {/* <Activate/> */}
+      {/* <OrgnizerTours/> */}
+      {/* <ClientNewPassword/> */}
+      {/* <ClientForgetPassword/> */}
+      {/* <ClientResetPassword/> */}
+      <ClientReport/>
     </Layout>
 
   )

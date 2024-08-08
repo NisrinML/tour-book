@@ -19,25 +19,32 @@ import ChooseOffer from "../features/orgnizer/orgnizerView/ChooseOffer"
 import EditTour from "../features/orgnizer/orgnizerView/EditTour"
 import TourDetails from "../features/orgnizer/orgnizerView/TourDetails"
 import TourPost from "../features/orgnizer/orgnizerView/TourPost"
-import PresenterHome from "../features/presenter/PresenterView/PresenterHome"
-import PresenterProfile from "../features/presenter//PresenterView/PresenterProfile"
-import PresenterEditOffer from "../features/presenter/PresenterView/PresenterEditOffer"
-import PresenterOrders from "../features/presenter/PresenterView/PresenterOrders"
-import PresenterSettings from "../features/presenter/PresenterView/PresenterSettings"
-import OfferDetails from "../features/presenter/PresenterView/OfferDetails"
-import PresenterNewOffer from "../features/presenter/PresenterView/PresenterNewOffer"
-import PresenterReport from "../features/presenter/PresenterView/PresenterReport"
-import PresenterNewPassword from "../features/presenter/PresenterView/PresenterNewPassword"
-import PresenterResetPassword from "../features/presenter/PresenterView/PresenterResetPassword"
-import PresenterForgetPassword from "../features/presenter/PresenterView/PresenterForgetPassword"
 import Offers from "../features/orgnizer/orgnizerView/Offers"
 import Weather from "../features/orgnizer/orgnizerView/Weather"
 import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOfferDetails"
 import OrgnizerStatus from "../features/orgnizer/orgnizerView/OrgnizerStatus"
+import PresenterHome from "../features/presenter/presenterView/PresenterHome"
+import PresenterProfile from "../features/presenter/presenterView/PresenterProfile"
+import PresenterEditOffer from "../features/presenter/presenterView/PresenterEditOffer"
+import PresenterOrders from "../features/presenter/presenterView/PresenterOrders"
+import PresenterSettings from "../features/presenter/presenterView/PresenterSettings"
+import OfferDetails from "../features/presenter/presenterView/OfferDetails"
+import PresenterNewOffer from "../features/presenter/presenterView/PresenterNewOffer"
+import PresenterReport from "../features/presenter/presenterView/PresenterReport"
+import PresenterNewPassword from "../features/presenter/presenterView/PresenterNewPassword"
+import PresenterResetPassword from "../features/presenter/presenterView/PresenterResetPassword"
+import PresenterForgetPassword from "../features/presenter/presenterView/PresenterForgetPassword"
 import UserLogin from "../features/user/userView/UserLogin"
 import MainPage from "../features/user/userView/MainPage"
 import CreateAccount from "../features/client/clientView/CreateAccount"
 import UserHomePage from "../features/client/clientView/ClientHomePage"
+import SuccessfulRegister from "../features/user/userView/SuccessfulRegister"
+import Activate from "../features/user/userView/Activate"
+import OrgnizerTours from "../features/client/clientView/OrgnizerTours"
+import ClientNewPassword from "../features/client/clientView/ClientNewPassword"
+import ClientForgetPassword from "../features/client/clientView/ClientForgetPassword"
+import ClientResetPassword from "../features/client/clientView/ClientResetPassword"
+import ClientReport from "../features/client/clientView/ClientReport"
 
 export const Router=()=>{
 return(
@@ -80,10 +87,14 @@ return(
         <Route path="/orgnizer-status" element={<OrgnizerStatus/>}/>
         <Route path="/login" element={<UserLogin/>}/>
         <Route path="/create-account" element={<CreateAccount/>}/>
-
+        <Route path="/register/done" element={<SuccessfulRegister/>}/>
         <Route path="/user-home-page" element={<UserHomePage/>}/>
-
-        
+        <Route path="/activate" element={<Activate/>}/>
+        <Route path="/user-home/orgnizer-tours" element={<OrgnizerTours/>}/>
+        <Route path="/client/client-new-password" element={<ClientNewPassword/>}/>
+        <Route path="/client/client-forget-password" element={<ClientForgetPassword/>}/>
+        <Route path="/client/client-reset-password" element={<ClientResetPassword/>}/>
+        <Route path="/client/client-report" element={<ClientReport/>}/>
     </Routes>
    
 )

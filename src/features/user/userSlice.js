@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
 import { updateOrgnizerData } from "../orgnizer/orgnizerSlice";
+import { API_URL, CONFIG } from "../../app/config";
+
+
 const initialState = {
   id:null,
   token:null,
@@ -13,11 +16,11 @@ const initialState = {
       confirmPassword: '',
       avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
-
       email: 'user@gmail.com',
       roleId: 1,
 
     },
+    rejected:false,
     error: ''
   },
   notifications: ['Rolana Kamaria ask for 5 seats for Black Friday tour','Wajeeh Rabahie ask for 3 seats for Spring is Comming tour','Nisreen Melhem liked Winter Better tour','Milad Melhem liked Black Friday tour',
@@ -63,11 +66,20 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: '', reason: '', reportType: '', respondentUser: 'Rolana kamarie',respondentEmail:'www.***@gmail.com', complainantUser: '' }
+  reports: { id: '', reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
 };
-const fetchUsers = createAsyncThunk("user/fetchUsers", () => {
-  return axios.get().then((res) => res.data)
-})
+export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
+
+  return axios.post(`${API_URL}/auth/jwt/create/`, {
+    username:  username,
+    password:password
+  },CONFIG).then((res) => 
+    {
+      console.log(res)
+    return res.data.access; }
+  )
+ } )
+
 const userSlice = createSlice({
   name: "user",
   initialState,
@@ -94,10 +106,18 @@ const userSlice = createSlice({
       state.id=action.payload.uid
       state.token=action.payload.token
     },
+
     setUserInformation: (state,action) => {
       state.login.data.email = action.payload.userInfo.email;
       state.login.data.userName = action.payload.userInfo.userName;
     },
+
+
+    updateOrgnizerData: (state, action) => {
+      state.login.data.email = action.payload.email;
+      state.login.data.avatar = action.payload.image;
+      state.login.data.userName = action.payload.userName;
+    }
 
 
   },
@@ -105,17 +125,26 @@ const userSlice = createSlice({
     builder.addCase(fetchUsers.pending, (state) => {
       state.login.loading = true;
     })
-    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+    builder.addCase(fetchUsers.fulfilled,async (state, action) => {
       state.login.loading = false;
-      state.login.data = action.payload;
+      state.login.rejected = false;
       state.login.error = ""
+      state.token=action.payload
+      var token=action.payload
+      console.log(token)
+      await axios.get(`${API_URL}/auth/users/me/`, {headers: {'Authorization': `Bearer ${token}`}}).then((res) => 
+        {
+          console.log(res)
+          state.login.data= res.data.access; }
+      )
+      
     });
     builder.addCase(fetchUsers.rejected, (state, action) => {
       state.login.loading = false;
-      state.login.data = [];
+      state.login.rejected = true;
       state.login.error = action.error.message;
+   
     })
-    
     builder.addCase(updateOrgnizerData, (state, action) => {
       state.login.data.email=action.payload.email
       state.login.data.avatar=action.payload.image
@@ -125,5 +154,7 @@ const userSlice = createSlice({
   }
 });
 
+
 export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken, setUserInformation } = userSlice.actions
+
 export default userSlice.reducer;
