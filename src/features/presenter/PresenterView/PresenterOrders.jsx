@@ -57,7 +57,9 @@ function PresenterOrders() {
                         </div>
                     )
                   }):
-                   <div className="flex flex-row items-center justify-center font-['Open_Sans'] relative w-11/12 bg-orgnizerbg-light border-solid border-2 border-title-light text-text-light  drop-shadow-[1px_1px_rgba(117,135,142)] 
+                   <div className="flex flex-row items-center justify-center font-['Open_Sans'] relative w-11/12
+                    bg-presenterPostDetails-light border-solid border-2 border-offerTitle-light text-text-light 
+                     drop-shadow-[1px_1px_rgba(117,135,142)] 
                    xl:text-3xl xl:rounded-xl xl:h-24 xl:p-4
                         lg:text-2xl lg:rounded-lg lg:h-20 lg:p-3
                         md:text-xl md:rounded-md md:h-16 md:p-2">

@@ -1,14 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import axios from 'axios';
+import { useState } from "react";
 const initialState = {
   id: 1,
   gender: '',
-  name: '',
+  name: 'Rolana',
   middleName: '',
-  lastName: '',
-  mobile: '',
-  birthday: '',
+  lastName: 'Kamaria',
+  mobile: '0940580349',
+  birthday: '2024-05-11',
   clientRequest: [{ id: '', numberOfSeat: '', status: '' }],
+  notifications: ['Rolana Kamaria invite you to join her in the Extraordinary Experiece tour',
+    'Wajeeh Rabahie invite you to join him in the Tour Around The World tour',
+    'Nisreen Melhem invite you to join her in the Discover The World tour',
+    'Takla Zidan  invite you to join her in the Tour Around The World tour',
+    'Abboud Assaf  invite you to join him in the Extraordinary Experiece tour',
+    'Maen Melhem  invite you to join him in the Discover The World tour',
+    'Nagham Melhem  invite you to join her in the Mountains and Rivers tour'
+  ,],
   tours: [{
     sn: 1,
     orgnizerId: 2,
@@ -56,7 +65,7 @@ Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side
   {
     sn: 3,
     id: 23,
-    orgnizerId: 8,
+    orgnizerId: 2,
     title: 'Spring is Comming',
     startDate: '1/3/2024', startTime: '8:30 A.M',
     totalCost: 350,
@@ -75,9 +84,10 @@ Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side
     usersDislike: [2, 3, 4, 5, 1]
   },],
   selected: {
-    orgnizerId: 0,
+    orgnizerId: 2,
     tourId: 0
-  }
+  },
+
 };
 
 const clientSlice = createSlice({
@@ -97,13 +107,19 @@ const clientSlice = createSlice({
       tour[0].comments = comments
       //call api for comments we have in action tour id and comment and we use from here client id
     },
-    register: (state, action) => {
+    registerUser: (state, action) => { 
       state.name = action.payload.user.name;
       state.middleName = action.payload.user.middleName;
       state.lastName = action.payload.user.lastName;
       state.mobile = action.payload.user.mobile;
       state.birthday = action.payload.user.birthday;
       state.gender = action.payload.user.gender;
+    },
+    editRegisterInfo: (state, action) => {
+      state.name = action.payload.clientInfo.name;
+      state.lastName = action.payload.clientInfo.lastName;
+      state.mobile = action.payload.clientInfo.mobile;
+      state.birthday = action.payload.clientInfo.birthday;
     },
     likeTour:(state,action)=>{
       //call api for like sent clientId & tourId
@@ -116,8 +132,9 @@ const clientSlice = createSlice({
     },
     undisLikeTour:(state,action)=>{
       //call api for undislike sent clientId & tourId
-    }
+    },
+    
   },
 });
-export const { selecteOrgnizerId, selecteTourId, addComment, register, likeTour,unlikeTour,disLikeTour,undisLikeTour } = clientSlice.actions
+export const { selecteOrgnizerId, selecteTourId, addComment, registerUser, likeTour,unlikeTour,disLikeTour,undisLikeTour,editRegisterInfo } = clientSlice.actions
 export default clientSlice.reducer;
