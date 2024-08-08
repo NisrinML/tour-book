@@ -106,11 +106,19 @@ const userSlice = createSlice({
       state.id=action.payload.uid
       state.token=action.payload.token
     },
+
+    setUserInformation: (state,action) => {
+      state.login.data.email = action.payload.userInfo.email;
+      state.login.data.userName = action.payload.userInfo.userName;
+    },
+
+
     updateOrgnizerData: (state, action) => {
       state.login.data.email = action.payload.email;
       state.login.data.avatar = action.payload.image;
       state.login.data.userName = action.payload.userName;
     }
+
 
   },
   extraReducers: (builder) => {
@@ -146,5 +154,7 @@ const userSlice = createSlice({
   }
 });
 
-export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken, } = userSlice.actions
+
+export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken, setUserInformation } = userSlice.actions
+
 export default userSlice.reducer;

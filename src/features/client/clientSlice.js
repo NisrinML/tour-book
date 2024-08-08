@@ -4,12 +4,20 @@ import { useState } from "react";
 const initialState = {
   id: 1,
   gender: '',
-  name: '',
+  name: 'Rolana',
   middleName: '',
-  lastName: '',
-  mobile: '',
-  birthday: '',
+  lastName: 'Kamaria',
+  mobile: '0940580349',
+  birthday: '2024-05-11',
   clientRequest: [{ id: '', numberOfSeat: '', status: '' }],
+  notifications: ['Rolana Kamaria invite you to join her in the Extraordinary Experiece tour',
+    'Wajeeh Rabahie invite you to join him in the Tour Around The World tour',
+    'Nisreen Melhem invite you to join her in the Discover The World tour',
+    'Takla Zidan  invite you to join her in the Tour Around The World tour',
+    'Abboud Assaf  invite you to join him in the Extraordinary Experiece tour',
+    'Maen Melhem  invite you to join him in the Discover The World tour',
+    'Nagham Melhem  invite you to join her in the Mountains and Rivers tour'
+  ,],
   tours: [{
     sn: 1,
     orgnizerId: 2,
@@ -107,6 +115,12 @@ const clientSlice = createSlice({
       state.birthday = action.payload.user.birthday;
       state.gender = action.payload.user.gender;
     },
+    editRegisterInfo: (state, action) => {
+      state.name = action.payload.clientInfo.name;
+      state.lastName = action.payload.clientInfo.lastName;
+      state.mobile = action.payload.clientInfo.mobile;
+      state.birthday = action.payload.clientInfo.birthday;
+    },
     likeTour:(state,action)=>{
       //call api for like sent clientId & tourId
     },
@@ -122,5 +136,7 @@ const clientSlice = createSlice({
     
   },
 });
-export const { selecteOrgnizerId, selecteTourId, addComment, registerUser, likeTour,unlikeTour,disLikeTour,undisLikeTour } = clientSlice.actions
+
+export const { selecteOrgnizerId, selecteTourId, addComment, registerUser, likeTour,unlikeTour,disLikeTour,undisLikeTour,editRegisterInfo } = clientSlice.actions
+
 export default clientSlice.reducer;
