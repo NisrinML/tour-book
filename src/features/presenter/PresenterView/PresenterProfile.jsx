@@ -182,30 +182,12 @@ function PresenterProfile() {
                 lg:w-60 lg:rounded-lg lg:pl-2 lg:text-base
                 md:w-44 md:rounded-md md:pl-1 md:text-sm">
                   {allServices.map(service => (
-                    <option key={service.id} value={service.id}>
+                    <option key={service.id} value={service.id} className="hover:bg-presenterPostDetails-light">
                       {service.service}
                     </option>
                   ))}
                 </select>
-                <div className="flex flex-row mt-2 ">
-                  <input
-                    type="text"
-                    value={newService}
-                    onChange={(e) => setNewService(e.target.value)}
-                    placeholder="Add new service"
-                    className="mr-2 bg-button-text-light border border-text-light p-2 rounded-md 
-                drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light
-                xl:w-48 xl:rounded-xl xl:pl-3 xl:text-lg 
-                lg:w-48 lg:rounded-lg lg:pl-2 lg:text-base
-                md:w-32 md:rounded-md md:pl-1 md:text-sm"
-                  />
-                  <button
-                    onClick={handleAddService}
-                    className="bg-add-button-light text-button-text-light rounded-md p-2 hover:bg-add-button-hover-light"
-                  >
-                    Add
-                  </button>
-                </div>
+  
               </div>
             </div>
             <button

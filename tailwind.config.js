@@ -150,6 +150,9 @@ export default {
       'offerTitle': {
         light: '#F0911D'
       },
+      'clientInvite': {
+        light: '#AFF4DB'
+      },
 
     },
     fontFamily: {
