@@ -1,5 +1,9 @@
+
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import { act } from "react";
+import { useSelector } from "react-redux";
+import { API_URL } from "../../app/config";
 
 const initialState = {
   id: '',
@@ -371,7 +375,8 @@ const initialState = {
     toursPerMonth: [
       { month: 'Jun', count: 0, porfit: 0 }, { month: 'Feb', count: 2, porfit: 0.25 }, { month: 'Mars', count: 4, porfit: 0.44 }, { month: 'Apr', count: 2, porfit: 0.22 }, { month: 'May', count: 4, porfit: 0.44 }, { month: 'Aug', count: 5, porfit: 0.5 }, { month: 'Sept', count: 6, porfit: 0.6 }],
     orgnizerTourRating: 78.5,
-  }
+  },
+  advertisers:[]
 };
 
 const orgnizerSlice = createSlice({
@@ -459,9 +464,27 @@ const orgnizerSlice = createSlice({
     selecteOfferId: (state, action) => {
       state.selected.offerId = action.payload;
     },
+    getOrgnizerTours:async(state,action)=>{
+      var accessToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjE0MTIyLCJpYXQiOjE3MjMxMjc3MjIsImp0aSI6IjM5MTJlZWQwNjBlNTQ2Y2U4MzlmYWQ0NjhlZDUyZDE0IiwidXNlcl9pZCI6Nn0.afFpupFnhqdLQ0XQKfbs3OerDpmJlaMZdaSHcQgm3nQ";
+    // accessToken = localStorage.getItem('accessToken');
+
+      const response = await axios.get(`${API_URL}/api/tours/organizer-tours?page=`+action.payload, { 
+      headers: {
+      Authorization: `JWT ${accessToken}`,
+    }
+  }).then((response) => {
+    console.log(response.data)
+    //state.tours=response.data.data
+    }).catch((err)=>{
+      console.log(err.message)
+    })
+    },
+  
   },
 });
+
 export const { addPoint, setFinalTourDetails, setFirstTourDetails, changeOrderStatus,
   updateTour, deleteTour, updateOrgnizerData, deleteComment, setTourPoint, selecteItem,
-  editTour, selectOffer, editPost, editTourPointRequirment, selecteOfferId } = orgnizerSlice.actions
+  editTour, selectOffer, editPost, editTourPointRequirment, selecteOfferId,
+  getOrgnizerTours } = orgnizerSlice.actions
 export default orgnizerSlice.reducer;
