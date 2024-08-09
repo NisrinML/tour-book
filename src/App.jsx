@@ -56,7 +56,7 @@ function App() {
       {/* <OrgnizerReport/> */}
       {/* <OrgnizerResetPassword/> */}
       {/* <PresenterProfile /> */}
-      {/* <MakeSpecialTour/> */}
+      <MakeSpecialTour/>
       {/* <AddNewPlace /> */}
       {/* <TourConfirm/> */}
       {/* <TourManager/> */}
@@ -87,7 +87,7 @@ function App() {
       {/* <ClientNewPassword/> */}
       {/* <ClientForgetPassword/> */}
       {/* <ClientResetPassword/> */}
-      <ClientReport/>
+      {/* <ClientReport/> */}
     </Layout>
 
   )

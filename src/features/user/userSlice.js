@@ -17,8 +17,8 @@ const initialState = {
       avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
       email: 'user@gmail.com',
-      roleId: 1,
-
+      roleId: 2,
+      phone:0
     },
     rejected:false,
     error: ''
@@ -68,17 +68,31 @@ const initialState = {
   },],
   reports: { id: '', reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
 };
-export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
+  export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
 
   return axios.post(`${API_URL}/auth/jwt/create/`, {
     username:  username,
     password:password
   },CONFIG).then((res) => 
     {
-      console.log(res)
-    return res.data.access; }
+      localStorage.setItem('accessToken', res.data.access);
+      return fetchUserData( res.data.access)
+    //return res.data.access;
+     }
   )
  } )
+
+ export const fetchUserData = async (token) => {
+    
+    const response = await axios.get(`${API_URL}/auth/users/me/`, {
+      headers: {
+        Authorization: `JWT ${token}`,
+      },
+    });
+   
+    return response.data
+  
+};
 
 const userSlice = createSlice({
   name: "user",
@@ -117,6 +131,9 @@ const userSlice = createSlice({
       state.login.data.email = action.payload.email;
       state.login.data.avatar = action.payload.image;
       state.login.data.userName = action.payload.userName;
+    },
+    setData:(state,action)=>{
+
     }
 
 
@@ -125,18 +142,24 @@ const userSlice = createSlice({
     builder.addCase(fetchUsers.pending, (state) => {
       state.login.loading = true;
     })
-    builder.addCase(fetchUsers.fulfilled,async (state, action) => {
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
       state.login.loading = false;
       state.login.rejected = false;
       state.login.error = ""
-      state.token=action.payload
-      var token=action.payload
-      console.log(token)
-      await axios.get(`${API_URL}/auth/users/me/`, {headers: {'Authorization': `Bearer ${token}`}}).then((res) => 
-        {
-          console.log(res)
-          state.login.data= res.data.access; }
-      )
+      state.login.data.id=action.payload.id
+      state.login.data.email=action.payload.email
+      state.login.data.phone=action.payload.phone
+      state.login.data.userName=action.payload.username
+      state.login.data.avatar=action.payload.avatar
+      state.token = localStorage.getItem('accessToken');
+      if(action.payload.role=="AD")
+        {  state.login.data.roleId=3}
+      else if(action.payload.role=="C")
+       { state.login.data.roleId=1}
+      else
+       { state.login.data.roleId=2}
+
+   
       
     });
     builder.addCase(fetchUsers.rejected, (state, action) => {
@@ -144,7 +167,8 @@ const userSlice = createSlice({
       state.login.rejected = true;
       state.login.error = action.error.message;
    
-    })
+    });
+
     builder.addCase(updateOrgnizerData, (state, action) => {
       state.login.data.email=action.payload.email
       state.login.data.avatar=action.payload.image
@@ -154,7 +178,7 @@ const userSlice = createSlice({
   }
 });
 
+export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken,setData, setUserInformation } = userSlice.actions
 
-export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken, setUserInformation } = userSlice.actions
 
 export default userSlice.reducer;
