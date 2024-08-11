@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TrashIcon from "../../../assets/images/trachIcon.svg"
 import { deleteComment } from "../orgnizerSlice";
+import axios from "axios";
+import { API_URL } from "../../../app/config";
 function CommentModal(props) {
   const tours = useSelector(state => state.orgnizer.tours)
   const dispatch = useDispatch()
@@ -13,6 +15,23 @@ function CommentModal(props) {
     if (window.confirm('Are you sure you want to delete this comment?')) {
       dispatch(deleteComment({ tourId, id }))
       setComments(comments.filter((comment) => comment.id !== id));
+      var token = localStorage.getItem('accessToken');
+      var response = axios.delete(
+          `${API_URL}/api/clients/` +tourId+'/comments/'+id+'/',
+          {
+              headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `JWT ${token}`,
+              },
+          }
+      ).then(res => {
+          console.log(res.data)
+      }
+      ).catch((error) => {
+          
+          console.error('Error:', error);
+      })
+          ;
     }
   };
 

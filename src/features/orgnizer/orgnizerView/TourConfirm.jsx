@@ -1,12 +1,14 @@
 import SmallHeader from "../../layout/SmallHeader"
 import backButton from "../../../assets/images/backButton.svg"
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { setFinalTourDetails } from "../orgnizerSlice";
+import {  setFinalTourDetails } from "../orgnizerSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API_URL } from "../../../app/config";
 function TourConfirm() {
     const state = useSelector(state => state.orgnizer)
     const [seatPrice, setSeatPrice] = useState(0)
@@ -20,17 +22,10 @@ function TourConfirm() {
     const [notes, setNotes] = useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    
-    const handelBack = () => {
-        navigate('/make-special-tour/edit-itenrary');
-    }
-    
-    const handelCancel = () => {
-        navigate('/orgnizer-home')
-    }
+    const tourPoints=useSelector(state=>state.orgnizer.tour.tourPoints)
 
-    //define required schema with required condition
-    const requiredSchema = Yup.object().shape({
+     //define required schema with required condition
+     const requiredSchema = Yup.object().shape({
         seatPrice: Yup.number()
             .required("Required"),
         transportCost: Yup.number()
@@ -48,6 +43,102 @@ function TourConfirm() {
         resolver: yupResolver(requiredSchema),
     });
 
+    useEffect(()=>{
+        const selectedPoint= tourPoints.filter(point=>point.select==true)
+ 
+        var prices= selectedPoint.map(p=>
+           {var  offerId= p.offerRequest.offerId
+            var quantity=p.offerRequest.quantity
+            var offer=p.offers.filter(o=>o.id==offerId)
+            var price=quantity*offer[0].pricePerOne
+             return(
+            price)
+           })
+     
+        var tot=parseInt( transportCost)+parseInt(externalCost)+prices.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+        var porfit=parseInt(numOfSeats)*parseInt(seatPrice)-tot
+        setTotalCost(tot)
+        setPorfit(porfit)
+    },[seatPrice,transportCost,externalCost,numOfSeats])
+
+
+    const handelBack = () => {
+        navigate('/make-special-tour/edit-itenrary');
+    }
+    
+    const handelCancel = () => {
+        navigate('/orgnizer-home')
+    }
+
+   
+    const createTour=()=>{
+        var attach=[]
+        state.tour.tourAttachment.forEach(element=>{
+          attach.push({
+            attachment:{
+              file:element.attachment
+            }
+          })
+        })
+        var points=[]
+        state.tour.tourPoints.forEach(element=>{
+       
+          points.push({
+            title: element.name,
+            axis_y:element.lng,
+            axis_x:element.lat,
+            position:2147483647,
+            leaving_time:element.leavingTime,
+            arrival_time:element.arrivalTime,
+            description:element.description,
+            offer_request:{
+              num_of_seat:element.offerRequest.quantity,
+              description:element.offerRequest.description
+            }
+          })
+        })
+  
+        var data={
+          title: state.tour.title,
+          description:state.tour.description,
+          starting_place: state.tour.startingPlace,
+          reaction: [
+            0
+          ],
+          seat_num: state.tour.numOfSeat,
+          seat_cost:state.tour.seatCost,
+          transportation_cost: state.tour.transportationCost,
+          extra_cost:state.tour.extraCost,
+          x_starting_place:state.tour.XstartingPlace,
+          y_starting_place: state.tour.YstartingPlace,
+          start_date: state.tour.startDate,
+          end_date:state.tour.endDate,
+          note: state.tour.note,
+          posted: false,
+          posted_at: "2024-08-11T18:59:14.463Z",
+          tour_attachments: attach,
+          tour_points: points
+        }
+        console.log(data)
+        var token=  localStorage.getItem('accessToken');
+        var response=axios.post(`${API_URL}/api/tours/`, {
+       ...data
+        },{
+          headers: {       
+            Accept: 'application/json',
+            Authorization: `JWT ${token}`,
+          }
+        }).then((res) => 
+          {
+           console.log( res.data)
+           }
+        ) .catch((error) => {
+           console.error('Error:', error);
+         });
+       
+    
+    }
+
     // handle form submission
     const onSubmit = (data) => {
         var tour = {}
@@ -60,6 +151,7 @@ function TourConfirm() {
             tour.startTime = startTime,
             tour.notes = notes
         dispatch(setFinalTourDetails(tour))
+        createTour()
         navigate('/orgnizer-home')
     };
     return (
@@ -89,7 +181,7 @@ function TourConfirm() {
                             xl:text-2xl xl:w-44
                             lg:text-xl lg:w-36
                             md:text-lg md:w-28">Seat Price :</span>
-                                <input type="text"   {...register('seatPrice')}
+                                <input type="text"   {...register('seatPrice')} onChange={(e)=>{setSeatPrice(e.target.value)}}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-offerbg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -103,7 +195,7 @@ function TourConfirm() {
                             xl:text-2xl xl:w-44
                             lg:text-xl lg:w-36
                             md:text-lg md:w-28">Transport Cost :</span>
-                                <input type="text"   {...register('transportCost')}
+                                <input type="text"   {...register('transportCost')} onChange={(e)=>setTransportCost(e.target.value)}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-offerbg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg lg:h-9 lg:w-56
@@ -203,7 +295,7 @@ function TourConfirm() {
                             xl:text-2xl xl:w-44
                             lg:text-xl lg:w-36
                             md:text-lg md:w-28">Number of Seats :</span>
-                                <input type="number"   {...register('numOfSeats')}
+                                <input type="number"   {...register('numOfSeats')} onChange={(e)=>setNumOfSeats(e.target.value)}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-offerbg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-16
                             lg:rounded-lg lg:text-lg lg:h-9 lg:w-12
