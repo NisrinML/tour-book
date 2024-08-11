@@ -17,7 +17,7 @@ const initialState = {
   mobile: '23464366',
   userId: '',
   tour: {
-    id: '',
+    id: 4,
     title: 'Summer WeekEnd',
     startDate: '2024-07-07',
     startTime: '06:00',
@@ -30,7 +30,7 @@ const initialState = {
     description: 'Fruit Zone until 5/4/2024',
     numOfSeat: 150,
     note: 'you need jacket',
-    startingPlace: '',
+    startingPlace: 'دوار الرئيس',
     XstartingPlace: '',
     YstartingPlace: '',
     likeCounter: '',
@@ -39,10 +39,12 @@ const initialState = {
     postedAt: false,
     tourPoints: [
       {
-        id: 1, name: "مطعم ماء زهر", lat: 34.7207443, lng: 36.7173883, url: '/make-special-tour/presenter-offers', size: 120, select: true, status: 'accept', position: '', description: 'you need to bring your jacket', arrivalTime: '2:00 PM', leavingTime: '4:00 PM', offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '', description: '', offerId: '' },
+        id: 1, name: "مطعم ماء زهر", lat: 34.7207443, lng: 36.7173883, url: '/make-special-tour/presenter-offers', size: 120, select: true, status: 'accept', position: '', description: 'you need to bring your jacket', arrivalTime: '2:00 PM', leavingTime: '4:00 PM', 
+        offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '50', description: '', offerId: '1' },
         offers: [
           {
             id: 1,
+            name: "مطعم ماء زهر",
             title: "Friday Lunch",
             startDate: "5/5/2024",
             endDate: "15/5/2024",
@@ -54,6 +56,7 @@ const initialState = {
             offerAttatchment: [{ id: '', attachment: '', type: '' }],
           }, {
             id: 2,
+            name: "مطعم ماء زهر",
             title: "Sunday Lunch",
             startDate: "5/5/2024",
             endDate: "15/5/2024",
@@ -67,10 +70,12 @@ const initialState = {
         ]
       },
       {
-        id: 2, name: "فندق السفير", lat: 34.776043258519174, lng: 36.6026282253172, url: '/make-special-tour/presenter-offers', size: 60, select: true, status: 'wait', position: '', description: 'you need sport shoze', arrivalTime: '6:00 PM', leavingTime: '8:00 PM', offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '', description: '', offerId: '' },
+        id: 2, name: "فندق السفير", lat: 34.776043258519174, lng: 36.6026282253172, url: '/make-special-tour/presenter-offers', size: 60, select: true, status: 'wait', position: '', description: 'you need sport shoze', arrivalTime: '6:00 PM', leavingTime: '8:00 PM', 
+        offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '50', description: '', offerId: '2' },
         offers: [
           {
             id: 1,
+            name: "فندق السفير",
             title: "Friday Lunch",
             startDate: "5/5/2024",
             endDate: "15/5/2024",
@@ -82,6 +87,7 @@ const initialState = {
             offerAttatchment: [{ id: '', attachment: '', type: '' }],
           }, {
             id: 2,
+            name: "فندق السفير",
             title: "Sunday Lunch",
             startDate: "5/5/2024",
             endDate: "15/5/2024",
@@ -95,10 +101,12 @@ const initialState = {
         ]
       },
       {
-        id: 3, name: "نادي الأطباء والمهندسين", lat: 34.71017331715748, lng: 36.639553309802125, url: '/make-special-tour/presenter-offers', size: 20, status: 'refuse', select: false, position: '', description: '10:00 AM', arrivalTime: '1:00 PM', leavingTime: '', offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '', description: '', offerId: '' },
+        id: 3, name: "نادي الأطباء والمهندسين", lat: 34.71017331715748, lng: 36.639553309802125, url: '/make-special-tour/presenter-offers', size: 20, status: 'refuse', select: false, position: '', description: '10:00 AM', arrivalTime: '1:00 PM', leavingTime: '', 
+        offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '50', description: '', offerId: '2' },
         offers: [
           {
             id: 1,
+            name: "نادي الأطباء والمهندسين",
             title: "Friday Lunch",
             startDate: "5/5/2024",
             endDate: "15/5/2024",
@@ -110,6 +118,7 @@ const initialState = {
             offerAttatchment: [{ id: '', attachment: '', type: '' }],
           }, {
             id: 2,
+            name: "نادي الأطباء والمهندسين",
             title: "Sunday Lunch",
             startDate: "5/5/2024",
             endDate: "15/5/2024",
@@ -333,6 +342,7 @@ const initialState = {
     {
       id: 1,
       title: "Friday Lunch",
+      name: "مطعم ماء زهر",
       serviceId: 1,
       startDate: "2024-04-05",
       endDate: "2024-05-15",
@@ -345,6 +355,7 @@ const initialState = {
     }, {
       id: 2,
       title: "Sunday Lunch",
+      name: "نادي الأطباء والمهندسين",
       serviceId: 2,
       startDate: "2024-03-05",
       endDate: "2024-05-15",
@@ -356,6 +367,7 @@ const initialState = {
       offerAttatchment: [{ id: '', attachment: '', type: '' }],
     }, {
       id: 3,
+      name: "فندق السفير",
       title: "Monday Lunch",
       serviceId: 3,
       startDate: "2024-05-11",
@@ -480,8 +492,7 @@ const orgnizerSlice = createSlice({
       console.log(err.message)
     })
     },
- 
-  },
+  }
 });
 
 export const { addPoint, setFinalTourDetails, setFirstTourDetails, changeOrderStatus,

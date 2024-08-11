@@ -10,10 +10,13 @@ import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.p
 import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import CommentModal from "./CommentModal"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 function News(){
-    const tours = useSelector(state => state.orgnizer.allTours)
+    const tours1 = useSelector(state => state.orgnizer.allTours)
+    const [tours,setTours]=useState(tours1)
     const images = [image1, image2, image3, image1, image2, image3]
     const [showFullGallery, setShowFullGallery] = useState({ id: null, value: false });
     const [hideSubGallery, setHideSubGallery] = useState({ id: null, value: true })
@@ -21,6 +24,20 @@ function News(){
     const [showCommentsModal, setShowCommentsModal] = useState({ id: null, value: false });
     const navigate = useNavigate()
 
+    useEffect(async()=>{
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/tours/?page=`+1, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        setTours(response.data.result)
+        }).catch((err)=>{
+          console.log(err.message)
+        })
+    },[])
     //to show box image if number of image less than 4 else will show them as Gallery
     const handlePhotoClick = (id) => {
         setShowFullGallery((prevStates) => ({
@@ -64,7 +81,11 @@ function News(){
             </div>
             <div className="flex flex-row justify-center items-center pb-10 xl:p-10 lg:pt-20 md:pt-32">
                 <div className="flex flex-col items-center justify-start w-3/5 h-screen space-y-5 bg-post-bg-light   drop-shadow-[1px_1px_rgba(117,135,142)] rounded-2xl overflow-hidden hover:overflow-y-auto p-10">
-                {tours.map(tour => {
+                {
+                        !tours&&<div className=" text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia'] text-center py-40">No Tours Yet ...</div>
+                    } 
+                    
+                {tours&&tours.map(tour => {
                         return (
                             <div className="flex flex-row justify-center items-center relative w-11/12 pt-5" key={tour.id}>
                                 <div className="flex flex-col w-full bg-orgnizerbg-light border-solid border-2 border-title-light drop-shadow-[1px_1px_rgba(117,135,142)] rounded-xl p-5 space-y-5">

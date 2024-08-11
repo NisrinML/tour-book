@@ -3,20 +3,44 @@ import backButton from "../../../assets/images/backButton.svg"
 import image1 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'
 import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'
 import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import PositionComponent from "./PositionComponent"
 import { useDispatch } from "react-redux"
 import { deleteTour } from "../orgnizerSlice"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 function TourDetails() {
-    const tour=useSelector(state=>state.orgnizer.tour)
-   
+    const tour1=useSelector(state=>state.orgnizer.tour)
+   const [tour,setTour]=useState(tour1)
     //sum number of reserved seats from total number of seats minus the number of required seats in each accepted request
     const resrvedSeats= tour.clientRequest.filter(req=> req.status=='accept').reduce((sum, order) => sum + order.numOfSeat, 0);
     const [images, setImages] = useState([{ id: 1, src: image1 }, { id: 2, src: image2 }, { id: 3, src: image3 }])
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    
+    useEffect(async()=>{
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/tours/`+tour.id+'/', { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        var item={
+            title:response.data.title,
+            attachment:response.data.tour_attachments,
+            
+        }
+        
+        }).catch((err)=>{
+          console.log(err.message)
+        }) },[])
+
+
     const handelSave = ()=>{
         navigate('/my-tour')
     }
