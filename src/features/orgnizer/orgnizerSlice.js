@@ -376,7 +376,8 @@ const initialState = {
       { month: 'Jun', count: 0, porfit: 0 }, { month: 'Feb', count: 2, porfit: 0.25 }, { month: 'Mars', count: 4, porfit: 0.44 }, { month: 'Apr', count: 2, porfit: 0.22 }, { month: 'May', count: 4, porfit: 0.44 }, { month: 'Aug', count: 5, porfit: 0.5 }, { month: 'Sept', count: 6, porfit: 0.6 }],
     orgnizerTourRating: 78.5,
   },
-  advertisers:[]
+  advertisers:[],
+  selectOffers:[]
 };
 
 const orgnizerSlice = createSlice({
@@ -479,7 +480,7 @@ const orgnizerSlice = createSlice({
       console.log(err.message)
     })
     },
-  
+ 
   },
 });
 

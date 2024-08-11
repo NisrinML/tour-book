@@ -35,8 +35,7 @@ function OrgnizerHomePage() {
     
     useEffect(async()=>{
         
-        var accessToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjE0MTIyLCJpYXQiOjE3MjMxMjc3MjIsImp0aSI6IjM5MTJlZWQwNjBlNTQ2Y2U4MzlmYWQ0NjhlZDUyZDE0IiwidXNlcl9pZCI6Nn0.afFpupFnhqdLQ0XQKfbs3OerDpmJlaMZdaSHcQgm3nQ";
-       // var accessToken = localStorage.getItem('accessToken');
+        var accessToken = localStorage.getItem('accessToken');
     
           const response = await axios.get(`${API_URL}/api/tours/organizer-tours?page=`+1, { 
           headers: {

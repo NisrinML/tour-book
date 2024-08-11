@@ -47,6 +47,7 @@ function ClientNewPassword() {
     } = useForm({
         resolver: yupResolver(passwordSchema),
     });
+    
     // handle form submission
     const onSubmit = async (data) => {
         const response = await axios.post(`${API_URL}/auth/users/reset_password_confirm/`, {
@@ -58,22 +59,22 @@ function ClientNewPassword() {
             dispatch(setToken({ uid, token }));
             navigate('/login')
         })
-            .catch((error) => {
-                setCheckError(true)
+            // .catch((error) => {
+            //     setCheckError(true)
 
-                if (error.response && error.response.data) {
-                    const errorData = error.response.data;
+            //     if (error.response && error.response.data) {
+            //         const errorData = error.response.data;
 
-                    if (typeof errorData === 'string') {
-                        setMsg(errorData);
-                    } else {
-                        setMsg(JSON.stringify(errorData));
-                    }
-                } else {
-                    setMsg('An unknown error occurred');
-                }
-                console.error('Error:', error);
-            });
+            //         if (typeof errorData === 'string') {
+            //             setMsg(errorData);
+            //         } else {
+            //             setMsg(JSON.stringify(errorData));
+            //         }
+            //     } else {
+            //         setMsg('An unknown error occurred');
+            //     }
+            //     console.error('Error:', error);
+            // });
 
 
 

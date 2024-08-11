@@ -3,14 +3,18 @@ import backButton from "../../../assets/images/backButton.svg"
 import ReportIcon from "../../../assets/images/reportIcon.svg"
 import Person from "../../../assets/images/person.png"
 import OfferComponent from "./OfferComponent"
-import { useLayoutEffect, useMemo, useState } from "react"
+import { useEffect, useLayoutEffect, useMemo, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { selecteItem } from "../orgnizerSlice"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
+import { API_URL, CONFIG } from "../../../app/config"
 
 function ChooseOffer() {
     const [offers,setOffers]=useState([])
+    const [checkError,setCheckError]=useState(false)
+    const [msg,setMsg]=useState('')
     const dispatch = useDispatch()
     const navigate= useNavigate()
     var presenterId=useSelector(state=>state.orgnizer.selected.presenterId)
@@ -21,7 +25,59 @@ function ChooseOffer() {
         setOffers(items[0].offers)
     },[])
       
-   
+   useEffect(async()=>{
+    var token=  localStorage.getItem('accessToken');
+      const response = await axios.get(`${API_URL}/api/advertisers/offers/advertiser-offers/`+presenterId+"/",{
+            headers: {       
+                Accept: 'application/json',
+                Authorization: `JWT ${token}`,
+              }
+          }).then((response) => {
+            console.log(response.data);
+            var res=[]
+
+            response.data.data.foreach(element=>{
+                var item={
+                    id:element.id,
+                    endDate:element.end_date,
+                    startDate:element.start_date,
+                    endTime:"6:00 P.M",
+                    startTime:"2:00 P.M",
+                    title:element.title,
+                    description:element.description,
+                    pricePerOne:element.price_for_one,
+                    service:element.service,
+                    advertiserObject:element.advertiser_object,
+                    offerRequests:element.offer_requests,
+                    offerAttachments:element.offer_attachments
+                }
+                res.push(item)
+
+            })
+            console.log(res)
+          // setOffers(response.data.data)
+    
+          })
+          .catch((error) => {
+           setCheckError(true)
+           
+           if (error.response && error.response.data) {
+            const errorData = error.response.data;
+            
+            if (typeof errorData === 'string') {
+ 
+              setMsg(errorData);
+            }else {
+
+              setMsg(JSON.stringify(errorData.errors));
+            }
+          } else {
+            setMsg('An unknown error occurred');
+          }
+            console.error('Error:', error);
+          });
+   },[])
+
     const handelReport = () => {
         dispatch(selecteItem(presenterId))
         navigate('/orgnizer/report')
@@ -87,7 +143,20 @@ function ChooseOffer() {
             </div>
             <div className="flex flex-row justify-center items-center p-10">
                 <div className="flex flex-col items-center justify-start w-4/5 h-screen space-y-5 bg-post-bg-light   drop-shadow-[1px_1px_rgba(117,135,142)] rounded-2xl overflow-hidden hover:overflow-y-auto p-10">
-                {offers.map(offer=>{
+                {offers.length==0&&
+                               <div  className="flex flex-row justify-center items-center 
+                               xl:p-10 lg:p-7 md:p-5">
+                           
+                                       <div className="flex flex-row justify-center items-center text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['serif'] ">
+                                              No Offers Yet ...
+                                       
+                                      
+                                      
+                                    </div>
+                                    </div>
+                        }
+
+                {offers.length>0&&offers.map(offer=>{
                     return(
                         <OfferComponent offer={offer} key={offer.id}/>
                     )
