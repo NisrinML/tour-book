@@ -316,32 +316,8 @@ function PresenterEditOffer() {
                 </option>
               ))}
             </select>  
-            <div className="flex flex-row space-x-2">      
-              <input
-                type="text"
-                value={newService}
-                onChange={(e) => setNewService(e.target.value)}
-                placeholder="Add new service"
-                className="bg-button-text-light p-1 rounded-md 
-                drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light
-                xl:w-44 xl:rounded-xl xl:pl-1 xl:text-lg 
-                lg:w-44 lg:rounded-lg lg:pl-1 lg:text-base
-                md:w-32 md:rounded-md md:pl-1 md:text-sm"
-              />
-              <button
-                type="button"
-                onClick={handleAddService}
-                className="flex flex-col font-['sans-serif'] items-center justify-center
-                drop-shadow-[3px_6px_rgba(117,135,142,0.5)]
-                bg-add-button-light text-button-text-light
-                hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
-                xl:text-xl xl:rounded-md xl:w-12 xl:h-10   xl:ml-10
-                lg:text-lg lg:rounded-md lg:w-10 lg:h-auto lg:ml-0
-                md:text-md md:rounded-md md:w-10 md:h-8    md:ml-10"
-              >
-                Add
-              </button>
-            </div>
+       
+        
           </div>
           <button onClick={handleUpdateOffer}
             className="flex flex-col font-['sans-serif'] items-center justify-center

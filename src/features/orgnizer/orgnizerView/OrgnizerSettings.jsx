@@ -35,6 +35,7 @@ function OrgnizerSettings() {
     const handelChangePassword= ()=>{
         navigate('/orgnizer/new-password')
     }
+
     //to update the value of select button image
     const handleFileChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -42,6 +43,7 @@ function OrgnizerSettings() {
         }
         
       };
+
      //define required schema with required condition
      const requiredSchema = Yup.object().shape({
         userName: Yup.string()
@@ -60,6 +62,7 @@ function OrgnizerSettings() {
         axisX: Yup.number(),
         axisY: Yup.number()
     });
+
     const {
         register,
         handleSubmit,
@@ -94,6 +97,7 @@ function OrgnizerSettings() {
         // user.axisX=coordinate.position[0]
         // user.axisY=coordinate.position[1]
         user.image=convertToBase64(data.image)
+        console.log(user)
         dispatch(updateOrgnizerData(user))
     };
 

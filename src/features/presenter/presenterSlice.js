@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Potate from "../../assets/images/Potato.png"
+import Bergar from "../../assets/images/Burger.png"
 const initialState = {
   id: "9",
   name: "Rolana Kamaria",
@@ -32,7 +34,7 @@ const initialState = {
   ],
   offers: [    {
     id: "1",
-    title: "Fridy Lunch",
+    title: "Friday Lunch",
     offerSize:"100",
     startDate: "05/10/2024",
     endDate: "06/20/2024",
@@ -41,7 +43,7 @@ const initialState = {
     pricePerOne: "20$",
     description: "Burger - Potato - One Drink",
     address: "syria-homs",
-    offerAttatchment: [{ id: '', attachment:'', type: '' }],
+    offerAttatchment: [{ id: 1, attachment:Potate, type: '' },{ id:2, attachment:Bergar, type: '' }],
   },
 { id: 2,
   title: "Sunday Lunch",

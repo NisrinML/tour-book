@@ -91,7 +91,7 @@ const handleWarning = () =>{
                              xl:text-4xl lg:text-3xl md:text-2xl">{offer.title}</span>
                 <div className="flex flex-row space-x-10">
                   
-               {offer.offerAttatchment.attachment == null ? (
+               {offer.offerAttatchment.attachment === null ? (
                <div className="text-text-light mt-16 px-2 content-center">There are no images to show</div>
           ) : (
             offer.offerAttatchment.map((attachment, index) => (

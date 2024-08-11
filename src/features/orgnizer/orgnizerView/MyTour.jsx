@@ -7,37 +7,65 @@ import { Tours } from "../../../assets/data/tempData"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { deleteTour, updateTour } from "../orgnizerSlice"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 function MyTour() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [tours,setTours]=useState(Tours)
+    useEffect(async()=>{
+        
+        //var accessToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjE0MTIyLCJpYXQiOjE3MjMxMjc3MjIsImp0aSI6IjM5MTJlZWQwNjBlNTQ2Y2U4MzlmYWQ0NjhlZDUyZDE0IiwidXNlcl9pZCI6Nn0.afFpupFnhqdLQ0XQKfbs3OerDpmJlaMZdaSHcQgm3nQ";
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/tours/organizer-tours?page=`+1, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        setTours(response.data.data)
+        }).catch((err)=>{
+          console.log(err.message)
+        })
+        
+    },[])
+
     const handelBack = () => {
         navigate('/orgnizer-home');
     }
+
     const handelPost = (id) => {
         dispatch(updateTour(id))
         navigate('/my-tour/post');
     }
+
     const handelEdit = (id) => {
 
         dispatch(updateTour(id))
         navigate('/my-tour/edit');
     }
+
     const handelDelete = (id) => {
 
         dispatch(deleteTour(id))
         navigate('/my-tour');
     }
+
     const handelDetails = (id) => {
 
         dispatch(updateTour(id))
         navigate('/my-tour/details');
     }
+
     const handelRequests  = (id) => {
         navigate('/my-tour/requests');
        dispatch(updateTour(id))
        
      
     }
+
     return (
         <div className="flex flex-col">
             <SmallHeader />
@@ -54,8 +82,8 @@ function MyTour() {
             <div className="flex flex-row  items-center justify-center h-screen ">
                 <div className="flex flex-col w-3/4 h-3/4  border-solid border-2  border-text-light overflow-hidden hover:overflow-y-auto ">
                 {/* Add box content depend on tour status & tour posted propereties */}
-                    {
-                    Tours.map((tour)=>{
+                    {tours.length>0&&
+                    tours.map((tour)=>{
                         const acceptedOrders = tour.clientRequest.filter(order=>order.status=='accept')
                         var reservedSeats =acceptedOrders.reduce((sum, order) => sum + order.numOfSeat, 0)
                                 return (
@@ -190,7 +218,21 @@ function MyTour() {
                                 )
                             })}
                         
-                   
+                        {tours.length==0&&
+                               <div  className="flex flex-row justify-center items-center 
+                               xl:p-10 lg:p-7 md:p-5">
+                               <div  className="flex flex-col justify-center items-center bg-post-bg-light w-11/12 border-solid border-2 border-text-light drop-shadow-[2px_4px_rgba(125,143,154,0.5)]
+                               xl:h-96 xl:rounded-xl 
+                               lg:h-80 lg:rounded-lg
+                               md:h-64 md:rounded">
+                                       <div className="flex flex-row justify-center items-center text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['serif'] ">
+                                              No Tours Yet ...
+                                       
+                                            </div>
+                                      
+                                    </div>
+                                    </div>
+                        }
 
                 </div>
             </div>

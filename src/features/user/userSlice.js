@@ -66,7 +66,7 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: '', reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
+  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
 };
   export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
 
