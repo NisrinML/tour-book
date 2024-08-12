@@ -10,13 +10,19 @@ import { useState } from "react";
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { editPost } from "../orgnizerSlice"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 
 function TourPost() {
     const tour = useSelector(state => state.orgnizer.tour)
+    const tourOrgnizer = useSelector(state => state.orgnizer)
+    const user = useSelector(state => state.user.login.data)
     const [title, setTitle] = useState(tour.title)
     const [reservation, setReservation] = useState(tour.description)
     const [note, setNote] = useState(tour.note)
     const [images, setImages] = useState([{ id: 1, src: image1 }, { id: 2, src: image2 }, { id: 3, src: image3 }])
+    const [checkError,setCheckError]=useState(false)
+    const [msg,setMsg]=useState('')
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -36,8 +42,115 @@ function TourPost() {
     }
 
     const handelPost =()=>{
-        var tour={title,reservation,note,images}
-        dispatch(editPost({tour}))
+        var tour1={title,reservation,note,images}
+        //dispatch(editPost({tour1}))
+   
+
+
+        var attach=[]
+        tour.tourAttachment.forEach(element=>{
+          attach.push({
+            attachment:{
+              file:element.attachment
+            }
+          })
+        })
+
+        var points=[]
+        tour.tourPoints.forEach(element=>{
+       
+          points.push({
+            title: element.name,
+            axis_y:element.lng,
+            axis_x:element.lat,
+            position:2147483647,
+            leaving_time:element.leavingTime,
+            arrival_time:element.arrivalTime,
+            description:element.description,
+            offer_request:{
+              num_of_seat:element.offerRequest.quantity,
+              description:element.offerRequest.description
+            }
+          })
+        })
+
+        var orgnizer={
+            id: tourOrgnizer.id,
+            user: {
+                id: user.id,
+                email: user.email,
+                username: user.userName,
+                phone: user.phone,
+                role: "O",
+                avatar:user.avatar
+             },
+            address: tourOrgnizer.address,
+            evaluation: tourOrgnizer.evaluation,
+            logo:user.avatar,
+
+        }
+
+        var data={
+          id:tour.id,
+          title: tour.title,
+          description:tour.description,
+          starting_place: tour.startingPlace,
+          reaction: [
+            0
+          ],
+          comments_num:tour.comments.length,
+          seat_num: tour.numOfSeat,
+          seat_cost:tour.seatCost,
+          transportation_cost:tour.transportationCost,
+          total_cost:tour.totalCost,
+          extra_cost:tour.extraCost,
+          x_starting_place:tour.XstartingPlace,
+          y_starting_place: tour.YstartingPlace,
+          start_date: tour.startDate,
+          end_date:tour.endDate,
+          note: tour.note,
+          posted: true,
+          posted_at: Date.now(),
+          tour_attachments: attach,
+          tour_points: points,
+          tour_organizer:orgnizer
+        }
+        console.log(data)
+
+        var token=  localStorage.getItem('accessToken');
+        var response=axios.post(`${API_URL}/api/tours/`+tour.id+`/post`, {
+       ...data
+        },{
+          headers: {       
+            Accept: 'application/json',
+            Authorization: `JWT ${token}`,
+          }
+        }).then((res) => 
+          {
+           console.log( res.data)
+           }
+        )  .catch((error) => {
+           setCheckError(true)
+           
+           if (error.response && error.response.data) {
+            const errorData = error.response.data;
+            
+            if (typeof errorData === 'string') {
+ 
+              setMsg(errorData.errors);
+            }else {
+
+              setMsg(JSON.stringify(errorData.errors));
+            }
+          } else {
+            setMsg('An unknown error occurred');
+          }
+            console.error('Error:', error);
+          });
+       
+    
+    
+
         navigate("/orgnizer-home")
 
     }
@@ -45,6 +158,7 @@ function TourPost() {
     const handelBack = () => {
         navigate('/my-tour');
     }
+
 
     return (
         <div className="flex flex-col">
@@ -163,7 +277,11 @@ function TourPost() {
 
                                 </div>
                             </div>
-
+                            {
+            checkError&& <div className="flex flex-row justify-start  text-error-light font-['Open_Sans']  pb-10
+            xl:text-xl lg:text-lg  md:text-base">{msg}
+                </div>
+           } 
                             <div className="flex flex-row justify-start items-start space-x-10">
                         <button onClick={handelPost}
                             className="flex flex-col justify-center items-center text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light 

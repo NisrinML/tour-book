@@ -75,7 +75,7 @@ function App() {
       {/* <OrgnizerSettings/> */}
       {/* <PresenterPage/> */}
       {/* <OrgnizerNotifications/> */}
-      <OrgnizerHomePage/>
+      {/* <OrgnizerHomePage/> */}
       {/* <News/> */}
       {/* <TourItenrary/> */}
       {/* <ChooseOffer/> */}
@@ -103,6 +103,8 @@ function App() {
       {/* <ClientNotification/> */}
       {/* <ClientProfile/> */}
  {/* <ChooseOffer/> */}
+ <OrgnizerStatus/>
+
     </Layout>
 
   )
