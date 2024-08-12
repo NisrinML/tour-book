@@ -17,8 +17,8 @@ const initialState = {
       avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
       email: 'user@gmail.com',
-      roleId: 1,
-
+      roleId: 2,
+      phone:0
     },
     rejected:false,
     error: ''
@@ -66,9 +66,9 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: '', reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
+  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
 };
-export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
+  export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
 
   return axios.post(`${API_URL}/auth/jwt/create/`, {
     username:  username,
@@ -132,6 +132,9 @@ const userSlice = createSlice({
       state.login.data.email = action.payload.email;
       state.login.data.avatar = action.payload.image;
       state.login.data.userName = action.payload.userName;
+    },
+    setData:(state,action)=>{
+
     }
 
 
@@ -165,7 +168,8 @@ const userSlice = createSlice({
       state.login.rejected = true;
       state.login.error = action.error.message;
    
-    })
+    });
+
     builder.addCase(updateOrgnizerData, (state, action) => {
       state.login.data.email=action.payload.email
       state.login.data.avatar=action.payload.image
@@ -175,7 +179,7 @@ const userSlice = createSlice({
   }
 });
 
+export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken,setData, setUserInformation } = userSlice.actions
 
-export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken, setUserInformation } = userSlice.actions
 
 export default userSlice.reducer;

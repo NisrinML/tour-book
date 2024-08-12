@@ -4,10 +4,12 @@ import SearchIcon from "../../../assets/images/searchIcon.png"
 import MoreIcon from "../../../assets/images/showMoreIcon.png"
 import Person from "../../../assets/images/person.png"
 import { Services } from "../../../assets/data/tempData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom"
 import { selecteOfferId } from "../orgnizerSlice"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 function Offers(){
     const allOffers = useSelector(state=>state.orgnizer.offers)
     const [text,setText]=useState('')
@@ -16,6 +18,40 @@ function Offers(){
     const [offers,setOffers]=useState(allOffers)
     const navigate =useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(async()=>{
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/advertisers/offers/list?page`+0, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        var newList=[]
+        response.data.results.forEach(element => {
+         
+                newList.push({
+                    name:element.advertiser.username,
+                    presenterId:element.advertiser.id,
+                    id:element.id,
+                    title:element.title,
+                    pricePerOne:element.price_for_one,
+                    reversed_seats:element.reversed_seats,
+                    service:element.service,
+                    start_date:element.start_date,
+                    available_seats:element.available_seats,
+                    description:element.description,
+                    end_date:element.end_date,
+                })
+            
+            
+           
+        });
+        setOffers(newList)
+        }).catch((err)=>{
+          console.log(err.message)
+        }) },[])
 
     //to make filter on offers depend on offerd services / offer title / offer start date
     const search=()=>{
@@ -89,7 +125,7 @@ function Offers(){
                                     bg-gradient-to-br from-backOpacityBgFrom-light from-3% via-post-bg-light via-40% to-backOpacityBgTo-light to-80%  drop-shadow-md shadow-md">
                               
                               <img src={Person} className="flex-row rounded-xl xl:w-20 xl:h-20 lg:w-16 lg:h-16 md:w-12 md:h-12"/>
-                              <span className="flex flex-row  text-title-light xl:text-2xl lg:text-xl md:text-base font-['sans-serif']">Presenter Name</span>
+                              <span className="flex flex-row  text-title-light xl:text-2xl lg:text-xl md:text-base font-['sans-serif']">{offer.name}</span>
                               <span className="flex flex-row  text-text-light xl:text-2xl lg:text-xl md:text-base font-['sans-serif']">{offer.title}</span>
                               <div className="flex flex-row justify-center items-center space-x-5">
                               <span className="flex flex-row  text-title-light xl:text-xl lg:text-lg md:text-base font-['sans-serif']">{offer.pricePerOne} $</span>

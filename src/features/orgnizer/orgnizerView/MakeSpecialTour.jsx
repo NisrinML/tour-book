@@ -12,9 +12,11 @@ import useGeoLocation from "../../../assets/map/useGeoLocation"
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import 'leaflet/dist/leaflet.css';
 import "../../../tailwind/largeMap.css"
-import { addPoint, selecteItem, setFirstTourDetails } from "../orgnizerSlice"
+import { addPoint, selecteItem, selecteOfferId, setFirstTourDetails, setTourPoint, updateTour } from "../orgnizerSlice"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
+import { API_URL } from "../../../app/config"
+import axios from "axios"
 
 function MakeSpecialTour() {
   const [KMdistance, setKMdistance] = useState(0);
@@ -24,7 +26,8 @@ function MakeSpecialTour() {
   const navigate = useNavigate();
   const dispatch=useDispatch();
   const location = useGeoLocation();
-  var locations = useSelector(state=>state.orgnizer.tour.tourPoints)
+  var locations1 = useSelector(state=>state.orgnizer.tour.tourPoints)
+  const [locations,setLocations]=useState(locations1)
   //to get the position that the orgnizer choose
   var selectedLocations = locations.filter(location => location.select == true);
   // Map parameters
@@ -37,6 +40,71 @@ function MakeSpecialTour() {
     iconUrl: placeHolderSelect,
     iconSize: [38, 38],
   });
+
+  useEffect(async()=>{
+        
+    var accessToken = localStorage.getItem('accessToken');
+
+      const response = await axios.get(`${API_URL}/api/advertisers/`, { 
+      headers: {
+      Authorization: `JWT ${accessToken}`,
+    }
+  }).then((response) => {
+    console.log(response.data)
+    return response.data
+    }).catch((err)=>{
+      console.log(err.message)
+    })
+    
+    var data=[]
+    response.forEach(element => {
+      var choose=true
+      if(element.situation=='UNSUB')
+        choose=false
+      var offers=[]
+      element.offers.forEach(offer => {
+       var attach=[]
+        offer.offer_attachments.forEach(att=>{
+          var ele={
+            id:att.id,
+            file:att.file,
+            attachment_object:att.attachment_object
+          }
+          attach.push(ele)
+        }
+        )
+        var item={
+          id: offer.id,
+              title:offer.title,
+              startDate: offer.start_date,
+              endDate: offer.end_date,
+              startTime: "2:00 P.M",
+              endTime: "6:00 P.M",
+              pricePerOne: offer.price_for_one,
+              description: offer.description,
+              address: "",
+              offerAttatchment:attach,
+        }
+        offers.push(item)
+      });
+      data.push({
+        id:element.id,
+        lat:element.axis_x,
+        lng:element.axis_y,
+        select:choose,
+        name:element.place_name,
+        size:element.place_capacity,
+        attachments:element.advertiser_attachments,
+        email:element.email,
+        phone:element.phone,
+        services:element.service,
+        offers:offers
+      })
+    });
+    setLocations(data)
+    dispatch(setTourPoint(data))
+},[])
+
   //to customize the placeholder Icon that apper on the map when more than one place child allocate in the same region
   const createCustomClusterIcon = (cluster) => {
     return new divIcon({
@@ -56,6 +124,7 @@ function MakeSpecialTour() {
   const handelTitleChange = (e) => {
     setTitle(e.target.value)
   }
+
   const handelConfirm = () => {
     var tour={}
     tour.title=title
@@ -68,12 +137,21 @@ function MakeSpecialTour() {
   }
 
   const handelAddNewPlace = () => {
+    var tour={}
+    tour.title=title
+    tour.KMdistance=KMdistance
+    tour.HMdistance=HMdistance
+    dispatch(setFirstTourDetails(tour))
+    dispatch(addPoint(selectedLocations))
+
+
     navigate('/make-special-tour/add-new-place')
   }
 
   const handelChoosePosition=(presenterId)=>{
     dispatch(selecteItem({presenterId}))
     var tour={}
+    tour.id=0
     tour.title=title
     tour.KMdistance=KMdistance
     tour.HMdistance=HMdistance
@@ -100,6 +178,7 @@ function MakeSpecialTour() {
     return data
   }
   const data = drawLine();
+
   //to calculate distance between selected position
   const calculateDistance = () => {
     var distance = 0;
@@ -158,7 +237,7 @@ function MakeSpecialTour() {
             xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md 
             lg:w-36  lg:h-10 lg:text-xl lg:rounded-md 
             md:w-32 md:h-8 md:text-lg md:rounded-md  "
-          onClick={handelAddNewPlace}>Add New Place</button>
+          onClick={()=>handelAddNewPlace()}>Add New Place</button>
         <button className="flex flex-row font-['sans-serif']  drop-shadow-[2px_4px_rgba(117,135,142,0.5)] bg-save-button-light text-button-text-light justify-center items-center
             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-save-button-hover-light
             xl:w-44 xl:h-10  xl:text-2xl xl:rounded-md 

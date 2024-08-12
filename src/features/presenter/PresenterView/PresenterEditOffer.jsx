@@ -305,6 +305,7 @@ function PresenterEditOffer() {
                 </option>
               ))}
             </select>  
+
           </div>
           <button onClick={handleUpdateOffer}
             className="flex flex-col font-['sans-serif'] items-center justify-center

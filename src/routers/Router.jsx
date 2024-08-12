@@ -94,7 +94,7 @@ return(
         <Route path="/user-home-page" element={<UserHomePage/>}/>
         <Route path="/activate" element={<Activate/>}/>
         <Route path="/user-home/orgnizer-tours" element={<OrgnizerTours/>}/>
-        <Route path="/client/client-new-password" element={<ClientNewPassword/>}/>
+        <Route path="/password/reset/confirm/" element={<ClientNewPassword/>}/>
         <Route path="/client/client-forget-password" element={<ClientForgetPassword/>}/>
         <Route path="/client/client-reset-password" element={<ClientResetPassword/>}/>
         <Route path="/client/client-report" element={<ClientReport/>}/>

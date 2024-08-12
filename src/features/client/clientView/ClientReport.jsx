@@ -6,17 +6,58 @@ import Rock from "../../../assets/images/rock.svg"
 import { ProblemList } from "../../../assets/data/tempData";
 import { useState } from "react";
 import { useSelector } from "react-redux"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
+import { useNavigate } from "react-router-dom"
 function ClientReport() {
     const state = useSelector(state => state.user)
+    const orgnizerId = useSelector(state=>state.client.selected.orgnizerId)
     const problemList = ProblemList;
     const [reason, setReason] = useState('')
+    const [checkError,setCheckError]=useState(false)
+    const [msg,setMsg]=useState('')
+    const navigate = useNavigate()
     const [description, setDescription] = useState('')
     function handelReasonChange(e) {
         setReason(e.target.value)
     }
 
-    const handelSubmit=()=>{
+    const handelSubmit=async()=>{
         //call api for reports
+        var data={
+            reason:description,
+            report_type: "CR"
+        }
+        var token=  localStorage.getItem('accessToken');
+        const response = await axios.post(`${API_URL}/api/reports/`+orgnizerId, {
+        ...data
+          },{
+            headers: {
+                Authorization: `JWT ${token}`,
+              }
+          }).then((response) => {
+            console.log(response.data);
+            dispatch(setToken({uid,token}));
+            navigate('/login')
+          })
+          .catch((error) => {
+           setCheckError(true)
+           
+           if (error.response && error.response.data) {
+            const errorData = error.response.data;
+            
+            if (typeof errorData === 'string') {
+ 
+              setMsg(errorData);
+            }else {
+
+              setMsg(JSON.stringify(errorData.errors));
+            }
+          } else {
+            setMsg('An unknown error occurred');
+          }
+            console.error('Error:', error);
+          });
         navigate('/user-home-page');
     }
 
@@ -43,6 +84,11 @@ function ClientReport() {
                 lg:mx-64 lg:rounded-3xl 
                 md:mx-56 md:rounded-2xl mb-10">
                     <div className="flex flex-col items-start justify-center mx-auto text-text-light font-['Arial'] gap-1 space-y-5 px-2 xl:text-2xl xl:my-16 lg:text-xl lg:my-16 md:text-lg md:my-20">
+                    {
+            checkError&& <div className="flex flex-row justify-start  text-error-light font-['Open_Sans']  pb-10
+            xl:text-xl lg:text-lg  md:text-base">{msg}
+                </div>
+           } 
                         <div className="flex flex-row xl:gap-3 lg:gap-2 md:gap-2">
                             <span className="  xl:text-2xl xl:w-48
                             lg:text-xl lg:w-40

@@ -14,14 +14,17 @@ import MapEvents from "../../../assets/map/mapEvents"
 import 'leaflet/dist/leaflet.css';
 import { useNavigate } from "react-router-dom";
 import { updateOrgnizerData } from "../orgnizerSlice";
+import axios from "axios";
+import { API_URL } from "../../../app/config";
 function OrgnizerSettings() {
     const location = useGeoLocation();
     const zoomLevel = 13;
     const coordinate = useSelector(state => state.coordinate);
     const [selectedFile, setSelectedFile] = useState(null);
     const orgnizer=useSelector(state=>state.orgnizer)
-    const user= useSelector(state=>state.user)
-
+    const user1= useSelector(state=>state.user)
+    const [checkError,setCheckError]=useState(false)
+    const [msg,setMsg]=useState('')
     const dispatch=useDispatch()
     const navigate=useNavigate()
     
@@ -35,6 +38,7 @@ function OrgnizerSettings() {
     const handelChangePassword= ()=>{
         navigate('/orgnizer/new-password')
     }
+
     //to update the value of select button image
     const handleFileChange = (event) => {
         if (event.target.files && event.target.files[0]) {
@@ -42,6 +46,7 @@ function OrgnizerSettings() {
         }
         
       };
+
      //define required schema with required condition
      const requiredSchema = Yup.object().shape({
         userName: Yup.string()
@@ -55,11 +60,12 @@ function OrgnizerSettings() {
         .matches(
             "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$",
             'Invalid email address'
-        ).default(user.login.data.email),
+        ).default(user1.login.data.email),
         image: Yup.string().required("Required"),
         axisX: Yup.number(),
         axisY: Yup.number()
     });
+
     const {
         register,
         handleSubmit,
@@ -87,13 +93,52 @@ function OrgnizerSettings() {
     }
 
     // handle form submission
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
 
         var user=data
         // if we want in next level to configure orgnizer location
         // user.axisX=coordinate.position[0]
         // user.axisY=coordinate.position[1]
         user.image=convertToBase64(data.image)
+        var token = localStorage.getItem('accessToken');
+        const res = await axios.patch(
+            `${API_URL}/api/tours/organizers/`,
+            {
+                avatar:user.image,
+                role:"O",
+                password:user1.login.data.password,
+                phone:user.phoneNumber,
+                email:user.email
+            }, 
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `JWT ${token}`,
+              },
+            } 
+          ).then(res=>
+          {
+            console.log(res.data)
+          }
+          ).catch((error) => {
+            setCheckError(true)
+            
+            if (error.response && error.response.data) {
+             const errorData = error.response.data;
+             
+             if (typeof errorData === 'string') {
+  
+               setMsg(errorData);
+             }else {
+ 
+               setMsg(JSON.stringify(errorData.errors));
+             }
+           } else {
+             setMsg('An unknown error occurred');
+           }
+             console.error('Error:', error);
+           });
+       
         dispatch(updateOrgnizerData(user))
     };
 
@@ -123,7 +168,7 @@ function OrgnizerSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Username :</span>
-                                <input type="text"    {...register('userName')} defaultValue={user.login.data.userName}
+                                <input type="text"    {...register('userName')} defaultValue={user1.login.data.userName}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -163,7 +208,7 @@ function OrgnizerSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Email :</span>
-                                <input type="text"    {...register('email')} defaultValue={user.login.data.email}
+                                <input type="text"    {...register('email')} defaultValue={user1.login.data.email}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -231,6 +276,11 @@ function OrgnizerSettings() {
                    </div>
                 </div>
             </div>
+            {
+            checkError&& <div className="flex flex-row justify-start  text-error-light font-['Open_Sans']  pb-10
+            xl:text-xl lg:text-lg  md:text-base">{msg}
+                </div>
+           } 
             <div className="flex flex-row justify-center items-center pb-10 xl:gap-6 lg:gap-4 md:gap-2">
                 <button type="submit"
                     className="flex flex-col justify-center items-center text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-save-button-light text-button-text-light 

@@ -27,16 +27,20 @@ function PresenterLogin() {
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
+
+  const handelForgetPassword=()=>{
+    navigate('/client/client-forget-password')
+  }
+  
   // handle form submission
   const onSubmit = (data) => {
     //Authenticate user and get the user id 
     var username=data.username
     var password=data.password
-    dispatch(fetchUsers({username,password}))
+    const response=dispatch(fetchUsers({username,password}))
    
-    //var id=dispatch()
-    var id=2
-    if(id==1){
+    var id= state.login.data.roleId
+    if(id==3){
       navigate('/presenter-home-page')
     }
     else if(id==2){
@@ -92,6 +96,7 @@ function PresenterLogin() {
               xl:text-lg lg:text-base md:text-sm">{errors.password.message}</div>}
             </div>
             <a
+            onClick={handelForgetPassword}
               className="xl:text-base xl:font-light lg:text-s lg:font-normal md:text-xs md:font-normal cursor-pointer">
               {" "}
               Did you forget your password?

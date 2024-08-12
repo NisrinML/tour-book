@@ -818,9 +818,11 @@ video {
   margin-left: auto;
 }
 
+
 .mr-20 {
   margin-right: 5rem;
 }
+
 
 .mr-5 {
   margin-right: 1.25rem;
@@ -845,6 +847,12 @@ video {
 .mt-4 {
   margin-top: 1rem;
 }
+
+
+.mr-20 {
+  margin-right: 5rem;
+}
+
 
 .line-clamp-3 {
   overflow: hidden;
@@ -1297,6 +1305,12 @@ video {
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-60 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(15rem * var(--tw-space-x-reverse));
+  margin-left: calc(15rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-7 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.75rem * var(--tw-space-x-reverse));
@@ -1519,9 +1533,11 @@ video {
   background-color: rgb(238 156 61 / var(--tw-bg-opacity));
 }
 
+
 .bg-clientBackgroundFrom-light\/20 {
   background-color: rgb(42 214 180 / 0.2);
 }
+
 
 .bg-clientInvite-light\/75 {
   background-color: rgb(175 244 219 / 0.75);
@@ -1873,9 +1889,11 @@ video {
   padding-left: 1.25rem;
 }
 
+
 .pt-1 {
   padding-top: 0.25rem;
 }
+
 
 .pt-10 {
   padding-top: 2.5rem;
@@ -3594,6 +3612,10 @@ video {
     width: 50%;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:w-10 {
     width: 2.5rem;
   }
@@ -5070,6 +5092,10 @@ video {
 
   .xl\:pb-5 {
     padding-bottom: 1.25rem;
+  }
+
+  .xl\:pl-10 {
+    padding-left: 2.5rem;
   }
 
   .xl\:pl-10 {

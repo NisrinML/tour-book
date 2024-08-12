@@ -14,6 +14,7 @@ function Activate(){
   const [uid, setUid] = useState('');
   const [token, setToken] = useState('');
 
+   //to get token & uid from url
       useEffect(() => {
         const params = new URLSearchParams(location.search);
         const uidParam = params.get('uid');
@@ -38,10 +39,10 @@ function Activate(){
             const errorData = error.response.data;
             
             if (typeof errorData === 'string') {
-              // إذا كانت استجابة الخطأ نصًا
+ 
               setMsg(errorData);
             }else {
-              // لأي أخطاء أخرى
+
               setMsg(JSON.stringify(errorData));
             }
           } else {

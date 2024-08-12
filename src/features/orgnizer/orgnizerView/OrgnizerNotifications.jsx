@@ -1,8 +1,28 @@
 import SmallHeader from "../../layout/SmallHeader"
 import backButton from "../../../assets/images/backButton.svg"
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { API_URL } from "../../../app/config";
 function OrgnizerNotifications(){
-    const notifications=useSelector(state=>state.user.notifications)
+    const notifications1=useSelector(state=>state.user.notifications)
+    const [notifications,setNotifications]=useState(notifications1)
+    useEffect(async()=>{
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/notifications/`, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        setNotifications(response.data.data)
+        }).catch((err)=>{
+          console.log(err.message)
+        })
+        
+        //dispatch(getOrgnizerTours(1))
+    },[])
     const handelBack = () => {
         navigate('/orgnizer-home');
     }

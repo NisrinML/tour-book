@@ -10,13 +10,16 @@ import Person from "../../../assets/images/person.png"
 import image1 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'
 import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'
 import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import CommentModal from "./CommentModal"
 import { Navigate, useNavigate } from "react-router-dom"
-import { deleteTour } from "../orgnizerSlice"
+import { deleteTour, getOrgnizerTours } from "../orgnizerSlice"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 function OrgnizerHomePage() {
     const tours = useSelector(state => state.orgnizer.tours)
+    const [tours1,setTours]=useState('' )
     const orgnizer = useSelector(state => state.orgnizer)
     const user = useSelector(state => state.user)
     const [complete, setComplete] = useState(false)
@@ -30,6 +33,24 @@ function OrgnizerHomePage() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     
+    useEffect(async()=>{
+        
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/tours/organizer-tours?page=`+1, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        setTours(response.data)
+        }).catch((err)=>{
+          console.log(err.message)
+        })
+        
+        //dispatch(getOrgnizerTours(1))
+    },[])
+
     //intialize options with select list options and its navigation links
     const options = [
         { label: 'My Tours', value: '/my-tour' },
@@ -85,6 +106,7 @@ function OrgnizerHomePage() {
             [id]: !prevStates[id]
         }))
     }
+
     const handleDeleteTour = (id) => {
         if (window.confirm('Are you sure you want to delete this tour?')) {
             dispatch(deleteTour(id))
@@ -154,7 +176,8 @@ function OrgnizerHomePage() {
             </div>
             <div className="flex flex-row justify-center items-center pb-10 xl:p-10 lg:pt-20 md:pt-32">
                 <div className="flex flex-col items-center justify-start w-3/5 h-screen space-y-5 bg-post-bg-light   drop-shadow-[1px_1px_rgba(117,135,142)] rounded-2xl overflow-hidden hover:overflow-y-auto p-10">
-                    {tours.map(tour => {
+                    { tours &&
+                    tours.map(tour => {
                         return (
                             <div className="flex flex-row justify-center items-center relative w-11/12 pt-5" key={tour.id}>
                                 <div className="flex flex-col w-full bg-orgnizerbg-light border-solid border-2 border-title-light drop-shadow-[1px_1px_rgba(117,135,142)] rounded-xl p-5 space-y-5">
@@ -242,6 +265,10 @@ function OrgnizerHomePage() {
                             </div>
                         )
                     })}
+                     {
+                        !tours&&<div className=" text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia'] text-center py-40">No Tours Yet ...</div>
+                    } 
+                    
                 </div>
             </div>
             <div className="bg-orgnizerbg-light  text-center text-text-light absolute   drop-shadow-[2px_2px_rgba(9,133,94,0.6)] right-1/3 top-1/2 
