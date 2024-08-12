@@ -48,17 +48,6 @@ function PresenterEditOffer() {
     setSelectedServiceIds(selected);
   };
 
-  const handleAddService = () => {
-    if (newService.trim() !== "") {
-      const newServiceObject = {
-        id: new Date().toISOString(), // Generate a unique ID
-        service: newService
-      };
-      setAllServices([...allServices, newServiceObject]);
-      dispatch(addService(newServiceObject));
-      setNewService("");
-    }
-  };
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -102,7 +91,7 @@ function PresenterEditOffer() {
     dispatch(setOfferEndDate(endDate));
     dispatch(setOfferStartTime(startTime));
     dispatch(setOfferEndTime(endTime));
-    navigate("#");
+    navigate("/presenter-home-page");
   };
 
   return (
@@ -316,8 +305,7 @@ function PresenterEditOffer() {
                 </option>
               ))}
             </select>  
-       
-        
+
           </div>
           <button onClick={handleUpdateOffer}
             className="flex flex-col font-['sans-serif'] items-center justify-center

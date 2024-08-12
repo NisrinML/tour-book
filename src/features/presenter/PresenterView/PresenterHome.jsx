@@ -83,7 +83,8 @@ const handleWarning = () =>{
         md:w-24 md:h-12 md:right-14 md:-top-8">
                 <span className="text-text-light xl:text-2xl lg:text-xl md:text-md">My Offers</span>
               </div>
-              {offers.length === 0 ? (<div className="text-text-light"> No Offers Available Yet </div>) : (offers.map((offer) => (
+              {offers.length === 0 ? (<div className="text-text-light"> No Offers Available Yet </div>) :
+               (offers.map((offer) => (
               <div key={offer.id} className="flex flex-col bg-button-text-light/75 rounded-lg border border-inputLabelShadow-light/40 
                       space-y-10 xl:px-12 xl:py-10 lg:px-6 lg:py-8 md:px-8 md:py-6">
                 <span className="text-title-light">{getCurrentDateTime()}</span>

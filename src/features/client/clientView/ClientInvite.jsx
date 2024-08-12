@@ -3,9 +3,13 @@ import invite from '../../../assets/images/invite.svg'
 import backButton from "../../../assets/images/backButton.svg"
 import SmallHeader from "../../layout/SmallHeader"
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function ClientInvite() {
     const [email, setEmail] = useState('');
+      const dispatch = useDispatch();
+  const navigate = useNavigate();
     const handleEmail = (e) =>{
         setEmail(e.target.value);
       }
@@ -13,7 +17,7 @@ function ClientInvite() {
         navigate('/user-home-page');
       };
       const handleInvite = () => {
-        
+        navigate('/user-home-page');
       };
   return (
     <div className="w-full max-h-full">

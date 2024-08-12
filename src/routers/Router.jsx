@@ -23,17 +23,17 @@ import Offers from "../features/orgnizer/orgnizerView/Offers"
 import Weather from "../features/orgnizer/orgnizerView/Weather"
 import OrgnizerOfferDetails from "../features/orgnizer/orgnizerView/OrgnizerOfferDetails"
 import OrgnizerStatus from "../features/orgnizer/orgnizerView/OrgnizerStatus"
-import PresenterHome from "../features/presenter/presenterView/PresenterHome"
-import PresenterProfile from "../features/presenter/presenterView/PresenterProfile"
-import PresenterEditOffer from "../features/presenter/presenterView/PresenterEditOffer"
-import PresenterOrders from "../features/presenter/presenterView/PresenterOrders"
-import PresenterSettings from "../features/presenter/presenterView/PresenterSettings"
-import OfferDetails from "../features/presenter/presenterView/OfferDetails"
-import PresenterNewOffer from "../features/presenter/presenterView/PresenterNewOffer"
-import PresenterReport from "../features/presenter/presenterView/PresenterReport"
-import PresenterNewPassword from "../features/presenter/presenterView/PresenterNewPassword"
-import PresenterResetPassword from "../features/presenter/presenterView/PresenterResetPassword"
-import PresenterForgetPassword from "../features/presenter/presenterView/PresenterForgetPassword"
+import PresenterHome from '../features/presenter/PresenterView/PresenterHome'
+import PresenterProfile from "../features/presenter/PresenterView/PresenterProfile"
+import PresenterEditOffer from '../features/presenter/PresenterView/PresenterEditOffer'
+import PresenterOrders from "../features/presenter/PresenterView/PresenterOrders"
+import PresenterSettings from "../features/presenter/PresenterView/PresenterSettings"
+import OfferDetails from "../features/presenter/PresenterView/OfferDetails"
+import PresenterNewOffer from "../features/presenter/PresenterView/PresenterNewOffer"
+import PresenterReport from "../features/presenter/PresenterView/PresenterReport"
+import PresenterNewPassword from "../features/presenter/PresenterView/PresenterNewPassword"
+import PresenterResetPassword from "../features/presenter/PresenterView/PresenterResetPassword"
+import PresenterForgetPassword from "../features/presenter/PresenterView/PresenterForgetPassword"
 import UserLogin from "../features/user/userView/UserLogin"
 import MainPage from "../features/user/userView/MainPage"
 import CreateAccount from "../features/client/clientView/CreateAccount"
@@ -45,6 +45,9 @@ import ClientNewPassword from "../features/client/clientView/ClientNewPassword"
 import ClientForgetPassword from "../features/client/clientView/ClientForgetPassword"
 import ClientResetPassword from "../features/client/clientView/ClientResetPassword"
 import ClientReport from "../features/client/clientView/ClientReport"
+import ClientTourDetails from "../features/client/clientView/ClientTourDetails"
+import Register from "../features/client/clientView/Register"
+import ClientInvite from "../features/client/clientView/ClientInvite"
 
 export const Router=()=>{
 return(
@@ -95,6 +98,10 @@ return(
         <Route path="/client/client-forget-password" element={<ClientForgetPassword/>}/>
         <Route path="/client/client-reset-password" element={<ClientResetPassword/>}/>
         <Route path="/client/client-report" element={<ClientReport/>}/>
+        <Route path="/client/client-tour-details" element={<ClientTourDetails/>}/>
+        <Route path="/client/register" element={<Register/>}/>
+        <Route path="/client/client-invite" element={<ClientInvite/>}/>
+
     </Routes>
    
 )

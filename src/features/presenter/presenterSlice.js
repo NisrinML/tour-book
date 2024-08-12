@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Potate from "../../assets/images/Potato.png"
-import Bergar from "../../assets/images/Burger.png"
+
+import Potato from '../../assets/images/Potato.png'
+import Burger from '../../assets/images/Burger.png'
+
 const initialState = {
   id: "9",
   name: "Rolana Kamaria",
@@ -43,7 +45,9 @@ const initialState = {
     pricePerOne: "20$",
     description: "Burger - Potato - One Drink",
     address: "syria-homs",
+
     offerAttatchment: [{ id: 1, attachment:Potate, type: '' },{ id:2, attachment:Bergar, type: '' }],
+
   },
 { id: 2,
   title: "Sunday Lunch",
@@ -109,7 +113,7 @@ const presenterSlice = createSlice({
       state.offer.pricePerOne = action.payload;
     },
     setOfferStartDate: (state, action) => {
-      state.offers.startDate = action.payload;
+      state.offer.startDate = action.payload;
     },
     setOfferEndDate: (state, action) => {
       state.offer.endDate = action.payload;
