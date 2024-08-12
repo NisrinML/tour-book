@@ -6,9 +6,9 @@ import { useSelector } from "react-redux";
 import { API_URL } from "../../app/config";
 
 const initialState = {
-  id: '',
+  id: 4,
   name: 'asfas',
-  address: '',
+  address: 'syria-homs',
   evaluation: '',
   status: '',
   logo: '',

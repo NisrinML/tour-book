@@ -9,13 +9,37 @@ import {
 import Chart from "react-apexcharts";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { API_URL } from "../../../app/config";
 function OrgnizerStatus() {
     const status = useSelector(state => state.orgnizer.status)
-    const tourPerMonth = status.toursPerMonth.map(tour => (tour.count))
-    const porfitPerMonth = status.toursPerMonth.map(tour => (tour.porfit * 10))
+    const orgnizer = useSelector(state => state.orgnizer)
+    const tourPerMonth1 = status.toursPerMonth.map(tour => (tour.count))
+    const [tourPerMonth,setTourPerMonth]=useState(tourPerMonth1)
+    const porfitPerMonth1 = status.toursPerMonth.map(tour => (tour.porfit * 10))
+    const [porfitPerMonth,setPorfitPerMonth]=useState(porfitPerMonth1)
     const orgnizerTourRating = status.orgnizerTourRating
     const navigate = useNavigate()
     
+
+    useEffect(async()=>{
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/tours/organizers/statistics`, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        var count=response.data.data.tour_per_months.map(tour => (tour.count))
+        var porfit=response.data.data.tour_per_months.map(tour => (parseInt(tour.profits_per_month.substring(0, tour.profits_per_month.length - 1))))
+        setTourPerMonth(count)
+        setPorfitPerMonth(porfit) 
+        }).catch((err)=>{
+          console.log(err.message)
+        }) },[])
+
+
     //to configure line chart details
     const chartConfig = {
         type: "line",
@@ -160,7 +184,7 @@ function OrgnizerStatus() {
                         >
 
                             <div className="bg-post-bg-light rounded-lg text-title-light xl:text-2xl lg:text-xl md:text-lg font-['Georgia'] ml-10 px-2">
-                                Orgnizer Evaluation
+                                Tour Evaluation
                             </div>
                         </CardHeader>
                         <CardBody className="px-2 pb-0">
@@ -180,7 +204,7 @@ function OrgnizerStatus() {
                         >
 
                             <div className="bg-post-bg-light text-title-light  xl:text-2xl lg:text-xl md:text-lg font-['Georgia'] ml-14 px-2 rounded-lg">
-                                Tour Rating
+                                {orgnizer.name} Rating
                             </div>
                         </CardHeader>
                         <CardBody className="mt-4 grid place-items-center px-2">
