@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { setRespondentEmail } from "../../user/userSlice"
 import { useNavigate } from "react-router-dom"
 import SmallHeader from "../../layout/SmallHeader"
-import { ProblemList } from "../../../assets/data/tempData"
+import { ProblemList ,OrganizersName} from "../../../assets/data/tempData"
 function PresenterReport() {
     const state = useSelector(state => state.user)
     const [description, setDescription] = useState('')
     const [reason, setReason] = useState('')
+    const [organizer, setOrganizer] = useState('')
     const problemList = ProblemList;
     const dispatch = useDispatch()
     const navigate = useNavigate();
@@ -20,8 +21,10 @@ function PresenterReport() {
         setReason(e.target.value)
         console.log(reason)
     }
+    const handelOrganizerNameChange =(e)=> {
+        setOrganizer(e.target.value)
+    }
     const handelSend = () => {
-        dispatch(setRespondentEmail(email));
         navigate("/presenter-home-page");
     }
     const handleCancel= () => {
@@ -45,7 +48,18 @@ function PresenterReport() {
                             <div className="flex flex-row justify-between 
                             xl:gap-x-24 lg:gap-2 md:gap-2">
                                 <span className="w-52">Organizer Name :</span>
-                                <span className="font-['BlinkMacSystemFont'] ">{state.reports.respondentUser}</span>
+                                <select className="drop-shadow-[1px_4px_rgba(117,135,142)] text-input-text-light text-center
+                                xl:h-10 xl:rounded-xl  xl:ml-6 xl:text-xl xl:w-60
+                                lg:h-8 lg:rounded-lg lg:ml-4 lg:text-lg lg:w-52 
+                                md:h-6 md:rounded-md md:ml-20 md:text-base md:w-40"
+                                    onChange={handelOrganizerNameChange}>
+                                    {
+                                        OrganizersName.map((item) => {
+                                            return <option
+                                                key={item.id} value={item.id}>{item.name}</option>
+                                        })
+                                    }
+                                </select>
                             </div>
                             <div className="flex flex-row 
                             xl:gap-32 lg:gap-20 md:gap-2">

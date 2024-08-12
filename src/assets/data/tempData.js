@@ -4,7 +4,7 @@ export const ProblemList = [
     { id: 3, name: 'Ley' },
 ]
 
-
+export const OrganizersName = [{id:1, name:'Elias'},{id:2, name:'Milad'},{id:3, name:'Malek'}]
 export const Orders = [
     {
       id: 1,

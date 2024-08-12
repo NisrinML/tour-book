@@ -1,18 +1,32 @@
 import SmallHeader from "../../layout/SmallHeader"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import backButton from "../../../assets/images/backButton.svg"
 import NotificationRoad from '../../../assets/images/NotificationRoad.svg'
 import NotificationDesigns from '../../../assets/images/NotificationDesigns.svg'
+import { API_URL } from "../../../app/config";
+import axios from "axios";
 
 
 
 function ClientNotification() {
     const state = useSelector(state => state.client)
-    var notifications = state.notifications
+    var notifications1 = state.notifications
+    const [notifications,setNotifications]=useState(notifications1)
     const dispatch=useDispatch();
     const navigate=useNavigate();
+    useEffect(async()=>{
+      var token = localStorage.getItem('accessToken');
+      var res=axios.get(`${API_URL}/api/notifications/`,{ headers: {
+        Authorization: `JWT ${token}`,
+      }}).then((res) => 
+        {setNotifications(res.data.data)
+         }
+      ).catch((err)=>{
+        console.log(err.message)
+      })
+    },[])
     const handleBack = () => {
         navigate('/user-home-page');
       };
@@ -42,7 +56,8 @@ function ClientNotification() {
             ">
              <img src={NotificationDesigns} className="xl:h-28 lg:h-24 md:h-28" />
              <div className="flex flex-col space-y-10 overflow-hidden hover:overflow-y-auto  xl:h-52 lg:h-52  md:h-52 ">
-            {notifications.map((notification,index) => (
+            
+            {notifications.length>0 && notifications.map((notification,index) => (
              <div className="flex font-['Open_Sans'] 
              relative bg-clientbg-light text-text-light drop-shadow-[1px_1px_rgba(117,135,142)] 
                    xl:text-2xl xl:rounded-xl xl:h-24 xl:p-4
@@ -51,6 +66,13 @@ function ClientNotification() {
             {notification}
             </div>
             ))}
+            {notifications.length==0 &&
+                 <div className="flex font-['Open_Sans'] 
+                 relative  text-text-light drop-shadow-[1px_1px_rgba(117,135,142)] 
+                       xl:text-2xl xl:rounded-xl xl:h-24 xl:p-4
+                       lg:text-xl lg:rounded-lg lg:h-20 lg:p-4
+                       md:text-lg md:rounded-md md:h-16 md:p-2">There is no notification yet ...</div>
+            }
             </div>
             </div>
             </div>

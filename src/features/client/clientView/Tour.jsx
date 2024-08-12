@@ -57,7 +57,7 @@ function Tour(props) {
         if (tour.id != null) {
             dispatch(selecteOrgnizerId(tour.orgnizerId))
             //navigate to rerport page
-            navigate('/')
+            navigate('/client/client-report')
         }
     }
 
@@ -153,7 +153,7 @@ function Tour(props) {
         if (tour.id != null) {
             dispatch(selecteTourId(tour.id))
             //navigate to register
-            navigate('/')
+            navigate('/client/client-tour-details')
         }
     }
 
@@ -163,7 +163,7 @@ function Tour(props) {
         if (tour.id != null) {
             dispatch(selecteTourId(tour.id))
             //navigate to invite page
-            navigate('/')
+            navigate('/client/client-invite')
         }
     }
 

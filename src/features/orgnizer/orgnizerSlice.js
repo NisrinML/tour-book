@@ -157,6 +157,8 @@ const initialState = {
           description: "burger - pepsi",
           address: "",
           offerAttatchment: [{ id: '', attachment: '', type: '' }],
+          requierment:['Shoes','Jacket'],
+          activity:['Eat','Relax']
         }, {
           id: 2,
           title: "Sunday Lunch",
@@ -168,6 +170,8 @@ const initialState = {
           description: "burger - pepsi",
           address: "",
           offerAttatchment: [{ id: '', attachment: '', type: '' }],
+          requierment:['Shoes','Jacket'],
+          activity:['Eat','Relax']
         },
       ]
     },
