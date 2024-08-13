@@ -51,6 +51,8 @@ import ClientInvite from "../features/client/clientView/ClientInvite"
 import ClientProfile from '../features/client/clientView/ClientProfile'
 import ClientTours from '../features/client/clientView/ClientTours'
 import ClientNotification from '../features/client/clientView/ClientNotification'
+import ChatPage from "../features/user/userView/ChatPage"
+import Chats from "../features/user/userView/Chats"
 export const Router=()=>{
 return(
     <Routes>
@@ -106,7 +108,8 @@ return(
         <Route path="/client/client-profile" element={<ClientProfile/>}/>
         <Route path="/client/client-tours-requests" element={<ClientTours/>}/>
         <Route path="/client/client-notification" element={<ClientNotification/>}/>
-
+        <Route path="/chats/chat-page" element={<ChatPage/>}/>
+        <Route path="/chats" element={<Chats/>}/>
     </Routes>
    
 )

@@ -44,6 +44,9 @@ import ClientProfile from "./features/client/clientView/ClientProfile"
 import ClientTourDetails from "./features/client/clientView/ClientTourDetails"
 
 import ClientTours from "./features/client/clientView/ClientTours"
+import ChatPage from "./features/user/userView/ChatPage"
+import Chats from "./features/user/userView/Chats"
+import PresenterHome from "./features/presenter/presenterView/PresenterHome"
 
 
 function App() {
@@ -54,7 +57,7 @@ function App() {
 
 
       <Router />
-
+      {/* <PresenterHome/> */}
       {/* <OrgnizerNewPassword/> */}
       {/* <OrgnizerForgetPassword/> */}
       {/* <UserLogin /> */}
@@ -100,6 +103,8 @@ function App() {
  {/* <OrgnizerStatus/> */}
  {/* <ClientTourDetails/> */}
 {/* <ClientTours/> */}
+{/* <ChatPage/> */}
+{/* <Chats/> */}
     </Layout>
 
   )
