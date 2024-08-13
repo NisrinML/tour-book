@@ -11,7 +11,7 @@ export const ProblemList = [
     { id: 2, name: 'Stole' },
     { id: 3, name: 'Ley' },
 ]
-export const OrganizersName = [{id:1, name:'Elias'},{id:2, name:'Milad'},{id:3, name:'Malek'}]
+export const OrganizersName = [{id:1, name:'Alwadi Company'},{id:2, name:'Almohtaref Company'},{id:3, name:'Baghdad Comapany'}]
 export const Orders = [
     {
       id: 1,

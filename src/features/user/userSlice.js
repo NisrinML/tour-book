@@ -13,10 +13,10 @@ const initialState = {
     loading: '',
     data: {
       id: 1,
-      name:'Nisreen Melhem',
-      userName: 'Nsns',
+      name:'Khaled Yousef',
+      userName: 'kh5',
       password: 'P@#5nO0sd',
-      roleId: 1,
+      roleId: 3,
       confirmPassword: 'P@#5nO0sd',
       avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',
       status: 'active',
@@ -28,7 +28,6 @@ const initialState = {
     error: ''
   },
   notifications: [
-  
   ],
   subscriptionDetails: {
     id: '88',
@@ -199,6 +198,9 @@ const userSlice = createSlice({
    startChat:(state,action)=>{
     var selectedId=state.chats.filter(chat=>chat.reciverData.id==action.payload)[0].id
     state.selected.chatId=selectedId
+   },
+   setRoleId:(state,action)=>{
+    state.login.data.roleId=1
    }
 
 
@@ -244,7 +246,7 @@ const userSlice = createSlice({
 });
 
 export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken,
-   setUserInformation,sendMsg,deleteMsg,readMsg,startChat } = userSlice.actions
+   setUserInformation,sendMsg,deleteMsg,readMsg,startChat,setRoleId } = userSlice.actions
 
 
 export default userSlice.reducer;
