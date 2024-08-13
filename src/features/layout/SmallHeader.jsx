@@ -77,7 +77,7 @@ function SmallHeader() {
         >
           <span>{userName}</span>
           <span> | </span>
-          <span className="cursor-pointer" onClick={handelLogOut}>Log out</span>
+          <span className="hover:cursor-pointer" onClick={handelLogOut}>Log out</span>
         </div>
       </div>
     </div>

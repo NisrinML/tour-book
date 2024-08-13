@@ -23,7 +23,7 @@ function Tour(props) {
     const tour = props.tour
     const user = useSelector(state => state.client)
     const [complete, setComplete] = useState(false)
-    const images = [image1, image2, image3, image1, image2, image3]
+    const images = [image3, image2, image1, image3, image2, image1]
     const [showFullGallery, setShowFullGallery] = useState({ id: null, value: false });
     const [hideSubGallery, setHideSubGallery] = useState({ id: null, value: true })
     const [showAllText, setShowAllText] = useState({ id: null, value: false })

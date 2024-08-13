@@ -8,7 +8,7 @@ import commentIcon from "../../../../assets/images/filledCommentIcon.svg"
 import Person from "../../../../assets/images/person.png"
 import image1 from '../../../../assets/images/restaurant1.png'
 import image2 from '../../../../assets/images/restaurant2.png'
-import image3 from '../../../../assets/images/restaurant3.png'
+import image3 from '../../../../assets/images/postImage.png'
 import { useLayoutEffect, useState } from "react"
 import axios from "axios"
 import { API_URL } from "../../../../app/config"

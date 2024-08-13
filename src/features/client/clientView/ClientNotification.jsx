@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 function ClientNotification() {
-    const state = useSelector(state => state.client)
+    const state = useSelector(state => state.user)
     var notifications1 = state.notifications
     const [notifications,setNotifications]=useState(notifications1)
     const dispatch=useDispatch();

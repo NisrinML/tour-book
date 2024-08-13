@@ -29,7 +29,7 @@ function OrgnizerTours() {
             </div>
              <div className="flex flex-row items-end justify-end  mr-72">
              <div className="justify-center items-center text-center text-title-light xl:text-3xl lg:text-2xl md:text-xl font-['Georgia'] h-16 pt-3
-             w-1/4  bg-clientbg-light bg-opacity-15   drop-shadow-[1px_1px_rgba(117,135,142)] rounded-md">Orgnizer Name</div>
+             w-1/4  bg-clientbg-light bg-opacity-15   drop-shadow-[1px_1px_rgba(117,135,142)] rounded-md">Alwadi Company </div>
              </div>
             <div className="flex flex-row justify-center items-center pb-10 ">
                 <div className="flex flex-col items-center justify-start w-4/5 h-screen space-y-5 bg-clientbg-light bg-opacity-15   drop-shadow-[1px_1px_rgba(117,135,142)] rounded-2xl overflow-hidden hover:overflow-y-auto p-10 xl:pl-52 lg:pl-32 md:pl-28">

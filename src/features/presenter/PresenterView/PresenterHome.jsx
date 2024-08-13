@@ -68,7 +68,6 @@ const handleWarning = () =>{
               <li><a href="/presenter-home-page/presenter-profile" className="hover:bg-presenterPostDetails-light">Profile</a></li>
               <li><a href="/presenter-home-page/presenter-new-offer" className="hover:bg-presenterPostDetails-light">New Offer</a></li>
               <li><a href="/presenter-home-page/presenter-orders" className="hover:bg-presenterPostDetails-light">Orders</a></li>
-              <li><a href="/chats" className="hover:bg-presenterPostDetails-light">Chats</a></li>
               <li><a href="/presenter-home-page/presenter-settings" className="flex flex-row hover:bg-presenterPostDetails-light">Settings {!completedForm && <img src={warning} alt="Warning" onClick={handleWarning}/>}</a></li>
               <li><a href="/presenter/presenter-report" className="hover:bg-presenterPostDetails-light">Make Report</a></li>
             </ul>
