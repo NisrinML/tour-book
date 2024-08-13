@@ -17,7 +17,7 @@ function SmallHeader() {
     navigate("/orgnizer-notification");
   }
   else if (userID === 1) {
-    navigate('#');
+    navigate('/client/client-notification');
     } 
 
   else if (userID === 3) {
@@ -26,8 +26,10 @@ function SmallHeader() {
  
 
   const handelLogOut=()=>{
-    
-  }
+    if (window.confirm('Are you sure you want to Log out?')) {
+
+    navigate("/")
+      }  }
 
   return (
     <div

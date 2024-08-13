@@ -35,6 +35,9 @@ function ClientResetPassword() {
         dispatch(setPassword(data.newPassword))
         dispatch(setConfirmPassword(data.confirm))
     };
+    const handleCancel = () =>{
+        navigate("/user-home-page")
+    }
     return (
         <div className=" w-full h-full max-h-full">
             <Header />
@@ -72,7 +75,7 @@ function ClientResetPassword() {
                                 lg:text-xl lg:rounded-md  lg:w-24 lg:h-10 
                                 md:text-lg md:rounded-md  md:w-20 md:h-8 ">Change</button>
                             <button type="button"
-                            onClick={()=>{navigate('/orgnizer-home')}}
+                            onClick={handleCancel}
                             className="flex flex-col text-center font-['sans-serif']  drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-back-button-light text-button-text-light justify-center items-center
                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-back-button-hover-light
                              xl:w-28 xl:h-10  xl:text-2xl xl:rounded-md 

@@ -1,11 +1,14 @@
 import SmallHeader from "../../layout/SmallHeader"
 import HomePeople from "../../../assets/images/homePeople.png"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom";
+
 import Tour from "./Tour"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { API_URL } from "../../../app/config"
 function ClientHomePage() {
+
     const tours1 = useSelector(state => state.client.tours)
     const [tours,setTours]=useState(tours1)
     useEffect(async()=>{
@@ -37,6 +40,10 @@ function ClientHomePage() {
           console.log(err.message)
         })
     },[])
+
+    const tours = useSelector(state => state.client.tours)
+    const navigate=useNavigate()
+
     return (
         <div className="flex flex-col">
             <SmallHeader />
@@ -51,11 +58,11 @@ function ClientHomePage() {
                     <div className="flex flex-col justify-center items-center bg-loginButtonVia-light text-title-light   px-3 rounded" >
                         <span>Home</span></div>
                     <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
-                        onClick={() => { navigate('/') }}><span>Profile</span></div>
+                        onClick={() => { navigate('/client/client-profile') }}><span>Profile</span></div>
                     <div className="flex flex-col justify-center items-center w-fit px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
-                        onClick={() => { navigate('/') }}><span>My Tour</span></div>
+                        onClick={() => { navigate("/client/client-tours-requests") }}><span>My Tour</span></div>
                     <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
-                        onClick={() => { navigate('/') }}><span>Notification</span></div>
+                        onClick={() => { navigate('/client/client-notification') }}><span>Notification</span></div>
                 </div>
             </div>
             <div className="flex flex-row justify-center items-center pb-10  ">

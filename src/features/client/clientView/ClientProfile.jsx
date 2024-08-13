@@ -62,7 +62,7 @@ function ClientProfile() {
   navigate('/user-home-page')
  }
  const handleChangePass = () =>{
-  navigate('/client/client-report')
+  navigate('/client/client-reset-password')
  }
  const handleBack = () => {
   navigate('/user-home-page');
@@ -83,13 +83,13 @@ function ClientProfile() {
                             lg:w-10 lg:h-10
                             md:w-8 md:h-8" />
                 <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
-                onClick={() => { navigate('../features/client/clientView/ClientHomePage') }}><span>Home</span></div>
+                onClick={() => { navigate('/user-home-page') }}><span>Home</span></div>
             <div className="flex flex-col justify-center items-center bg-loginButtonVia-light text-title-light   px-3 rounded" >
                 <span>Profile</span></div>
             <div className="flex flex-col justify-center items-center w-fit px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
-                onClick={() => { navigate('/') }}><span>My Tour</span></div>
+                onClick={() => { navigate('/client/client-tours-requests') }}><span>My Tour</span></div>
             <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
-                onClick={() => { navigate('/') }}><span>Notification</span></div>
+                onClick={() => { navigate('/client/client-notification') }}><span>Notification</span></div>
         </div>
         
         <div className="flex flex-row justify-center items-center space-x-8">
