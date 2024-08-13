@@ -6,7 +6,7 @@ import backButton from "../../../assets/images/backButton.svg"
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Person from "../../../assets/images/person.png"
+import Person from "../../../assets/images/mainBackgrounGirl.png"
 import useGeoLocation from "../../../assets/map/useGeoLocation";
 import placeHolder from "../../../assets/images/placeholderselect.png"
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -121,7 +121,7 @@ function PresenterSettings() {
                             xl:text-2xl 
                             lg:text-xl 
                             md:text-lg ">Presenter Name :</span>
-                                <input type="text"    {...register('userName')} 
+                                <input type="text"    {...register('userName')} defaultValue={presenter.name}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -135,7 +135,7 @@ function PresenterSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Phone Number :</span>
-                                <input type="text"    {...register('phoneNumber')} 
+                                <input type="text"    {...register('phoneNumber')} defaultValue={presenter.mobile}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56
@@ -149,7 +149,7 @@ function PresenterSettings() {
                             xl:text-2xl xl:w-40
                             lg:text-xl lg:w-36
                             md:text-lg md:w-24">Email :</span>
-                                <input type="text"    {...register('email')}
+                                <input type="text"    {...register('email')} defaultValue={presenter.website}
                                     className="flex flex-col drop-shadow-[1px_1px_rgba(117,135,142)] text-input-text-light bg-post-bg-light border-solid border-2 border-text-light text-center
                             xl:rounded-xl xl:text-xl xl:h-10 xl:w-64
                             lg:rounded-lg lg:text-lg  lg:h-9 lg:w-56

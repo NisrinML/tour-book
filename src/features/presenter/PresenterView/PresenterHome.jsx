@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { removeOffer, getOffers } from "../presenterSlice";
 import SmallHeader from "../../layout/SmallHeader";
 import warning from "../../../assets/images/warning.svg";
-import person from '../../../assets/images/person.png';
+import person from '../../../assets/images/mainBackgrounGirl.png';
 
 function PresenterHome() {
   const state = useSelector(state=>state.presenter);
@@ -31,9 +31,12 @@ const handleWarning = () =>{
   const handleDetailsOffer = (id) => {
     // Navigate to offer details page with offer id
     navigate("/presenter-home-page/presenter-offer-details");
+    
   };
   const handleDeleteOffer = (id) => {
+    if (window.confirm('Are you sure you want to delete this offer?')) {
     dispatch(removeOffer({ id }));
+    }
   };
  
   const getCurrentDateTime = () => {
@@ -68,7 +71,6 @@ const handleWarning = () =>{
               <li><a href="/presenter-home-page/presenter-profile" className="hover:bg-presenterPostDetails-light">Profile</a></li>
               <li><a href="/presenter-home-page/presenter-new-offer" className="hover:bg-presenterPostDetails-light">New Offer</a></li>
               <li><a href="/presenter-home-page/presenter-orders" className="hover:bg-presenterPostDetails-light">Orders</a></li>
-              <li><a href="/chats" className="hover:bg-presenterPostDetails-light">Chats</a></li>
               <li><a href="/presenter-home-page/presenter-settings" className="flex flex-row hover:bg-presenterPostDetails-light">Settings {!completedForm && <img src={warning} alt="Warning" onClick={handleWarning}/>}</a></li>
               <li><a href="/presenter/presenter-report" className="hover:bg-presenterPostDetails-light">Make Report</a></li>
             </ul>

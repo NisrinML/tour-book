@@ -13,28 +13,22 @@ const initialState = {
     loading: '',
     data: {
       id: 1,
-      name:'Rolana Kamarie',
-      userName: 'rolana_kamaria',
-      password: '111',
-      roleId: 1,
-      confirmPassword: '111',
+      name:'Khaled Yousef',
+      userName: 'kh5',
+      password: 'P@#5nO0sd',
+      roleId: 3,
+      confirmPassword: 'P@#5nO0sd',
       avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',
       status: 'active',
-      email: 'rolana@gmail.com',
-      phone:"0952857736"
+      email: 'khaledkoy11@gmail.com',
+      phone:"0992448443"
 
     },
     rejected:false,
     error: ''
   },
-  notifications: ['Rolana Kamaria ask for 5 seats for Extraordinary Experiece tour',
-    'Wajeeh Rabahie ask for 3 seats for Spring is Comming tour',
-    'Nisreen Melhem liked Winter Better tour',
-    'Milad Melhem liked Tour Around The World tour',
-    'Takla Zidan ask for 4 seats for Discover The World tour',
-    'Maen Melhem disliked Winter Better tour',
-    'Nagham Melhem comment on Mountains and Rivers tour'
-  ,],
+  notifications: [
+  ],
   subscriptionDetails: {
     id: '88',
     startDate: '2024-08-16',
@@ -76,7 +70,7 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.milad@gmail.com', complainantUser: '' },
+  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Discover The World tour',respondentEmail:'www.alwadi@gmail.com', complainantUser: '' },
   chats:[{
     id:1,
     senderData:{senderName:'Takla Zidan',roleId:1,image:Takla,id:1},
@@ -204,6 +198,9 @@ const userSlice = createSlice({
    startChat:(state,action)=>{
     var selectedId=state.chats.filter(chat=>chat.reciverData.id==action.payload)[0].id
     state.selected.chatId=selectedId
+   },
+   setRoleId:(state,action)=>{
+    state.login.data.roleId=1
    }
 
 
@@ -249,7 +246,7 @@ const userSlice = createSlice({
 });
 
 export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken,
-   setUserInformation,sendMsg,deleteMsg,readMsg,startChat } = userSlice.actions
+   setUserInformation,sendMsg,deleteMsg,readMsg,startChat,setRoleId } = userSlice.actions
 
 
 export default userSlice.reducer;
