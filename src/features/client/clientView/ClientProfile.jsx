@@ -86,6 +86,8 @@ function ClientProfile() {
                 onClick={() => { navigate('/user-home-page') }}><span>Home</span></div>
             <div className="flex flex-col justify-center items-center bg-loginButtonVia-light text-title-light   px-3 rounded" >
                 <span>Profile</span></div>
+                <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
+                        onClick={() => { navigate('/chats') }}><span>Chats</span></div>
             <div className="flex flex-col justify-center items-center w-fit px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
                 onClick={() => { navigate('/client/client-tours-requests') }}><span>My Tour</span></div>
             <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"

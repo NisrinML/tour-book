@@ -53,7 +53,7 @@ function Header() {
                    md:space-x-1 md:pl-10 md:text-base"
                 >
                         <span onClick={()=>{
-                            navigate('/register')
+                            navigate('/create-account')
                         }}
                         className="flex flex-col hover:cursor-pointer" >Rigester</span>
                         <span className="flex flex-col"> | </span>

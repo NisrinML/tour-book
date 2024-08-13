@@ -2,8 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios"
 import { updateOrgnizerData } from "../orgnizer/orgnizerSlice";
 import { API_URL, CONFIG } from "../../app/config";
-
-
+import Rolana from "../../assets/images/nan.jpg"
+import Nisreen from "../../assets/images/Ns.jpg"
+import Takla from "../../assets/images/T.jpg"
+import { select } from "@material-tailwind/react";
 const initialState = {
   id:null,
   token:null,
@@ -11,21 +13,14 @@ const initialState = {
     loading: '',
     data: {
       id: 1,
+      name:'Rolana Kamarie',
       userName: 'rolana_kamaria',
       password: '111',
-
-      confirmPassword: '',
-      avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
-      status: '',
-      email: 'user@gmail.com',
       roleId: 1,
-      phone:0
-
       confirmPassword: '111',
       avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',
       status: 'active',
       email: 'rolana@gmail.com',
-      roleId: 1,
       phone:"0952857736"
 
     },
@@ -81,7 +76,51 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.milad@gmail.com', complainantUser: '' }
+  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.milad@gmail.com', complainantUser: '' },
+  chats:[{
+    id:1,
+    senderData:{senderName:'Takla Zidan',roleId:1,image:Takla,id:1},
+    reciverData:{reciverName:'Nisreen Melhem',roleId:2,image:Nisreen,id:2},
+    msg:[
+    {id:1,content:'Hello',time:'9:00 A.M',senderId:4,status:'R',type:'R'},
+    {id:2,content:'How Are You?',time:'9:00 A.M',senderId:4,status:'R',type:'R'},
+    {id:3,content:'I want to ask you how can i pay for last tour you orgnized?',time:'9:01 A.M',senderId:4,status:'R',type:'R'},
+    {id:7,content:'Ok, thank u.',time:'9:30 A.M',senderId:4,status:'UNR',type:'R'},
+    {id:4,content:'Hello',time:'9:10 A.M',senderId:4,status:'R',type:'S'},
+    {id:5,content:'Yes, for sure.',time:'9:10 A.M',senderId:4,status:'R',type:'S'},
+    {id:6,content:'I have an office in Al-Nuzhe street, I open from 10 A.M until 8 P.M',time:'9:11 A.M',senderId:4,status:'R',type:'S'},
+  ]
+},
+{
+  id:2,
+  senderData:{senderName:'Nisreen Melhem',roleId:2,image:Nisreen,id:2},
+  reciverData:{reciverName:'Takla Zidan',roleId:1,image:Takla,id:1},
+  msg:[
+  {id:1,content:'Hello',time:'9:00 A.M',senderId:4,status:'R',type:'S'},
+  {id:2,content:'How Are You?',time:'9:00 A.M',senderId:4,status:'R',type:'S'},
+  {id:3,content:'I want to ask you how can i pay for last tour you orgnized?',time:'9:01 A.M',senderId:4,status:'R',type:'S'},
+  {id:7,content:'Ok, thank u.',time:'9:30 A.M',senderId:4,status:'UNR',type:'S'},
+  {id:4,content:'Hello',time:'9:10 A.M',senderId:4,status:'R',type:'R'},
+  {id:5,content:'Yes, for sure.',time:'9:10 A.M',senderId:4,status:'R',type:'R'},
+  {id:6,content:'I have an office in Al-Nuzhe street, I open from 10 A.M until 8 P.M',time:'9:11 A.M',senderId:4,status:'R',type:'R'},
+]
+},
+{
+  id:3,
+  senderData:{senderName:'Rolana Kamarie',roleId:3,image:Rolana,id:3},
+  reciverData:{reciverName:'Nisreen Melhem',roleId:2,image:Nisreen,id:2},
+  msg:[
+  {id:1,content:'Hello',time:'10:00 P.M',senderId:4,status:'R',type:'R'},
+  {id:3,content:'I want to ask you about this week offer, can i reserve 10 seats over the number specified in the offer?',time:'10:02 P.M',senderId:4,status:'R',type:'R'},
+  {id:7,content:'Ok, thank u.',time:'10:30 P.M',senderId:4,status:'UNR',type:'R'},
+  {id:4,content:'Hello',time:'10:10 P.M',senderId:4,status:'R',type:'S'},
+  {id:5,content:'Yes, for sure.',time:'10:11 P.M',senderId:4,status:'R',type:'S'},
+]
+}
+],
+selected:{
+  chatId:3,
+}
 };
   export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
 
@@ -136,21 +175,36 @@ const userSlice = createSlice({
       state.id=action.payload.uid
       state.token=action.payload.token
     },
-
     setUserInformation: (state,action) => {
       state.login.data.email = action.payload.userInfo.email;
       state.login.data.userName = action.payload.userInfo.userName;
     },
-
-
     updateOrgnizerData: (state, action) => {
       state.login.data.email = action.payload.email;
       state.login.data.avatar = action.payload.image;
       state.login.data.userName = action.payload.userName;
     },
-    setData:(state,action)=>{
-
-    }
+   sendMsg:(state,action)=>{
+    var oldMsg=state.chats.filter(chat=> chat.id==state.selected.chatId)
+    
+    state.chats.filter(chat=> chat.id==state.selected.chatId).msg=[
+        ...oldMsg[0],action.payload
+    ]
+   },
+   deleteMsg:(state,action)=>{
+    state.chats.filter(chat=> chat.id==state.selected.chatId).msg=
+    state.chats.filter(chat=> chat.id==state.selected.chatId).msg.filter(m=>m.id!=action.payload)
+   },
+   readMsg:(state,action)=>{
+    state.chats.filter(chat=>chat.id==state.selected.chatId)[0].msg.forEach(m=>{
+      if(m.type=='R')
+        m.status='R'
+    })
+   },
+   startChat:(state,action)=>{
+    var selectedId=state.chats.filter(chat=>chat.reciverData.id==action.payload)[0].id
+    state.selected.chatId=selectedId
+   }
 
 
   },
@@ -194,7 +248,8 @@ const userSlice = createSlice({
   }
 });
 
-export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken,setData, setUserInformation } = userSlice.actions
+export const { setPassword, setEmail,setConfirmPassword, setRespondentEmail, setRespondentUser,setUserName,setToken,
+   setUserInformation,sendMsg,deleteMsg,readMsg,startChat } = userSlice.actions
 
 
 export default userSlice.reducer;

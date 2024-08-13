@@ -11,6 +11,9 @@ function ClientHomePage() {
 
     const tours1 = useSelector(state => state.client.tours)
     const [tours,setTours]=useState(tours1)
+    const navigate=useNavigate()
+
+    
     useEffect(async()=>{
         var accessToken = localStorage.getItem('accessToken');
     
@@ -41,9 +44,7 @@ function ClientHomePage() {
         })
     },[])
 
-    const tours = useSelector(state => state.client.tours)
-    const navigate=useNavigate()
-
+ 
     return (
         <div className="flex flex-col">
             <SmallHeader />
@@ -59,6 +60,8 @@ function ClientHomePage() {
                         <span>Home</span></div>
                     <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
                         onClick={() => { navigate('/client/client-profile') }}><span>Profile</span></div>
+                          <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
+                        onClick={() => { navigate('/chats') }}><span>Chats</span></div>
                     <div className="flex flex-col justify-center items-center w-fit px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
                         onClick={() => { navigate("/client/client-tours-requests") }}><span>My Tour</span></div>
                     <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"

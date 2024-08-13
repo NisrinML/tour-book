@@ -1,9 +1,16 @@
+import Wajeeh from "../images/w.jpg"
+import Nisreen from "../images/Ns.jpg"
+import Takla from "../images/T.jpg"
+import Nagham from "../images/Ng.jpg"
+import Rita from "../images/rita.jpg"
+import Naya from "../images/nay.jpg"
+import Milad from "../images/m.jpg"
+import Person from "../images/person.png"
 export const ProblemList = [
     { id: 1, name: 'Froad' },
     { id: 2, name: 'Stole' },
     { id: 3, name: 'Ley' },
 ]
-
 export const OrganizersName = [{id:1, name:'Elias'},{id:2, name:'Milad'},{id:3, name:'Malek'}]
 export const Orders = [
     {
@@ -103,7 +110,6 @@ export const Orders = [
       date: "2024-05-12",
     },
   ];
-
 export const Tours = [{
     sn:1,
     id: 11,
@@ -140,14 +146,23 @@ export const Tours = [{
     clientRequest: []
 },
 ]
-
 export const PresenterAttachments =[
    {id:1,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'},
    {id:2,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'},
    {id:3,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'},
    {id:4,src:'https://E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'},
 ]
-
 export const Services =[
     {id:1,type:'resturant'},{id:2,type:'hotel'},{id:3,type:'swimming pool'}
+]
+export const allUsers = [
+  {id:1,roleId:1,name:'Takla Zidan',image:Takla},
+  {id:2,roleId:2,name:'Nisreen Melhem',image:Nisreen},
+  {id:3,roleId:3,name:'Nagham Melhem',image:Nagham},
+  {id:4,roleId:1,name:'Khaled Yousef',image:Person},
+  {id:5,roleId:2,name:'Essa Rastanawi',image:Person},
+  {id:6,roleId:3,name:'Milad Melhem',image:Milad},
+  {id:7,roleId:1,name:'Wajeeh Rabahie',image:Wajeeh},
+  {id:8,roleId:2,name:'Rita Kamarie',image:Rita},
+  {id:9,roleId:3,name:'Naya Zidan',image:Naya}
 ]

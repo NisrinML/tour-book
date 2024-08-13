@@ -145,7 +145,8 @@ function OrgnizerHomePage() {
                                 </option>
                             ))}
                         </select>
-
+                        <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light"
+                        onClick={()=>{navigate('/chats')}}><span>Chats</span></div>
                         <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light"
                         onClick={()=>{navigate('/orgnizer-status')}}><span>Status</span></div>
                         <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-selected-bg-light hover:text-title-light" 
