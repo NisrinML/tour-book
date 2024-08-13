@@ -48,7 +48,9 @@ import ClientReport from "../features/client/clientView/ClientReport"
 import ClientTourDetails from "../features/client/clientView/ClientTourDetails"
 import Register from "../features/client/clientView/Register"
 import ClientInvite from "../features/client/clientView/ClientInvite"
-
+import ClientProfile from '../features/client/clientView/ClientProfile'
+import ClientTours from '../features/client/clientView/ClientTours'
+import ClientNotification from '../features/client/clientView/ClientNotification'
 export const Router=()=>{
 return(
     <Routes>
@@ -101,6 +103,9 @@ return(
         <Route path="/client/client-tour-details" element={<ClientTourDetails/>}/>
         <Route path="/client/register" element={<Register/>}/>
         <Route path="/client/client-invite" element={<ClientInvite/>}/>
+        <Route path="/client/client-profile" element={<ClientProfile/>}/>
+        <Route path="/client/client-tours-requests" element={<ClientTours/>}/>
+        <Route path="/client/client-notification" element={<ClientNotification/>}/>
 
     </Routes>
    

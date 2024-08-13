@@ -10,32 +10,38 @@ const initialState = {
   login: {
     loading: '',
     data: {
-      id: '',
-      userName: 'User Name',
+      id: 1,
+      userName: 'rolana_kamaria',
       password: '111',
-      confirmPassword: '',
-      avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
-      status: '',
-      email: 'user@gmail.com',
-      roleId: 2,
-      phone:0
+      confirmPassword: '111',
+      avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',
+      status: 'active',
+      email: 'rolana@gmail.com',
+      roleId: 1,
+      phone:"0952857736"
     },
     rejected:false,
     error: ''
   },
-  notifications: ['Rolana Kamaria ask for 5 seats for Black Friday tour','Wajeeh Rabahie ask for 3 seats for Spring is Comming tour','Nisreen Melhem liked Winter Better tour','Milad Melhem liked Black Friday tour',
-    'Takla Zidan ask for 4 seats for Black Friday tour','Abboud Assaf ask for 9 seats for Spring is Comming tour','Maen Melhem disliked Winter Better tour','Nagham Melhem comment on Black Friday tour'
+  notifications: ['Rolana Kamaria ask for 5 seats for Extraordinary Experiece tour',
+    'Wajeeh Rabahie ask for 3 seats for Spring is Comming tour',
+    'Nisreen Melhem liked Winter Better tour',
+    'Milad Melhem liked Tour Around The World tour',
+    'Takla Zidan ask for 4 seats for Discover The World tour',
+    'Maen Melhem disliked Winter Better tour',
+    'Nagham Melhem comment on Mountains and Rivers tour'
   ,],
   subscriptionDetails: {
-    id: '',
-    startDate: '',
-    endDate: '',
-    payment: ''
+    id: '88',
+    startDate: '2024-08-16',
+    endDate: '2024-08-19',
+    payment: '50$'
   },
-  tours:[ {   sn:1,
+  tours:[ {  
+    sn:1,
     id: 11,
-    title: 'Black Friday',
-    startDate: '5/5/2024', startTime: '2:20 A.M',
+    title: 'Mountains and Rivers tour',
+    startDate: '2024-06-06', startTime: '2:20 A.M',
     totalCost: 500,
     seatCost: 15,
     numOfSeat: 150,
@@ -53,7 +59,7 @@ const initialState = {
     sn:2,
     id: 22,
     title: 'Summer Weekend',
-    startDate: '1/6/2024', startTime: '6:00 A.M',
+    startDate: '2024-02-09', startTime: '6:00 A.M',
     totalCost: 400,
     seatCost: 10,
     numOfSeat: 200,
@@ -66,7 +72,7 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.***@gmail.com', complainantUser: '' }
+  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Summer Free',respondentEmail:'www.milad@gmail.com', complainantUser: '' }
 };
   export const fetchUsers = createAsyncThunk("user/fetchUsers", async({username,password}) => {
 
