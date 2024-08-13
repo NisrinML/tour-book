@@ -96,9 +96,9 @@ function Register() {
             md:text-md md:rounded-md md:w-20 md:h-10 ">Register</button> 
     </div>
     </div>
-             <img src={Register3} className='absolute  w-72 h-72 xl:-bottom-10 lg:bottom-10 md:bottom-10 xl:left-20 lg:left-2 md:-left-10'/>
-             <img src={Register2} className='absolute  w-36 h-36 xl:-bottom-4 lg:bottom-16 md:bottom-16 xl:left-72 lg:left-52 md:left-40'/>
-             <img src={Register1} className='absolute  xl:w-80 xl:h-80 lg:w-80 lg:h-80 md:w-72 md:h-72 xl:-bottom-14 lg:bottom-10 md:bottom-10 xl:right-10  lg:right-16  md:right-8 '/> 
+             <img src={Register3} className='absolute  w-72 h-72 xl:bottom-0 lg:bottom-0 md:bottom-0 xl:left-20 lg:left-2 md:-left-10'/>
+             <img src={Register2} className='absolute  w-36 h-36 xl:bottom-0 lg:bottom-0 md:bottom-0 xl:left-72 lg:left-52 md:left-40'/>
+             <img src={Register1} className='absolute  xl:w-80 xl:h-80 lg:w-80 lg:h-80 md:w-72 md:h-72 xl:bottom-0 lg:bottom-0 md:bottom-0 xl:right-10  lg:right-16  md:right-8 '/> 
     </div>
   )
 }

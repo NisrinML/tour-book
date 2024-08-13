@@ -41,16 +41,10 @@ import ClientReport from "./features/client/clientView/ClientReport"
 import ClientInvite from "./features/client/clientView/ClientInvite"
 import ClientNotification from "./features/client/clientView/ClientNotification"
 import ClientProfile from "./features/client/clientView/ClientProfile"
-import PresenterHome from "./features/presenter/presenterView/PresenterHome"
-import PresenterEditOffer from "./features/presenter/presenterView/PresenterEditOffer"
-import OfferDetails from "./features/presenter/presenterView/OfferDetails"
-import PresenterForgetPassword from "./features/presenter/presenterView/PresenterForgetPassword"
-import PresenterNewOffer from "./features/presenter/presenterView/PresenterNewOffer"
-import PresenterNewPassword from "./features/presenter/presenterView/PresenterNewPassword"
-import PresenterOrders from "./features/presenter/presenterView/PresenterOrders"
-import PresenterReport from "./features/presenter/presenterView/PresenterReport"
-import PresenterResetPassword from "./features/presenter/presenterView/PresenterResetPassword"
-import PresenterSettings from "./features/presenter/presenterView/PresenterSettings"
+import ClientTourDetails from "./features/client/clientView/ClientTourDetails"
+
+import ClientTours from "./features/client/clientView/ClientTours"
+
 
 function App() {
 
@@ -59,7 +53,7 @@ function App() {
     <Layout>
 
 
-      {/* <Router /> */}
+      <Router />
 
       {/* <OrgnizerNewPassword/> */}
       {/* <OrgnizerForgetPassword/> */}
@@ -103,8 +97,9 @@ function App() {
       {/* <ClientNotification/> */}
       {/* <ClientProfile/> */}
  {/* <ChooseOffer/> */}
- <OrgnizerStatus/>
-
+ {/* <OrgnizerStatus/> */}
+ {/* <ClientTourDetails/> */}
+{/* <ClientTours/> */}
     </Layout>
 
   )

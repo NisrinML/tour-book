@@ -166,8 +166,8 @@ function ClientTours() {
        </div>
        </div>
       </div>
-      <img src={ToursDes1} className='absolute left-2 -bottom-10 w-60 h-60'/>
-      <img src={ToursDes2} className='absolute right-32 -bottom-10 w-52 h-52'/>
+      <img src={ToursDes1} className='absolute left-2 bottom-0 w-60 h-60'/>
+      <img src={ToursDes2} className='absolute right-32 bottom-0 w-52 h-52'/>
       <img src={ToursDes3} className='absolute right-0 bottom-10 w-40 h-40'/>
     </div>
   )

@@ -195,8 +195,8 @@ function ClientTourDetails() {
             lg:text-xl lg:rounded-md lg:w-24 lg:h-10  
             md:text-md md:rounded-md md:w-20 md:h-10 ">Next</button> 
       </div>
-      <img src={TourDetailsCar} className='absolute -left-20 w-96 h-96 -bottom-96'/>
-      <img src={TourDetailsGirl} className='absolute right-5 w-72 h-72 -bottom-96'/>
+      <img src={TourDetailsCar} className='absolute -left-20 w-96 h-96 -bottom-80'/>
+      <img src={TourDetailsGirl} className='absolute right-5 w-72 h-72 -bottom-80'/>
   </div>
   
   )
