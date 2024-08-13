@@ -46,7 +46,7 @@ const initialState = {
     description: "Burger - Potato - One Drink",
     address: "syria-homs",
 
-    offerAttatchment: [{ id: 1, attachment:Potate, type: '' },{ id:2, attachment:Bergar, type: '' }],
+    offerAttatchment: [{ id: 1, attachment:Potato, type: '' },{ id:2, attachment:Burger, type: '' }],
 
   },
 { id: 2,

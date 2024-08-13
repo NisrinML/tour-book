@@ -2,8 +2,41 @@ import SmallHeader from "../../layout/SmallHeader"
 import HomePeople from "../../../assets/images/homePeople.png"
 import { useSelector } from "react-redux"
 import Tour from "./Tour"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import { API_URL } from "../../../app/config"
 function ClientHomePage() {
-    const tours = useSelector(state => state.client.tours)
+    const tours1 = useSelector(state => state.client.tours)
+    const [tours,setTours]=useState(tours1)
+    useEffect(async()=>{
+        var accessToken = localStorage.getItem('accessToken');
+    
+          const response = await axios.get(`${API_URL}/api/tours/?page=`+1, { 
+          headers: {
+          Authorization: `JWT ${accessToken}`,
+        }
+      }).then((response) => {
+        console.log(response.data)
+        var data=[]
+        
+        response.data.results.forEach(element=>{
+            data.push({
+                id:element.id,
+                startTime:"2:00 P.M",
+                startDate:element.start_date,
+                title:element.title,
+                description:element.description,
+                images:element.tour_attachments,
+                like:element.like_counter,
+                dislike:element.dislike_counter,
+                comments:element.comments_num,
+            })
+        })
+        //setTours(response.data.result)
+        }).catch((err)=>{
+          console.log(err.message)
+        })
+    },[])
     return (
         <div className="flex flex-col">
             <SmallHeader />

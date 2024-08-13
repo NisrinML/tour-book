@@ -88,7 +88,7 @@ function ClientTourDetails() {
           {index%2 == 0 ?
            ( 
             <div className='flex flex-col space-y-0'>
-            <div className="flex flex-col space-y-10 rounded-2xl bg-orgnizerbg-light justify-center content-center items-center
+            <div className="flex flex-col space-y-4 rounded-2xl bg-orgnizerbg-light justify-center content-center items-center
            shadow-inputLabelShadow-light/50 drop-shadow-md shadow-md border border-inputLabelShadow-light/40
            xl:py-10 xl:px-10 w-fit
            lg:py-8 lg:px-8
@@ -131,7 +131,7 @@ function ClientTourDetails() {
            (
             <div className='flex flex-col space-y-0'> 
            <img src={UpArrow} className='w-32 h-32 ml-40'/> 
-            <div className="flex flex-col space-y-10 rounded-2xl bg-orgnizerbg-light justify-center content-center items-center
+            <div className="flex flex-col space-y-4 rounded-2xl bg-orgnizerbg-light justify-center content-center items-center
            shadow-inputLabelShadow-light/50 drop-shadow-md shadow-md border border-inputLabelShadow-light/40
            xl:py-10 xl:px-10 w-fit
            lg:py-8 lg:px-8
@@ -195,8 +195,8 @@ function ClientTourDetails() {
             lg:text-xl lg:rounded-md lg:w-24 lg:h-10  
             md:text-md md:rounded-md md:w-20 md:h-10 ">Next</button> 
       </div>
-      <img src={TourDetailsCar} className='absolute -left-20 w-96 h-96 -bottom-96'/>
-      <img src={TourDetailsGirl} className='absolute right-5 w-72 h-72 -bottom-96'/>
+      <img src={TourDetailsCar} className='absolute -left-20 w-96 h-96 -bottom-80'/>
+      <img src={TourDetailsGirl} className='absolute right-5 w-72 h-72 -bottom-80'/>
   </div>
   
   )

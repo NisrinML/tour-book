@@ -10,14 +10,46 @@ import image1 from '../../../../assets/images/restaurant1.png'
 import image2 from '../../../../assets/images/restaurant2.png'
 import image3 from '../../../../assets/images/restaurant3.png'
 import { useLayoutEffect, useState } from "react"
+import axios from "axios"
+import { API_URL } from "../../../../app/config"
 function Tours(){
-    const tours = useSelector(state=>state.user.tours)
+    const tours1 = useSelector(state=>state.user.tours)
+    const [tours,setTours]=useState(tours1)
     const images = [image1, image2, image3, image1, image2, image3]
     const [showFullGallery, setShowFullGallery] = useState({ id: null, value: false });
     const [hideSubGallery, setHideSubGallery] = useState({ id: null, value: true })
     const [showAllText, setShowAllText] = useState({ id: null, value: false })
 
-        useLayoutEffect(()=>{
+        useLayoutEffect(async()=>{
+          
+                var accessToken = localStorage.getItem('accessToken');
+            
+                  const response = await axios.get(`${API_URL}/api/tours/?page=`+1, { 
+                  headers: {
+                  Authorization: `JWT ${accessToken}`,
+                }
+              }).then((response) => {
+                console.log(response.data)
+                var data=[]
+                
+                response.data.results.forEach(element=>{
+                    data.push({
+                        id:element.id,
+                        startTime:"2:00 P.M",
+                        startDate:element.start_date,
+                        title:element.title,
+                        description:element.description,
+                        images:element.tour_attachments,
+                        like:element.like_counter,
+                        dislike:element.dislike_counter,
+                        comments:element.comments_num,
+                    })
+                })
+                //setTours(response.data.result)
+                }).catch((err)=>{
+                  console.log(err.message)
+                })
+         
             //api for intialize tours
         },[])
 

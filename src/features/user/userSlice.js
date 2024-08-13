@@ -17,7 +17,7 @@ const initialState = {
       avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
       status: '',
       email: 'user@gmail.com',
-      roleId: 2,
+      roleId: 1,
       phone:0
     },
     rejected:false,
