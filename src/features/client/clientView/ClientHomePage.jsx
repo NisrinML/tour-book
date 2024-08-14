@@ -44,7 +44,7 @@ function ClientHomePage() {
         })
     },[])
 
- 
+
     return (
         <div className="flex flex-col">
             <SmallHeader />

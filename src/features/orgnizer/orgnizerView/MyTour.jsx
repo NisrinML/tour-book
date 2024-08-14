@@ -223,7 +223,7 @@ function MyTour() {
                                             md:text-lg md:rounded-md  md:w-20 md:h-8 ">Delete</button>
                                         </div> : tour.status ?
                                             <div className="flex flex-row justify-between items-center p-5 px-40">
-                                                <button onClick={handelPost(tour.id)}
+                                                <button onClick={() => handelPost(tour.id)}
                                                     className="flex flex-col justify-center items-center text-center font-['sans-serif'] drop-shadow-[3px_6px_rgba(117,135,142,0.5)] bg-add-button-light text-button-text-light 
                                             hover:cursor-pointer hover:drop-shadow-[0px] hover:bg-add-button-hover-light
                                             xl:text-2xl xl:rounded-md  xl:w-28 xl:h-10  
