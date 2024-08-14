@@ -14,12 +14,6 @@ const initialState = {
       userName: 'rolana_kamaria',
       password: '111',
 
-      confirmPassword: '',
-      avatar: 'C:/Users/Nisreen/Pictures/a.jpg',
-      status: '',
-      email: 'user@gmail.com',
-      roleId: 1,
-      phone:0
 
       confirmPassword: '111',
       avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',

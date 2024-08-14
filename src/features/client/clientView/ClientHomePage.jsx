@@ -41,8 +41,6 @@ function ClientHomePage() {
         })
     },[])
 
-    const tours = useSelector(state => state.client.tours)
-    const navigate=useNavigate()
 
     return (
         <div className="flex flex-col">
