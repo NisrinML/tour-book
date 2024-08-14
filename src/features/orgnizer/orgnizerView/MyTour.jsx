@@ -10,30 +10,32 @@ import { deleteTour, updateTour } from "../orgnizerSlice"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import { API_URL } from "../../../app/config"
+import { useSelector } from "react-redux"
 function MyTour() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [tours, setTours] = useState(Tours)
+    const tours1= useSelector(state=>state.orgnizer.tours)
+    const [tours, setTours] = useState(tours1)
     const [checkError, setCheckError] = useState(false)
     const [msg, setMsg] = useState('')
 
-    // useEffect(async () => {
+    useEffect(async () => {
 
-    //     //var accessToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjE0MTIyLCJpYXQiOjE3MjMxMjc3MjIsImp0aSI6IjM5MTJlZWQwNjBlNTQ2Y2U4MzlmYWQ0NjhlZDUyZDE0IiwidXNlcl9pZCI6Nn0.afFpupFnhqdLQ0XQKfbs3OerDpmJlaMZdaSHcQgm3nQ";
-    //     var accessToken = localStorage.getItem('accessToken');
+        //var accessToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzIzMjE0MTIyLCJpYXQiOjE3MjMxMjc3MjIsImp0aSI6IjM5MTJlZWQwNjBlNTQ2Y2U4MzlmYWQ0NjhlZDUyZDE0IiwidXNlcl9pZCI6Nn0.afFpupFnhqdLQ0XQKfbs3OerDpmJlaMZdaSHcQgm3nQ";
+        var accessToken = localStorage.getItem('accessToken');
 
-    //     const response = await axios.get(`${API_URL}/api/tours/organizer-tours?page=` + 1, {
-    //         headers: {
-    //             Authorization: `JWT ${accessToken}`,
-    //         }
-    //     }).then((response) => {
-    //         console.log(response.data)
-    //         setTours(response.data.data)
-    //     }).catch((err) => {
-    //         console.log(err.message)
-    //     })
+        const response = await axios.get(`${API_URL}/api/tours/organizer-tours?page=` + 1, {
+            headers: {
+                Authorization: `JWT ${accessToken}`,
+            }
+        }).then((response) => {
+            console.log(response.data)
+            setTours(response.data.data)
+        }).catch((err) => {
+            console.log(err.message)
+        })
 
-    // }, [])
+    }, [])
 
     const handelBack = () => {
         navigate('/orgnizer-home');
@@ -159,7 +161,7 @@ function MyTour() {
                                             </div>
                                         </div>
                                         <div className="flex flex-row justify-between items-center 
-                                        xl:py-5  xl:px-40 
+                                        xl:py-5  xl:px-32 
                                         lg:py-3 lg:px-20 
                                         md:py-2 md:px-16">
                                             <div className="flex flex-col justify-start items-start space-y-3">

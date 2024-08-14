@@ -16,7 +16,7 @@ function TourDetails() {
    const [tour,setTour]=useState(tour1)
     //sum number of reserved seats from total number of seats minus the number of required seats in each accepted request
     const resrvedSeats= tour.clientRequest.filter(req=> req.status=='accept').reduce((sum, order) => sum + order.numOfSeat, 0);
-    const [images, setImages] = useState([{ id: 1, src: image1 }, { id: 2, src: image2 }, { id: 3, src: image3 }])
+    const [images, setImages] = useState([{ id: 2, src: image2 }, { id: 3, src: image3 }])
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
-import image1 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png'
-import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'
-import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'
+import image1 from 'E:/IT/React/Folder/tour-book/src/assets/images/Cake.png'
+import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/Burger.png'
+import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/Chicken.png'
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

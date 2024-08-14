@@ -30,7 +30,7 @@ function PresenterPage() {
     });
     const images = [image1,image2,image3,image1]
     const handelBack = () => {
-        navigate('/orgnizer-home');
+        navigate('/make-special-tour/presenter-offers');
     }
    
     return (

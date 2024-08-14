@@ -10,7 +10,8 @@ import { MapContainer, Marker, Popup, TileLayer, Polyline } from 'react-leaflet'
 import { Icon, divIcon, point } from 'leaflet';
 import useGeoLocation from "../../../assets/map/useGeoLocation"
 import MarkerClusterGroup from 'react-leaflet-cluster';
-import 'leaflet/dist/leaflet.css';
+
+import 'leaflet/dist/leaflet.css'
 import "../../../tailwind/largeMap.css"
 import { addPoint, selecteItem, selecteOfferId, setFirstTourDetails, setTourPoint, updateTour } from "../orgnizerSlice"
 import { useDispatch } from "react-redux"
@@ -26,8 +27,9 @@ function MakeSpecialTour() {
   const navigate = useNavigate();
   const dispatch=useDispatch();
   const location = useGeoLocation();
-  var locations1 = useSelector(state=>state.orgnizer.tour.tourPoints)
-  const [locations,setLocations]=useState(locations1)
+  var locations = useSelector(state=>state.orgnizer.tour.tourPoints)
+
+  //const [locations,setLocations]=useState(locations1)
   //to get the position that the orgnizer choose
   var selectedLocations = locations.filter(location => location.select == true);
   // Map parameters
@@ -41,71 +43,72 @@ function MakeSpecialTour() {
     iconSize: [38, 38],
   });
 
-  useEffect(async()=>{
+//   useEffect(async()=>{
         
-    var accessToken = localStorage.getItem('accessToken');
+//     var accessToken = localStorage.getItem('accessToken');
 
-      const response = await axios.get(`${API_URL}/api/advertisers/`, { 
-      headers: {
-      Authorization: `JWT ${accessToken}`,
-    }
-  }).then((response) => {
-    console.log(response.data)
-    return response.data
-    }).catch((err)=>{
-      console.log(err.message)
-    })
+//       const response = await axios.get(`${API_URL}/api/advertisers/`, { 
+//       headers: {
+//       Authorization: `JWT ${accessToken}`,
+//     }
+//   }).then((response) => {
+//     console.log(response.data)
+//     return response.data
+//     }).catch((err)=>{
+//       console.log(err.message)
+//     })
     
-    var data=[]
-    response.forEach(element => {
-      var choose=true
-      if(element.situation=='UNSUB')
-        choose=false
-      var offers=[]
-      element.offers.forEach(offer => {
-       var attach=[]
-        offer.offer_attachments.forEach(att=>{
-          var ele={
-            id:att.id,
-            file:att.file,
-            attachment_object:att.attachment_object
-          }
-          attach.push(ele)
-        }
-        )
-        var item={
-          id: offer.id,
-              title:offer.title,
-              startDate: offer.start_date,
-              endDate: offer.end_date,
-              startTime: "2:00 P.M",
-              endTime: "6:00 P.M",
-              pricePerOne: offer.price_for_one,
-              description: offer.description,
-              address: "",
-              offerAttatchment:attach,
-        }
-        offers.push(item)
-      });
-      data.push({
-        id:element.id,
-        lat:element.axis_x,
-        lng:element.axis_y,
-        select:choose,
-        name:element.place_name,
-        size:element.place_capacity,
-        attachments:element.advertiser_attachments,
-        email:element.email,
-        phone:element.phone,
-        services:element.service,
-        offers:offers
-      })
-    });
-    setLocations(data)
-    dispatch(setTourPoint(data))
-},[])
+//     var data=[]
+//     response.forEach(element => {
+//       var choose=true
+//       if(element.situation=='UNSUB')
+//         choose=false
+//       var offers=[]
+//       element.offers.forEach(offer => {
+//        var attach=[]
+//         offer.offer_attachments.forEach(att=>{
+//           var ele={
+//             id:att.id,
+//             file:att.file,
+//             attachment_object:att.attachment_object
+//           }
+//           attach.push(ele)
+//         }
+//         )
+//         var item={
+//           id: offer.id,
+//               title:offer.title,
+//               startDate: offer.start_date,
+//               endDate: offer.end_date,
+//               startTime: "2:00 P.M",
+//               endTime: "6:00 P.M",
+//               pricePerOne: offer.price_for_one,
+//               description: offer.description,
+//               address: "",
+//               offerAttatchment:attach,
+//         }
+//         offers.push(item)
+//       });
+//       data.push({
+//         id:element.id,
+//         lat:element.axis_x,
+//         lng:element.axis_y,
+//         select:choose,
+//         name:element.place_name,
+//         size:element.place_capacity,
+//         attachments:element.advertiser_attachments,
+//         email:element.email,
+//         phone:element.phone,
+//         services:element.service,
+//         offers:offers
+//       })
+//     });
+//     setLocations(data)
+//     dispatch(setTourPoint(data))
+// },[])
 
   //to customize the placeholder Icon that apper on the map when more than one place child allocate in the same region
+  
   const createCustomClusterIcon = (cluster) => {
     return new divIcon({
       html: `<div class="cluster-icon">${cluster.getChildCount()}</div>`
@@ -250,7 +253,7 @@ function MakeSpecialTour() {
     <div className="flex-row justify-center items-center drop-shadow-[2px_4px_rgba(125,143,154,0.5)] mx-32 py-5">
       {/* Create Map layer  */}
       {!location.loaded ? <img src={loading} className="w-/12 h-1/12 ml-80" /> :
-        <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel}>
+        <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel} style={{ height: "450px", width: "100%" }}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -261,8 +264,9 @@ function MakeSpecialTour() {
             iconCreateFunction={createCustomClusterIcon}
           >
             {locations.map(location => {
+           
               return (
-                <Marker id={location.id} position={[location.lat, location.lng]} icon={location.select ? customIconSelcet : customIcon} >
+                <Marker id={location.id} key={location.id} position={[location.lat, location.lng]} icon={location.select ? customIconSelcet : customIcon} >
                   {/* configure the popup that showen when hover the position marker */}
                   <Popup>
                     <div className="flex flex-col justify-center items-center">
@@ -280,6 +284,7 @@ function MakeSpecialTour() {
               ]} color={'red'} />
             })}
           </MarkerClusterGroup>
+          
 
           {/* <MapEvents /> */}
         </MapContainer>}

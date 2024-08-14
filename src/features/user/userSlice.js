@@ -14,9 +14,9 @@ const initialState = {
     data: {
       id: 1,
       name:'Khaled Yousef',
-      userName: 'kh5',
+      userName: 'orgnaizer',
       password: 'P@#5nO0sd',
-      roleId: 3,
+      roleId: 2,
       confirmPassword: 'P@#5nO0sd',
       avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',
       status: 'active',
@@ -70,7 +70,7 @@ const initialState = {
     comments:[],
     description:'Spring is Comming'
   },],
-  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Discover The World tour',respondentEmail:'www.alwadi@gmail.com', complainantUser: '' },
+  reports: { id: 4, reason: '', reportType: '', respondentUser: 'Maa Zaher',respondentEmail:'maa-zaher2010@gmail.com', complainantUser: '' },
   chats:[{
     id:1,
     senderData:{senderName:'Takla Zidan',roleId:1,image:Takla,id:1},

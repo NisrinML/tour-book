@@ -4,10 +4,11 @@ import axios from "axios";
 import { act } from "react";
 import { useSelector } from "react-redux";
 import { API_URL } from "../../app/config";
-
+import res from "../../assets/images/restaurant1.png"
+import Person from "../../assets/images/person.png"
 const initialState = {
   id: 4,
-  name: 'Nisrin',
+  name: 'Almohtaref Company ',
   address: 'syria-homs',
   evaluation: '',
   status: '',
@@ -18,7 +19,7 @@ const initialState = {
   userId: 1,
   tour: {
     id: 4,
-    title: 'Summer WeekEnd',
+    title: 'Tour Vip',
     startDate: '2024-07-07',
     startTime: '07:00 AM',
     endTime: '12:30 AM',
@@ -87,7 +88,7 @@ const initialState = {
         url: '/make-special-tour/presenter-offers', 
         size: 60, 
         select: true, 
-        status: 'wait', 
+        status: 'accept', 
         position: 'Al-Safir Hotel', 
         description: 'you need Bread and Drink', 
         arrivalTime: '6:00 PM', 
@@ -128,8 +129,8 @@ const initialState = {
         lng: 36.639553309802125, 
         url: '/make-special-tour/presenter-offers', 
         size: 20, 
-        status: 'refuse', 
-        select: false, 
+        status: 'accept', 
+        select: true, 
         position: 'ENGs_Doctors_Club', 
         description: 'you need to bring your Swim suit and Food', 
         arrivalTime: '1:00 PM', 
@@ -162,17 +163,167 @@ const initialState = {
             offerAttatchment: [{ id: '', attachment: '', type: '' }],
           },
         ]
-      }
+      },
     ],
     tourAttachment: [{ id: '', attachment: '', type: '' }],
     clientRequest: [{ id: '', numOfSeat: '5', status: 'accept', clientId: '', client: { name: '', lastName: '', mobile: '' } }],
     comments: [{ id: '', comment: '', feelings: '', clientId: '' }],
-    HMdistance: 0,
-    KMdistance: 0
+    HMdistance: 0.3,
+    KMdistance: 15.9
   },
-  tours: [
-    {
+  tours: [ {
     sn: 1,
+    id: 4,
+    title: 'Tour vip',
+    startDate: '2024-07-07', startTime: '07:00 AM',
+    totalCost: 100000,
+    seatCost: 500,
+    numOfSeat: 200,
+    posted: true,
+    status: true,
+    clientRequest: [],
+    likeCounter: 0,
+    disLikeCounter: 0,
+    comments: [ ],
+    description: `Join us on an immersive dining experience as we take you on a tour of some of the best restaurants in the city. Over the course of 3-4 hours, you'll visit 4-5 carefully curated establishments, sampling signature dishes and learning about the unique culinary concepts and histories behind each one.The tour begins at a classic bistro known for its fresh, locally-sourced ingredients and French-inspired fare. You'll start with a tasting of the restaurant's renowned house-made charcuterie and a glass of crisp white wine.
+  Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side street. Here you'll savor a regional pasta dish and a seasonal salad while the chef shares insights into their time-honored recipes and techniques.
+   `,
+   tourPoints: [
+    {
+      id: 1, 
+      name: "Maa Zaher", 
+      lat: 34.7207443, 
+      lng: 36.7173883, 
+      url: '/make-special-tour/presenter-offers', 
+      size: 120, 
+      select: true, 
+      status: 'accept', 
+      position: 'Maa Zaher', 
+      description: 'you need to bring your jacket', 
+      arrivalTime: '2:00 PM', leavingTime: '4:00 PM', 
+      offerRequest: { id: 88, arriveTime: '07:00 AM', leaveTime: '09:00 PM', quantity: '50', description: '', offerId: '1' },
+      offers: [
+      {
+          id: 2,
+          name: "Maa Zaher",
+          title: "Sunday Vibe",
+          startDate: "2024-08-12",
+          endDate: "2024-08-12",
+          startTime: "2:00 P.M",
+          endTime: "6:00 P.M",
+          pricePerOne: "25",
+          description: "Crispy-Drink",
+          address: "Old-Homs",
+          offerAttatchment: [{ id: '', attachment: '', type: '' }],
+        },
+      ]
+    },
+    {
+      id: 2,
+      name: " Al-Safir Hotel",
+      lat: 34.776043258519174, 
+      lng: 36.6026282253172, 
+      url: '/make-special-tour/presenter-offers', 
+      size: 60, 
+      select: true, 
+      status: 'wait', 
+      position: 'Al-Safir Hotel', 
+      description: 'you need Bread and Drink', 
+      arrivalTime: '6:00 PM', 
+      leavingTime: '8:00 PM', 
+      offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '50', description: '', offerId: '2' },
+      offers: [
+        {
+          id: 1,
+          name: "Al-Safir Hotel",
+          title: "Offer of The Month",
+          startDate: "2024-04-01",
+          endDate: "2024-05-01",
+          startTime: "2:00 P.M",
+          endTime: "5:00 P.M",
+          pricePerOne: "18",
+          description: "Barbique- Cake",
+          address: "Al-Inshaat",
+          offerAttatchment: [{ id: '', attachment: '', type: '' }],
+        }
+      ]
+    },
+    {
+      id: 3, 
+      name: "ENGs_Doctors_Club", 
+      lat: 34.71017331715748, 
+      lng: 36.639553309802125, 
+      url: '/make-special-tour/presenter-offers', 
+      size: 20, 
+      status: 'refuse', 
+      select: true, 
+      position: 'ENGs_Doctors_Club', 
+      description: 'you need to bring your Swim suit and Food', 
+      arrivalTime: '1:00 PM', 
+      leavingTime: '8:00 PM', 
+      offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '50', description: '', offerId: '2' },
+      offers: [
+        {
+          id: 1,
+          name: "ENGs_Doctors_Club",
+          title: "Friday Lunch",
+          startDate: "2024-07-01",
+          endDate: "2024-09-01",
+          startTime: "10:00 A.M",
+          endTime: "7:00 P.M",
+          pricePerOne: "20",
+          description: "burger - Potato",
+          address: "Al-Waar",
+          offerAttatchment: [{ id: '', attachment: '', type: '' }],
+        }
+      ]
+    },
+    {
+      id: 4, 
+      name: "Cafe Firouze", 
+      lat: 34.71426416344134, 
+      lng: 36.71487891412124, 
+      url: '/make-special-tour/presenter-offers', 
+      size: 100, 
+      status: 'refuse', 
+      select: false, 
+      position: 'Cafe Firouze', 
+      description: 'Nothing you need. we need you', 
+      arrivalTime: '1:00 PM', 
+      leavingTime: '8:00 PM', 
+      offerRequest: { id: '', arriveTime: '', leaveTime: '', quantity: '50', description: '', offerId: '2' },
+      offers: [
+        {
+          id: 1,
+          name: "ENGs_Doctors_Club",
+          title: "Friday Lunch",
+          startDate: "2024-07-01",
+          endDate: "2024-09-01",
+          startTime: "10:00 A.M",
+          endTime: "7:00 P.M",
+          pricePerOne: "20",
+          description: "burger - Potato",
+          address: "Al-Waar",
+          offerAttatchment: [{ id: '', attachment: '', type: '' }],
+        }
+      ]
+    },
+    {id:10,
+      name:"Mountain",
+      url: '/make-special-tour/presenter-offers', 
+      description:"sport shooze",
+      arrivalTime:"2024-05-14",
+      leavingTime:"2024-05-21",
+      size:200,
+      lat:34.72941290546218,
+      lng:36.751739500905394,
+      select:false,
+      HMdistance:0,
+      KMdistance:0,}
+  ],
+  },
+    {
+    sn: 2,
     id: 11,
     title: 'Discover The World tour',
     startDate: '2024-05-05', startTime: '2:20 A.M',
@@ -316,7 +467,7 @@ const initialState = {
   ],
   },
   {
-    sn: 2,
+    sn: 3,
     id: 22,
     title: 'Summer Weekend',
     startDate: '2024-06-01', startTime: '6:00 A.M',
@@ -458,7 +609,7 @@ const initialState = {
     ],
   },
   {
-    sn: 3,
+    sn: 4,
     id: 23,
     title: 'Mountains and Rivers tour',
     startDate: '2024-09-19', startTime: '8:30 A.M',
@@ -600,13 +751,14 @@ const initialState = {
     ],
   },],
   presrnterData: [{
-    name: 'Chill & Grill',
+    name: 'Maa Zaher',
     id: 1,
     axisX: 34.71017331715748,
     axisY: 36.639553309802125,
     size: 500,
-    email: 'www.Chill&Grill@gmail.com',
-    website: 'Chill&Grill',
+    email: 'maa-zaher2010@gmail.com',
+    website: 'MAA_ZAHER',
+    image:res,
     phone: '0992448443',
     attachments: ['E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png', 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.png', 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'],
     services: ['Resturant', 'Pool', 'Hotel']
@@ -667,6 +819,7 @@ const initialState = {
       id: 1,
       name: "Maa Zaher",
       title: "Special Lunch",
+      image:res,
       serviceId: 1,
       startDate: "2024-05-05",
       endDate: "2024-05-30",
@@ -680,6 +833,7 @@ const initialState = {
       id: 2,
       name: "ENGs_Doctors_Club",
       title: "Sunday Break Time",
+      image:Person,
       serviceId: 2,
       startDate: "2024-08-10",
       endDate: "2024-08-15",
@@ -690,9 +844,10 @@ const initialState = {
       address: "Al-Waar",
       offerAttatchment: [{ id: '', attachment: '', type: '' }],
     }, {
-      id: 2,
-      name: "Al-Safir Hotel",
+      id: 3,
+      name: "Magic",
       title: "VIP ",
+      image:Person,
       serviceId: 3,
       startDate: "2024-06-12",
       endDate: "2024-07-12",
@@ -705,11 +860,11 @@ const initialState = {
     }],
   selected: {
     presenterId: 1,
-    offerId: 2,
+    offerId: 1,
   },
   status: {
     toursPerMonth: [
-      { month: 'Jun', count: 0, porfit: 0 }, { month: 'Feb', count: 2, porfit: 0.25 }, { month: 'Mars', count: 4, porfit: 0.44 }, { month: 'Apr', count: 2, porfit: 0.22 }, { month: 'May', count: 4, porfit: 0.44 }, { month: 'Aug', count: 5, porfit: 0.5 }, { month: 'Sept', count: 6, porfit: 0.6 }],
+      { month: 'Jun', count: 0, porfit: 0 }, { month: 'Feb', count: 2, porfit: 0.25 }, { month: 'Mars', count: 4, porfit: 0.44 }, { month: 'Apr', count: 2, porfit: 0.22 }, { month: 'May', count: 4, porfit: 0.44 }, { month: 'Aug', count: 2, porfit: 0.5 }, { month: 'Sept', count: 6, porfit: 0.6 }],
     orgnizerTourRating: 78.5,
   },
   advertisers:[],

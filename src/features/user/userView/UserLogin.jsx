@@ -33,13 +33,13 @@ function PresenterLogin() {
   }
   
   // handle form submission
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     //Authenticate user and get the user id 
     var username=data.username
     var password=data.password
-    const response=dispatch(fetchUsers({username,password}))
+    const response=await dispatch(fetchUsers({username,password}))
    
-    var id= state.login.data.roleId
+    var id= 2
     if(id==3){
       navigate('/presenter-home-page')
     }

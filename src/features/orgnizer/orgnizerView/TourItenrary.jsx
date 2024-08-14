@@ -200,7 +200,7 @@ function TourItenrary() {
             <div className="flex flex-row justify-center items-center drop-shadow-[2px_4px_rgba(125,143,154,0.5)] mx-32 pb-5">
                 {/* Create Map layer  */}
                 {!location.loaded ? <img src={loading} className="w-/12 h-1/12 ml-80" /> :
-                    <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel}>
+                    <MapContainer center={[location.cordinates.lat, location.cordinates.lng]} zoom={zoomLevel} style={{ height: "450px", width: "100%" }}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

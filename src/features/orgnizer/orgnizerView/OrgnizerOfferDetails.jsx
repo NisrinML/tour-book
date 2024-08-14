@@ -5,6 +5,7 @@ import image1 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant1.p
 import image2 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant2.png'
 import image3 from 'E:/IT/React/Folder/tour-book/src/assets/images/restaurant3.png'
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 function OrgnizerOfferDetails() {
     const orgnizer = useSelector(state => state.orgnizer)
     const presenterId = orgnizer.selected.presenterId
@@ -12,7 +13,7 @@ function OrgnizerOfferDetails() {
     const offerId = orgnizer.selected.offerId
     const offer = orgnizer.offers.filter(offer => offer.id == offerId)
     const images = [image1, image2, image3, image1]
-
+    const navigate=useNavigate()
     const handelBack = () => {
         navigate('/orgnizer-offers');
     }
@@ -40,7 +41,7 @@ function OrgnizerOfferDetails() {
                         <div className="flex flex-col justify-start items-center space-y-5 xl:text-2xl lg:text-xl md:text-base font-['Georgia']">
                             <span className="flex-row text-text-light">{presenter[0].name}</span>
                             <a href="/make-special-tour/choose-position/presenter-page" className="flex-row xl:text-xl lg:text-lg md:text-base text-title-light hover:text-text-light">{presenter[0].email}</a></div>
-                        <img src={Person} className="flex flex-col drop-shadow-[2px_4px_rgba(125,143,154,0.5)] rounded-full
+                        <img src={presenter[0].image} className="flex flex-col drop-shadow-[2px_4px_rgba(125,143,154,0.5)] rounded-full
                             xl:w-32 xl:h-32
                             lg:w-28 lg:h-28
                             md:w-24 md:h-24" />

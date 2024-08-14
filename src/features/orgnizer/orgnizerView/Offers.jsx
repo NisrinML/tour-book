@@ -124,7 +124,7 @@ function Offers(){
                                     <div key={offer.id} className="flex flex-col items-center justify-center space-y-3 overflow-hidden relative flex-shrink-0 p-5 rounded-md
                                     bg-gradient-to-br from-backOpacityBgFrom-light from-3% via-post-bg-light via-40% to-backOpacityBgTo-light to-80%  drop-shadow-md shadow-md">
                               
-                              <img src={Person} className="flex-row rounded-xl xl:w-20 xl:h-20 lg:w-16 lg:h-16 md:w-12 md:h-12"/>
+                              <img src={offer.image} className="flex-row rounded-xl xl:w-20 xl:h-20 lg:w-16 lg:h-16 md:w-12 md:h-12"/>
                               <span className="flex flex-row  text-title-light xl:text-2xl lg:text-xl md:text-base font-['sans-serif']">{offer.name}</span>
                               <span className="flex flex-row  text-text-light xl:text-2xl lg:text-xl md:text-base font-['sans-serif']">{offer.title}</span>
                               <div className="flex flex-row justify-center items-center space-x-5">

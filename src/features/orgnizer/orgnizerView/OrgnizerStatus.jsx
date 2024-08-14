@@ -203,7 +203,7 @@ function OrgnizerStatus() {
                             className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
                         >
 
-                            <div className="bg-post-bg-light text-title-light  xl:text-2xl lg:text-xl md:text-lg font-['Georgia'] ml-14 px-2 rounded-lg">
+                            <div className="mx-10 bg-post-bg-light text-title-light  xl:text-2xl lg:text-xl md:text-lg font-['Georgia'] ml-14 px-2 rounded-lg">
                                 {orgnizer.name} Rating
                             </div>
                         </CardHeader>

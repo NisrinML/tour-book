@@ -16,7 +16,7 @@ function OrgnizerNotifications(){
         }
       }).then((response) => {
         console.log(response.data)
-        setNotifications(response.data.data)
+        //setNotifications(response.data.data)
         }).catch((err)=>{
           console.log(err.message)
         })
