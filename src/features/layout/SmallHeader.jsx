@@ -3,6 +3,7 @@ import Title from "../../assets/images/Title.svg";
 import notificationIcon from "../../assets/images/notificationIcon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setRoleId } from "../user/userSlice";
 
 function SmallHeader() {
 
@@ -11,7 +12,7 @@ function SmallHeader() {
   var userName = state.login.data.userName;
 
   const navigate = useNavigate();
-
+  const dispatch=useDispatch()
  const handleNotification = () =>{
   if (userID === 2) {
     navigate("/orgnizer-notification");
@@ -27,7 +28,7 @@ function SmallHeader() {
 
   const handelLogOut=()=>{
     if (window.confirm('Are you sure you want to Log out?')) {
-
+      dispatch(setRoleId())
     navigate("/")
       }  }
 
@@ -77,7 +78,7 @@ function SmallHeader() {
         >
           <span>{userName}</span>
           <span> | </span>
-          <span className="cursor-pointer" onClick={handelLogOut}>Log out</span>
+          <span className="hover:cursor-pointer" onClick={handelLogOut}>Log out</span>
         </div>
       </div>
     </div>

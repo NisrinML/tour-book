@@ -27,6 +27,7 @@ function ClientTourDetails() {
       };
      var TourDetails = {}
          TourDetails= state.clientTours.filter(tour => parseInt(tour.id) == parseInt(state.selected.tourId));
+    
   return (
     <div className="w-full max-h-full">
       <SmallHeader />
@@ -157,8 +158,8 @@ function ClientTourDetails() {
             )})} 
             </ul>
              </div>
-             <div className='flex flex-row space-x-6'>
-            <img src={activityIcon} />
+             <div className='flex flex-row items-center space-x-6'>
+            <img src={activityIcon} className='w-8 h-8'/>
             <ul>
             {position.activity.map(act=> 
             {return( 

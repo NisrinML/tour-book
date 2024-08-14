@@ -3,7 +3,7 @@ import SmallHeader from "../../layout/SmallHeader"
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Person from "../../../assets/images/person.png"
+import Person from "../../../assets/images/nan.jpg"
 import profileDesign1 from '../../../assets/images/profileDesign1.svg'
 import profileDesign2 from '../../../assets/images/profileDesign2.svg'
 import profileDesign3 from '../../../assets/images/profileDesign3.svg'
@@ -86,6 +86,7 @@ function ClientProfile() {
                 onClick={() => { navigate('/user-home-page') }}><span>Home</span></div>
             <div className="flex flex-col justify-center items-center bg-loginButtonVia-light text-title-light   px-3 rounded" >
                 <span>Profile</span></div>
+            
             <div className="flex flex-col justify-center items-center w-fit px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"
                 onClick={() => { navigate('/client/client-tours-requests') }}><span>My Tour</span></div>
             <div className="flex flex-col justify-center items-center px-3 rounded hover:bg-loginButtonVia-light  hover:text-title-light"

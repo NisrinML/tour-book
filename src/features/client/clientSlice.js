@@ -4,11 +4,11 @@ import { useState } from "react";
 const initialState = {
   id: 1,
   gender: 'Female',
-  name: 'Rolana',
+  name: 'Nisreen',
   middleName: 'Issa',
-  lastName: 'Kamaria',
-  mobile: '0940580349',
-  birthday: '2024-12-18',
+  lastName: 'Melhem',
+  mobile: '0992448443',
+  birthday: '2001-08-19',
   clientRequest: [{ id: '1', numOfSeat: '5', status: 'accept', clientId: '1', client: { name: 'Rolana', lastName: 'Kamaria', mobile: '0940580349' } }],
 
   notifications: ['Rolana Kamaria invite you to join her in the Extraordinary Experiece tour',
@@ -23,14 +23,14 @@ const initialState = {
     {
       id:11,
       title:'Discover The World tour',
-      status:'wait',
+      status:'accepted',
       meetingPoint:'Homs Hotel',
       startDate:'2024-09-09',
       endDate:'2024-09-10',
       meetingTime:'8:30 AM',
       totalTime:'17 Hours',
       price:'100$',
-      numberOfSeats:'7',
+      numberOfSeats:'5',
       tourPoints: [
         {
           id: 1, 
@@ -252,7 +252,7 @@ Next, we'll head to a family-owned Italian trattoria tucked away on a quiet side
   },],
   selected: {
     orgnizerId: 2,
-    tourId: 0
+    tourId: 11
   },
 
 };

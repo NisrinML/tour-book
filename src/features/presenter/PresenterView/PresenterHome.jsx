@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { removeOffer, getOffers } from "../presenterSlice";
 import SmallHeader from "../../layout/SmallHeader";
 import warning from "../../../assets/images/warning.svg";
-import person from '../../../assets/images/person.png';
+import person from '../../../assets/images/mainBackgrounGirl.png';
 
 function PresenterHome() {
   const state = useSelector(state=>state.presenter);
@@ -31,9 +31,12 @@ const handleWarning = () =>{
   const handleDetailsOffer = (id) => {
     // Navigate to offer details page with offer id
     navigate("/presenter-home-page/presenter-offer-details");
+    
   };
   const handleDeleteOffer = (id) => {
+    if (window.confirm('Are you sure you want to delete this offer?')) {
     dispatch(removeOffer({ id }));
+    }
   };
  
   const getCurrentDateTime = () => {

@@ -42,6 +42,9 @@ export default {
       'offerbg': {
         light: '#E0E8E5'
       },
+      'chatbg':{
+        light:'#bcbcbc'
+      },
       'input-text': {
         light: '#000000'
       },

@@ -2,15 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import Potato from '../../assets/images/Potato.png'
 import Burger from '../../assets/images/Burger.png'
-
+import res3 from '../../assets/images/restaurant3.png'
+import res1 from '../../assets/images/restaurant1.png'
+import Cake from '../../assets/images/Cake.png'
 const initialState = {
   id: "9",
-  name: "Rolana Kamaria",
-  mobile:'0988',
+  name: "Khaled Yousef",
+  mobile:'0991098295',
   status: "Active",
-  size: "200",
+  size: "250",
   placeName: "Magic",
-  website: "www.magic.com",
+  website: "www.magic@gmail.com",
   axisX: "",
   axisY: "",
   rate: "4",
@@ -26,8 +28,8 @@ const initialState = {
   { id: '9', quantity: '5', description: 'Issa Kamaria ask for 8 seats for Black Friday tour', offerId: '25', offerState: '' ,date:'05/14/2024',},
   
   ],
-  PresenterAttatchment: [{ id: '', attachment:'', type: '' }], 
-  PresenterServices: [{presenterId:'',serviceId:''}],
+  PresenterAttatchment: [{attachment:res3},{attachment:res1}], 
+  PresenterServices: [],
   services: [
     { id: '1', service: 'Pool' },
     { id: '2', service: 'Restaurant' },
@@ -37,16 +39,16 @@ const initialState = {
   offers: [    {
     id: "1",
     title: "Friday Lunch",
-    offerSize:"100",
-    startDate: "05/10/2024",
-    endDate: "06/20/2024",
-    startTime: "10:00 AM",
-    endTime: "7:00 PM",
+    offerSize:"200",
+    startDate: "14/08/2024",
+    endDate: "16/08/2024",
+    startTime: "2:00 PM",
+    endTime: "4:00 PM",
     pricePerOne: "20$",
     description: "Burger - Potato - One Drink",
     address: "syria-homs",
 
-    offerAttatchment: [{ id: 1, attachment:Potato, type: '' },{ id:2, attachment:Burger, type: '' }],
+    offerAttatchment: [{ id: 1, attachment:Burger, type: '' },{ id:2, attachment:Cake, type: '' }],
 
   },
 { id: 2,
@@ -58,21 +60,21 @@ const initialState = {
   pricePerOne: "15",
   description: "burger - pepsi",
   address: "syria-homs",
-  offerAttatchment: [{ id: '', attachment:'', type: '' }],
+  offerAttatchment: [{ id:2, attachment:Potato, type: '' }],
 },],
   offer: 
     {
       id: "1",
-      title: "Fridy Lunch",
-      offerSize:"100",
-      startDate: "05/10/2024",
-      endDate: "06/20/2024",
-      startTime: "10:00 AM",
-      endTime: "7:00 PM",
+      title: "Friday Lunch",
+      offerSize:"200",
+      startDate: "14/08/2024",
+      endDate: "16/08/2024",
+      startTime: "2:00 PM",
+      endTime: "4:00 PM",
       pricePerOne: "20$",
       description: "Burger - Potato - One Drink",
       address: "syria-homs",
-      offerAttatchment: [{ id: '', attachment:'', type: '' }],
+      offerAttatchment: [{ id: 1, attachment:Burger, type: '' },{ id:2, attachment:Cake, type: '' }],
     },
   };
 

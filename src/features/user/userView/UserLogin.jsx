@@ -45,7 +45,7 @@ function PresenterLogin() {
     }
     else if(id==2){
       navigate('/orgnizer-home')
-    }else{
+    }else if(id==1){
       navigate('/user-home-page')
     }
   };

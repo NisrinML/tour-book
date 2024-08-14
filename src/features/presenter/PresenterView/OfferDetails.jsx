@@ -9,7 +9,7 @@ import { acceptOrder, refuseOrder } from '../presenterSlice';
 import AcceptSign from '../../../assets/images/AcceptSign.svg';
 import RefuseSign from '../../../assets/images/RefuseSign.svg';
 import { Orders } from "../../../assets/data/tempData";
-
+import Cake from '../../../assets/images/Cake.png'
 function OfferDetails() {
     const state = useSelector(state => state.presenter);
     const offerRequest = useSelector(state => state.presenter.offerRequest);
@@ -94,17 +94,17 @@ const acceptedOrders = orders.filter(order=>order.status=='accept');
                  )) */}
                {/* )} */}
                <div className="flex flex-row space-x-4" >
-                    <a target="_blank" href={Potato}>
+                    <a target="_blank" href={Burger}>
                                <img
-                                 src={Potato}
+                                 src={Burger}
                                  alt="Offer Attachment"
                                  className="rounded-xl drop-shadow-[2px_3px_rgba(117,135,142,0.8)]
                                   xl:w-52 xl:h-44 lg:w-48 lg:h-36 md:w-40 md:h-30"
                                />
                                </a>
-                              <a target="_blank" href={Burger}>
+                              <a target="_blank" href={Cake}>
                                <img
-                                 src={Burger}
+                                 src={Cake}
                                  alt="Offer Attachment"
                                  className="rounded-xl drop-shadow-[2px_3px_rgba(117,135,142,0.8)] 
                                  xl:w-52 xl:h-44 lg:w-48 lg:h-36 md:w-40 md:h-30"
