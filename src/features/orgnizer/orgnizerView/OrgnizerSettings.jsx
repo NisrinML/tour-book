@@ -3,7 +3,7 @@ import backButton from "../../../assets/images/backButton.svg"
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Person from "../../../assets/images/person.png"
+import Person from "../../../assets/images/carBox.png"
 import {  useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useGeoLocation from "../../../assets/map/useGeoLocation";
@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { updateOrgnizerData } from "../orgnizerSlice";
 import axios from "axios";
 import { API_URL } from "../../../app/config";
+
 function OrgnizerSettings() {
     const location = useGeoLocation();
     const zoomLevel = 13;

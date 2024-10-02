@@ -20,7 +20,7 @@ const initialState = {
       confirmPassword: 'P@#5nO0sd',
       avatar: 'C:/Users/User/Desktop/Tour Book/tour-book/src/assets/images/person.png',
       status: 'active',
-      email: 'khaledkoy11@gmail.com',
+      email: '',
       phone:"0992448443"
 
     },
